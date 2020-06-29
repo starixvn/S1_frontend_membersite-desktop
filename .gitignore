@@ -268,3 +268,4 @@ MemberSite/MemberSite/Properties/PublishProfiles/Release.pubxml
 MemberSite/MemberSite/Properties/PublishProfiles/FolderProfile.pubxml
 
 build/
+public/
