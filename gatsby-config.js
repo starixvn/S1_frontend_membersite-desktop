@@ -1,7 +1,6 @@
 module.exports = {
 	siteMetadata: {
 		defaultLanguage: "en",
-		siteUrl: "http://m.nova88.net/",
 		title: `Nova88`,
 		description: ``,
 		author: `Nova88`,
