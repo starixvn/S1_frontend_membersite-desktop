@@ -18,20 +18,21 @@ exports.onCreatePage = async ({
 	const isEnvDevelopment = process.env.NODE_ENV === "development";
 	const originalPath = page.path;
 
-	await deletePage(page);
+	// if (!page.path.match(/^\/404\/$/)) {
+	// 	await deletePage(page);
+	// }
 
 	await Promise.all(
 		config.siteMetadata.supportedLanguages.map(async lang => {
 			const localizedPath = `/${lang}${page.path}`;
-
-			createRedirect({
-				fromPath: originalPath,
-				toPath: localizedPath,
-				Language: lang,
-				isPermanent: false,
-				redirectInBrowser: isEnvDevelopment,
-				statusCode: 301
-			});
+			// createRedirect({
+			// 	fromPath: originalPath,
+			// 	toPath: localizedPath,
+			// 	Language: lang,
+			// 	isPermanent: false,
+			// 	redirectInBrowser: isEnvDevelopment,
+			// 	statusCode: 301
+			// });
 
 			await createPage({
 				...page,
@@ -45,11 +46,11 @@ exports.onCreatePage = async ({
 		})
 	);
 
-	createRedirect({
-		fromPath: originalPath,
-		toPath: `/${config.siteMetadata.defaultLanguage}${page.path}`,
-		isPermanent: false,
-		redirectInBrowser: isEnvDevelopment,
-		statusCode: 301
-	});
+	// createRedirect({
+	// 	fromPath: originalPath,
+	// 	toPath: `/${config.siteMetadata.defaultLanguage}${page.path}`,
+	// 	isPermanent: false,
+	// 	redirectInBrowser: isEnvDevelopment,
+	// 	statusCode: 301
+	// });
 };
