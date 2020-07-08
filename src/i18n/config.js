@@ -1,15 +1,21 @@
 import i18n from "i18next";
 
+export const langList = ["cs", "en"];
+export const defaultLang = "en";
+
+const setResources = () => {
+	let result = {};
+	langList.forEach(l => {
+		result[l] = {
+			translations: require(`./${l}.json`)
+		};
+	});
+	return result;
+};
+
 i18n.init({
-	fallbackLng: "en",
-	resources: {
-		cs: {
-			translations: require("./cs.json")
-		},
-		en: {
-			translations: require("./en.json")
-		}
-	},
+	fallbackLng: defaultLang,
+	resources: setResources(),
 	ns: ["translations"],
 	defaultNS: "translations",
 	returnObjects: true,
@@ -22,6 +28,6 @@ i18n.init({
 	}
 });
 
-i18n.languages = ["cs", "en"];
+i18n.languages = langList;
 
 export default i18n;

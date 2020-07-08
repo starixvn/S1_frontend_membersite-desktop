@@ -1,53 +1,26 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import Wrapper from "../components/common/wrapper";
 import Layout from "../components/common/layout";
 import NpcSoccer from "../styles/Nova88/img/npc-soccer.png";
-import Logo from "../styles/Nova88/img/logo.svg";
+
 import IndexBanner from "../styles/Nova88/img/indexBanner.jpg";
 import NpcBasketball from "../styles/Nova88/img/npc-basketball.png";
 import NpcBaseball from "../styles/Nova88/img/npc-baseball.png";
 import NpcBadminton from "../styles/Nova88/img/npc-badminton.png";
 import NpcTennis from "../styles/Nova88/img/npc-tennis.png";
-import NpcEsport from "../styles/Nova88/img/npc-esport.png";
+import NpcESport from "../styles/Nova88/img/npc-esport.png";
 
-import IndexBannerLiveCasion from "../styles/Nova88/img/indexBannerLiveCasion.png";
-import IndexBannerCasion from "../styles/Nova88/img/indexBannerCasion.png";
+import IndexBannerLiveCasino from "../styles/Nova88/img/indexBannerLiveCasion.png";
+import IndexBannerCasino from "../styles/Nova88/img/indexBannerCasion.png";
 import IndexBannerKeno from "../styles/Nova88/img/indexBannerKeno.png";
 import IndexCenterBanner from "../styles/Nova88/img/indexCenterBanner.jpg";
 
 const IndexPage = () => {
 	const { t } = useTranslation();
 	return (
-		<Layout>
-			<header>
-				<div className="header">
-					<div className="logo">
-						<img src={Logo} alt="Nova88" />
-					</div>
-					<div className="menu">
-						<a href="">{t("lbl_Sports")}</a>
-						<a href="">{t("lbl_eSports")}</a>
-						<a href="">{t("lbl_NumberGame")}</a>
-						<a href="">{t("lbl_VirtualSport")}</a>
-						<a href="">{t("lbl_Casino")}</a>
-						<a href="">{t("lbl_LiveCasino")}</a>
-						<a href="">{t("lbl_KenoAndLottery")}</a>
-						<a href="">{t("lbl_Fishing")}</a>
-					</div>
-					<div className="function">
-						<div className="country">
-							<button className="flag ch"></button>
-						</div>
-						<a href="" className="join">
-							{t("lbl_JoinNow")}
-						</a>
-						<a href="" className="login">
-							{t("lbl_Login")}
-						</a>
-					</div>
-				</div>
-			</header>
-			<main>
+		<Wrapper>
+			<Layout>
 				<div className="swiper">
 					<img src={IndexBanner} alt="banner" />
 				</div>
@@ -87,7 +60,7 @@ const IndexPage = () => {
 							<span className="icon icon-esport">
 								{t("lbl_eSports")}
 							</span>
-							<img src={NpcEsport} alt="NpcEsport" />
+							<img src={NpcESport} alt="NpcEsport" />
 						</a>
 					</div>
 					<div className="gamelistother">
@@ -98,8 +71,8 @@ const IndexPage = () => {
 								<span>Real Casino Experience</span>
 							</div>
 							<img
-								src={IndexBannerLiveCasion}
-								alt="IndexBannerLiveCasion"
+								src={IndexBannerLiveCasino}
+								alt="IndexBannerLiveCasino"
 							/>
 						</a>
 						<a href="">
@@ -109,8 +82,8 @@ const IndexPage = () => {
 								<span>Multiple Themes For Asian Market</span>
 							</div>
 							<img
-								src={IndexBannerCasion}
-								alt="IndexBannerCasion"
+								src={IndexBannerCasino}
+								alt="IndexBannerCasino"
 							/>
 						</a>
 						<a href="">
@@ -126,13 +99,8 @@ const IndexPage = () => {
 					</div>
 				</section>
 				<img src={IndexCenterBanner} alt="IndexCenterBanner" />
-			</main>
-			<footer>
-				<div className="webmap"></div>
-				<div className="sponsor"></div>
-				<div className="copyright"></div>
-			</footer>
-		</Layout>
+			</Layout>
+		</Wrapper>
 	);
 };
 

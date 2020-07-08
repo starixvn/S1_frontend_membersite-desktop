@@ -46,5 +46,6 @@
   "Currency_51":"VND",
   "lbl_PreferredCurrencyToolTip":"Preferred currency can not be changed after registration.",
   "lbl_Check18TCTooltip":"Please click the above checkbox to confirm the account registration requirements",
-  "msg_ApiServerError":"API Server Error."
+  "msg_ApiServerError":"API Server Error.",
+  "lbl_Guest":"Guest"
 }
