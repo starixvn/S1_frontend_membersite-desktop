@@ -1,6 +1,7 @@
 import i18n from "i18next";
 
 export const langList = ["cs", "en"];
+export const defaultLang = "en";
 
 const setResources = () => {
 	let result = {};
@@ -13,7 +14,7 @@ const setResources = () => {
 };
 
 i18n.init({
-	fallbackLng: "en",
+	fallbackLng: defaultLang,
 	resources: setResources(),
 	ns: ["translations"],
 	defaultNS: "translations",

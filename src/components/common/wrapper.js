@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import * as ct from "../common/context";
 import { GET_LANG_ID } from "../../service/language";
-import { langList } from "../../i18n/config";
+import { langList, defaultLang } from "../../i18n/config";
 import { useTranslation } from "react-i18next";
 import { getUrlParameter, setCookie, deleteCookie } from "../common/common";
 
 export default ({ children }) => {
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
-		langId: GET_LANG_ID(),
 		userName: t("lbl_Guest")
 	});
 
@@ -20,26 +19,26 @@ export default ({ children }) => {
 	});
 
 	useEffect(() => {
-		let getLang = window.location.pathname.split("/")?.[1];
-		if (!getLang && userInfo.langId !== "en") {
-			window.location.href = `/${userInfo.langId}`;
+		let pathLang = window.location.pathname.split("/")?.[1];
+		let currentLang = i18n.language ?? GET_LANG_ID();
+		if (!pathLang && currentLang !== defaultLang) {
+			window.location.href = `/${currentLang}`;
 		}
-	}, [window.location.pathname]);
+	}, [window.location.pathname, i18n.language]);
 
 	useEffect(() => {
 		let getLang = window.location.pathname.split("/")?.[1];
 		if (
 			langList.includes(getLang) &&
-			userInfo.langId !== getLang &&
+			i18n.language !== getLang &&
 			isMountedRef.current
 		) {
-			console.log(userInfo.langId, getLang);
 			setUserInfo(prevState => ({
 				...prevState,
 				langId: getLang
 			}));
 		}
-	}, [userInfo.langId]);
+	}, [i18n.language]);
 
 	useEffect(() => {
 		let AffId = getUrlParameter("AffId");

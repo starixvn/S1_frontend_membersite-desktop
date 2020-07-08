@@ -7,5 +7,17 @@ export default {
 	},
 	join: {
 		root: "join"
+	},
+	sports: {
+		root: "sports"
+	},
+	casino: {
+		root: "casino"
+	},
+	liveCasino: {
+		root: "liveCasino"
+	},
+	deposit: {
+		root: "deposit"
 	}
 };
