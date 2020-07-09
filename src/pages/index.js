@@ -2,19 +2,19 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Wrapper from "../components/common/wrapper";
 import Layout from "../components/common/layout";
-import NpcSoccer from "../styles/Nova88/img/npc-soccer.png";
+import NpcSoccer from "../styles/img/npc-soccer.png";
 
-import IndexBanner from "../styles/Nova88/img/indexBanner.jpg";
-import NpcBasketball from "../styles/Nova88/img/npc-basketball.png";
-import NpcBaseball from "../styles/Nova88/img/npc-baseball.png";
-import NpcBadminton from "../styles/Nova88/img/npc-badminton.png";
-import NpcTennis from "../styles/Nova88/img/npc-tennis.png";
-import NpcESport from "../styles/Nova88/img/npc-esport.png";
+import IndexBanner from "../styles/img/indexBanner.jpg";
+import NpcBasketball from "../styles/img/npc-basketball.png";
+import NpcBaseball from "../styles/img/npc-baseball.png";
+import NpcBadminton from "../styles/img/npc-badminton.png";
+import NpcTennis from "../styles/img/npc-tennis.png";
+import NpcESport from "../styles/img/npc-esport.png";
 
-import IndexBannerLiveCasino from "../styles/Nova88/img/indexBannerLiveCasion.png";
-import IndexBannerCasino from "../styles/Nova88/img/indexBannerCasion.png";
-import IndexBannerKeno from "../styles/Nova88/img/indexBannerKeno.png";
-import IndexCenterBanner from "../styles/Nova88/img/indexCenterBanner.jpg";
+import IndexBannerLiveCasino from "../styles/img/indexBannerLiveCasion.png";
+import IndexBannerCasino from "../styles/img/indexBannerCasion.png";
+import IndexBannerKeno from "../styles/img/indexBannerKeno.png";
+import IndexCenterBanner from "../styles/img/indexCenterBanner.jpg";
 
 const IndexPage = () => {
 	const { t } = useTranslation();

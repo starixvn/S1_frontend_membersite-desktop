@@ -12,7 +12,7 @@ module.exports = {
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				name: `images`,
-				path: `${__dirname}/src/styles/Nova88/img`
+				path: `${__dirname}/src/styles/img`
 			}
 		},
 		`gatsby-transformer-sharp`,

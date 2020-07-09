@@ -1,10 +1,24 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { useTranslation } from "react-i18next";
-import loginBanner from "../styles/Nova88/img/loginBanner.jpg";
+import loginBanner from "../styles/img/loginBanner.jpg";
 import Inputbox from "../components/common/inputbox";
 import InputboxPSW from "../components/common/inputbox.password";
 import { LOGIN } from "../service/auth";
 import { userInfoContext } from "../components/common/context";
+import Wrapper from "../components/common/wrapper";
+import Layout from "../components/common/layout";
+
+export default () => {
+	return (
+		<Wrapper>
+			<Layout>
+				<main>
+					<Content />
+				</main>
+			</Layout>
+		</Wrapper>
+	);
+};
 
 const initValue = {
 	username: "",
@@ -16,7 +30,7 @@ const initWarning = {
 	password: false
 };
 
-export default () => {
+const Content = () => {
 	const { t } = useTranslation();
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [userValue, setUserValue] = useState(initValue);

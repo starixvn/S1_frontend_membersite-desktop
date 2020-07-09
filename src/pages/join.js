@@ -16,7 +16,21 @@ import Inputbox from "../components/common/inputbox";
 import InputboxPSW from "../components/common/inputbox.password";
 import Dropdown from "../components/common/dropdown";
 import Checkbox from "../components/common/checkbox";
-import joinBanner from "../styles/Nova88/img/joinBanner.jpg";
+import joinBanner from "../styles/img/joinBanner.jpg";
+import Wrapper from "../components/common/wrapper";
+import Layout from "../components/common/layout";
+
+export default () => {
+	return (
+		<Wrapper>
+			<Layout>
+				<main>
+					<Content />
+				</main>
+			</Layout>
+		</Wrapper>
+	);
+};
 
 const initValue = {
 	username: "",
@@ -43,7 +57,7 @@ const initTip = {
 
 const defaultLangId = GET_LANG_ID();
 
-export default () => {
+const Content = () => {
 	const { t } = useTranslation();
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
 	const [userValue, setUserValue] = useState(initValue);

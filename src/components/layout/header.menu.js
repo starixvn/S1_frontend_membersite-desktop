@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import path from "../../path";
 import { Link } from "@reach/router";
@@ -8,6 +8,7 @@ import {
 	OPEN_IN_BLANK
 } from "../../service/enterPage";
 import productList from "../../datas/productList";
+import { userInfoContext } from "../common/context";
 
 const defMenuLinks = [
 	{
@@ -50,13 +51,14 @@ const getUrl = (preUrl, info) => {
 };
 
 export default () => {
-	const { t, i18n } = useTranslation();
+	const { t } = useTranslation();
+	const { userInfo } = useContext(userInfoContext);
 
 	let rows = defMenuLinks.map(m => {
 		let key = `${m.displayKey}`;
 		if (m.productInfo) {
 			let rule = GET_OPEN_RULE(
-				i18n.language,
+				userInfo.langId,
 				m.productInfo.tpId,
 				m.productInfo.gameId
 			);
@@ -75,13 +77,13 @@ export default () => {
 			) : (
 				<Link
 					key={key}
-					to={getUrl(`${i18n.language}/${m.path}`, m.productInfo)}>
+					to={getUrl(`${userInfo.langId}/${m.path}`, m.productInfo)}>
 					{t(m.displayKey)}
 				</Link>
 			);
 		} else {
 			return (
-				<Link key={key} to={`${i18n.language}/${m.path}`}>
+				<Link key={key} to={`${userInfo.langId}/${m.path}`}>
 					{t(m.displayKey)}
 				</Link>
 			);
