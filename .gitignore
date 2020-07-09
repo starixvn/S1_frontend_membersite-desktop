@@ -269,3 +269,4 @@ MemberSite/MemberSite/Properties/PublishProfiles/FolderProfile.pubxml
 
 build/
 public/
+.vscode/
