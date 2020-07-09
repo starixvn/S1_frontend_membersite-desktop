@@ -4,7 +4,7 @@ import Layout from "../components/common/layout";
 
 export default () => {
 	return (
-		<Wrapper>
+		<Wrapper afterLogin={true}>
 			<Layout>
 				<main>
 					<h2>message</h2>

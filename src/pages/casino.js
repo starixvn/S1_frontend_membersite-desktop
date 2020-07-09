@@ -6,7 +6,9 @@ export default () => {
 	return (
 		<Wrapper>
 			<Layout>
-				<h2>Casino</h2>
+				<main>
+					<h2>Casino</h2>
+				</main>
 			</Layout>
 		</Wrapper>
 	);
