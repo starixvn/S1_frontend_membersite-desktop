@@ -14,7 +14,7 @@ export default () => {
 	});
 	// let arr =
 	return (
-		<Wrapper>
+		<Wrapper afterLogin={true}>
 			<Layout>
 				<main>
 					<div className="functionList">

@@ -20,10 +20,22 @@ export default {
 	deposit: {
 		root: "deposit"
 	},
+	depositHistory: {
+		root: "depositHistory"
+	},
 	message: {
 		root: "message"
 	},
 	announcement: {
 		root: "announcement"
+	},
+	withdrawalHistory: {
+		root: "withdrawalHistory"
+	},
+	transferHistory: {
+		root: "transferHistory"
+	},
+	statement: {
+		root: "statement"
 	}
 };

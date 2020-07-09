@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Redirect } from "@reach/router";
 import * as ct from "../common/context";
 import { GET_LANG_ID } from "../../service/language";
 import { langList, defaultLang } from "../../i18n/config";
 import { useTranslation } from "react-i18next";
 import { getUrlParameter, setCookie, deleteCookie } from "../common/common";
+import { IS_LOGGED_IN } from "../../service/auth";
 
-export default ({ children }) => {
+export default ({ children, afterLogin = false }) => {
 	const { t, i18n } = useTranslation();
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
-		userName: t("lbl_Guest")
+		userName: t("lbl_Guest"),
+		langId: GET_LANG_ID()
 	});
 
 	const isMountedRef = useRef(null);
@@ -19,12 +22,23 @@ export default ({ children }) => {
 	});
 
 	useEffect(() => {
+		IS_LOGGED_IN().then(isLogin => {
+			if (isLogin !== userInfo.isLogin && isMountedRef.current) {
+				setUserInfo(prevState => ({
+					...prevState,
+					isLogin: isLogin
+				}));
+			}
+		});
+	}, [userInfo.isLogin]);
+
+	useEffect(() => {
 		let pathLang = window.location.pathname.split("/")?.[1];
-		let currentLang = i18n.language ?? GET_LANG_ID();
+		let currentLang = i18n.language ?? userInfo.langId;
 		if (!pathLang && currentLang !== defaultLang) {
 			window.location.href = `/${currentLang}`;
 		}
-	}, [window.location.pathname, i18n.language]);
+	}, [window.location.pathname, i18n.language, userInfo.langId]);
 
 	useEffect(() => {
 		let getLang = window.location.pathname.split("/")?.[1];
@@ -60,9 +74,15 @@ export default ({ children }) => {
 		}
 	}, []);
 
-	return (
+	return userInfo.isLogin === null ? (
+		<></>
+	) : (afterLogin === true && userInfo.isLogin) || !afterLogin ? (
 		<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
 			{children}
 		</ct.userInfoContext.Provider>
+	) : window.location.pathname === `/${userInfo.langId}` ? (
+		<></>
+	) : (
+		<Redirect to={`/${userInfo.langId}`} noThrow />
 	);
 };
