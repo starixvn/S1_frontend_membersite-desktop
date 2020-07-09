@@ -1,12 +1,16 @@
+const siteName = "Nova88";
+
 export default process.env.NODE_ENV === "production"
 	? {
+			siteName,
 			apiURL: "",
 			openURL: "",
 			imgUrl: "",
 			t_and_cURL: ""
 	  }
 	: {
-			appURL: "http://localhost:3000",
+			siteName,
+			appURL: "http://localhost:8000",
 			// apiURL: "http://localhost:60930",
 			// imgUrl: "http://localhost:60930",
 			// t_and_cURL: "http://localhost:60930",
