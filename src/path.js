@@ -19,5 +19,11 @@ export default {
 	},
 	deposit: {
 		root: "deposit"
+	},
+	message: {
+		root: "message"
+	},
+	announcement: {
+		root: "announcement"
 	}
 };
