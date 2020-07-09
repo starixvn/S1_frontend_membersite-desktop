@@ -1,10 +1,10 @@
 html.dark header {
   background: #191919;
-  border-bottom: 1px solid #f77a00;
+  border-bottom: 1px solid #f77900;
 }
 
 html.dark header button:nth-child(2) {
-  background: #f77a00;
+  background: #f77900;
 }
 
 html.dark header .subMenu {
@@ -34,7 +34,7 @@ html.dark main .thBar {
 }
 
 html.dark main .thBar a {
-  color: #f77a00;
+  color: #f77900;
   border-right: 1px solid #212121;
 }
 
@@ -65,7 +65,7 @@ html.dark footer a .circleAnimation {
 }
 
 html.dark footer a.open {
-  border-bottom: 2px solid #f77a00;
+  border-bottom: 2px solid #f77900;
 }
 
 html.dark footer a.open .circleAnimation {

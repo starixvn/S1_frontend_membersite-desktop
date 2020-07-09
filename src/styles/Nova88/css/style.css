@@ -44,6 +44,7 @@ button {
   border: none;
   padding: 0;
   outline: none;
+  cursor: pointer;
 }
 
 pre {
@@ -60,12 +61,29 @@ img {
   width: 100%;
 }
 
+.transition, .tip, .dropdown > .dropdown-container {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.transition-open, .tip.active, .dropdown > .dropdown-container.active {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
 body, html {
   width: 100%;
-  background: #000;
+  background: #121212;
   font-size: 16px;
-  font-family: 'Microsoft YaHei',sans-serif;
+  font-family: "Microsoft YaHei", sans-serif;
   color: #fff;
+  height: 100%;
 }
 
 header {
@@ -115,8 +133,8 @@ header .header > div.menu a {
 }
 
 header .header > div.menu a:hover {
-  color: #f77a00;
-  border-color: #f77a00;
+  color: #f77900;
+  border-color: #f77900;
   cursor: pointer;
 }
 
@@ -146,7 +164,7 @@ header .header > div.function div, header .header > div.function a {
 }
 
 header .header > div.function div:hover, header .header > div.function a:hover {
-  color: #f77a00;
+  color: #f77900;
   cursor: pointer;
 }
 
@@ -215,7 +233,7 @@ main .gamelistsport a {
 main .gamelistsport a:before {
   content: "";
   position: absolute;
-  border: 10px solid #f77a00;
+  border: 10px solid #f77900;
   width: 65%;
   height: 60%;
 }
@@ -305,7 +323,7 @@ main .gamelistother a:nth-child(2) {
 }
 
 main .gamelistother a:hover {
-  background: #1249A5;
+  background: #134DAE;
 }
 
 main .gamelistother a:hover > img {
@@ -320,5 +338,299 @@ footer {
   height: 300px;
   background: #040E1E;
   float: left;
+}
+
+.joinlogin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 750px;
+  margin: auto;
+  padding: 0;
+  height: 100%;
+}
+
+.joinlogin .joinloginModule {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.joinlogin .joinloginModule img {
+  width: 400px;
+  height: 380px;
+}
+
+.joinlogin .joinloginModule .joinloginFunction {
+  margin-left: 40px;
+}
+
+.joinlogin .joinloginModule .joinloginFunction a {
+  text-decoration: underline;
+  font-size: 12px;
+  text-align: right;
+}
+
+.joinlogin .joinloginModule .joinloginFunction .loginSwitch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.joinlogin .joinloginModule .joinloginFunction .loginSwitch span {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.joinlogin .joinloginModule .joinloginFunction .loginSwitch .switch {
+  background: #666;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin: 0 10px;
+  border-radius: 10px;
+  height: 10px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.joinlogin .joinloginModule .joinloginFunction .loginSwitch .switch.active {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.joinlogin .joinloginModule .joinloginFunction .loginSwitch .switch .switchBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  position: absolute;
+  background: #134DAE;
+  border: 1px solid #f77900;
+}
+
+.joinlogin .joinloginModule .joinloginFunction .noAccount {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.txt-orange {
+  color: #f77900;
+}
+
+.inputModule {
+  margin-top: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.inputModule .inputBox {
+  border: 1px solid #f77900;
+  border-radius: 20px;
+  position: relative;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 8px 10px;
+}
+
+.inputModule .inputBox input {
+  background: transparent;
+  border: 0;
+  width: calc(100% - 60px);
+  padding-left: 5px;
+  margin-left: 10px;
+  border-left: 2px solid #666;
+  color: #fff;
+  outline: none;
+}
+
+.inputModule .inputBox .iconModule {
+  position: absolute;
+  right: 10px;
+}
+
+.inputModule .inputBox .iconModule .icon:before {
+  color: #fff;
+}
+
+.inputModule .inputBox .icon:before {
+  color: #f77900;
+}
+
+.btnGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 30px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.btnGroup button {
+  padding: 0 10px;
+  border-radius: 40px;
+  line-height: 40px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 140px;
+          flex: 0 0 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  letter-spacing: 1px;
+}
+
+.btnGroup button.orange {
+  background: #f77900;
+  color: #fff;
+}
+
+.btnGroup button.orange:hover {
+  background: #f73201;
+}
+
+.btnGroup button.gray {
+  background: #b2b2b2;
+  color: #000;
+}
+
+.btnGroup button.gray:hover {
+  background: #666;
+  color: #fff;
+}
+
+.tip {
+  font-size: 12px;
+  padding: 0 10px;
+}
+
+.dropdown {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.dropdown > .dropdown-container {
+  margin-left: 26px;
+  color: #666;
+}
+
+.dropdown > .dropdown-container .dropdown-item {
+  font-size: 13px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.dropdown > .btn {
+  color: #f77900;
+  margin-left: 10px;
+  width: calc(100% - 26px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+.dropdown > .btn:after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #f77900 transparent transparent transparent;
+  position: absolute;
+  right: 15px;
+}
+
+.Terms {
+  font-size: 12px;
+  line-height: 25px;
+}
+
+.Terms .agree {
+  position: relative;
+  padding-left: 20px;
+}
+
+.Terms a {
+  color: #f77900;
+  font-size: 12px;
+}
+
+.Terms input[type="checkbox"] {
+  display: none;
+}
+
+.Terms input[type="checkbox"] + label {
+  border: 1px solid #f77900;
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 0;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+.Terms input[type="checkbox"] + label > div {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  margin: auto;
+  border-radius: 100%;
+}
+
+.Terms input[type="checkbox"]:checked + label > div {
+  background: #f77900;
 }
 /*# sourceMappingURL=style.css.map */
