@@ -178,7 +178,7 @@ const Content = () => {
 					</div>
 					<div className="btnGroup">
 						<button className="gray">{t("lbl_Cancel")}</button>
-						<button className="orange" onClick={handleLogin}>
+						<button className="orange" type="submit">
 							{t("lbl_Login")}
 						</button>
 					</div>
