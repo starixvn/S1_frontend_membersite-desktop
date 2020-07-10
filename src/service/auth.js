@@ -4,15 +4,18 @@ import { api_site_CheckSignIn } from "../service/api/site";
 
 const isBrowser = typeof window !== `undefined`;
 
-export const LOGIN = async ({ userName, password }, CallbackLogin) => {
+export const LOGIN = async ({ userName, password }) => {
 	if (!isBrowser) return false;
 
-	await api_account_UserLogin({
+	const result = await api_account_UserLogin({
 		UserName: userName,
 		Userpwd: password,
 		isPersistent: true
 	}).then(
 		res => {
+			let errMsg = res.data.message;
+			let isLogin = false;
+			let userData = {};
 			if (res.data.errorCode === 0) {
 				let userlangId = res.data.message.replace("/", "");
 
@@ -30,17 +33,30 @@ export const LOGIN = async ({ userName, password }, CallbackLogin) => {
 							...data
 						};
 					}
-					CallbackLogin(res.data.errorCode, "", true, _loginUser);
+					errMsg = "";
+					isLogin = true;
+					userData = _loginUser;
 				});
-			} else {
-				CallbackLogin(res.data.errorCode, res.data.message, false, {});
 			}
+
+			return {
+				errorCode: res.data.errorCode,
+				message: errMsg,
+				isLogin: isLogin,
+				userData: userData
+			};
 		},
 		err => {
-			CallbackLogin(999, "", false, {});
+			return {
+				errorCode: 999,
+				message: "",
+				isLogin: false,
+				userData: {}
+			};
 		}
 	);
-	return false;
+
+	return result;
 };
 
 export const IS_LOGGED_IN = async () => {

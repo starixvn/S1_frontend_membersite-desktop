@@ -15,6 +15,8 @@ export default ({ children, afterLogin = false }) => {
 		langId: GET_LANG_ID()
 	});
 
+	const [redirectPath, setRedirectPath] = useState(null);
+
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -36,7 +38,7 @@ export default ({ children, afterLogin = false }) => {
 		let pathLang = window.location.pathname.split("/")?.[1];
 		let currentLang = i18n.language ?? userInfo.langId;
 		if (!pathLang && currentLang !== defaultLang) {
-			window.location.href = `/${currentLang}`;
+			setRedirectPath(`/${currentLang}`);
 		}
 	}, [window.location.pathname, i18n.language, userInfo.langId]);
 
@@ -74,15 +76,20 @@ export default ({ children, afterLogin = false }) => {
 		}
 	}, []);
 
-	return userInfo.isLogin === null ? (
-		<></>
-	) : (afterLogin === true && userInfo.isLogin) || !afterLogin ? (
-		<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
-			{children}
-		</ct.userInfoContext.Provider>
-	) : window.location.pathname === `/${userInfo.langId}` ? (
-		<></>
-	) : (
-		<Redirect to={`/${userInfo.langId}`} noThrow />
-	);
+	if (redirectPath === null) {
+		if (
+			userInfo.isLogin === null ||
+			window.location.pathname.split("/")[1] !== userInfo.langId
+		) {
+			return <></>;
+		} else if ((afterLogin === true && userInfo.isLogin) || !afterLogin) {
+			return (
+				<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
+					{children}
+				</ct.userInfoContext.Provider>
+			);
+		}
+	} else {
+		return <Redirect to={`/${userInfo.langId}`} noThrow />;
+	}
 };

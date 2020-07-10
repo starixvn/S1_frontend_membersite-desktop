@@ -76,49 +76,45 @@ const Content = () => {
 		}
 	};
 
-	const handleLogin = () => {
+	const handleLogin = async e => {
+		e.preventDefault();
 		let checked = userValue.username && userValue.password;
 		if (checked) {
-			const CallBackLogin = (errorCode, message, isLogin, userData) => {
-				if (errorCode === 0) {
+			await LOGIN({
+				userName: userValue.username,
+				password: userValue.password
+			}).then(res => {
+				if (res.errorCode === 0) {
 					if (isMountedRef.current) {
 						setUserInfo(() => ({
-							...userData,
-							isLogin: isLogin
+							...res.userData,
+							isLogin: res.isLogin
 						}));
 					}
 				} else if (
-					errorCode === 1101 ||
-					errorCode === 1102 ||
-					errorCode === 9000
+					res.errorCode === 1101 ||
+					res.errorCode === 1102 ||
+					res.errorCode === 9000
 				) {
 					if (isMountedRef.current) {
 						setTip(prev => {
-							return { ...prev, username: message };
+							return { ...prev, username: res.message };
 						});
 						setWarning(prev => {
 							return { ...prev, username: true };
 						});
 					}
-				} else if (errorCode === 1001) {
+				} else if (res.errorCode === 1001) {
 					if (isMountedRef.current) {
 						setTip(prev => {
-							return { ...prev, password: message };
+							return { ...prev, password: res.message };
 						});
 						setWarning(prev => {
 							return { ...prev, password: true };
 						});
 					}
 				}
-			};
-
-			LOGIN(
-				{
-					userName: userValue.username,
-					password: userValue.password
-				},
-				CallBackLogin
-			);
+			});
 		} else {
 			const m1 = userValue.username === "" ? "msg_UsernameReq" : "";
 			const m2 = userValue.password === "" ? "msg_PasswordReq" : "";
