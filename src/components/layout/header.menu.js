@@ -28,7 +28,13 @@ const defMenuLinks = [
 	},
 	{
 		path: path.casino.root,
-		displayKey: "lbl_Casino"
+		displayKey: "lbl_Casino",
+		subMenu: [
+			{
+				icon: "icon icon-GPI",
+				displayText: "GPI"
+			}
+		]
 	},
 	{
 		path: path.liveCasino.root,

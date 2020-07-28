@@ -14,14 +14,14 @@ export default () => {
 	return (
 		<header>
 			<div className="header">
-				<Link className="logo" to={`/${userInfo.langId}`}>
-					<img src={Logo} alt={config.siteName} />
-				</Link>
+				<div className="logo">
+					<Link className="logo" to={`/${userInfo.langId}`}>
+						<img src={Logo} alt={config.siteName} />
+					</Link>
+				</div>
 				<Menu />
 				<div className="function">
-					<div className="country">
-						<button className="flag ch"></button>
-					</div>
+					<LanguageDropDown />
 					<Link
 						to={`${userInfo.langId}/${path.join.root}`}
 						className="join">
@@ -35,5 +35,19 @@ export default () => {
 				</div>
 			</div>
 		</header>
+	);
+};
+
+const LanguageDropDown = () => {
+	return (
+		<div className="country">
+			<button className="flag ch"></button>
+			<div className="countryList">
+				<button className="flag cs"></button>
+				<button className="flag en"></button>
+				<button className="flag th"></button>
+				<button className="flag id"></button>
+			</div>
+		</div>
 	);
 };
