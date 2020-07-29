@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Redirect } from "@reach/router";
 import * as ct from "../common/context";
 import { GET_LANG_ID } from "../../service/language";
-import { langList, defaultLang } from "../../i18n/config";
+import { defaultLang } from "../../i18n/config";
 import { useTranslation } from "react-i18next";
 import { getUrlParameter, setCookie, deleteCookie } from "../common/common";
 import { IS_LOGGED_IN } from "../../service/auth";
@@ -48,7 +48,7 @@ export default ({ children, afterLogin = false }) => {
 				}));
 			}
 		});
-	}, [userInfo.isLogin]);
+	}, [userInfo.isLogin, setUserInfo, setRedirectPath]);
 
 	useEffect(() => {
 		if (userInfo.isLogin) {
@@ -92,7 +92,7 @@ export default ({ children, afterLogin = false }) => {
 			}
 			setMsgCount(0);
 		}
-	}, [userInfo]);
+	}, [userInfo.isLogin, userInfo.regTime]);
 
 	useEffect(() => {
 		if (userInfo.isLogin !== null) {
