@@ -2668,4 +2668,8 @@ input[type="file"] {
   -webkit-transition: 0.7s !important;
   transition: 0.7s !important;
 }
+
+.swiper-container {
+  position: relative !important;
+}
 /*# sourceMappingURL=style.css.map */

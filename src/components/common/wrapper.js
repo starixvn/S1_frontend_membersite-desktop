@@ -20,7 +20,7 @@ export default ({ children, afterLogin = false }) => {
 	const [msgCount, setMsgCount] = useState(0);
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
-		userName: t("lbl_Guest"),
+		userName: null,
 		langId: GET_LANG_ID()
 	});
 
@@ -84,37 +84,34 @@ export default ({ children, afterLogin = false }) => {
 				});
 			}
 		} else if (isMountedRef.current) {
+			if (userInfo.isLogin === false) {
+				setUserInfo(prevState => ({
+					...prevState,
+					userName: t("lbl_Guest")
+				}));
+			}
 			setMsgCount(0);
 		}
 	}, [userInfo]);
 
 	useEffect(() => {
-		if (typeof window !== `undefined`) {
-			let pathLang = window.location.pathname.split("/")?.[1];
-			let currentLang = i18n.language ?? userInfo.langId;
-			if (!pathLang && currentLang !== defaultLang) {
-				setRedirectPath(`/${currentLang}`);
-			} else {
-				setCorrectPath(true);
+		if (userInfo.isLogin !== null) {
+			if (typeof window !== `undefined`) {
+				let pathLang = window.location.pathname.split("/")?.[1];
+				let currentLang = userInfo.langId;
+				if (!pathLang && currentLang !== defaultLang) {
+					setRedirectPath(`/${currentLang}`);
+				} else if (pathLang !== "" && pathLang !== userInfo.langId) {
+					setUserInfo(prevState => ({
+						...prevState,
+						langId: pathLang
+					}));
+				} else {
+					setCorrectPath(true);
+				}
 			}
 		}
-	}, [currentPath, i18n.language, userInfo.langId]);
-
-	useEffect(() => {
-		if (typeof window !== `undefined`) {
-			let getLang = window.location.pathname.split("/")?.[1];
-			if (
-				langList.includes(getLang) &&
-				i18n.language !== getLang &&
-				isMountedRef.current
-			) {
-				setUserInfo(prevState => ({
-					...prevState,
-					langId: getLang
-				}));
-			}
-		}
-	}, [i18n.language]);
+	}, [currentPath, i18n.language, userInfo.langId, userInfo.isLogin]);
 
 	useEffect(() => {
 		let AffId = getUrlParameter("AffId");

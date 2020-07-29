@@ -47,5 +47,13 @@
   "lbl_PreferredCurrencyToolTip":"一旦完成註冊，即無法修改选定幣別。",
   "lbl_Check18TCTooltip":"请点选上方格子以确认符合账号注册条件",
   "msg_ApiServerError":"API 数据库错误",
-  "lbl_Guest":"访客"
+  "lbl_Guest":"访客",
+  "lbl_Cashier":"收银",
+  "lbl_Deposit":"存款",
+  "lbl_TransferFunds":"资金转移",
+  "lbl_Withdrawal":"提现",
+  "lbl_Profile":"个人资料",
+  "lbl_BankInfo":"银行资讯",
+  "lbl_ChangePassword":"更改密码",
+  "lbl_Logout":"登出"
 }

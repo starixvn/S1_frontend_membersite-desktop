@@ -47,5 +47,13 @@
   "lbl_PreferredCurrencyToolTip":"Preferred currency can not be changed after registration.",
   "lbl_Check18TCTooltip":"Please click the above checkbox to confirm the account registration requirements",
   "msg_ApiServerError":"API Server Error.",
-  "lbl_Guest":"Guest"
+  "lbl_Guest":"Guest",
+  "lbl_Cashier":"Cashier",
+  "lbl_Deposit":"Deposit",
+  "lbl_TransferFunds":"Transfer Funds",
+  "lbl_Withdrawal":"Withdrawal",
+  "lbl_Profile":"Profile",
+  "lbl_BankInfo":"Bank Info",
+  "lbl_ChangePassword":"Change Password",
+  "lbl_Logout":"Logout"
 }
