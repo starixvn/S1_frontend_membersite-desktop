@@ -92,7 +92,13 @@
   "lbl_BeforeAmount":"前期余额",
   "lbl_AfterAmount":"后期余额",
   "lbl_RefTransId":"注单编号",
-  "lbl_ChangeAmount":"余额转换"
-
-  
+  "lbl_ChangeAmount":"余额转换",
+  "lbl_Cashier":"收银",
+  "lbl_Deposit":"存款",
+  "lbl_TransferFunds":"资金转移",
+  "lbl_Withdrawal":"提现",
+  "lbl_Profile":"个人资料",
+  "lbl_BankInfo":"银行资讯",
+  "lbl_ChangePassword":"更改密码",
+  "lbl_Logout":"登出"
 }

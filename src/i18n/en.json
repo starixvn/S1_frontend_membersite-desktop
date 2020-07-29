@@ -92,6 +92,13 @@
   "lbl_BeforeAmount":"Before Amount",
   "lbl_AfterAmount":"After Amount",
   "lbl_RefTransId":"Ref TransId",
-  "lbl_ChangeAmount":"Change Amount"
-  
+  "lbl_ChangeAmount":"Change Amount", 
+  "lbl_Cashier":"Cashier",
+  "lbl_Deposit":"Deposit",
+  "lbl_TransferFunds":"Transfer Funds",
+  "lbl_Withdrawal":"Withdrawal",
+  "lbl_Profile":"Profile",
+  "lbl_BankInfo":"Bank Info",
+  "lbl_ChangePassword":"Change Password",
+  "lbl_Logout":"Logout"
 }

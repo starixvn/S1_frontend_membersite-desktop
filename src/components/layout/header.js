@@ -3,9 +3,9 @@ import { Link } from "@reach/router";
 import { userInfoContext } from "../common/context";
 import { useTranslation } from "react-i18next";
 import Logo from "../../styles/img/logo.svg";
-import path from "../../path";
 import Menu from "./header.menu";
 import config from "../../config";
+import Functions from "./header.functions";
 
 export default () => {
 	const { t } = useTranslation();
@@ -22,16 +22,7 @@ export default () => {
 				<Menu />
 				<div className="function">
 					<LanguageDropDown />
-					<Link
-						to={`${userInfo.langId}/${path.join.root}`}
-						className="join">
-						{t("lbl_JoinNow")}
-					</Link>
-					<Link
-						to={`${userInfo.langId}/${path.login.root}`}
-						className="login">
-						{t("lbl_Login")}
-					</Link>
+					<Functions />
 				</div>
 			</div>
 		</header>

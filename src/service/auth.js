@@ -1,4 +1,7 @@
-import { api_account_UserLogin } from "../service/api/account";
+import {
+	api_account_UserLogin,
+	api_account_UserLogout
+} from "../service/api/account";
 import { api_accountStrict_GetCustProfile } from "../service/api/accountStrict";
 import { api_site_CheckSignIn } from "../service/api/site";
 
@@ -61,4 +64,20 @@ export const LOGIN = async ({ userName, password }) => {
 
 export const IS_LOGGED_IN = async () => {
 	return await api_site_CheckSignIn().then(res => res.data.errorCode === 0);
+};
+
+export const LOGOUT = callback => {
+	if (!isBrowser) return;
+	api_account_UserLogout().then(
+		res => {
+			if (res.data.errorCode === 0) {
+				callback();
+			}
+		},
+		err => {
+			if (err.response.status === 401) {
+				callback();
+			}
+		}
+	);
 };

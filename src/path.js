@@ -29,13 +29,28 @@ export default {
 	announcement: {
 		root: "announcement"
 	},
+	withdrawal: {
+		root: "withdrawal"
+	},
 	withdrawalHistory: {
 		root: "withdrawalHistory"
+	},
+	transferFunds: {
+		root: "transferFunds"
 	},
 	transferHistory: {
 		root: "transferHistory"
 	},
 	statement: {
 		root: "statement"
+	},
+	profile: {
+		root: "profile"
+	},
+	bankInfo: {
+		root: "bankInfo"
+	},
+	changePassword: {
+		root: "changePassword"
 	}
 };
