@@ -24,6 +24,10 @@ export default ({ children, afterLogin = false }) => {
 		langId: GET_LANG_ID()
 	});
 
+	const [currentPath] = useState(
+		typeof window !== `undefined` ? window.location.pathname : null
+	);
+	const [correctPath, setCorrectPath] = useState(false);
 	const [redirectPath, setRedirectPath] = useState(null);
 
 	const isMountedRef = useRef(null);
@@ -85,24 +89,30 @@ export default ({ children, afterLogin = false }) => {
 	}, [userInfo]);
 
 	useEffect(() => {
-		let pathLang = window.location.pathname.split("/")?.[1];
-		let currentLang = i18n.language ?? userInfo.langId;
-		if (!pathLang && currentLang !== defaultLang) {
-			setRedirectPath(`/${currentLang}`);
+		if (typeof window !== `undefined`) {
+			let pathLang = window.location.pathname.split("/")?.[1];
+			let currentLang = i18n.language ?? userInfo.langId;
+			if (!pathLang && currentLang !== defaultLang) {
+				setRedirectPath(`/${currentLang}`);
+			} else {
+				setCorrectPath(true);
+			}
 		}
-	}, [window.location.pathname, i18n.language, userInfo.langId]);
+	}, [currentPath, i18n.language, userInfo.langId]);
 
 	useEffect(() => {
-		let getLang = window.location.pathname.split("/")?.[1];
-		if (
-			langList.includes(getLang) &&
-			i18n.language !== getLang &&
-			isMountedRef.current
-		) {
-			setUserInfo(prevState => ({
-				...prevState,
-				langId: getLang
-			}));
+		if (typeof window !== `undefined`) {
+			let getLang = window.location.pathname.split("/")?.[1];
+			if (
+				langList.includes(getLang) &&
+				i18n.language !== getLang &&
+				isMountedRef.current
+			) {
+				setUserInfo(prevState => ({
+					...prevState,
+					langId: getLang
+				}));
+			}
 		}
 	}, [i18n.language]);
 
@@ -127,7 +137,10 @@ export default ({ children, afterLogin = false }) => {
 	}, []);
 
 	if (redirectPath === null) {
-		if ((afterLogin === true && userInfo.isLogin) || !afterLogin) {
+		if (
+			correctPath &&
+			((afterLogin === true && userInfo.isLogin) || !afterLogin)
+		) {
 			return (
 				<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
 					<ct.walletInfoContext.Provider

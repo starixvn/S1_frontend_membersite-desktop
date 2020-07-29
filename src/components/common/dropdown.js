@@ -3,7 +3,9 @@ import React, { Component, createRef } from "react";
 export class Dropdown extends Component {
 	constructor(props) {
 		super(props);
-		document.addEventListener("mousedown", this.handleClickOutside);
+		if (typeof document !== `undefined`) {
+			document.addEventListener("mousedown", this.handleClickOutside);
+		}
 		this.state = { isOpen: false };
 		this.wrapper = createRef(null);
 	}

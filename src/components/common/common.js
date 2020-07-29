@@ -1,10 +1,12 @@
 export const getUrlParameter = name => {
 	name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 	var regex = new RegExp("[\\?&]" + name + "=([^&#]*)", "i");
-	var results = regex.exec(window.location.search);
-	return results === null
-		? ""
-		: decodeURIComponent(results[1].replace(/\+/g, " "));
+	if (typeof window !== `undefined`) {
+		var results = regex.exec(window.location.search);
+		return results === null
+			? ""
+			: decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
 };
 
 export const number_format = (n, IsConvertRequired = false) => {
@@ -62,8 +64,10 @@ export const setCookie = (cookieName, cookieValue, exdays) => {
 	let d = new Date();
 	d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
 	var expires = "expires=" + d.toUTCString();
-	document.cookie =
-		cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+	if (typeof document !== `undefined`) {
+		document.cookie =
+			cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+	}
 };
 
 export const readCookie = cookieName => {
@@ -78,5 +82,8 @@ export const readCookie = cookieName => {
 };
 
 export const deleteCookie = cookieName => {
-	document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+	if (typeof document !== `undefined`) {
+		document.cookie =
+			cookieName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+	}
 };
