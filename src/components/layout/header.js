@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "@reach/router";
 import { userInfoContext } from "../common/context";
-import { useTranslation } from "react-i18next";
 import Logo from "../../styles/img/logo.svg";
 import Menu from "./header.menu";
 import config from "../../config";
 import Functions from "./header.functions";
+import LanguageDropDown from "./header.langDropdown";
 
 export default () => {
-	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
 
 	return (
@@ -26,19 +25,5 @@ export default () => {
 				</div>
 			</div>
 		</header>
-	);
-};
-
-const LanguageDropDown = () => {
-	return (
-		<div className="country">
-			<button className="flag ch"></button>
-			<div className="countryList">
-				<button className="flag cs"></button>
-				<button className="flag en"></button>
-				<button className="flag th"></button>
-				<button className="flag id"></button>
-			</div>
-		</div>
 	);
 };

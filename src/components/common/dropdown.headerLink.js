@@ -32,30 +32,29 @@ export class Dropdown extends Component {
 	};
 
 	render() {
-		let arr = this.props.options.map(item => {
-			let key = `${this.props.mainKey}_${item.displayKey}`;
+		let arr = this.props.options.map((item, idx) => {
+			let key = `${this.props.mainKey}_${idx}`;
 			return item.elemType === defElemType.btn ? (
-				<a key={key} className={item.icon} onClick={item.href}>
-					{this.props.i18n(item.displayKey)}
-				</a>
+				<button
+					key={key}
+					className={item.icon}
+					onClick={item.href.bind(this, item.value)}>
+					{item.displayKey ? this.props.i18n(item.displayKey) : null}
+				</button>
 			) : (
 				<Link key={key} to={`${this.props.langId}/${item.href}`}>
-					{this.props.i18n(item.displayKey)}
+					{item.displayKey ? this.props.i18n(item.displayKey) : null}
 				</Link>
 			);
 		});
 
 		let selected = null;
-		if (this.props.options[this.props.selectedIdx]) {
-			let _s = this.props.options[this.props.selectedIdx];
-
-			if (_s.displayText) {
-				selected = _s.displayText;
-			} else {
-				selected = this.props.i18n(_s.displayKey);
-			}
+		if (this.props.placeholder?.elemType === defElemType.btn) {
+			selected = (
+				<button className={this.props.placeholder.icon}></button>
+			);
 		} else {
-			selected = this.props.placeholder;
+			selected = <button>{this.props.placeholder}</button>;
 		}
 
 		return (
@@ -65,16 +64,12 @@ export class Dropdown extends Component {
 				}`}
 				ref={this.wrapper}
 				onClick={this.clickDropdown}>
-				<button>{selected}</button>
+				{selected}
 				<div className={this.props.subClassName}>{arr}</div>
 			</div>
 		);
 	}
 }
-
-const Item = props => {
-	return;
-};
 
 Dropdown.propTypes = {
 	className: PropTypes.string.isRequired,
@@ -82,7 +77,7 @@ Dropdown.propTypes = {
 	i18n: PropTypes.func.isRequired,
 	options: PropTypes.array.isRequired,
 	mainKey: PropTypes.string.isRequired,
-	placeholder: PropTypes.string
+	placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 export const defElemType = {
