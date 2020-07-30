@@ -102,5 +102,8 @@
   "lbl_ChangePassword":"Change Password",
   "lbl_Logout":"Logout",
   "lbl_SubmitProof":"Submit Bank Slip",
-  "lbl_Action":"Action"
+  "lbl_Action":"Action",
+  "lbl_LastTransaction":"Last Transaction",
+  "lbl_LastLogin":"Last Login",
+  "lbl_TpWallet_1":"Sportsbook Wallet"
 }

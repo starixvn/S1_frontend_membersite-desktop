@@ -102,6 +102,8 @@
   "lbl_ChangePassword":"更改密码",
   "lbl_Logout":"登出",
   "lbl_SubmitProof":"提交银行收据",
-  "lbl_Action":"操作"
-
+  "lbl_Action":"操作",
+  "lbl_LastTransaction":"最后交易",
+  "lbl_LastLogin":"最后登入",
+  "lbl_TpWallet_1":"体育钱包"
 }
