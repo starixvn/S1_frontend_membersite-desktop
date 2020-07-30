@@ -100,5 +100,8 @@
   "lbl_Profile":"个人资料",
   "lbl_BankInfo":"银行资讯",
   "lbl_ChangePassword":"更改密码",
-  "lbl_Logout":"登出"
+  "lbl_Logout":"登出",
+  "lbl_SubmitProof":"提交银行收据",
+  "lbl_Action":"操作"
+
 }
