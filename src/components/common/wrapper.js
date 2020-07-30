@@ -9,7 +9,7 @@ import { IS_LOGGED_IN } from "../../service/auth";
 import { api_accountStrict_GetCustProfile } from "../../service/api/accountStrict";
 import {
 	api_account_GetMsgCount,
-	api_account_GetBalnace
+	api_account_GetWalletInfo
 } from "../../service/api/account";
 
 export default ({ children, afterLogin = false }) => {
@@ -74,11 +74,19 @@ export default ({ children, afterLogin = false }) => {
 			});
 
 			if (userInfo.userName) {
-				api_account_GetBalnace().then(res => {
+				api_account_GetWalletInfo().then(res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
+						let tpWallets = res.data.data.tpWallets?.map(t => {
+							return {
+								tpId: t.tpId,
+								balance: t.balance
+							};
+						});
 						setWalletInfo(prevState => ({
 							...prevState,
-							main: res.data.data
+							main: res.data.data.balance,
+							tpWallets: tpWallets,
+							lastTransaction: res.data.data.lastTransaction
 						}));
 					}
 				});

@@ -100,5 +100,8 @@
   "lbl_Profile":"Profile",
   "lbl_BankInfo":"Bank Info",
   "lbl_ChangePassword":"Change Password",
-  "lbl_Logout":"Logout"
+  "lbl_Logout":"Logout",
+  "lbl_LastTransaction":"Last Transaction",
+  "lbl_LastLogin":"Last Login",
+  "lbl_TpWallet_1":"Sportsbook Wallet"
 }
