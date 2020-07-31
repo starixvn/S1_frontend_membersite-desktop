@@ -1,14 +1,19 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import moment from "moment";
 import { useTranslation } from "react-i18next";
-import { userInfoContext } from "../common/context";
+import { userInfoContext, popBoxContext } from "../common/context";
 import { TransactionHistory } from "./deposit.historyResult";
-import { api_payment_GetDepositInfoRecent } from "../../service/api/payment";
-import { number_format, isConvert } from "../common/common";
+import {
+	api_payment_GetDepositInfoRecent,
+	api_payment_SetDepositCancel
+} from "../../service/api/payment";
+import { isConvert, number_format } from "../common/common";
+import { defPopBoxType } from "../common/popBox";
 
-export default props => {
+export default () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [getHistory, setGetHistory] = useState(null);
 	const isMountedRef = useRef(null);
@@ -37,6 +42,78 @@ export default props => {
 		);
 	}, []);
 
+	const ClosePopBox = () => {
+		setPopBox({ isOpen: false });
+	};
+
+	const SubmitProof = (
+		bankInfo,
+		depositRep,
+		amount,
+		transId,
+		picFileName,
+		refId
+	) => {
+		let { currencyId, ...restBankInfo } = bankInfo;
+		let { accountName, accountNo } = depositRep;
+		setPopBox({
+			isOpen: true,
+			popBoxType: defPopBoxType.UploadBankSlip,
+			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
+				"HH:mm"
+			)}`,
+			...restBankInfo,
+			transId: transId,
+			accountNo: accountNo,
+			accountName: accountName,
+			isOpen: true,
+			amount: number_format(amount, _isConvert),
+			picFileName: picFileName,
+			refId: refId
+		});
+	};
+
+	const ClickCancel = transId => {
+		const ClickSubmit = () => {
+			setPopBox({ isOpen: false });
+			api_payment_SetDepositCancel(transId).then(
+				res => {
+					if (isMountedRef.current) {
+						if (res.data.errorCode === 0) {
+							setGetHistory(prevState => {
+								let newD = [...prevState];
+								let idx = newD.findIndex(
+									x => x.transId === transId
+								);
+								newD[idx].status = 5;
+								return newD;
+							});
+						}
+					}
+				},
+				err => {
+					if (isMountedRef.current) {
+					}
+				}
+			);
+		};
+
+		setPopBox({
+			isOpen: true,
+			popBoxType: defPopBoxType.Cancel,
+			btnBar: (
+				<div className="btnGroup">
+					<button className="gray" onClick={ClosePopBox}>
+						{t("lbl_Cancel")}
+					</button>
+					<button className="orange" onClick={ClickSubmit}>
+						{t("lbl_Submit")}
+					</button>
+				</div>
+			)
+		});
+	};
+
 	let arr = getHistory?.map((item, i) => {
 		return (
 			<TransactionHistory
@@ -44,6 +121,16 @@ export default props => {
 				{...item}
 				_isConvert={_isConvert}
 				idx={i + 1}
+				ClickCancel={ClickCancel.bind(this, item.transId)}
+				SubmitProof={SubmitProof.bind(
+					this,
+					item.bankInfo,
+					item.depositRep,
+					item.amount,
+					item.transId,
+					item.picFileName,
+					item.refId
+				)}
 			/>
 		);
 	});

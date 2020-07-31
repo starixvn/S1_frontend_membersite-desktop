@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { popBoxContext } from "../common/context";
 
 export default () => {
+	const { popBox, setPopBox } = useContext(popBoxContext);
+	const ClosePopBox = () => {
+		setPopBox({
+			isOpen: false
+		});
+	};
+
 	return (
-		<div className="upload">
+		<div className="upload active">
 			<span className="title">Upload Bank Slip</span>
 			<div className="txt-lightgray">
 				Please attach your bank slip here.
@@ -34,6 +42,9 @@ export default () => {
 				</div>
 			</div>
 			<div className="btnGroup">
+				<button className="gray" onClick={ClosePopBox}>
+					Cancel
+				</button>
 				<button className="orange">Submit</button>
 			</div>
 		</div>
