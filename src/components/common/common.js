@@ -55,6 +55,9 @@ export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
 				" " +
 				i18n("lbl_NotinLimit");
 		}
+	} else {
+		status = 3;
+		msg = i18n("lbl_NotinLimit");
 	}
 
 	return { status: status, msg: msg };
