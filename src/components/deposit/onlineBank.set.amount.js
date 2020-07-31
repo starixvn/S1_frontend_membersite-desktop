@@ -36,7 +36,10 @@ export default ({ bankInfo, _isConvert, amount, dispatch }) => {
 	};
 
 	const SubmitAmount = () => {
-		dispatch({ type: defActionType.SUBMIT_AMOUNT });
+		let result = VaildAmount(amount);
+		if (result) {
+			dispatch({ type: defActionType.SUBMIT_AMOUNT });
+		}
 	};
 
 	return (
