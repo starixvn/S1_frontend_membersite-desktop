@@ -14,6 +14,11 @@ import {
 
 export default ({ children, afterLogin = false }) => {
 	const { t, i18n } = useTranslation();
+	const [popBox, setPopBox] = useState({
+		isOpen: false,
+		popBoxType: null
+	});
+
 	const [walletInfo, setWalletInfo] = useState({
 		main: null
 	});
@@ -152,7 +157,10 @@ export default ({ children, afterLogin = false }) => {
 						value={{ walletInfo, setWalletInfo }}>
 						<ct.msgCountContext.Provider
 							value={{ msgCount, setMsgCount }}>
-							{children}
+							<ct.popBoxContext.Provider
+								value={{ popBox, setPopBox }}>
+								{children}
+							</ct.popBoxContext.Provider>
 						</ct.msgCountContext.Provider>
 					</ct.walletInfoContext.Provider>
 				</ct.userInfoContext.Provider>

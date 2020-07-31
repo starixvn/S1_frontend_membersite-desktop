@@ -105,5 +105,10 @@
   "lbl_Action":"操作",
   "lbl_LastTransaction":"最后交易",
   "lbl_LastLogin":"最后登入",
-  "lbl_TpWallet_1":"体育钱包"
+  "lbl_TpWallet_1":"体育钱包",
+  "lbl_OnlineBanking":"网络银行",
+  "lbl_CreditTime":"所需时间",
+  "lbl_Instant":"即时",
+  "lbl_AmountTooltip":"金额不得小于0",
+  "lbl_NotinLimit":"不在设定范围"
 }

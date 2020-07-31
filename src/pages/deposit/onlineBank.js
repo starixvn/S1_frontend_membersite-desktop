@@ -3,8 +3,7 @@ import Wrapper from "../../components/common/wrapper";
 import Layout from "../../components/common/layout";
 import LeftMenu from "../../components/common/leftMenu";
 import RecentHistory from "../../components/deposit/deposit.recentHistory";
-import OnlineBankSelBank from "../../components/deposit/deposit.onlineBank.selBank";
-import DepositWrapper from "../../components/deposit/deposit.wrapper";
+import OnlineBankSet from "../../components/deposit/onlineBank.set";
 
 export default () => {
 	return (
@@ -14,9 +13,7 @@ export default () => {
 					<section className="inside">
 						<LeftMenu />
 						<div className="rightModule">
-							<DepositWrapper step={2}>
-								<OnlineBankSelBank />
-							</DepositWrapper>
+							<OnlineBankSet />
 							<RecentHistory />
 						</div>
 					</section>

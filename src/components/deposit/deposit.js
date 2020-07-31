@@ -1,7 +1,7 @@
 import React from "react";
-import LocalBankList from "./deposit.localBank.list";
-import OnlineBankList from "./deposit.onlineBank.list";
-import MobilePayList from "./deposit.mobilePay.list";
+import LocalBankList from "./localBank.list";
+import OnlineBankList from "./onlineBank.list";
+import MobilePayList from "./mobilePay.list";
 
 export default () => {
 	return (

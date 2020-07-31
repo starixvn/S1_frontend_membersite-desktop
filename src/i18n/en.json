@@ -105,5 +105,10 @@
   "lbl_Action":"Action",
   "lbl_LastTransaction":"Last Transaction",
   "lbl_LastLogin":"Last Login",
-  "lbl_TpWallet_1":"Sportsbook Wallet"
+  "lbl_TpWallet_1":"Sportsbook Wallet",
+  "lbl_OnlineBanking":"Online Banking",
+  "lbl_CreditTime":"Credit Time",
+  "lbl_Instant":"Instant",
+  "lbl_AmountTooltip":"Amount can not be less than 0.",
+  "lbl_NotinLimit":"Not in Limit."
 }

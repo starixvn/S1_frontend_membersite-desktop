@@ -43,7 +43,7 @@ export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
 		}
 		if (num_Amount <= 0) {
 			status = 2;
-			msg = i18n.lbl_AmountTooltip;
+			msg = i18n("lbl_AmountTooltip");
 		} else if (
 			minAmount !== 0 &&
 			maxAmount !== 0 &&
@@ -53,7 +53,7 @@ export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
 			msg =
 				number_format(num_Amount, _isConvert) +
 				" " +
-				i18n.lbl_NotinLimit;
+				i18n("lbl_NotinLimit");
 		}
 	}
 

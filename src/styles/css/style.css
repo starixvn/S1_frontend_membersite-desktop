@@ -617,8 +617,18 @@ header .header > div.function .wallet .submenu div.walletBalance {
 }
 
 header .header > div.function .wallet .submenu div.btnGroup {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-top: 20px;
+}
+
+header .header > div.function .wallet .submenu div.btnGroup a {
+  padding: 10px 0;
+  font-size: 13px;
+  padding: 0;
+}
+
+header .header > div.function .wallet .submenu div.btnGroup a:hover {
+  color: #fff;
 }
 
 header .header > div.function .wallet .submenu div.loginLog, header .header > div.function .wallet .submenu div.transactionLog {
@@ -1294,7 +1304,7 @@ input[type="file"] {
   margin: 30px 0;
 }
 
-.btnGroup button {
+.btnGroup button, .btnGroup a {
   max-width: 170px;
   padding: 10px;
   border-radius: 20px;
@@ -1315,40 +1325,40 @@ input[type="file"] {
   font-weight: bold;
 }
 
-.btnGroup button.orange {
+.btnGroup button.orange, .btnGroup a.orange {
   background: #f77900;
   color: #fff;
 }
 
-.btnGroup button.orange:hover {
+.btnGroup button.orange:hover, .btnGroup a.orange:hover {
   background: #f73201;
 }
 
-.btnGroup button.gray {
+.btnGroup button.gray, .btnGroup a.gray {
   background: #b2b2b2;
   color: #000;
 }
 
-.btnGroup button.gray:hover {
+.btnGroup button.gray:hover, .btnGroup a.gray:hover {
   background: #666;
   color: #fff;
 }
 
-.btnGroup button.blue {
+.btnGroup button.blue, .btnGroup a.blue {
   background: #1E85EC;
   color: #fff;
 }
 
-.btnGroup button.blue:hover {
+.btnGroup button.blue:hover, .btnGroup a.blue:hover {
   background: #134DAE;
 }
 
-.btnGroup button.darkGray {
+.btnGroup button.darkGray, .btnGroup a.darkGray {
   background: #666;
   color: #fff;
 }
 
-.btnGroup button.icon:before {
+.btnGroup button.icon:before, .btnGroup a.icon:before {
   font-weight: normal;
 }
 
@@ -2475,6 +2485,12 @@ input[type="file"] {
   display: none;
 }
 
+#popup.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 #popup .pop {
   min-width: 600px;
   background: rgba(0, 0, 0, 0.7);
@@ -2482,10 +2498,25 @@ input[type="file"] {
   border-radius: 15px;
 }
 
-.depositPop {
+#popup .pop > div {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup .pop > div.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.Submit, .Cancel, .uploadSuccess, .updateSuccess, .Success {
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -2497,12 +2528,18 @@ input[type="file"] {
   margin: auto;
 }
 
-.depositPop .icon {
+.Submit.active, .Cancel.active, .uploadSuccess.active, .updateSuccess.active, .Success.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Submit .icon, .Cancel .icon, .uploadSuccess .icon, .updateSuccess .icon, .Success .icon {
   font-size: 36px;
   color: #134DAE;
 }
 
-.depositPop .icon.icon-bell {
+.Submit .icon.icon-bell, .Cancel .icon.icon-bell, .uploadSuccess .icon.icon-bell, .updateSuccess .icon.icon-bell, .Success .icon.icon-bell {
   color: #f77900;
   -webkit-transform-origin: bottom;
           transform-origin: bottom;
@@ -2510,20 +2547,20 @@ input[type="file"] {
           transform: rotate(20deg);
 }
 
-.depositPop .title {
+.Submit .title, .Cancel .title, .uploadSuccess .title, .updateSuccess .title, .Success .title {
   margin: 10px 0 20px;
 }
 
-.depositPop .txt-lightgray {
+.Submit .txt-lightgray, .Cancel .txt-lightgray, .uploadSuccess .txt-lightgray, .updateSuccess .txt-lightgray, .Success .txt-lightgray {
   text-align: center;
 }
 
-.depositPop .popList {
+.Submit .popList, .Cancel .popList, .uploadSuccess .popList, .updateSuccess .popList, .Success .popList {
   width: 100%;
   margin-top: 30px;
 }
 
-.depositPop .popList ul {
+.Submit .popList ul, .Cancel .popList ul, .uploadSuccess .popList ul, .updateSuccess .popList ul, .Success .popList ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2536,13 +2573,13 @@ input[type="file"] {
           justify-content: space-between;
 }
 
-.depositPop .popList ul li {
+.Submit .popList ul li, .Cancel .popList ul li, .uploadSuccess .popList ul li, .updateSuccess .popList ul li, .Success .popList ul li {
   line-height: 30px;
   letter-spacing: 1px;
   font-size: 12px;
 }
 
-.depositPop .popList ul li:first-child {
+.Submit .popList ul li:first-child, .Cancel .popList ul li:first-child, .uploadSuccess .popList ul li:first-child, .updateSuccess .popList ul li:first-child, .Success .popList ul li:first-child {
   color: #1E85EC;
   font-weight: bold;
 }
@@ -2617,12 +2654,18 @@ input[type="file"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
   cursor: pointer;
 }
 
 .upload_img .icon {
   font-size: 48px;
   color: #1E85EC;
+}
+
+.upload_img img {
+  height: 100%;
+  width: auto;
 }
 
 .slipInfo {
