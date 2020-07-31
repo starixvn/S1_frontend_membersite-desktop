@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import { popBoxContext } from "./context";
+import Cancel from "./popBox.cancel";
+import UploadBankSlip from "./popBox.uploadBankSlip";
 
 export const defPopBoxType = {
-	Cancel: "Cancel"
+	Cancel: "Cancel",
+	UploadBankSlip: "UploadBankSlip"
 };
 
 export default () => {
@@ -11,7 +14,12 @@ export default () => {
 	let content = null;
 	switch (popBox.popBoxType) {
 		case defPopBoxType.Cancel:
-			content = <PopBoxCancel btnBar={popBox.btnBar} />;
+			content = <Cancel btnBar={popBox.btnBar} />;
+			break;
+
+		case defPopBoxType.UploadBankSlip:
+			const { isOpen, ...restProps } = popBox;
+			content = <UploadBankSlip {...restProps} />;
 			break;
 
 		default:
@@ -24,20 +32,5 @@ export default () => {
 		</div>
 	) : (
 		<></>
-	);
-};
-
-const PopBoxCancel = ({ btnBar }) => {
-	return (
-		<div className="Cancel active">
-			<div className="icon icon-bell"></div>
-			<div className="title">Oh</div>
-			<div className="txt-lightgray">
-				Are You Sure You Want To Cancel?
-				<br />
-				It Cannot Restore After Cancellation!
-			</div>
-			{btnBar}
-		</div>
 	);
 };
