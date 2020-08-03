@@ -15,33 +15,7 @@ import {
 	api_payment_SetDepositReceipt
 } from "../../service/api/payment";
 
-const fakeData = {
-	createTime: "2020-07-30T08:01:05-04:00",
-	depositType: 3,
-	transId: "DP24921",
-	amount: 1000,
-	status: 1,
-	depositRep: {
-		ver: 1,
-		sysId: 10,
-		accountName: "Charin Boonkiriyaeat",
-		accountNo: "1752547396",
-		currencyId: 4
-	},
-	bankInfo: {
-		sysId: 10,
-		currencyId: 4,
-		bankCode: "SCB",
-		bankName: "Siam Commercial Bank",
-		bankLogo: "SCB.png",
-		bankSite: "https://www.scbeasy.com/v1.4/site/presignon/en/srv/srv.asp"
-	},
-	refId: null,
-	depositTime: "0001-01-01T00:00:00",
-	picFileName: null
-};
-
-export default props => {
+const Content = props => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -51,37 +25,9 @@ export default props => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
-	return <Module data={fakeData} i18n={t} />;
-};
 
-class Module extends Component {
-	state = { processind: false };
-	isMountedRef = false;
-	filebox = React.createRef();
-
-	componentDidMount() {
-		this.isMountedRef = true;
-	}
-	componentWillUnmount() {
-		this.isMountedRef = false;
-	}
-
-	onUploadFile = () => {
-		let files = this.filebox.current.files;
-		if (files.length > 0) {
-			let formData = new FormData();
-			formData.append("TransId", this.props.data.transId);
-			formData.append("Receipt", files[0]);
-			api_payment_UploadReceipt(formData).then(res => {
-				if (this.isMountedRef) {
-					console.log(res);
-				}
-			});
-		}
-	};
-
-	render() {
-		return (
+	return (
+		<>
 			<section className="inside">
 				<div id="leftMenu"></div>
 				<div className="rightModule">
@@ -101,76 +47,26 @@ class Module extends Component {
 										{moment().format("Z")})
 									</li>
 									<li>
-										{moment(
-											this.props.data.createTime
-										).format("YYYY/MM/DD HH:mm:ss A")}
+										{moment(this.props.depositTime).format(
+											"YYYY/MM/DD HH:mm:ss A"
+										)}
 									</li>
 									<li>ID</li>
-									<li>{this.props.data.transId}</li>
+									<li>{this.props.transId}</li>
 									<li>{this.props.i18n("lbl_RealName")}</li>
-									<li>
-										{this.props.data.depositRep.accountName}
-									</li>
+									<li>{this.props.accountName}</li>
 									<li>{this.props.i18n("lbl_BankName")}</li>
-									<li>{this.props.data.bankInfo.bankName}</li>
+									<li>{this.props.bankName}</li>
 									<li>
 										{this.props.i18n("lbl_DepositAmount")}
 									</li>
-									<li>{this.props.data.amount}</li>
+									<li>{this.props.amount}</li>
 								</ul>
 							</div>
-						</div>
-						<div className="subModuleList">
-							<div className="subModule">
-								<div className="subModuleBody column align-items-center">
-									<span className="title">
-										{this.props.i18n("lbl_SubmitProof")}
-									</span>
-									<div className="txt-lightgray">
-										{this.props.i18n("lbl_AttachFile")}
-									</div>
-									<label className="upload_img">
-										<input
-											type="file"
-											accept="image/*"
-											ref={this.filebox}
-											onChange={this.onUploadFile}
-										/>
-										<i className="icon icon-plus"></i>
-									</label>
-									<div className="directions">
-										<ul>
-											<li>Maximum file siz 4 MB each</li>
-											<li>Maximum number of file:1</li>
-											<li>
-												Accepted file types: JPG, JPGE,
-												PNG, GIF
-											</li>
-										</ul>
-									</div>
-									<div className="inputBox-white">
-										<i className="txt-blue">
-											{this.props.i18n("lbl_DepositTime")}
-										</i>
-										<input placeholder="YY/MM/DD (+08:00)" />
-										<div className="iconModule">
-											<i className="icon icon-calendar"></i>
-											<i className="icon icon-information-solid"></i>
-										</div>
-									</div>
-									<div className="inputBox-white">
-										<i className="txt-blue">
-											{this.props.i18n("lbl_Refno")}
-										</i>
-										<input />
-										<div className="iconModule">
-											<i className="icon icon-information-solid"></i>
-										</div>
-									</div>
-									<div className="btnGroup">
-										<button className="orange">
-											{this.props.i18n("lbl_Submit")}
-										</button>
+							<div className="subModuleList">
+								<div className="subModule">
+									<div className="subModuleBody column align-items-center">
+										<Module i18n={t} />
 									</div>
 								</div>
 							</div>
@@ -178,6 +74,203 @@ class Module extends Component {
 					</div>
 				</div>
 			</section>
+		</>
+	);
+};
+
+export class Module extends Component {
+	state = {
+		processing: false,
+		depositTime: this.props.depositTime ? this.props.depositTime : null,
+		refId: this.props.refId ? this.props.refId : null,
+		picFileName: this.props.picFileName ? this.props.picFileName : null,
+		fileImg: null
+	};
+	isMountedRef = false;
+	filebox = React.createRef();
+
+	componentDidMount() {
+		this.isMountedRef = true;
+	}
+
+	componentWillUnmount() {
+		this.isMountedRef = false;
+	}
+
+	onUploadFile = (action, e) => {
+		e.preventDefault();
+		let files =
+			action === "onDrop"
+				? e.dataTransfer.files
+				: this.filebox.current.files;
+
+		this.setState({ picFileName: files[0].name });
+
+		let reader = new FileReader();
+		reader.readAsDataURL(files[0]);
+		reader.onload = () => {
+			this.setState({ fileImg: reader.result });
+		};
+
+		if (files.length > 0) {
+			let formData = new FormData();
+			formData.append("TransId", this.props.transId);
+			formData.append("Receipt", files[0]);
+			api_payment_UploadReceipt(formData).then(
+				res => {
+					if (this.isMountedRef) {
+						if (res.data.errorCode === 0) {
+							alert(this.props.i18n("lbl_UploadSuccess"));
+							this.props.refreshDatas();
+						} else {
+							alert(res.data.message);
+						}
+					}
+				},
+				err => {
+					if (this.isMountedRef) {
+						alert(this.props.i18n("msg_ApiServerError"));
+					}
+				}
+			);
+		}
+	};
+
+	dragOver = e => {
+		e.preventDefault();
+	};
+
+	editField = (col, e) => {
+		let value = e.target.value;
+
+		col === "refId"
+			? this.setState({ refId: value })
+			: this.setState({ depositTime: value });
+	};
+
+	clickSubmit = e => {
+		e.preventDefault();
+		if (!this.state.processing) {
+			this.setState({ processing: true });
+			let bankSlip = this.props.bankSlip;
+
+			console.log("???");
+
+			if (this.state.refId !== "") {
+				api_payment_SetDepositReceipt(
+					this.props.transId,
+					moment(this.state.depositTime).unix(),
+					this.state.refId
+				).then(
+					res => {
+						if (this.isMountedRef) {
+							if (res.data.errorCode === 0) {
+								alert(this.props.i18n("lbl_UpdateSuccess"));
+							} else {
+								alert(res.data.message);
+							}
+							this.props.refreshDatas();
+							this.setState({ processing: false });
+							if (this.props.ClosePopBox) {
+								this.props.ClosePopBox();
+							}
+						}
+					},
+					err => {
+						if (this.isMountedRef) {
+							alert(this.props.i18n("msg_ApiServerError"));
+							this.setState({ processing: false });
+						}
+					}
+				);
+			} else {
+				if (this.isMountedRef) {
+					alert(this.props.i18n("lbl_RemindForRefNum"));
+					this.setState({ processing: false });
+				}
+			}
+		}
+	};
+	render() {
+		return (
+			<>
+				<span className="title">
+					{this.props.i18n("lbl_SubmitProof")}
+				</span>
+				<div className="txt-lightgray">
+					{this.props.i18n("lbl_AttachFile")}
+				</div>
+				<label
+					className="upload_img"
+					onDragOver={this.dragOver.bind(this)}
+					onDrop={this.onUploadFile.bind(this, "onDrop")}>
+					<input
+						type="file"
+						accept="image/*"
+						ref={this.filebox}
+						onChange={this.onUploadFile.bind(this, "onChange")}
+					/>
+					{this.state.picFileName ? (
+						<img
+							src={
+								this.state.fileImg === null
+									? `http://m.n88dev.com/Cashier/DepositReceip.jpg?transId=${this.props.transId}&FileName=${this.state.picFileName}`
+									: `${this.state.fileImg}`
+							}
+						/>
+					) : (
+						<i className="icon icon-plus"></i>
+					)}
+				</label>
+				{this.state.picFileName !== null ? (
+					<span>{this.state.picFileName}</span>
+				) : null}
+				<div className="directions">
+					<ul>
+						<li>Maximum file siz 4 MB each</li>
+						<li>Maximum number of file:1</li>
+						<li>Accepted file types: JPG, JPGE, PNG, GIF</li>
+					</ul>
+				</div>
+				<form onSubmit={this.clickSubmit}>
+					<div className="inputBox-white">
+						<i className="txt-blue">
+							{this.props.i18n("lbl_DepositTime")}
+						</i>
+						<input
+							type="datetime-local"
+							value={this.state.depositTime}
+							onChange={this.editField.bind(null, "depositTime")}
+						/>
+						{/* <div className="iconModule">
+						<i className="icon icon-calendar"></i>
+						<i className="icon icon-information-solid"></i>
+					</div> */}
+					</div>
+					<div className="inputBox-white">
+						<i className="txt-blue">
+							{this.props.i18n("lbl_Refno")}
+						</i>
+						<input
+							value={this.state.refId}
+							onChange={this.editField.bind(null, "refId")}
+						/>
+						<div className="iconModule">
+							<i className="icon icon-information-solid"></i>
+						</div>
+					</div>
+					<div className="btnGroup">
+						<button
+							className="gray"
+							onClick={this.props.ClosePopBox}>
+							{this.props.i18n("lbl_Cancel")}
+						</button>
+						<button className="orange">
+							{this.props.i18n("lbl_Submit")}
+						</button>
+					</div>
+				</form>
+			</>
 		);
 	}
 }
