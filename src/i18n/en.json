@@ -115,6 +115,10 @@
   "lbl_DepositTime":"Deposit Time",
   "lbl_UploadSuccess":"Your file was uploaded successfully.",
   "lbl_UpdateSuccess":"Update Successful. We will process your request ASAP!",
-  "lbl_RemindForRefNum":"Reference Number is required."
-
+  "lbl_RemindForRefNum":"Reference Number is required.",
+  "lbl_OnlineBanking":"Online Banking",
+  "lbl_CreditTime":"Credit Time",
+  "lbl_Instant":"Instant",
+  "lbl_AmountTooltip":"Amount can not be less than 0.",
+  "lbl_NotinLimit":"Not in Limit."
 }

@@ -58,4 +58,37 @@ $(function(){
             $(".icon").removeClass("icon-cancel-circle").addClass("icon-arrow-left2")
         }
     })
+    $('#popup').click(function(n) {
+        if($(n.target).parents("#popup").length==0) {
+            $('#popup,.pop>div').removeClass('active')
+		}
+    })
+    $('.listBody .btnGroup .upload-btn').click(function() {
+        $('#popup').addClass('active')
+        $('.pop > .upload').addClass('active');
+    })
+    $('.upload .btnGroup .orange').click(function() {
+        $('.pop > .upload').removeClass('active');
+        $('.pop > .uploadSuccess').addClass('active');
+    })
+    $('.listBody .btnGroup .update-btn').click(function() {
+        $('#popup').addClass('active')
+        $('.pop > .update').addClass('active');
+    })    
+    $('.update .btnGroup .orange').click(function() {
+        $('.pop > .update').removeClass('active');
+        $('.pop > .updateSuccess').addClass('active');
+    })
+    $('.subModuleBody .btnGroup .orange').click(function() {
+        $('#popup').addClass('active')
+        $('.pop > .Submit').addClass('active');
+    })
+    $('.subModuleBody .btnGroup .gray').click(function() {
+        $('#popup').addClass('active')
+        $('.pop > .Cancel').addClass('active');
+    })
+    $('.Submit .btnGroup .orange').click(function() {
+        $('.pop > .Submit').removeClass('active');
+        $('.pop > .Success').addClass('active');
+    })
 });

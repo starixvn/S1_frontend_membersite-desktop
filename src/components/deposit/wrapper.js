@@ -1,6 +1,6 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import StepBar from "./deposit.stepBar";
+import StepBar from "./stepBar";
 
 export default ({ step, children }) => {
 	const { t } = useTranslation();

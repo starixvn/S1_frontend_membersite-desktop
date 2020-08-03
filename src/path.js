@@ -18,7 +18,12 @@ export default {
 		root: "liveCasino"
 	},
 	deposit: {
-		root: "deposit"
+		root: "deposit",
+		sub: {
+			onlineBank: {
+				root: "onlineBank"
+			}
+		}
 	},
 	depositHistory: {
 		root: "depositHistory"

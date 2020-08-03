@@ -23,7 +23,7 @@ export default ({ step }) => {
 	let rows = defStep.map((s, sIdx) => {
 		return (
 			<div
-				className={step <= sIdx + 1 ? "active" : ""}
+				className={sIdx <= step - 1 ? "active" : ""}
 				key={`deposit-step-${s.title}`}>
 				<span>{s.title}</span>
 				<span>{s.description}</span>

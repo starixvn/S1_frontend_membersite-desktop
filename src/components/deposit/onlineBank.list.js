@@ -4,8 +4,10 @@ import { api_payment_GetOnlinePaymentList } from "../../service/api/payment";
 import LimitTip from "./limitTip";
 import { isConvert } from "../common/common";
 import { userInfoContext } from "../common/context";
+import path from "../../path";
 
-const path = "onlineBank";
+const _path = path.deposit.sub.onlineBank.root;
+
 export default () => {
 	const [onlineBankingList, setOnlineBankingList] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
@@ -28,7 +30,7 @@ export default () => {
 		return (
 			<li key={`deposit-onlineBank-${p.payId}-${p.channelId}`}>
 				<Link
-					to={`${path}?pId=${p.payId}&cId=${p.channelId}`}
+					to={`${_path}?name=${p.payName}&pId=${p.payId}&cId=${p.channelId}`}
 					className={`icon icon-${p.payName}`}></Link>
 				<LimitTip
 					minAmount={p.minAmount}

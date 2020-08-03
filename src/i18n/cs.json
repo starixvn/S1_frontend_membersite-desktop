@@ -115,7 +115,10 @@
   "lbl_DepositTime":"充值时间",
   "lbl_UploadSuccess":"档案上传成功",
   "lbl_UpdateSuccess":"更新成功。我们会尽快处理您的要求！",
-  "lbl_RemindForRefNum":"请填写参考编号"
-  
-
+  "lbl_RemindForRefNum":"请填写参考编号",
+  "lbl_OnlineBanking":"网络银行",
+  "lbl_CreditTime":"所需时间",
+  "lbl_Instant":"即时",
+  "lbl_AmountTooltip":"金额不得小于0",
+  "lbl_NotinLimit":"不在设定范围"
 }

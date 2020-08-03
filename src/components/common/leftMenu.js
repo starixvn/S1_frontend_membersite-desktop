@@ -2,7 +2,7 @@ import React from "react";
 
 export default () => {
 	return (
-		<div>
+		<div id="leftMenu">
 			<div className="menuModule">
 				<button className="menuHeader">Cashier</button>
 				<button className="menuSelect active">

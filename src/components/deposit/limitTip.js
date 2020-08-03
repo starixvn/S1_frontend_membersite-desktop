@@ -9,12 +9,11 @@ export default ({
 	_isConvert
 }) => {
 	return !minAmount && !maxAmount ? (
-		<div className="tip">
-			<span className="text-org">{displayTextLimit} :</span>{" "}
-			{displayTextUnLimit}
-		</div>
+		<span className="txt-orange">
+			{displayTextLimit} {displayTextUnLimit}
+		</span>
 	) : (
-		<span>
+		<span className="txt-orange">
 			{displayTextLimit}{" "}
 			{`${number_format(minAmount, _isConvert)} ~ ${number_format(
 				maxAmount,
