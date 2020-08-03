@@ -154,8 +154,6 @@ export class Module extends Component {
 			this.setState({ processing: true });
 			let bankSlip = this.props.bankSlip;
 
-			console.log("???");
-
 			if (this.state.refId !== "") {
 				api_payment_SetDepositReceipt(
 					this.props.transId,
@@ -261,11 +259,12 @@ export class Module extends Component {
 					</div>
 					<div className="btnGroup">
 						<button
+							type="button"
 							className="gray"
 							onClick={this.props.ClosePopBox}>
 							{this.props.i18n("lbl_Cancel")}
 						</button>
-						<button className="orange">
+						<button className="orange" type="submit">
 							{this.props.i18n("lbl_Submit")}
 						</button>
 					</div>
