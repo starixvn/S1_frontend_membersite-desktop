@@ -105,5 +105,17 @@
   "lbl_Action":"操作",
   "lbl_LastTransaction":"最后交易",
   "lbl_LastLogin":"最后登入",
-  "lbl_TpWallet_1":"体育钱包"
+  "lbl_TpWallet_1":"体育钱包",
+  "lbl_DepositOptionHint":"从下方选出最符合您需求的存款方式：",
+  "lbl_RealName":"真实姓名",
+  "lbl_DepositAmount":"存款金额",
+  "lbl_BankName":"银行名称",
+  "lbl_AttachFile":"请附上您银行收据(非必要)",
+  "lbl_Refno":"参考编号",
+  "lbl_DepositTime":"充值时间",
+  "lbl_UploadSuccess":"档案上传成功",
+  "lbl_UpdateSuccess":"更新成功。我们会尽快处理您的要求！",
+  "lbl_RemindForRefNum":"请填写参考编号"
+  
+
 }

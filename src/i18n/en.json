@@ -105,5 +105,16 @@
   "lbl_Action":"Action",
   "lbl_LastTransaction":"Last Transaction",
   "lbl_LastLogin":"Last Login",
-  "lbl_TpWallet_1":"Sportsbook Wallet"
+  "lbl_TpWallet_1":"Sportsbook Wallet",
+  "lbl_DepositOptionHint":"You can choose the most suitable deposit option from the ones provided below:",
+  "lbl_RealName":"Real Name",
+  "lbl_DepositAmount":"Deposit Amount",
+  "lbl_BankName":"Bank Name",
+  "lbl_AttachFile":"Please attach your bank slip here. (Optional)",
+  "lbl_Refno":"Reference No.",
+  "lbl_DepositTime":"Deposit Time",
+  "lbl_UploadSuccess":"Your file was uploaded successfully.",
+  "lbl_UpdateSuccess":"Update Successful. We will process your request ASAP!",
+  "lbl_RemindForRefNum":"Reference Number is required."
+
 }
