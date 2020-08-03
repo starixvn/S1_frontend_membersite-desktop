@@ -120,5 +120,8 @@
   "lbl_CreditTime":"所需时间",
   "lbl_Instant":"即时",
   "lbl_AmountTooltip":"金额不得小于0",
-  "lbl_NotinLimit":"不在设定范围"
+  "lbl_NotinLimit":"不在设定范围",
+  "lbl_MobileDeposit": "手机充值",
+  "lbl_Limit":"限制",
+  "lbl_Unlimited":"无上限"
 }

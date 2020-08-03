@@ -22,6 +22,9 @@ export default {
 		sub: {
 			onlineBank: {
 				root: "onlineBank"
+			},
+			mobilePay: {
+				root: "mobilePay"
 			}
 		}
 	},

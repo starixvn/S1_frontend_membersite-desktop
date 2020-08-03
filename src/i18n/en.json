@@ -120,5 +120,8 @@
   "lbl_CreditTime":"Credit Time",
   "lbl_Instant":"Instant",
   "lbl_AmountTooltip":"Amount can not be less than 0.",
-  "lbl_NotinLimit":"Not in Limit."
+  "lbl_NotinLimit":"Not in Limit.",
+  "lbl_MobileDeposit": "Mobile Deposit",
+  "lbl_Limit":"Limit",
+  "lbl_Unlimited":"Unlimited"
 }

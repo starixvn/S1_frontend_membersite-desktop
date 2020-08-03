@@ -81,7 +81,12 @@ export default ({ bankInfo, amount, _isConvert }) => {
 						</ul>
 						<ul>
 							<li>Deposit Amount</li>
-							<li>{number_format(amount, _isConvert)}</li>
+							<li>
+								{number_format(
+									_isConvert ? amount * 1000 : amount,
+									_isConvert
+								)}
+							</li>
 						</ul>
 					</div>
 					<div className="btnGroup">

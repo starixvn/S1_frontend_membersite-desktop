@@ -79,6 +79,7 @@ export default () => {
 
 	let pName = getUrlParameter("name");
 	let displayMoudle = null;
+	const _isConvert = isConvert(userInfo.currencyId);
 	switch (state.displayMoudle) {
 		case defModule.BankPanel:
 			displayMoudle = (
@@ -86,7 +87,6 @@ export default () => {
 			);
 			break;
 		case defModule.AmountPanel:
-			const _isConvert = isConvert(userInfo.currencyId);
 			displayMoudle = (
 				<AmountPanel
 					dispatch={dispatch}
@@ -105,6 +105,8 @@ export default () => {
 					amount={state.amount}
 				/>
 			);
+			break;
+
 		default:
 			break;
 	}

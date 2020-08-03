@@ -5,13 +5,16 @@ import LimitTip from "./limitTip";
 import { isConvert } from "../common/common";
 import { userInfoContext } from "../common/context";
 import path from "../../path";
+import { useTranslation } from "react-i18next";
 
 const _path = path.deposit.sub.onlineBank.root;
 
 export default () => {
+	const { t } = useTranslation();
 	const [onlineBankingList, setOnlineBankingList] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
 	const isMountedRef = useRef(null);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
@@ -35,25 +38,29 @@ export default () => {
 				<LimitTip
 					minAmount={p.minAmount}
 					maxAmount={p.maxAmount}
-					displayTextLimit={"Limit"}
-					displayTextUnLimit={"Unlimit"}
+					displayTextLimit={t("lbl_Limit")}
+					displayTextUnLimit={t("lbl_Unlimited")}
 					_isConvert={_isConvert}
 				/>
 			</li>
 		);
 	});
 
-	return (
+	return onlineBankingList !== null || onlineBankingList.length > 0 ? (
 		<div className="subModule">
 			<div className="subModuleTitle icon icon-plus">
 				<div>
-					<span>Online Banking</span>
-					<span>Credit Time: Instant</span>
+					<span>{t("lbl_DepositType1")}</span>
+					<span>
+						{t("lbl_CreditTime")}: {t("lbl_Instant")}
+					</span>
 				</div>
 			</div>
 			<div className="subModuleBody">
 				<ul>{rows}</ul>
 			</div>
 		</div>
+	) : (
+		<></>
 	);
 };
