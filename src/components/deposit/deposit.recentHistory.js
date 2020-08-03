@@ -24,6 +24,10 @@ export default () => {
 	});
 
 	useEffect(() => {
+		GetRecentDatas();
+	}, []);
+
+	const GetRecentDatas = () => {
 		api_payment_GetDepositInfoRecent().then(
 			res => {
 				if (isMountedRef.current) {
@@ -40,7 +44,7 @@ export default () => {
 				}
 			}
 		);
-	}, []);
+	};
 
 	const ClosePopBox = () => {
 		setPopBox({ isOpen: false });
@@ -69,7 +73,8 @@ export default () => {
 			isOpen: true,
 			amount: number_format(amount, _isConvert),
 			picFileName: picFileName,
-			refId: refId
+			refId: refId,
+			refreshDatas: GetRecentDatas
 		});
 	};
 
