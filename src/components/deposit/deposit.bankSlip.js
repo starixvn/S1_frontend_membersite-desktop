@@ -7,6 +7,7 @@ import React, {
 	Component
 } from "react";
 import moment from "moment";
+import DateTime from "react-datetime";
 import { useTranslation } from "react-i18next";
 import { userInfoContext } from "../common/context";
 import { number_format, isConvert } from "../common/common";
@@ -14,6 +15,8 @@ import {
 	api_payment_UploadReceipt,
 	api_payment_SetDepositReceipt
 } from "../../service/api/payment";
+import style from "../../styles/css/datePicker.css";
+import config from "../../config";
 
 const Content = props => {
 	const { t } = useTranslation();
@@ -139,13 +142,8 @@ export class Module extends Component {
 	dragOver = e => {
 		e.preventDefault();
 	};
-
-	editField = (col, e) => {
-		let value = e.target.value;
-
-		col === "refId"
-			? this.setState({ refId: value })
-			: this.setState({ depositTime: value });
+	editField = (col, value, e) => {
+		this.setState({ [col]: value === null ? e.target.value : value });
 	};
 
 	clickSubmit = e => {
@@ -212,7 +210,7 @@ export class Module extends Component {
 						<img
 							src={
 								this.state.fileImg === null
-									? `http://m.n88dev.com/Cashier/DepositReceip.jpg?transId=${this.props.transId}&FileName=${this.state.picFileName}`
+									? `${config.apiURL}/Cashier/DepositReceip.jpg?transId=${this.props.transId}&FileName=${this.state.picFileName}`
 									: `${this.state.fileImg}`
 							}
 						/>
@@ -225,9 +223,9 @@ export class Module extends Component {
 				) : null}
 				<div className="directions">
 					<ul>
-						<li>Maximum file siz 4 MB each</li>
-						<li>Maximum number of file:1</li>
-						<li>Accepted file types: JPG, JPGE, PNG, GIF</li>
+						<li>{this.props.i18n("BankSlipHint1")}</li>
+						<li>{this.props.i18n("BankSlipHint2")}</li>
+						<li>{this.props.i18n("BankSlipHint3")}</li>
 					</ul>
 				</div>
 				<form onSubmit={this.clickSubmit}>
@@ -235,15 +233,14 @@ export class Module extends Component {
 						<i className="txt-blue">
 							{this.props.i18n("lbl_DepositTime")}
 						</i>
-						<input
-							type="datetime-local"
+						<DateTime
 							value={this.state.depositTime}
-							onChange={this.editField.bind(null, "depositTime")}
+							onChange={this.editField.bind(this, "depositTime")}
 						/>
-						{/* <div className="iconModule">
-						<i className="icon icon-calendar"></i>
-						<i className="icon icon-information-solid"></i>
-					</div> */}
+						<div className="iconModule">
+							<i className="icon icon-calendar"></i>
+							<i className="icon icon-information-solid"></i>
+						</div>
 					</div>
 					<div className="inputBox-white">
 						<i className="txt-blue">
@@ -251,7 +248,7 @@ export class Module extends Component {
 						</i>
 						<input
 							value={this.state.refId}
-							onChange={this.editField.bind(null, "refId")}
+							onChange={this.editField.bind(this, "refId", null)}
 						/>
 						<div className="iconModule">
 							<i className="icon icon-information-solid"></i>

@@ -63,8 +63,8 @@ export default () => {
 		setPopBox({
 			isOpen: true,
 			popBoxType: defPopBoxType.UploadBankSlip,
-			depositTime: `${moment().format("yyyy-MM-DDT")}${moment().format(
-				"HH:mm"
+			depositTime: `${moment().format("yyyy-MM-DD ")}${moment().format(
+				"HH:mm A"
 			)}`,
 			...restBankInfo,
 			transId: transId,
