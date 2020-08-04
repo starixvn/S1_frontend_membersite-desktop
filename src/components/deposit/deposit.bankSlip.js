@@ -85,7 +85,7 @@ export class Module extends Component {
 	state = {
 		processing: false,
 		depositTime: this.props.depositTime ? this.props.depositTime : null,
-		refId: this.props.refId ? this.props.refId : null,
+		refId: this.props.refId ? this.props.refId : "",
 		picFileName: this.props.picFileName ? this.props.picFileName : null,
 		fileImg: null
 	};
