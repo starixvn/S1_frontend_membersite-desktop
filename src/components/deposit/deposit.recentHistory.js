@@ -153,7 +153,9 @@ export default () => {
 				<div>{t("lbl_Status")}</div>
 				<div>
 					{t("lbl_Action")}
-					<button className="icon icon-spinner11"></button>
+					<button
+						className="icon icon-spinner11"
+						onClick={GetRecentDatas}></button>
 				</div>
 			</div>
 			<div className="listBody">{arr}</div>
