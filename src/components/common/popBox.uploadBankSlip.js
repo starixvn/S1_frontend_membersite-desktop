@@ -17,6 +17,9 @@ export default props => {
 		setPopBox({
 			isOpen: false
 		});
+		if (props.backDeposit) {
+			props.backDeposit();
+		}
 	};
 
 	return (

@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { popBoxContext } from "./context";
 import Cancel from "./popBox.cancel";
 import UploadBankSlip from "./popBox.uploadBankSlip";
+import Success from "./popBox.success";
 
 export const defPopBoxType = {
 	Cancel: "Cancel",
-	UploadBankSlip: "UploadBankSlip"
+	UploadBankSlip: "UploadBankSlip",
+	Success: "Success"
 };
 
 export default () => {
@@ -20,6 +22,10 @@ export default () => {
 		case defPopBoxType.UploadBankSlip:
 			const { isOpen, ...restProps } = popBox;
 			content = <UploadBankSlip {...restProps} />;
+			break;
+
+		case defPopBoxType.Success:
+			content = <Success btnBar={popBox.btnBar} />;
 			break;
 
 		default:

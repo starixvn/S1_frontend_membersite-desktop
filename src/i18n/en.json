@@ -123,5 +123,11 @@
   "lbl_NotinLimit":"Not in Limit.",
   "lbl_MobileDeposit": "Mobile Deposit",
   "lbl_Limit":"Limit",
-  "lbl_Unlimited":"Unlimited"
+  "lbl_Unlimited":"Unlimited",
+  "BankSlipHint1":"Maximum file size 4 MB each",
+  "BankSlipHint2":"Maximum number of file:1",
+  "BankSlipHint3":"Accepted file types: JPG, JPGE, PNG, GIF",
+  "lbl_WireTransfers":"Local Bank Transfer",
+  "lbl_5mins":"5 mins"
+
 }

@@ -25,6 +25,9 @@ export default {
 			},
 			mobilePay: {
 				root: "mobilePay"
+			},
+			localBank: {
+				root: "localBank"
 			}
 		}
 	},

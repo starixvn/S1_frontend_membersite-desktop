@@ -18,7 +18,7 @@ import {
 import style from "../../styles/css/datePicker.css";
 import config from "../../config";
 
-const Content = props => {
+export default props => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
 	const _isConvert = isConvert(userInfo.currencyId);
@@ -36,34 +36,29 @@ const Content = props => {
 				<div className="rightModule">
 					<div className="infoModule">
 						<div className="deposit-title icon icon-library">
-							<span>{this.props.i18n("lbl_Deposit")}</span>
-							<div>
-								{this.props.i18n("lbl_DepositOptionHint")}
-							</div>
+							<span>{t("lbl_Deposit")}</span>
+							<div>{t("lbl_DepositOptionHint")}</div>
 						</div>
 						<div className="slipInfo">
 							<button className="icon icon-arrow-left2"></button>
 							<div className="smallList">
 								<ul>
 									<li>
-										{this.props.i18n("lbl_Date")} (
-										{moment().format("Z")})
+										{t("lbl_Date")} ({moment().format("Z")})
 									</li>
 									<li>
-										{moment(this.props.depositTime).format(
+										{moment(props.datas.depositTime).format(
 											"YYYY/MM/DD HH:mm:ss A"
 										)}
 									</li>
 									<li>ID</li>
-									<li>{this.props.transId}</li>
-									<li>{this.props.i18n("lbl_RealName")}</li>
-									<li>{this.props.accountName}</li>
-									<li>{this.props.i18n("lbl_BankName")}</li>
-									<li>{this.props.bankName}</li>
-									<li>
-										{this.props.i18n("lbl_DepositAmount")}
-									</li>
-									<li>{this.props.amount}</li>
+									<li>{props.datas.transId}</li>
+									<li>{t("lbl_RealName")}</li>
+									<li>{props.datas.accountName}</li>
+									<li>{t("lbl_BankName")}</li>
+									<li>{props.datas.bankName}</li>
+									<li>{t("lbl_DepositAmount")}</li>
+									<li>{props.datas.amount}</li>
 								</ul>
 							</div>
 							<div className="subModuleList">
@@ -90,7 +85,7 @@ export class Module extends Component {
 		fileImg: null
 	};
 	isMountedRef = false;
-	filebox = React.createRef();
+	filebox = createRef();
 
 	componentDidMount() {
 		this.isMountedRef = true;
@@ -124,7 +119,9 @@ export class Module extends Component {
 					if (this.isMountedRef) {
 						if (res.data.errorCode === 0) {
 							alert(this.props.i18n("lbl_UploadSuccess"));
-							this.props.refreshDatas();
+							if (this.props.refreshDatas) {
+								this.props.refreshDatas();
+							}
 						} else {
 							alert(res.data.message);
 						}
@@ -132,7 +129,7 @@ export class Module extends Component {
 				},
 				err => {
 					if (this.isMountedRef) {
-						alert(this.props.i18n("msg_ApiServerError"));
+						alert(this.datas.i18n("msg_ApiServerError"));
 					}
 				}
 			);
@@ -165,7 +162,11 @@ export class Module extends Component {
 							} else {
 								alert(res.data.message);
 							}
-							this.props.refreshDatas();
+							if (this.props.refreshDatas) {
+								this.props.refreshDatas();
+							} else if (this.props.backDeposit) {
+								this.props.backDeposit();
+							}
 							this.setState({ processing: false });
 							if (this.props.ClosePopBox) {
 								this.props.ClosePopBox();

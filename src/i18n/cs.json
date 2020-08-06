@@ -102,7 +102,7 @@
   "lbl_ChangePassword":"更改密码",
   "lbl_Logout":"登出",
   "lbl_SubmitProof":"提交银行收据",
-  "lbl_Action":"操作",
+  "lbl_Action":"Action",
   "lbl_LastTransaction":"最后交易",
   "lbl_LastLogin":"最后登入",
   "lbl_TpWallet_1":"体育钱包",
@@ -123,5 +123,11 @@
   "lbl_NotinLimit":"不在设定范围",
   "lbl_MobileDeposit": "手机充值",
   "lbl_Limit":"限制",
-  "lbl_Unlimited":"无上限"
+  "lbl_Unlimited":"无上限",
+  "BankSlipHint1":"Maximum file size 4 MB each",
+  "BankSlipHint2":"Maximum number of file:1",
+  "BankSlipHint3":"Accepted file types: JPG, JPGE, PNG, GIF",
+  "lbl_WireTransfers":"银行卡转帐",
+  "lbl_5mins":"5分鐘"
+
 }
