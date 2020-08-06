@@ -128,6 +128,17 @@
   "BankSlipHint2":"Maximum number of file:1",
   "BankSlipHint3":"Accepted file types: JPG, JPGE, PNG, GIF",
   "lbl_WireTransfers":"银行卡转帐",
-  "lbl_5mins":"5分鐘"
+  "lbl_5mins":"5分鐘",
+  "lbl_NO":"NO.",
+  "lbl_Confirm":"确认",
+  "lbl_ImportantNote":"重要讯息",
+  "lbl_ConfirmDeposit":"请确认充值资讯。",
+  "lbl_SelectedBank":"Selected Bank",
+  "lbl_SelectedChannel":"Selected Channel",
+  "lbl_Information":"Information"
+
+
+
+
 
 }

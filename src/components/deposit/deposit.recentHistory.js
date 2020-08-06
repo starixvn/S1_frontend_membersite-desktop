@@ -63,9 +63,7 @@ export default () => {
 		setPopBox({
 			isOpen: true,
 			popBoxType: defPopBoxType.UploadBankSlip,
-			depositTime: `${moment().format("yyyy-MM-DD ")}${moment().format(
-				"HH:mm A"
-			)}`,
+			depositTime: `${moment().format()}`,
 			...restBankInfo,
 			transId: transId,
 			accountNo: accountNo,
@@ -79,7 +77,7 @@ export default () => {
 	};
 
 	const ClickCancel = transId => {
-		const ClickSubmit = () => {
+		const ClickConfirm = () => {
 			setPopBox({ isOpen: false });
 			api_payment_SetDepositCancel(transId).then(
 				res => {
@@ -111,8 +109,8 @@ export default () => {
 					<button className="gray" onClick={ClosePopBox}>
 						{t("lbl_Cancel")}
 					</button>
-					<button className="orange" onClick={ClickSubmit}>
-						{t("lbl_Submit")}
+					<button className="orange" onClick={ClickConfirm}>
+						{t("lbl_Confirm")}
 					</button>
 				</div>
 			)
@@ -143,11 +141,11 @@ export default () => {
 	return (
 		<div className="list">
 			<div className="listHeader">
-				<div>NO.</div>
+				<div>{t("NO")}</div>
 				<div>
 					{t("lbl_Date")} ({moment().format("Z")})
 				</div>
-				<div>ID</div>
+				<div>{t("lbl_ID")}</div>
 				<div>{t("lbl_Method")}</div>
 				<div>{t("lbl_Amount")}</div>
 				<div>{t("lbl_Status")}</div>

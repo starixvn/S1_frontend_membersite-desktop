@@ -128,6 +128,13 @@
   "BankSlipHint2":"Maximum number of file:1",
   "BankSlipHint3":"Accepted file types: JPG, JPGE, PNG, GIF",
   "lbl_WireTransfers":"Local Bank Transfer",
-  "lbl_5mins":"5 mins"
+  "lbl_5mins":"5 mins",
+  "lbl_NO":"NO.",
+  "lbl_Confirm":"Confirm",
+  "lbl_ImportantNote":"Important Note",
+  "lbl_ConfirmDeposit":"Please confirm the deposit information.",
+  "lbl_SelectedBank":"Selected Bank",
+  "lbl_SelectedChannel":"Selected Channel",
+  "lbl_Information":"Information"
 
 }

@@ -9,10 +9,7 @@ export default ({ step, children }) => {
 		<div className="infoModule">
 			<div className="deposit-title icon icon-library">
 				<span>{t("lbl_Deposit")}</span>
-				<div>
-					You can choose the most suitable deposit option from the
-					ones provided below:
-				</div>
+				<div>{t("lbl_DepositOptionHint")}</div>
 			</div>
 			<StepBar step={step} />
 			{children}

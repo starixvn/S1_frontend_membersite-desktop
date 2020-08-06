@@ -51,7 +51,7 @@ export default props => {
 											"YYYY/MM/DD HH:mm:ss A"
 										)}
 									</li>
-									<li>ID</li>
+									<li>{t("lbl_ID")}</li>
 									<li>{props.datas.transId}</li>
 									<li>{t("lbl_RealName")}</li>
 									<li>{props.datas.accountName}</li>
@@ -235,7 +235,9 @@ export class Module extends Component {
 							{this.props.i18n("lbl_DepositTime")}
 						</i>
 						<DateTime
-							value={this.state.depositTime}
+							value={moment(this.state.depositTime).format(
+								"YYYY-MM-DD HH:mm A"
+							)}
 							onChange={this.editField.bind(this, "depositTime")}
 						/>
 						<div className="iconModule">

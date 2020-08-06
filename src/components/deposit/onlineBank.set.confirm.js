@@ -32,10 +32,10 @@ export default ({ bankInfo, amount, _isConvert }) => {
 			btnBar: (
 				<div className="btnGroup">
 					<button className="gray" onClick={ClickNo}>
-						No
+						{t("lbl_Cancel")}
 					</button>
 					<button className="orange" onClick={ClickYes}>
-						Yes
+						{t("lbl_Confirm")}
 					</button>
 				</div>
 			)
@@ -64,9 +64,9 @@ export default ({ bankInfo, amount, _isConvert }) => {
 		<div className="subModuleList">
 			<div className="subModule">
 				<div className="subModuleBody column align-items-center">
-					<span className="title">Important Note</span>
+					<span className="title">{t("lbl_ImportantNote")}</span>
 					<div className="txt-lightgray">
-						Please confirm the deposit information.
+						{t("lbl_ConfirmDeposit")}
 					</div>
 					<div className="bankName">
 						<img
@@ -76,11 +76,11 @@ export default ({ bankInfo, amount, _isConvert }) => {
 					</div>
 					<div className="smallList">
 						<ul>
-							<li>Selected Bank</li>
+							<li>{t("lbl_SelectedBank")}</li>
 							<li>{bankInfo.bankName}</li>
 						</ul>
 						<ul>
-							<li>Deposit Amount</li>
+							<li>{t("lbl_Amount")}</li>
 							<li>
 								{number_format(
 									_isConvert ? amount * 1000 : amount,
@@ -94,7 +94,7 @@ export default ({ bankInfo, amount, _isConvert }) => {
 							{t("lbl_Cancel")}
 						</button>
 						<button onClick={ClickSubmit} className="orange">
-							{t("lbl_Submit")}
+							{t("lbl_Confirm")}
 						</button>
 					</div>
 				</div>
