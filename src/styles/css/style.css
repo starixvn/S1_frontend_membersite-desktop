@@ -360,15 +360,6 @@ header .header > div.function > div[class=join]:hover, header .header > div.func
   color: #1E85EC;
 }
 
-header .header > div.function > div[class=login], header .header > div.function > a[class=login] {
-  color: #1E85EC;
-  cursor: pointer;
-}
-
-header .header > div.function > div[class=login]:hover, header .header > div.function > a[class=login]:hover {
-  color: #fff;
-}
-
 header .header > div.function > div .flag.ch:before, header .header > div.function > a .flag.ch:before {
   content: "";
   display: block;
@@ -484,6 +475,27 @@ header .header > div.function .country .countryList button {
 
 header .header > div.function .country.active .countryList {
   display: block;
+}
+
+header .header > div.function button[class=login] {
+  color: #1E85EC;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  min-width: 100px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  min-width: 100px;
+  font-size: 14px;
+}
+
+header .header > div.function button[class=login]:hover {
+  color: #fff;
 }
 
 header .header > div.function .cashier, header .header > div.function .wallet, header .header > div.function .memberfile {
@@ -1119,6 +1131,10 @@ footer .copyright {
   margin-top: 15px;
 }
 
+.joinlogin.active {
+  display: block;
+}
+
 .txt-orange {
   color: #f77900;
 }
@@ -1485,8 +1501,6 @@ input[type="file"] {
 
 #Marquee .marquee-box .marquee-run {
   position: absolute;
-  -webkit-animation: marquee 7s infinite;
-          animation: marquee 7s infinite;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1497,13 +1511,12 @@ input[type="file"] {
   margin-left: 20px;
 }
 
-#Marquee .marquee-box .marquee-run a {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+#Marquee .marquee-box .marquee-run button {
+  /*   */
   color: #fff;
   text-align: left;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 #Marquee .mq-btn {
@@ -1529,68 +1542,6 @@ input[type="file"] {
 
 #Marquee .mq-btn button.active {
   background: #1E85EC;
-}
-
-@-webkit-keyframes marquee {
-  0% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-  25% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-  35% {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-  60% {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-  70% {
-    -webkit-transform: translateX(-200%);
-            transform: translateX(-200%);
-  }
-  95% {
-    -webkit-transform: translateX(-200%);
-            transform: translateX(-200%);
-  }
-  100% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-}
-
-@keyframes marquee {
-  0% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-  25% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-  35% {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-  60% {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-  70% {
-    -webkit-transform: translateX(-200%);
-            transform: translateX(-200%);
-  }
-  95% {
-    -webkit-transform: translateX(-200%);
-            transform: translateX(-200%);
-  }
-  100% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
 }
 
 .quickLink {
@@ -2714,5 +2665,60 @@ input[type="file"] {
 
 .swiper-container {
   position: relative !important;
+}
+
+.mobileAmount {
+  padding: 5px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #134DAE;
+  width: calc(100% - 30px);
+  margin: 30px auto 0;
+}
+
+.mobileAmount span:last-child {
+  font-size: 18px;
+}
+
+.buttonBox {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.buttonBox button {
+  max-width: 130px;
+  border: 1px solid #1E85EC;
+  margin: 5px;
+}
+
+.buttonBox button.active {
+  background: transparent;
+}
+
+.main-nav .nav-item .snav-item {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  margin-top: 3px;
+  display: none;
+}
+
+.main-nav .nav-item .snav-item a {
+  color: #fff;
+  height: auto;
+}
+
+.main-nav .nav-item .snav-item a:hover {
+  background: rgba(53, 150, 255, 0.5);
+  border: 1px solid #3596ff;
+}
+
+.main-nav .nav-item a i {
+  -webkit-transform: rotate(-45deg) translateY(-75%);
+          transform: rotate(-45deg) translateY(-75%);
+  margin-left: 15px;
 }
 /*# sourceMappingURL=style.css.map */
