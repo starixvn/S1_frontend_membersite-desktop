@@ -100,7 +100,7 @@ class Marquee extends Component {
 							if (this.intervalId_Pos === undefined) {
 								this.intervalId_Pos = setInterval(
 									this.SetPos,
-									25
+									20
 								);
 							}
 						}
