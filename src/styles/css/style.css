@@ -2963,7 +2963,7 @@ input[type="file"] {
 
 .offers .swiper-slide {
   text-align: center;
-  background: url(../img/swiper-slideBG.jpg) no-repeat top center/cover;
+  /* background: url(../img/swiper-slideBG.jpg) no-repeat top center/cover; */
   height: 165px;
   font-size: 12px;
   padding: 10px 0;
