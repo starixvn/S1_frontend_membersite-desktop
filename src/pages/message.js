@@ -1,177 +1,75 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import React from "react";
 import Wrapper from "../components/common/wrapper";
 import Layout from "../components/common/layout";
+// import LeftMenu from "../components/common/leftMenu";
+import Message from "../components/message/message";
 
 export default () => {
-	const { t } = useTranslation();
-	const [getMsgList, setGetMsgList] = useState([]);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
-	});
-	// let arr =
 	return (
 		<Wrapper afterLogin={true}>
 			<Layout>
 				<main>
-					<div className="functionList">
-						<label className="checkbox">
-							<input type="checkbox" />
-							<i className="icon icon-checkbox"></i>Select All
-						</label>
-						<div className="smallBtn-group">
-							<button className="icon icon-bin clickBtn"></button>
-							<button className="icon icon-spinner11 clickBtn"></button>
-						</div>
-					</div>
-					<div className="account read">
-						<div className="info">
-							<label className="checkbox">
-								<input type="checkbox" />
-								<i className="icon icon-checkbox"></i>
-							</label>
-							<div className="introduction">
-								<span className="title">
-									Your Deposit DD521 has been Approved
-								</span>
-								<span>2/4/2020 10:31:00 PM</span>
+					{/* test only, remove later. start */}
+					<section className="inside">
+						<div id="leftMenu">
+							<div className="menuModule">
+								<button className="menuHeader">Cashier</button>
+								<a className="menuSelect active">
+									<span>Deposit</span>
+								</a>
+								<a className="menuSelect">
+									<span>Transfer Funds</span>
+								</a>
+								<a className="menuSelect">
+									<span>Withdrawal</span>
+								</a>
 							</div>
-							<button className="icon icon-circle-right"></button>
-						</div>
-						<div className="content">
-							<pre>
-								Your deposit request DD521 has been Approved.
-								<br />
-								Please check with CSD if you have any concern.
-							</pre>
-						</div>
-					</div>
-					<div className="account read">
-						<div className="info">
-							<label className="checkbox">
-								<input type="checkbox" />
-								<i className="icon icon-checkbox"></i>
-							</label>
-							<div className="introduction">
-								<span className="title">
-									Your Deposit DD521 has been Approved
-								</span>
-								<span>2/4/2020 10:31:00 PM</span>
+							<div className="menuModule">
+								<button className="menuHeader">History</button>
+								<a className="menuSelect">
+									<span>Deposit History</span>
+								</a>
+								<a className="menuSelect">
+									<span>Transfer History</span>
+								</a>
+								<a className="menuSelect">
+									<span>Withdrawal History</span>
+								</a>
+								<a className="menuSelect">
+									<span>Statement</span>
+								</a>
 							</div>
-							<button className="icon icon-circle-right"></button>
-						</div>
-						<div className="content">
-							Your deposit request DD521 has been Approved. Please
-							check with CSD if you have any concern.
-						</div>
-					</div>
-					<div className="account">
-						<div className="info">
-							<label className="checkbox">
-								<input type="checkbox" />
-								<i className="icon icon-checkbox"></i>
-							</label>
-							<div className="introduction">
-								<span className="title">
-									Your Deposit DD521 has been Approved
-								</span>
-								<span>2/4/2020 10:31:00 PM</span>
+							<div className="menuModule">
+								<button className="menuHeader">
+									My Account
+								</button>
+								<a className="menuSelect">
+									<span>Change Password</span>
+								</a>
+								<a className="menuSelect">
+									<span>Profile</span>
+								</a>
+								<a className="menuSelect">
+									<span>Bank Info</span>
+								</a>
 							</div>
-							<button className="icon icon-circle-right"></button>
-						</div>
-						<div className="content">
-							Your deposit request DD521 has been Approved. Please
-							check with CSD if you have any concern.
-						</div>
-					</div>
-					<div className="account">
-						<div className="info">
-							<label className="checkbox">
-								<input type="checkbox" />
-								<i className="icon icon-checkbox"></i>
-							</label>
-							<div className="introduction">
-								<span className="title">
-									Your Deposit DD521 has been Approved
-								</span>
-								<span>2/4/2020 10:31:00 PM</span>
+							<div className="menuModule">
+								<button className="menuHeader">Message</button>
+								<button className="menuSelect">
+									<span>Personal Message</span>
+								</button>
+								<button className="menuSelect">
+									<span>Announcement</span>
+								</button>
 							</div>
-							<button className="icon icon-circle-right"></button>
 						</div>
-						<div className="content">
-							Your deposit request DD521 has been Approved. Please
-							check with CSD if you have any concern.
+						<div className="rightModule">
+							<Message />
 						</div>
-					</div>
-					<div className="account">
-						<div className="info">
-							<label className="checkbox">
-								<input type="checkbox" />
-								<i className="icon icon-checkbox"></i>
-							</label>
-							<div className="introduction">
-								<span className="title">
-									Your Deposit DD521 has been Approved
-								</span>
-								<span>2/4/2020 10:31:00 PM</span>
-							</div>
-							<button className="icon icon-circle-right"></button>
-						</div>
-						<div className="content">
-							Your deposit request DD521 has been Approved. Please
-							check with CSD if you have any concern.
-						</div>
-					</div>
-					<div className="account">
-						<div className="info">
-							<label className="checkbox">
-								<input type="checkbox" />
-								<i className="icon icon-checkbox"></i>
-							</label>
-							<div className="introduction">
-								<span className="title">
-									Your Deposit DD521 has been Approved
-								</span>
-								<span>2/4/2020 10:31:00 PM</span>
-							</div>
-							<button className="icon icon-circle-right"></button>
-						</div>
-						<div className="content">
-							Your deposit request DD521 has been Approved. Please
-							check with CSD if you have any concern.
-						</div>
-					</div>
+					</section>
+					{/* test only, remove later. end */}
 				</main>
 			</Layout>
 		</Wrapper>
-	);
-};
-
-const Item = props => {
-	return (
-		<>
-			<div className="account">
-				<div className="info">
-					<label className="checkbox">
-						<input type="checkbox" />
-						<i className="icon icon-checkbox"></i>
-					</label>
-					<div className="introduction">
-						<span className="title">
-							Your Deposit DD521 has been Approved
-						</span>
-						<span>2/4/2020 10:31:00 PM</span>
-					</div>
-					<button className="icon icon-circle-right"></button>
-				</div>
-				<div className="content">
-					Your deposit request DD521 has been Approved. Please check
-					with CSD if you have any concern.
-				</div>
-			</div>
-		</>
 	);
 };
