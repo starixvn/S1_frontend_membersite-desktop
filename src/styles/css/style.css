@@ -4726,7 +4726,7 @@ iframe {
 
 .expiredClaimedInfo .proData {
   background-color: #b2b2b2;
-  background-image: url(../img/expired.png);
+  /* background-image: url(../img/expired.png); */
   background-repeat: repeat;
   background-size: 50px;
 }
