@@ -1413,7 +1413,7 @@ footer {
           flex: 2;
 }
 
-.inputBox-white i {
+.inputBox-white > i {
   font-weight: bold;
   white-space: nowrap;
 }
@@ -1513,7 +1513,6 @@ input[type="file"] {
 }
 
 .btnGroup button, .btnGroup a {
-  max-width: 170px;
   padding: 10px;
   border-radius: 20px;
   -webkit-box-flex: 1;
@@ -1612,6 +1611,7 @@ input[type="file"] {
 .tip {
   font-size: 12px;
   padding: 0 10px;
+  width: 100%;
 }
 
 .dropdown {
@@ -2399,6 +2399,25 @@ input[type="file"] {
   padding-bottom: 10px;
 }
 
+.infoModule > button.icon-arrow-left2 {
+  color: white;
+  margin: 40px 40px 0;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #f77900;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
+.infoModule > button.icon-arrow-left2:before {
+  margin-right: 5px;
+}
+
 .inside-title {
   padding: 40px;
   border-bottom: 1px solid #666;
@@ -2581,7 +2600,8 @@ input[type="file"] {
   width: calc(100% / 3 - 70px);
   background: #134DAE;
   float: left;
-  margin-right: 30px;
+  margin-left: 70px;
+  margin-top: 30px;
   border-radius: 15px;
   padding: 20px;
   display: -webkit-box;
@@ -2610,10 +2630,6 @@ input[type="file"] {
   font-size: 40px;
 }
 
-.platformName + div.subModuleList {
-  width: calc(100% / 3 * 2);
-}
-
 .platformName + div.subModuleList .subModuleBody > div {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -2625,6 +2641,7 @@ input[type="file"] {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  margin: 10px 0;
 }
 
 .platformName + div.subModuleList .subModuleBody > div.buttonBox {
@@ -2694,6 +2711,10 @@ input[type="file"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.align-items-center .txt-lightgray {
+  text-align: center;
 }
 
 .bankName {
@@ -2797,7 +2818,7 @@ input[type="file"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 350px;
+  width: 420px;
   margin: auto;
 }
 
@@ -2871,6 +2892,10 @@ input[type="file"] {
   letter-spacing: 1px;
   font-size: 12px;
   white-space: nowrap;
+}
+
+.smallList ul li:nth-child(odd) {
+  color: #1E85EC;
 }
 
 .smallList ul li:first-child {
@@ -3029,7 +3054,6 @@ input[type="file"] {
 
 .offers .swiper-slide {
   text-align: center;
-  /* background: url(../img/swiper-slideBG.jpg) no-repeat top center/cover; */
   height: 165px;
   font-size: 12px;
   padding: 10px 0;
@@ -3418,6 +3442,7 @@ input[type="file"] {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   cursor: pointer;
+  min-height: 55px;
 }
 
 .addBank .addBankName .addBankInfo {
@@ -3712,6 +3737,9 @@ input[type="file"] {
 
 .kycHeight .subModuleBody {
   height: calc(100% - 40px);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .kycHeight .icon {
@@ -3949,8 +3977,10 @@ input[type="file"] {
           flex: 1.5;
 }
 
-.profileEdit .editModule .inputBox:first-child, .profileEdit .editModule .inputBox-org:first-child, .profileEdit .editModule .inputBox-white:first-child, .profileEdit .editModule .inputBox-blue:first-child, .profileEdit .editModule .inputBox-gray:first-child {
-  margin-top: 8px;
+.profileEdit .editModule .inputBox-white {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
 }
 
 .profileEdit .editModule .btnGroup {
@@ -4348,6 +4378,7 @@ input[type="file"] {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  padding: 0 20px;
 }
 
 .proList > div {
@@ -4368,8 +4399,8 @@ input[type="file"] {
 
 .proList > div:hover {
   background: #e2e2e2;
-  -webkit-box-shadow: 0 0 0 3px #1E85EC inset;
-          box-shadow: 0 0 0 3px #1E85EC inset;
+  -webkit-box-shadow: 0 0 0 3px #f77900 inset;
+          box-shadow: 0 0 0 3px #f77900 inset;
 }
 
 .proList .btnGroup {
@@ -4467,7 +4498,7 @@ form {
   display: -ms-flexbox;
   display: flex;
   padding: 0 34px;
-  height: 49px;
+  height: 54px;
 }
 
 .casinoSelect > div {
@@ -5011,6 +5042,7 @@ button.icon-books:hover:after {
 
 .changePassWordpop {
   position: relative;
+  width: 100%;
 }
 
 .changePassWordpop button.icon-cross {
