@@ -172,13 +172,13 @@ const LoginPanel = () => {
 	return (
 		<div className="loginpop active">
 			<div className="joinloginModule">
-				<img src={loginBanner} alt="" />
+				<img src={loginBanner} />
 				<form className="joinloginFunction" onSubmit={handleLogin}>
-					<span className="title txt-yellow">{t("lbl_Login")}</span>
+					<div className="title txt-orange">{t("lbl_Login")}</div>
 					<div className="noAccount">
-						{t("lbl_DontHaveAccount")}&nbsp;
+						{t("lbl_DontHaveAccount")}{" "}
 						<button
-							className="txt-blue2"
+							className="txt-orange"
 							type="button"
 							onClick={openJoin}>
 							{t("lbl_JoinNow")}
@@ -186,7 +186,7 @@ const LoginPanel = () => {
 					</div>
 					<div className="inputModule">
 						<Inputbox
-							icon="icon-member txt-blue12"
+							icon="icon-member txt-orange"
 							placeholder={t("lbl_Username")}
 							value={userValue.username}
 							onChange={EditField.bind(null, "username")}
@@ -195,10 +195,11 @@ const LoginPanel = () => {
 							checked={tip.username.checked}
 							tip={tip.username.msg}
 							warningIcon="icon-warning"
+							className="inputBox-org"
 						/>
 
 						<InputboxPSW
-							icon="icon-key txt-blue12"
+							icon="icon-key txt-orange"
 							inputType={`${!showPsw ? "password" : "text"}`}
 							placeholder={t("lbl_Password")}
 							value={userValue.password}
@@ -209,6 +210,7 @@ const LoginPanel = () => {
 							checked={tip.password.checked}
 							clickInfo={clickInfo.bind(this, "password")}
 							tip={tip.password.msg}
+							className="inputBox-org"
 						/>
 
 						<Link

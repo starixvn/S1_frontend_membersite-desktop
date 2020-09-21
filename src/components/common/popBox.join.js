@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import {
 	api_site_ExistsUserName,
 	api_site_GetSiteCurrencyList,
-	api_site_Register
+	api_site_Register,
+	api_site_ExistsEmail
 } from "../../service/api/site";
 import { api_accountStrict_GetCustProfile } from "../../service/api/accountStrict";
 import { getUrlParameter, readCookie } from "./common";
@@ -21,7 +22,7 @@ import joinBanner from "../../styles/img/joinBanner.jpg";
 const initValue = {
 	username: "",
 	password: "",
-	// email: "",
+	email: "",
 	currency: 0,
 	termsCheck: false,
 	ageCheck: false
@@ -30,7 +31,7 @@ const initValue = {
 const initTip = {
 	username: { checked: null, msg: "" },
 	password: { checked: null, msg: "" },
-	// email: { checked: null, msg: "" },
+	email: { checked: null, msg: "" },
 	currency: { checked: null, msg: "" },
 	checkbox: { checked: null, msg: "" }
 };
@@ -38,7 +39,7 @@ const initTip = {
 const defaultLangId = GET_LANG_ID();
 
 const passwordCheck = val => {
-	let checked = false;
+	let checked = true;
 	let msg = "";
 
 	const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
@@ -52,14 +53,12 @@ const passwordCheck = val => {
 		} else if (!regx.test(val)) {
 			checked = false;
 			msg = "msg_PasswordVaildate";
-		} else {
-			checked = true;
 		}
 	}
 	return { checked, msg };
 };
 
-const JoinPanel = () => {
+export default () => {
 	const { t } = useTranslation();
 	const { setUserInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
@@ -137,10 +136,9 @@ const JoinPanel = () => {
 			msg = t("lbl_UsernameTooltip");
 		} else if (col === "password") {
 			msg = t("lbl_PasswordTooltip");
+		} else if (col === "email") {
+			msg = t("lbl_EmailToolTip");
 		}
-		// else if (col === "email") {
-		// 	msg = t("lbl_EmailToolTip");
-		// }
 
 		if (tip[col].msg === msg) {
 			msg = "";
@@ -183,12 +181,11 @@ const JoinPanel = () => {
 			let result = passwordCheck(val);
 			checked = result.checked;
 			msg = result.msg;
+		} else if (col === "email") {
+			let result = emailCheck(val);
+			checked = result.checked;
+			msg = result.msg;
 		}
-		// else if (col === "email") {
-		// 	let result = emailCheck(val);
-		// 	checked = result.checked;
-		// 	msg = result.msg;
-		// }
 
 		setTip(prev => {
 			return {
@@ -201,8 +198,8 @@ const JoinPanel = () => {
 		});
 	};
 
-	const usernameCheck = val => {
-		let checked = false;
+	const usernameCheck = async val => {
+		let checked = true;
 		let msg = "";
 
 		if (val === "") {
@@ -212,133 +209,53 @@ const JoinPanel = () => {
 			if (val.length < 6 || val.length > 18) {
 				checked = false;
 				msg = "msg_UsernameLength";
-			} else {
-				checked = true;
 			}
 		}
 
 		if (checked === true) {
-			api_site_ExistsUserName({ UserName: val }).then(
-				res => {
-					if (isMountedRef.current) {
-						if (res.data.errorCode === 0) {
-							if (res.data.data === true) {
-								setTip(prev => {
-									return {
-										...prev,
-										username: {
-											checked: false,
-											msg: t("msg_UsernameNotAvailable")
-										}
-									};
-								});
-							} else {
-								setTip(prev => {
-									return {
-										...prev,
-										username: {
-											checked: true,
-											msg: ""
-										}
-									};
-								});
-							}
-						}
-					}
-				},
-				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							popBoxType: defPopBoxType.ErrorMsg,
-							message: t("msg_ApiServerError"),
-							btnBar: (
-								<div className="btnGroup">
-									<button
-										className="btn-cancel"
-										onClick={ClickClose}>
-										{t("lbl_Close")}
-									</button>
-								</div>
-							)
-						});
+			const res = await api_site_ExistsUserName({ UserName: val });
+			if (isMountedRef.current) {
+				if (res.data.errorCode === 0) {
+					if (res.data.data === true) {
+						checked = false;
+						msg = "msg_UsernameNotAvailable";
 					}
 				}
-			);
+			}
 		}
 
 		return { checked, msg };
 	};
 
-	// const emailCheck = val => {
-	// 	let checked = false;
-	// 	let msg = "";
-	// 	const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+	const emailCheck = async val => {
+		let checked = true;
+		let msg = "";
+		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
 
-	// 	if (val === "") {
-	// 		checked = false;
-	// 		msg = "msg_MailWrongFormat";
-	// 	} else if (val !== "") {
-	// 		if (!regx.test(val)) {
-	// 			checked = false;
-	// 			msg = "msg_MailWrongFormat";
-	// 		} else {
-	// 			checked = true;
-	// 		}
-	// 	}
+		if (val === "") {
+			checked = false;
+			msg = "msg_MailWrongFormat";
+		} else if (val !== "") {
+			if (!regx.test(val)) {
+				checked = false;
+				msg = "msg_MailWrongFormat";
+			}
+		}
 
-	// 	if (checked === true) {
-	// 		api_site_ExistsEmail({ Email: val }).then(
-	// 			res => {
-	// 				if (isMountedRef.current) {
-	// 					if (res.data.errorCode === 0) {
-	// 						if (res.data.data === true) {
-	// 							setTip(prev => {
-	// 								return {
-	// 									...prev,
-	// 									email: {
-	// 										checked: false,
-	// 										msg: t("msg_MailExisted")
-	// 									}
-	// 								};
-	// 							});
-	// 						} else {
-	// 							setTip(prev => {
-	// 								return {
-	// 									...prev,
-	// 									email: {
-	// 										checked: true,
-	// 										msg: ""
-	// 									}
-	// 								};
-	// 							});
-	// 						}
-	// 					}
-	// 				}
-	// 			},
-	// 			err => {
-	// 				if (isMountedRef.current) {
-	// 					setPopBox({
-	// 						isOpen: true,
-	// 						popBoxType: defPopBoxType.ErrorMsg,
-	// 						message: t("msg_ApiServerError"),
-	// 						btnBar: (
-	// 							<div className="btnGroup">
-	// 								<button
-	// 									className="btn-cancel"
-	// 									onClick={ClickClose}>
-	// 									{t("lbl_Close")}
-	// 								</button>
-	// 							</div>
-	// 						)
-	// 					});
-	// 				}
-	// 			}
-	// 		);
-	// 	}
+		if (checked === true) {
+			const res = await api_site_ExistsEmail({ Email: val });
+			if (isMountedRef.current) {
+				if (res.data.errorCode === 0) {
+					if (res.data.data === true) {
+						checked = false;
+						msg = "msg_MailExisted";
+					}
+				}
+			}
 
-	// 	return { checked, msg };
-	// };
+			return { checked, msg };
+		}
+	};
 
 	const clickDropdown = () => {
 		setTip(prev => {
@@ -368,59 +285,70 @@ const JoinPanel = () => {
 		setPopBox({ isOpen: false });
 	};
 
-	const checkAll = () => {
-		let _usernameCheck = usernameCheck(userValue.username);
-		let _passwordCheck = passwordCheck(userValue.password);
-		// let _emailCheck = emailCheck(userValue.email);
-		let _termsCheck = userValue.termsCheck;
-		let _ageCheck = userValue.ageCheck;
+	const checkAll = async () => {
+		return await Promise.all([
+			usernameCheck(userValue.username),
+			emailCheck(userValue.email)
+		]).then(
+			res => {
+				let _usernameCheck = res[0];
+				let _emailCheck = res[1];
+				let _passwordCheck = passwordCheck(userValue.password);
 
-		let checked =
-			_usernameCheck.checked &&
-			_passwordCheck.checked &&
-			// _emailCheck.checked &&
-			_termsCheck &&
-			_ageCheck;
+				let _termsCheck = userValue.termsCheck;
+				let _ageCheck = userValue.ageCheck;
 
-		if (!checked) {
-			let checkboxMsg = "";
-			if (!_termsCheck || !_ageCheck) {
-				checkboxMsg = "lbl_Check18TCTooltip";
-			}
-			setTip(prev => {
-				return {
-					...prev,
-					username: {
-						checked: _usernameCheck.checked,
-						msg: t(_usernameCheck.msg)
-					},
-					password: {
-						checked: _passwordCheck.checked,
-						msg: t(_passwordCheck.msg)
-					},
-					// email: {
-					// 	checked: _emailCheck.checked,
-					// 	msg: t(_emailCheck.msg)
-					// },
-					checkbox: {
-						checked: true,
-						msg: t(checkboxMsg)
+				let checked =
+					_usernameCheck.checked &&
+					_passwordCheck.checked &&
+					_emailCheck.checked &&
+					_termsCheck &&
+					_ageCheck;
+
+				if (!checked) {
+					let checkboxMsg = "";
+					if (!_termsCheck || !_ageCheck) {
+						checkboxMsg = "lbl_Check18TCTooltip";
 					}
-				};
-			});
-		}
-		return checked;
+					setTip(prev => {
+						return {
+							...prev,
+							username: {
+								checked: _usernameCheck.checked,
+								msg: t(_usernameCheck.msg)
+							},
+							password: {
+								checked: _passwordCheck.checked,
+								msg: t(_passwordCheck.msg)
+							},
+							email: {
+								checked: _emailCheck.checked,
+								msg: t(_emailCheck.msg)
+							},
+							checkbox: {
+								checked: true,
+								msg: t(checkboxMsg)
+							}
+						};
+					});
+				}
+				return checked;
+			},
+			err => {
+				return false;
+			}
+		);
 	};
 
-	const clickSubmit = e => {
+	const clickSubmit = async e => {
 		e.preventDefault();
-		let checked = checkAll();
+		let checked = await checkAll();
 
 		if (checked) {
 			let regData = {
 				UserName: userValue.username,
 				Userpwd: userValue.password,
-				// Email: userValue.email,
+				Email: userValue.email,
 				CurrencyId: siteCurrency[userValue.currency].id,
 				UserLang: defaultLangId
 			};
@@ -567,11 +495,11 @@ const JoinPanel = () => {
 			<div className="joinloginModule">
 				<img src={joinBanner} alt="joinBanner" />
 				<form className="joinloginFunction" onSubmit={clickSubmit}>
-					<span className="title txt-yellow">{t("lbl_JoinNow")}</span>
+					<span className="title txt-orange">{t("lbl_JoinNow")}</span>
 					<div>
 						{t("lbl_LoginMsg")}
 						<button
-							className="txt-blue2"
+							className="txt-orange"
 							type="button"
 							onClick={openLogin}>
 							{t("lbl_LoginHere")}
@@ -579,7 +507,7 @@ const JoinPanel = () => {
 					</div>
 					<div className="inputModule">
 						<Inputbox
-							icon="icon-member txt-blue12"
+							icon="icon-member txt-orange"
 							placeholder={t("lbl_Username")}
 							value={userValue.username}
 							tip={tip.username.msg}
@@ -587,10 +515,11 @@ const JoinPanel = () => {
 							clickInfo={clickInfo.bind(this, "username")}
 							onChange={EditField.bind(null, "username")}
 							onBlur={checkValue.bind(null, "username")}
+							className="inputBox-org"
 						/>
 
 						<InputboxPSW
-							icon="icon-key txt-blue12"
+							icon="icon-key txt-orange"
 							inputType={`${!showPsw ? "password" : "text"}`}
 							placeholder={t("lbl_Password")}
 							value={userValue.password}
@@ -601,10 +530,11 @@ const JoinPanel = () => {
 							showPswHandler={showPswHandler}
 							checked={tip.password.checked}
 							clickInfo={clickInfo.bind(this, "password")}
+							className="inputBox-org"
 						/>
 
-						{/* <Inputbox
-							icon="icon-email txt-blue12"
+						<Inputbox
+							icon="icon-email txt-orange"
 							placeholder={t("lbl_Email")}
 							value={userValue.email}
 							tip={tip.email.msg}
@@ -612,12 +542,13 @@ const JoinPanel = () => {
 							clickInfo={clickInfo.bind(this, "email")}
 							onChange={EditField.bind(null, "email")}
 							onBlur={checkValue.bind(null, "email")}
-						/> */}
+							className="inputBox-org"
+						/>
 
-						<div className="inputBox">
+						<div className="inputBox-org">
 							<Dropdown
 								mainKey="join_currency"
-								icon="icon-coin-dollar txt-blue12"
+								icon="icon-coin-dollar txt-orange"
 								options={siteCurrency}
 								selectedIdx={userValue.currency}
 								i18n={t}
@@ -682,5 +613,3 @@ const JoinPanel = () => {
 		</div>
 	);
 };
-
-export default JoinPanel;

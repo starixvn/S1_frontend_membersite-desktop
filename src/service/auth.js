@@ -10,54 +10,54 @@ const isBrowser = typeof window !== `undefined`;
 export const LOGIN = async ({ userName, password }) => {
 	if (!isBrowser) return false;
 
-	const result = await api_account_UserLogin({
-		UserName: userName,
-		Userpwd: password,
-		isPersistent: true
-	}).then(
-		res => {
-			let errMsg = res.data.message;
-			let isLogin = false;
-			let userData = {};
-			if (res.data.errorCode === 0) {
-				let userlangId = res.data.message.replace("/", "");
+	let result = {};
+	try {
+		const res = await api_account_UserLogin({
+			UserName: userName,
+			Userpwd: password,
+			isPersistent: true
+		});
 
-				api_accountStrict_GetCustProfile().then(res_custInfo => {
-					let _loginUser = {
-						userName: userName,
-						langId: userlangId,
-						isLogin: true
-					};
+		let errMsg = res.data.message;
+		let isLogin = false;
+		let userData = {};
+		if (res.data.errorCode === 0) {
+			let userlangId = res.data.message.replace("/", "");
 
-					if (res_custInfo.data.errorCode === 0) {
-						let data = res_custInfo.data.data;
-						_loginUser = {
-							..._loginUser,
-							...data
-						};
-					}
-					errMsg = "";
-					isLogin = true;
-					userData = _loginUser;
-				});
+			const res_custInfo = await api_accountStrict_GetCustProfile();
+			let _loginUser = {
+				userName: userName,
+				langId: userlangId,
+				isLogin: true
+			};
+
+			if (res_custInfo.data.errorCode === 0) {
+				let data = res_custInfo.data.data;
+				_loginUser = {
+					..._loginUser,
+					...data
+				};
 			}
 
-			return {
-				errorCode: res.data.errorCode,
-				message: errMsg,
-				isLogin: isLogin,
-				userData: userData
-			};
-		},
-		err => {
-			return {
-				errorCode: 999,
-				message: "",
-				isLogin: false,
-				userData: {}
-			};
+			errMsg = "";
+			isLogin = true;
+			userData = _loginUser;
 		}
-	);
+
+		result = {
+			errorCode: res.data.errorCode,
+			message: errMsg,
+			isLogin: isLogin,
+			userData: userData
+		};
+	} catch (error) {
+		result = {
+			errorCode: 999,
+			message: "",
+			isLogin: false,
+			userData: {}
+		};
+	}
 
 	return result;
 };
