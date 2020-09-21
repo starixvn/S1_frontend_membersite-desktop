@@ -63,5 +63,27 @@ export default {
 	},
 	changePassword: {
 		root: "changePassword"
+	},
+	forgetPassword: {
+		root: "forgetPassword"
+	},
+	news: {
+		root: "news",
+		sub: {
+			newsInfo: {
+				root: "newsInfo"
+			}
+		}
+	},
+	promotion: {
+		root: "promotion",
+		sub: {
+			promotionInfo: {
+				root: "promotionInfo"
+			}
+		}
+	},
+	resetPassword: {
+		root: "resetPassword"
 	}
 };

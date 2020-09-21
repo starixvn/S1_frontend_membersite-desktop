@@ -90,3 +90,15 @@ export const deleteCookie = cookieName => {
 			cookieName + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 	}
 };
+
+const SetReplaceChar = (str, idx, newChar) => {
+	return `${str.substr(0, idx)}${newChar}${str.substr(idx + newChar.length)}`;
+};
+
+export const getNewLanguagePath = langId => {
+	let url =
+		window.location.pathname +
+		window.location.search +
+		window.location.hash;
+	return SetReplaceChar(url, 1, langId);
+};
