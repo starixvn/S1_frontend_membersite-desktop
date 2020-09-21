@@ -157,7 +157,7 @@ const Content = () => {
 			</div>
 			<form onSubmit={clickSubmit} className="forgetPassWord">
 				<Inputbox
-					inputBoxClassName="inputBox-white"
+					className="inputBox-white"
 					icon="txt-blue icon-email "
 					title={t("lbl_Email")}
 					value={userEmail}
@@ -172,7 +172,6 @@ const Content = () => {
 						{t("lbl_Submit")}
 					</button>
 				</div>
-
 			</form>
 		</div>
 	);

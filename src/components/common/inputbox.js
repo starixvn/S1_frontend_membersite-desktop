@@ -21,7 +21,7 @@ export default props => {
 
 	return (
 		<>
-			<div className={props.inputBoxClassName ?? "inputBox"}>
+			<div className={props.className ?? "inputBox"}>
 				{props.icon ? <i className={`icon ${props.icon}`}></i> : null}
 				{props.title ? <i className="txt-blue">{props.title}</i> : null}
 				<input
