@@ -167,7 +167,7 @@ const Content = () => {
 	return (
 		<div className="infoModule">
 			<div className="inside-title icon icon-icon32px_openmail">
-				<span>Announcement</span>
+				<span>{t("lbl_Announcement")}</span>
 			</div>
 			<div className="announcement">
 				<div className="list">{arr}</div>
