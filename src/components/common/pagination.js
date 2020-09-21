@@ -40,7 +40,6 @@ export const Pagination = ({ currentPage, totalPages, clickPageNumber }) => {
 		<div className="pagination">
 			<a onClick={_clickPageNumber.bind(this, defPage.prevPage)}>❮</a>
 			{_arr}
-
 			<a onClick={_clickPageNumber.bind(this, defPage.nextPage)}>❯</a>
 		</div>
 	);
