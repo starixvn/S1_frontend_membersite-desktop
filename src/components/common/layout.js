@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Header from "../layout/header";
+import Header from "../header/header";
 import Footer from "../layout/footer";
 import SEO from "../seo";
 import PopBox from "./popBox";

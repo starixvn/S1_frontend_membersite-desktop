@@ -158,7 +158,7 @@ const IndexPage = () => {
 						</div>
 					</section>
 					<img src={IndexCenterBanner} alt="IndexCenterBanner" />
-					<div className="quickLink">
+					{/* <div className="quickLink">
 						<div>
 							<i className="icon icon-arrow-left2">Contact Us</i>
 						</div>
@@ -178,7 +178,7 @@ const IndexPage = () => {
 								</li>
 							</ul>
 						</div>
-					</div>
+					</div> */}
 				</main>
 			</Layout>
 		</Wrapper>
