@@ -139,6 +139,9 @@
 	"lbl_Information": "Information",
 	"lbl_PersonalMsg": "Personal Message",
 	"lbl_Close": "Close",
+	"lbl_WithdrawalHistory": "Withdrawal History",
+	"msg_AmountFormatTip":"Please note that the expression amount of the system are as follows: 15,000 = 15,000,000 VND, fifteen million.",
+	"lbl_QuickPick": "Quick Pick",
 	"lbl_Yes": "Yes",
 	"lbl_No": "No"
 }

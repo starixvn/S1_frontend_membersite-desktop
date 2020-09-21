@@ -13,6 +13,7 @@ import Layout from "../components/common/layout";
 import moment from "moment";
 import Filter from "../components/common/historyFilter";
 import LeftMenu from "../components/common/leftMenu";
+import { isConvert } from "../components/common/common.js";
 
 export default () => {
 	return (
@@ -40,8 +41,8 @@ const Content = () => {
 	const [filterData, setFilterData] = useState(null);
 	const [keepData, setKeepData] = useState(null);
 	const [pagination, setPagination] = useState(initPagination);
-	const [loading, setLoading] = useState(false);
 	const isMountedRef = useRef(null);
+	const _isConvert = isConvert(userInfo.currencyId);
 
 	const initPagination = {
 		totalPages: 0,
@@ -141,7 +142,6 @@ const Content = () => {
 		};
 
 		const ClickConfirm = () => {
-			console.log(transId);
 			setPopBox({ isOpen: false });
 			api_payment_SetWithdrawalCancel(transId).then(
 				res => {
@@ -225,6 +225,7 @@ const Content = () => {
 				amount={item.amount}
 				status={item.status}
 				ClickCancel={ClickCancel.bind(this, item.transId)}
+				_isConvert={_isConvert}
 			/>
 		);
 	});
@@ -237,7 +238,6 @@ const Content = () => {
 			<Filter submitHandler={clickDateSubmit} keepData={keepData} />
 			{getHistory ? (
 				<div className="list history">
-					<div className="tip active">{t("msg_AmountFormatTip")}</div>
 					<div className="listHeader">
 						<div>{t("lbl_NO")}</div>
 						<div>
@@ -246,16 +246,7 @@ const Content = () => {
 						<div>{t("lbl_ID")}</div>
 						<div>{t("lbl_Amount")}</div>
 						<div>{t("lbl_Status")}</div>
-						<div>
-							{t("lbl_Action")}
-							{/* <ReloadSpin
-								func={clickDateSubmit.bind(
-									this,
-									filterData?.StartDate,
-									filterData?.EndDate
-								)}
-							/> */}
-						</div>
+						<div>{t("lbl_Action")}</div>
 					</div>
 					{getHistory?.length > 0 ? (
 						<div className="listBody">{arr}</div>
