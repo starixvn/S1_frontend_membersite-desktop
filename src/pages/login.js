@@ -80,41 +80,41 @@ const Content = () => {
 		e.preventDefault();
 		let checked = userValue.username && userValue.password;
 		if (checked) {
-			await LOGIN({
+			let { res } = await LOGIN({
 				userName: userValue.username,
 				password: userValue.password
-			}).then(res => {
-				if (res.errorCode === 0) {
-					if (isMountedRef.current) {
-						setUserInfo(() => ({
-							...res.userData,
-							isLogin: res.isLogin
-						}));
-					}
-				} else if (
-					res.errorCode === 1101 ||
-					res.errorCode === 1102 ||
-					res.errorCode === 9000
-				) {
-					if (isMountedRef.current) {
-						setTip(prev => {
-							return { ...prev, username: res.message };
-						});
-						setWarning(prev => {
-							return { ...prev, username: true };
-						});
-					}
-				} else if (res.errorCode === 1001) {
-					if (isMountedRef.current) {
-						setTip(prev => {
-							return { ...prev, password: res.message };
-						});
-						setWarning(prev => {
-							return { ...prev, password: true };
-						});
-					}
-				}
 			});
+
+			if (res.errorCode === 0) {
+				if (isMountedRef.current) {
+					setUserInfo(() => ({
+						...res.userData,
+						isLogin: res.isLogin
+					}));
+				}
+			} else if (
+				res.errorCode === 1101 ||
+				res.errorCode === 1102 ||
+				res.errorCode === 9000
+			) {
+				if (isMountedRef.current) {
+					setTip(prev => {
+						return { ...prev, username: res.message };
+					});
+					setWarning(prev => {
+						return { ...prev, username: true };
+					});
+				}
+			} else if (res.errorCode === 1001) {
+				if (isMountedRef.current) {
+					setTip(prev => {
+						return { ...prev, password: res.message };
+					});
+					setWarning(prev => {
+						return { ...prev, password: true };
+					});
+				}
+			}
 		} else {
 			const m1 = userValue.username === "" ? "msg_UsernameReq" : "";
 			const m2 = userValue.password === "" ? "msg_PasswordReq" : "";
