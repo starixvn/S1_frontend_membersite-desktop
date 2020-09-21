@@ -9,8 +9,8 @@ export default () => {
 		<Wrapper afterLogin={true}>
 			<Layout>
 				<main>
-					{/* test only, remove later. start */}
 					<section className="inside">
+						{/* test only, remove later. start */}
 						<div id="leftMenu">
 							<div className="menuModule">
 								<button className="menuHeader">Cashier</button>
@@ -63,11 +63,11 @@ export default () => {
 								</button>
 							</div>
 						</div>
+						{/* test only, remove later. end */}
 						<div className="rightModule">
 							<Message />
 						</div>
 					</section>
-					{/* test only, remove later. end */}
 				</main>
 			</Layout>
 		</Wrapper>

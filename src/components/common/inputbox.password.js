@@ -3,7 +3,7 @@ import React from "react";
 export default props => {
 	return (
 		<>
-			<div className="inputBox">
+			<div className={props.className ? props.className : "inputBox"}>
 				<i className={`icon ${props.icon}`}></i>
 				<input
 					type={props.inputType ?? "text"}
