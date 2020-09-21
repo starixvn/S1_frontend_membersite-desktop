@@ -9,6 +9,7 @@ export default ({ btnBar, message, errorCode, icon = "icon-library" }) => {
 
 	const startTimer = () => {
 		timerRef.current = setInterval(() => {
+			console.log("!!");
 			setCountDownSecond(prev => prev - 1);
 		}, 1000);
 	};
@@ -18,10 +19,10 @@ export default ({ btnBar, message, errorCode, icon = "icon-library" }) => {
 			return ("000" + num).slice(size * -1);
 		};
 		let time = parseFloat(secondsInTime).toFixed(3);
-		// let hours = Math.floor(time / 60 / 60);
+		let hours = Math.floor(time / 60 / 60);
 		let minutes = Math.floor(time / 60) % 60;
 		let seconds = Math.floor(time - minutes * 60);
-		// let milliseconds = time.slice(-3);
+		let milliseconds = time.slice(-3);
 		return `${pad(minutes, 2)}:${pad(seconds, 2)}`;
 	};
 
