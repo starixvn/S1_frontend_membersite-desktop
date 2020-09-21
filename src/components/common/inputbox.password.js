@@ -3,8 +3,8 @@ import React from "react";
 export default props => {
 	return (
 		<>
-			<div className="inputBox">
-				<i className={`icon ${props.icon}`}></i>
+			<div className="inputBox-white">
+				<i className="txt-blue">{props.title}</i>
 				<input
 					type={props.inputType ?? "text"}
 					placeholder={props.placeholder}
