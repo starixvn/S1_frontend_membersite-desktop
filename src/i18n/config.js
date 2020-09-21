@@ -1,6 +1,6 @@
 import i18n from "i18next";
 
-export const langList = ["cs", "en"];
+export const langList = ["cs", "en", "th", "id"];
 export const defaultLang = "en";
 
 const setResources = () => {
