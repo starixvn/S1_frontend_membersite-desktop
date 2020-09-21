@@ -21,11 +21,9 @@ export default props => {
 
 	return (
 		<>
-			<div className={props.className ? props.className : "inputBox"}>
+			<div className={props.inputBoxClassName ?? "inputBox"}>
 				{props.icon ? <i className={`icon ${props.icon}`}></i> : null}
-				{props.title ? (
-					<i className="txt-blue12">{props.title}</i>
-				) : null}
+				{props.title ? <i className="txt-blue">{props.title}</i> : null}
 				<input
 					type={props.inputType ?? "text"}
 					className={props._isConvert ? "text-right" : ""}
@@ -61,7 +59,7 @@ export default props => {
 					</div>
 				) : null}
 			</div>
-			{props.inputType !== "date" ? (
+			{props.inputType !== "date" && props.tip !== "" ? (
 				<div className={`tip${props.tip ? " active" : ""}`}>
 					{props.tip}
 				</div>
