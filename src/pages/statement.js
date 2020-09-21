@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { api_payment_GetStatement } from "../service/api/payment";
-import { number_format } from "../components/common/common";
+import { number_format, isConvert } from "../components/common/common";
 import { useTranslation } from "react-i18next";
 import { userInfoContext, popBoxContext } from "../components/common/context";
 import { Pagination } from "../components/common/pagination";
@@ -9,7 +9,6 @@ import Layout from "../components/common/layout";
 import Filter from "../components/common/historyFilter";
 import moment from "moment";
 import LeftMenu from "../components/common/leftMenu";
-// import Loading from "../components/common/loading";
 import { defPopBoxType } from "../components/common/popBox";
 
 export default () => {
@@ -37,13 +36,13 @@ const initPagination = {
 const Content = () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
+	const _isConvert = isConvert(userInfo.currencyId);
 	const { setPopBox } = useContext(popBoxContext);
 	const [getHistory, setGetHistory] = useState(null);
 	const [processing, setProcessing] = useState(false);
 	const [filterData, setFilterData] = useState(null);
 	const [keepData, setKeepData] = useState(null);
 	const [pagination, setPagination] = useState(initPagination);
-	const [loading, setLoading] = useState(false);
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -155,9 +154,9 @@ const Content = () => {
 				</div>
 				<div>{item.refTransId}</div>
 				<div>{item.typeName}</div>
-				<div>{number_format(item.changeAmount, false)}</div>
-				<div>{number_format(item.beforeAmount, false)}</div>
-				<div>{number_format(item.afterAmount, false)}</div>
+				<div>{number_format(item.changeAmount, _isConvert)}</div>
+				<div>{number_format(item.beforeAmount, _isConvert)}</div>
+				<div>{number_format(item.afterAmount, _isConvert)}</div>
 			</div>
 		);
 	});
@@ -171,7 +170,6 @@ const Content = () => {
 
 			{getHistory ? (
 				<div className="list history">
-					<div className="tip active">{t("msg_AmountFormatTip")}</div>
 					<div className="listHeader">
 						<div>{t("lbl_NO")}</div>
 						<div>
@@ -181,16 +179,7 @@ const Content = () => {
 						<div>{t("lbl_TypeName")}</div>
 						<div>{t("lbl_ChangeAmount")}</div>
 						<div>{t("lbl_BeforeAmount")}</div>
-						<div>
-							{t("lbl_AfterAmount")}
-							{/* <ReloadSpin
-								func={clickDateSubmit.bind(
-									this,
-									filterData?.StartDate,
-									filterData?.EndDate
-								)}
-							/> */}
-						</div>
+						<div>{t("lbl_AfterAmount")}</div>
 					</div>
 					{getHistory?.length > 0 ? (
 						<div className="listBody">{arr}</div>
