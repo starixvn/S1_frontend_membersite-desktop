@@ -13,6 +13,7 @@ import Layout from "../components/common/layout";
 import Filter from "../components/common/historyFilter";
 import moment from "moment";
 import LeftMenu from "../components/common/leftMenu";
+import { isConvert } from "../components/common/common";
 
 export default () => {
 	return (
@@ -43,8 +44,8 @@ const Content = () => {
 		totalPages: 0,
 		currentPage: 1
 	});
-	const [loading, setLoading] = useState(false);
 	const isMountedRef = useRef(null);
+	const _isConvert = isConvert(userInfo.currencyId);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -159,7 +160,6 @@ const Content = () => {
 
 	const ClickCancel = transId => {
 		const ClickConfirm = () => {
-			setLoading(true);
 			setPopBox({ isOpen: false });
 
 			api_payment_SetDepositCancel(transId).then(
@@ -170,16 +170,7 @@ const Content = () => {
 								filterData,
 								pagination.currentPage
 							);
-							// setHistory(prevState => {
-							// 	let newD = [...prevState];
-							// 	let idx = newD.findIndex(
-							// 		x => x.transId === transId
-							// 	);
-							// 	newD[idx].status = 5;
-							// 	return newD;
-							// });
 						}
-						setLoading(false);
 					}
 				},
 				err => {
@@ -198,7 +189,6 @@ const Content = () => {
 								</div>
 							)
 						});
-						setLoading(false);
 					}
 				}
 			);
@@ -243,6 +233,7 @@ const Content = () => {
 				depositType={item.depositType}
 				status={item.status}
 				amount={item.amount}
+				_isConvert={_isConvert}
 				ClickCancel={ClickCancel.bind(this, item.transId)}
 				SubmitProof={SubmitProof.bind(
 					this,
@@ -275,16 +266,7 @@ const Content = () => {
 						<div>{t("lbl_Method")}</div>
 						<div>{t("lbl_Amount")}</div>
 						<div>{t("lbl_Status")}</div>
-						<div>
-							{t("lbl_Action")}
-							{/* <ReloadSpin
-								func={clickDateSubmit.bind(
-									this,
-									filterData?.StartDate,
-									filterData?.EndDate
-								)}
-							/> */}
-						</div>
+						<div>{t("lbl_Action")}</div>
 					</div>
 					{history?.length > 0 ? (
 						<div className="listBody">{arr}</div>
