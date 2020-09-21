@@ -113,7 +113,6 @@ const Content = () => {
 		};
 
 		if (_oldPsw.checked && _newPsw.checked) {
-			console.log("userPsw::", userPsw);
 			api_account_ChangePassword({
 				OldPassword: userPsw.oldPsw,
 				NewPassword: userPsw.newPsw
