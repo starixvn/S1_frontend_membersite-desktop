@@ -2,15 +2,43 @@ import React, { useContext } from "react";
 import { popBoxContext } from "./context";
 import Cancel from "./popBox.cancel";
 import UploadBankSlip from "./popBox.uploadBankSlip";
-import ConfirmDelete from "./popBox.ConfirmDelete";
 import Success from "./popBox.success";
 import ErrorMsg from "./popBox.errorMsg";
+import Login from "./popBox.login";
+import Join from "./popBox.join";
+import AddBankAccount from "./popBox.addBankAccount";
+import AddBankSuccess from "./popBox.addBankSuccess";
+import ConfirmDelete from "./popBox.ConfirmDelete";
+import ProfileConfirmCheck from "./popBox.profileConfirmCheck";
+import ProfileCompelete from "./popBox.profileCompelete";
+import ChangePsw from "./popBox.changePsw";
+import LogoutHint from "./popBox.logoutHint";
+// import Loading from "./loading";
+import DepositHint from "./popBox.depositHint";
+import WithdrawalSuccess from "./popBox.withdrawalSuccess";
+import OTPHint from "./popBox.otpHint";
+import VerifyPhoneForm from "./popBox.verifyPhoneForm";
+import UpdateProfile from "./popBox.updateProfile";
 
 export const defPopBoxType = {
 	Cancel: "Cancel",
 	UploadBankSlip: "UploadBankSlip",
 	Success: "Success",
-	ErrorMsg: "ErrorMsg"
+	ErrorMsg: "ErrorMsg",
+	Login: "Login",
+	Join: "Join",
+	AddBankAccount: "AddBankAccount",
+	AddBankSuccess: "AddBankSuccess",
+	ConfirmDelete: "ConfirmDelete",
+	ProfileConfirmCheck: "ProfileConfirmCheck",
+	ProfileCompelete: "ProfileCompelete",
+	ChangePsw: "ChangePsw",
+	LogoutHint: "LogoutHint",
+	DepositHint: "DepositHint",
+	OTPHint: "OTPHint",
+	VerifyPhoneForm: "verifyPhoneForm",
+	WithdrawalSuccess: "WithdrawalSuccess",
+	UpdateProfile: "UpdateProfile"
 };
 
 export default () => {
@@ -42,6 +70,24 @@ export default () => {
 			);
 			break;
 
+		case defPopBoxType.Login:
+			content = <Login />;
+			break;
+
+		case defPopBoxType.Join:
+			content = <Join />;
+			break;
+
+		case defPopBoxType.AddBankAccount:
+			content = (
+				<AddBankAccount bankInfoSysList={popBox.bankInfoSysList} />
+			);
+			break;
+
+		case defPopBoxType.AddBankSuccess:
+			content = <AddBankSuccess btnBar={popBox.btnBar} />;
+			break;
+
 		case defPopBoxType.ConfirmDelete:
 			content = (
 				<ConfirmDelete
@@ -50,6 +96,65 @@ export default () => {
 					message2={popBox.message2}
 				/>
 			);
+			break;
+
+		case defPopBoxType.ProfileConfirmCheck:
+			content = (
+				<ProfileConfirmCheck
+					btnBar={popBox.btnBar}
+					accountName={popBox.accountName}
+				/>
+			);
+			break;
+
+		case defPopBoxType.ProfileCompelete:
+			content = <ProfileCompelete {...popBox} />;
+			break;
+
+		case defPopBoxType.ChangePsw:
+			content = (
+				<ChangePsw
+					btnBar={popBox.btnBar}
+					title={popBox.title}
+					message={popBox.message}
+					ClickClose={popBox.ClickClose}
+				/>
+			);
+			break;
+
+		case defPopBoxType.LogoutHint:
+			content = (
+				<LogoutHint btnBar={popBox.btnBar} content={popBox.content} />
+			);
+			break;
+
+		case defPopBoxType.DepositHint:
+			content = <DepositHint />;
+			break;
+
+		case defPopBoxType.WithdrawalSuccess:
+			content = <WithdrawalSuccess btnBar={popBox.btnBar} />;
+			break;
+
+		case defPopBoxType.OTPHint:
+			content = <OTPHint btnBar={popBox.btnBar} />;
+			break;
+
+		case defPopBoxType.VerifyPhoneForm:
+			content = <VerifyPhoneForm request_id={popBox.request_id} />;
+			break;
+
+		case defPopBoxType.UpdateProfile:
+			content = (
+				<UpdateProfile
+					title={popBox.title}
+					content={popBox.content}
+					btnBar={popBox.btnBar}
+				/>
+			);
+			break;
+
+		case defPopBoxType.default:
 			break;
 
 		default:
@@ -63,4 +168,16 @@ export default () => {
 	) : (
 		<></>
 	);
+
+	// return popBox.isOpen ? (
+	// 	popBox.loading ? (
+	// 		<Loading />
+	// 	) : (
+	// 		<div id="popup" className="active">
+	// 			<div className="pop">{content}</div>
+	// 		</div>
+	// 	)
+	// ) : (
+	// 	<></>
+	// );
 };
