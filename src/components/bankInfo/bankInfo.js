@@ -143,7 +143,6 @@ export default () => {
 
 	return (
 		<>
-			{console.log("step:", state.step)}
 			<div className="infoModule">
 				<div className="inside-title icon icon-icon32px_bank-account">
 					<span>{t("lbl_BankInfo")}</span>
