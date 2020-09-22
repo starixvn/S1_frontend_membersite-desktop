@@ -1,6 +1,7 @@
 const siteName = "Nova88";
 
 export const SiteInfo = {
+	langCookie: "nova88LangId",
 	socialMedia: {
 		fb: {
 			link: "https://www.facebook.com/nova88official/",
