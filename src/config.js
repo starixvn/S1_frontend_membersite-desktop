@@ -1,5 +1,22 @@
 const siteName = "Nova88";
 
+export const SiteInfo = {
+	socialMedia: {
+		fb: {
+			link: "https://www.facebook.com/nova88official/",
+			displayKey: "lbl_Facebook"
+		},
+		twitter: {
+			link: "https://twitter.com/nova88official",
+			displayKey: "lbl_Twitter"
+		},
+		ig: {
+			link: "https://www.instagram.com/nova88.net_official",
+			displayKey: "lbl_Instagram"
+		}
+	}
+};
+
 export default process.env.NODE_ENV === "production"
 	? {
 			siteName,

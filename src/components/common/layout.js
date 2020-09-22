@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header";
-import Footer from "../layout/footer";
+import Footer from "../footer/footer";
 import SEO from "../seo";
 import PopBox from "./popBox";
 import "../../styles/css/swiper.css";
