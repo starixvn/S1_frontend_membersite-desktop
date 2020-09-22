@@ -26,5 +26,9 @@ export default {
 	fishing: {
 		tpId: 7,
 		gameId: 10
+	},
+	badmintion: {
+		tpId: 1,
+		gameId: 9
 	}
 };

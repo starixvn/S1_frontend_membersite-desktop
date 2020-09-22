@@ -255,7 +255,7 @@
 	"lbl_RolloverOver": "Insufficient rollover turnover",
 	"lbl_DepositOver": "Your required deposit amount had exceeded your current available balance.",
 	"lbl_WithdrawalOver": "Your required withdrawal amount had exceeded your elegible withdrawal amount",
-	"lbl_AboutGoal123": "Goal123.com",
+	"lbl_AboutNova88": "Nova88",
 	"lbl_PrivacyPolicy": "Privacy Policy",
 	"lbl_Affiliates": "Affiliates",
 	"lbl_All": "All",
@@ -348,5 +348,13 @@
 	"lbl_Casino_PP_AztecGems":"Aztec Gems",
 	"lbl_Casino_PP_SweetBonanza":"Sweet Bonanza",
 	"lbl_VirtualGames":"Virtual Games",
-	"lbl_VirtualSports":"Virtual Sports"
+	"lbl_VirtualSports":"Virtual Sports",
+	"lbl_SocialMedia":"Social Media",
+	"lbl_Instagram":"Instagram",
+	"lbl_Facebook":"Facebook",
+	"lbl_Twitter":"Twitter",
+	"lbl_Licenses":"Licenses",
+	"lbl_Responsibility":"Responsibility",
+	"lbl_Security":"Security",
+	"lbl_Payment":"Payment"
 }
