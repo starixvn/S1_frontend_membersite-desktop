@@ -54,6 +54,10 @@ const BeforeLogin = ({ langId }) => {
 
 const defCashierLinks = [
 	{
+		displayKey: "lbl_Deposit",
+		href: path.deposit.root
+	},
+	{
 		displayKey: "lbl_TransferFunds",
 		href: path.transferFunds.root
 	},
@@ -137,11 +141,6 @@ const AfterLogin = () => {
 
 	return (
 		<>
-			<Link
-				to={`/${userInfo.langId}/${path.deposit.root}`}
-				className="deposit-btn icon icon-icon32px_deposit">
-				{t("lbl_Deposit")}
-			</Link>
 			<DropdownHeader
 				mainKey={`header-cashierLink`}
 				langId={userInfo.langId}
