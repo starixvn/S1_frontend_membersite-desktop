@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { readCookie, setCookie } from "../common/common";
 import { defPopBoxType } from "../common/popBox";
 import { api_account_GetWalletInfo } from "../../service/api/account";
+import SwipperBanner from "../common/swipperBanner";
 
-import IndexBanner from "../../styles/img/indexBanner.jpg";
 import NpcSoccer from "../../styles/img/npc-soccer.png";
 import NpcSoccerBG from "../../styles/img/soccerBG.jpg";
 
@@ -147,20 +147,7 @@ const IndexPage = () => {
 	});
 	return (
 		<main>
-			<div className="swiper-container">
-				<div className="swiper-wrapper">
-					<div className="swiper-slide">
-						<img src={IndexBanner} alt="banner" />
-					</div>
-					<div className="swiper-slide">
-						<img src={IndexBanner} alt="banner" />
-					</div>
-					<div className="swiper-slide">
-						<img src={IndexBanner} alt="banner" />
-					</div>
-				</div>
-				<div className="swiper-pagination"></div>
-			</div>
+			<SwipperBanner ImgFolder="Promotion" filterHideInHome={true} />
 			<Marquee />
 			<section>
 				<div className="gamelistsport">{gameListRows}</div>
