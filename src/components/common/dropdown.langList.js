@@ -2,6 +2,7 @@ import React, { Component, createRef } from "react";
 import PropTypes from "prop-types";
 import { api_account_SetLanguage } from "../../service/api/account";
 import { getNewLanguagePath, setCookie } from "../common/common";
+import { SiteInfo } from "../../config";
 
 const defLangDisplayText = {
 	en: "English",
@@ -50,15 +51,17 @@ export class Dropdown extends Component {
 	};
 
 	selectItem = async (value, newPath) => {
-		this.setState({ isOpen: false });
-		if (this.props.isLogin) {
-			try {
-				api_account_SetLanguage(value);
-			} catch (e) {}
-		}
+		if (value !== this.props.selectedValue) {
+			this.setState({ isOpen: false });
+			if (this.props.isLogin) {
+				try {
+					api_account_SetLanguage(value);
+				} catch (e) {}
+			}
 
-		window.location.href = newPath;
-		setCookie("goalLangId", value);
+			window.location.href = newPath;
+			setCookie(SiteInfo.langCookie, value);
+		}
 	};
 
 	render() {
