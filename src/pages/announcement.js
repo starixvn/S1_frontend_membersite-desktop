@@ -6,6 +6,7 @@ import { userInfoContext, popBoxContext } from "../components/common/context";
 import { defPopBoxType } from "../components/common/popBox";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
+import LeftMenu from "../components/common/leftMenu";
 
 export default () => {
 	return (
@@ -13,61 +14,7 @@ export default () => {
 			<Layout>
 				<main>
 					<section className="inside">
-						{/* test only, remove later. start */}
-						<div id="leftMenu">
-							<div className="menuModule">
-								<button className="menuHeader">Cashier</button>
-								<a className="menuSelect active">
-									<span>Deposit</span>
-								</a>
-								<a className="menuSelect">
-									<span>Transfer Funds</span>
-								</a>
-								<a className="menuSelect">
-									<span>Withdrawal</span>
-								</a>
-							</div>
-							<div className="menuModule">
-								<button className="menuHeader">History</button>
-								<a className="menuSelect">
-									<span>Deposit History</span>
-								</a>
-								<a className="menuSelect">
-									<span>Transfer History</span>
-								</a>
-								<a className="menuSelect">
-									<span>Withdrawal History</span>
-								</a>
-								<a className="menuSelect">
-									<span>Statement</span>
-								</a>
-							</div>
-							<div className="menuModule">
-								<button className="menuHeader">
-									My Account
-								</button>
-								<a className="menuSelect">
-									<span>Change Password</span>
-								</a>
-								<a className="menuSelect">
-									<span>Profile</span>
-								</a>
-								<a className="menuSelect">
-									<span>Bank Info</span>
-								</a>
-							</div>
-							<div className="menuModule">
-								<button className="menuHeader">Message</button>
-								<button className="menuSelect">
-									<span>Personal Message</span>
-								</button>
-								<button className="menuSelect">
-									<span>Announcement</span>
-								</button>
-							</div>
-						</div>
-						{/* test only, remove later. end */}
-
+						<LeftMenu />
 						<div className="rightModule">
 							<Content />
 						</div>
