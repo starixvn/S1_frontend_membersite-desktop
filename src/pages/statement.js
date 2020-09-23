@@ -144,7 +144,7 @@ const Content = () => {
 
 	let arr = getHistory?.map((item, idx) => {
 		return (
-			<div>
+			<div key={`statement-${idx}`}>
 				<div>{idx + 1}</div>
 				<div>
 					{moment(item.createTime).format("DD/MM/YYYY")}
