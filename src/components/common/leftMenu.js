@@ -1,56 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "@reach/router";
+import { userInfoContext } from "../common/context";
+import { defLeftMenu } from "./leftMenu.def";
 
 export default () => {
-	return (
-		<div id="leftMenu">
-			<div className="menuModule">
-				<button className="menuHeader">Cashier</button>
-				<button className="menuSelect active">
-					<span>Deposit</span>
-				</button>
-				<button className="menuSelect">
-					<span>Transfer Funds</span>
-				</button>
-				<button className="menuSelect">
-					<span>Withdrawal</span>
-				</button>
+	const { t } = useTranslation();
+	const { userInfo } = useContext(userInfoContext);
+
+	let currentPage =
+		typeof window !== undefined ? `${window.location.pathname}/` : "";
+
+	let arr = Object.keys(defLeftMenu).map(menuKey => {
+		let menu = defLeftMenu[menuKey];
+
+		let subMenuArr = Object.keys(menu.subMenu).map(_key => {
+			let _active = currentPage.includes(
+				`/${userInfo.langId}/${menu.subMenu[_key].path}/`
+			)
+				? " active"
+				: "";
+
+			return (
+				<Link
+					key={`leftMenu-subMenu-${_key}`}
+					to={`/${userInfo.langId}/${menu.subMenu[_key].path}`}
+					className={`menuSelect${_active}`}>
+					<span>{t(menu.subMenu[_key].displayKey)}</span>
+				</Link>
+			);
+		});
+
+		return (
+			<div className="menuModule" key={`leftMenu-${menu.displayKey}`}>
+				<button className="menuHeader">{t(menu.displayKey)}</button>
+				{subMenuArr}
 			</div>
-			<div className="menuModule">
-				<button className="menuHeader">History</button>
-				<button className="menuSelect">
-					<span>Deposit History</span>
-				</button>
-				<button className="menuSelect">
-					<span>Transfer History</span>
-				</button>
-				<button className="menuSelect">
-					<span>Withdrawal History</span>
-				</button>
-				<button className="menuSelect">
-					<span>Statement</span>
-				</button>
-			</div>
-			<div className="menuModule">
-				<button className="menuHeader">My Account</button>
-				<button className="menuSelect">
-					<span>Change Password</span>
-				</button>
-				<button className="menuSelect">
-					<span>Profile</span>
-				</button>
-				<button className="menuSelect">
-					<span>Bank Info</span>
-				</button>
-			</div>
-			<div className="menuModule">
-				<button className="menuHeader">Message</button>
-				<button className="menuSelect">
-					<span>Personal Message</span>
-				</button>
-				<button className="menuSelect">
-					<span>Announcement</span>
-				</button>
-			</div>
-		</div>
-	);
+		);
+	});
+
+	return <div id="leftMenu">{arr}</div>;
 };
