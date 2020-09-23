@@ -52,8 +52,8 @@ export default ({
 	});
 	return (
 		<div
-			className={`proList ${
-				filter === defFilterType.expiry ? "expired" : ""
+			className={`proList${
+				filter === defFilterType.expiry ? " expired" : ""
 			}`}>
 			{rows}
 		</div>
