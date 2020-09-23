@@ -5,6 +5,7 @@ import { api_payment_GetBankInfoSysList } from "../../service/api/payment";
 import { popBoxContext } from "../common/context";
 import config from "../../config";
 import { defPopBoxType } from "../common/popBox";
+import Loading from "../common/loading";
 
 export default ({ dispatch, bankList }) => {
 	const { t } = useTranslation();
@@ -92,7 +93,9 @@ export default ({ dispatch, bankList }) => {
 		);
 	});
 
-	return (
+	return loading ? (
+		<Loading />
+	) : (
 		<>
 			<div className="platformName">
 				<div className="icon icon-arrow-right2"></div>

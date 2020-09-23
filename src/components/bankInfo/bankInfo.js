@@ -17,8 +17,9 @@ import { userInfoContext, popBoxContext } from "../common/context";
 import InitPanel from "./bankInfo.set.init";
 import BankPanel from "./bankInfo.set.selectBank";
 import AccountPanel from "./bankInfo.set.account";
-import ShowCard from "./bankInfo.showCard";
+import ShowCard from "./bankInfo.set.bankCard";
 import { defPopBoxType } from "../common/popBox";
+import Loading from "../common/loading";
 
 export default () => {
 	const { t } = useTranslation();
@@ -27,6 +28,7 @@ export default () => {
 	const [state, dispatch] = useReducer(reducer, initState);
 	const [showTip, setShowTip] = useState(false);
 	const isMountedRef = useRef(null);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -78,6 +80,7 @@ export default () => {
 							)
 						});
 					}
+					setLoading(false);
 				}
 			},
 			err => {
@@ -96,6 +99,7 @@ export default () => {
 							</div>
 						)
 					});
+					setLoading(false);
 				}
 			}
 		);
@@ -141,7 +145,9 @@ export default () => {
 			break;
 	}
 
-	return (
+	return loading ? (
+		<Loading />
+	) : (
 		<>
 			<div className="infoModule">
 				<div className="inside-title icon icon-icon32px_bank-account">

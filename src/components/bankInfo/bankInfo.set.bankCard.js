@@ -4,6 +4,7 @@ import config from "../../config";
 import { popBoxContext } from "../common/context";
 import { defPopBoxType } from "../common/popBox";
 import { api_accountStrict_DelCustBankInfo } from "../../service/api/accountStrict";
+import Loading from "../common/loading";
 
 export default props => {
 	const { t } = useTranslation();
@@ -127,7 +128,9 @@ export default props => {
 			</div>
 		);
 	});
-	return (
+	return loading ? (
+		<Loading />
+	) : (
 		<>
 			{props.custBankList?.length > 0 ? (
 				<div className="infoModule">
