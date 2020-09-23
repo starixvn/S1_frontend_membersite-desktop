@@ -3,22 +3,25 @@ import { popBoxContext, userInfoContext } from "../common/context";
 import { HistoryResult } from "./withdrawal.historyResult";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
-import {
-	api_payment_GetWithdrawalInfoRecent,
-	api_payment_SetWithdrawalCancel
-} from "../../service/api/payment";
+import { api_payment_SetWithdrawalCancel } from "../../service/api/payment";
 import { defPopBoxType } from "../common/popBox";
 import ReloadSpin from "../common/reloadSpin";
 import path from "../../path";
 import { Link } from "@reach/router";
 import { isConvert } from "../common/common";
+import { defActionType } from "./withdrawal.reducer";
+
 // import Loading from "../common/loading";
 
-export default () => {
+export default ({
+	dispatch,
+	recentHistory,
+	refreshData,
+	GetWithdrawalInfoRecent
+}) => {
 	const { t } = useTranslation();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
-	const [recentHistory, setRecentHistory] = useState(null);
 	const _isConvert = isConvert(userInfo.currencyId);
 	// const [loading, setLoading] = useState(false);
 	const isMountedRef = useRef(null);
@@ -36,65 +39,7 @@ export default () => {
 		setPopBox({ isOpen: false });
 	};
 
-	const GetWithdrawalInfoRecent = () => {
-		api_payment_GetWithdrawalInfoRecent().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						setRecentHistory(res.data.data);
-					} else {
-						setPopBox({
-							isOpen: true,
-							popBoxType: defPopBoxType.ErrorMsg,
-							message: res.data.message,
-							btnBar: (
-								<div className="btnGroup">
-									<button
-										className="gray"
-										onClick={ClosePopBox}>
-										{t("lbl_Close")}
-									</button>
-								</div>
-							)
-						});
-					}
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						popBoxType: defPopBoxType.ErrorMsg,
-						message: t("msg_ApiServerError"),
-						btnBar: (
-							<div className="btnGroup">
-								<button className="gray" onClick={ClosePopBox}>
-									{t("lbl_Close")}
-								</button>
-							</div>
-						)
-					});
-				}
-			}
-		);
-	};
-
 	const ClickCancel = transId => {
-		setPopBox({
-			isOpen: true,
-			popBoxType: defPopBoxType.Cancel,
-			btnBar: (
-				<div className="btnGroup">
-					<button className="gray" onClick={ClickConfirm}>
-						{t("lbl_Yes")}
-					</button>
-					<button className="btn-check" onClick={ClosePopBox}>
-						{t("lbl_No")}
-					</button>
-				</div>
-			)
-		});
-
 		const ClickConfirm = () => {
 			// setLoading(true)
 
@@ -103,14 +48,16 @@ export default () => {
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							setRecentHistory(prev => {
-								let newData = [...prev];
-								let idx = newData.findIndex(
-									_i => _i.transId === transId
-								);
-								newData[idx].status = 5;
-								return newData;
+							let newData = [...recentHistory];
+							let idx = newData.findIndex(
+								_i => _i.transId === transId
+							);
+							newData[idx].status = 5;
+							dispatch({
+								type: defActionType.GET_RECENT_HISTORY,
+								recentHistory: newData
 							});
+							refreshData();
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -151,6 +98,21 @@ export default () => {
 				}
 			);
 		};
+
+		setPopBox({
+			isOpen: true,
+			popBoxType: defPopBoxType.Cancel,
+			btnBar: (
+				<div className="btnGroup">
+					<button className="gray" onClick={ClickConfirm}>
+						{t("lbl_Yes")}
+					</button>
+					<button className="btn-check" onClick={ClosePopBox}>
+						{t("lbl_No")}
+					</button>
+				</div>
+			)
+		});
 	};
 
 	let arr = recentHistory?.map((item, idx) => {
@@ -179,7 +141,10 @@ export default () => {
 					<div>{t("lbl_Status")}</div>
 					<div>
 						{t("lbl_Action")}
-						<ReloadSpin func={GetWithdrawalInfoRecent} />
+						<ReloadSpin
+							func={GetWithdrawalInfoRecent}
+							btnActive={false}
+						/>
 					</div>
 				</div>
 				{recentHistory?.length > 0 ? (

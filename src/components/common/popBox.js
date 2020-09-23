@@ -92,7 +92,10 @@ export default () => {
 
 		case defPopBoxType.AddBankAccount:
 			content = (
-				<AddBankAccount bankInfoSysList={popBox.bankInfoSysList} />
+				<AddBankAccount
+					bankInfoSysList={popBox.bankInfoSysList}
+					GetCustBankInfo={popBox.GetCustBankInfo}
+				/>
 			);
 			break;
 

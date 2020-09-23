@@ -13,7 +13,7 @@ const initValue = {
 	accountNo: ""
 };
 
-export default ({ bankInfoSysList = [] }) => {
+export default ({ bankInfoSysList = [], GetCustBankInfo }) => {
 	const { t } = useTranslation();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo, setUserInfo } = useContext(userInfoContext);
@@ -38,8 +38,6 @@ export default ({ bankInfoSysList = [] }) => {
 		return () => (isMountedRef.current = false);
 	});
 
-	useEffect(() => {}, []);
-
 	const onSelectItem = i => {
 		setUserValue(prev => ({ ...prev, bankId: i }));
 	};
@@ -50,7 +48,7 @@ export default ({ bankInfoSysList = [] }) => {
 		val =
 			col === "realName"
 				? val.replace(/[\W]/g, "")
-				: val.replace(/^(0+)|[^\d]+/g, "");
+				: val.replace(/[^\d]+/g, "");
 		setUserValue(prev => ({ ...prev, [col]: val }));
 	};
 
@@ -155,6 +153,7 @@ export default ({ bankInfoSysList = [] }) => {
 									</div>
 								)
 							});
+							GetCustBankInfo();
 						} else {
 							setPopBox({
 								isOpen: true,
@@ -198,7 +197,7 @@ export default ({ bankInfoSysList = [] }) => {
 	return (
 		<div className="addBankpop active" onSubmit={ClickSubmit}>
 			<span className="title">{t("lbl_AddNewAccount")}</span>
-			<div>{t("lbl_UpdateBankInfo")}</div>
+			<div className="txt-lightgray">{t("lbl_UpdateBankInfo")}</div>
 			{!userInfo.accountName ? (
 				<Inputbox
 					value={userValue.realName}
@@ -208,12 +207,13 @@ export default ({ bankInfoSysList = [] }) => {
 					clickInfo={clickInfo.bind(this, "realName")}
 					checked={status.realName.checked}
 					tip={status.realName.tip}
+					inputBoxType="inputBox-blue"
 				/>
 			) : (
 				<>
 					<div className="txt">
 						<div>
-							<span className="txt-blue2">
+							<span className="txt-blue">
 								{t("lbl_RealName")}
 							</span>
 							<span>{userInfo.accountName}</span>
@@ -224,10 +224,15 @@ export default ({ bankInfoSysList = [] }) => {
 							<i className="icon icon-information-solid"></i>
 						</div>
 					</div>
-					<div>{status.realName_after.tip}</div>
+					<div
+						className={`tip${
+							status.realName_after.tip ? " active" : ""
+						}`}>
+						{status.realName_after.tip}
+					</div>
 				</>
 			)}
-			<div className="inputBox">
+			<div className="inputBox-blue">
 				<Dropdown
 					mainkey="bankList"
 					options={bankInfoSysList}
@@ -235,6 +240,7 @@ export default ({ bankInfoSysList = [] }) => {
 					selectedIdx={userValue.bankId}
 					imgUrl={`${config.imgUrl}/common/images/BankLogo/`}
 					className="bankLogo"
+					i18n={t}
 				/>
 			</div>
 			<Inputbox
@@ -245,6 +251,7 @@ export default ({ bankInfoSysList = [] }) => {
 				clickInfo={clickInfo.bind(this, "accountNo")}
 				checked={status.accountNo.checked}
 				tip={status.accountNo.tip}
+				className="inputBox-blue"
 			/>
 			<div className="btnGroup">
 				<button className="btn-cancel" onClick={ClickCancel}>
