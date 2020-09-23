@@ -107,8 +107,8 @@ const Content = () => {
 								),
 								ClickClose: ClickClose
 							});
-							setUserEmail("");
-							setStatus(initStatus);
+							// setUserEmail("");
+							// setStatus(initStatus);
 						} else {
 							setPopBox({
 								isOpen: true,
