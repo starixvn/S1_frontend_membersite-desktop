@@ -2,20 +2,20 @@ import React from "react";
 
 export default () => {
 	return (
-		<div id="Loading" class="active">
-			<div class="container">
-				<div class="cube">
-					<div class="sides">
-						<div class="top"></div>
-						<div class="right"></div>
-						<div class="bottom"></div>
-						<div class="left"></div>
-						<div class="front"></div>
-						<div class="back"></div>
+		<div id="Loading" className="active">
+			<div className="container">
+				<div className="cube">
+					<div className="sides">
+						<div className="top"></div>
+						<div className="right"></div>
+						<div className="bottom"></div>
+						<div className="left"></div>
+						<div className="front"></div>
+						<div className="back"></div>
 					</div>
 				</div>
 				<h1></h1>
-				<div class="text">Loading...</div>
+				<div className="text">Loading...</div>
 			</div>
 		</div>
 	);
