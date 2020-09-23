@@ -63,6 +63,15 @@ export const checkAmount = (amount, minAmount, maxAmount, _isConvert, i18n) => {
 	return { status: status, msg: msg };
 };
 
+export const getAmountTip = (minAmount, _isConvert, i18n) => {
+	return isNaN(minAmount)
+		? i18n("lbl_AmountTooltip")?.replace("{0}", 0)
+		: i18n("lbl_AmountTooltip")?.replace(
+				"{0}",
+				number_format(minAmount, _isConvert)
+		  );
+};
+
 export const setCookie = (cookieName, cookieValue, exdays) => {
 	let d = new Date();
 	d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);

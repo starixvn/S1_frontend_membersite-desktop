@@ -61,7 +61,14 @@ export class Dropdown extends Component {
 		) {
 			let _s = this.props.options[this.props.selectedIdx];
 
-			if (_s.displayText) {
+			if (this.props.imgUrl) {
+				selected = (
+					<>
+						<img src={this.props.imgUrl + _s.image} alt="" />
+						<div>{_s.displayText}</div>
+					</>
+				);
+			} else if (_s.displayText) {
 				selected = _s.displayText;
 			} else {
 				selected = this.props.i18n(_s.displayKey);
