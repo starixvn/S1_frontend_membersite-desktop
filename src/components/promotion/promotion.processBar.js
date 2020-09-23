@@ -1,5 +1,5 @@
 import React from "react";
-import { number_format } from "../common/common";
+import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
 
 export default ({
@@ -12,6 +12,7 @@ export default ({
 	hideReloadBtn
 }) => {
 	if (isJoin) {
+		let _isConvert = isConvert(currency);
 		let percentage =
 			custTurnOver > custRollOver
 				? 100
@@ -23,10 +24,10 @@ export default ({
 				<div className="turnover">
 					<span>
 						{t(`Currency_${currency}`)}{" "}
-						{number_format(custTurnOver, false)}
+						{number_format(custTurnOver, _isConvert)}
 					</span>{" "}
 					({t("lbl_Req")} {t(`Currency_${currency}`)}{" "}
-					{number_format(custRollOver, false)})
+					{number_format(custRollOver, _isConvert)})
 					{hideReloadBtn ? null : (
 						<ReloadSpin func={refreshProcessBar} />
 					)}

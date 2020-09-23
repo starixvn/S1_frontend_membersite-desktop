@@ -24,6 +24,26 @@ export default () => {
 		setPopBox({ isOpen: false });
 	};
 
+	const openErrorMessagePopBox = (
+		message = t("msg_ApiServerError"),
+		errorCode = null
+	) => {
+		setPopBox({
+			message,
+			errorCode,
+			isOpen: true,
+			popBoxType: defPopBoxType.ErrorMsg,
+			icon: "icon-bell",
+			btnBar: (
+				<div className="btnGroup">
+					<button className="btn-cancel" onClick={clickClose}>
+						{t("lbl_Close")}
+					</button>
+				</div>
+			)
+		});
+	};
+
 	const onSetPromotionList = (_promoList, type) => {
 		let afterFilterList = [];
 		if (type === defFilterType.all) {
@@ -33,6 +53,13 @@ export default () => {
 		} else if (type === defFilterType.expiry) {
 			afterFilterList = _promoList.filter(p =>
 				isExpiry({ ...p, isLogin: userInfo.isLogin })
+			);
+		} else if (type === defFilterType.firstDeposit) {
+			//put 'bonus wallet' type into first deposit category as short term solution.
+			afterFilterList = _promoList.filter(
+				p =>
+					(p.promotionType === type || p.promotionType === 5) &&
+					!isExpiry({ ...p, isLogin: userInfo.isLogin })
 			);
 		} else {
 			afterFilterList = _promoList.filter(
@@ -58,9 +85,11 @@ export default () => {
 			TpId: tpId,
 			PromoCategoryId: categoryId
 		}).then(
-			({ data: { data, errorCode } }) => {
+			({ data: { data, message, errorCode } }) => {
+				if (!isMountedRef.current) return;
+
 				const success = errorCode === 0;
-				if (isMountedRef.current && success) {
+				if (success) {
 					let idx = initPromoList.findIndex(
 						x =>
 							x.bonusCode === bonusCode &&
@@ -75,24 +104,12 @@ export default () => {
 						setInitPromoList(newPromoList);
 						onSetPromotionList(newPromoList, filter);
 					}
+				} else {
+					openErrorMessagePopBox(message || "error", errorCode);
 				}
 			},
 			err => {
-				if (isMountedRef.current)
-					setPopBox({
-						isOpen: true,
-						popBoxType: defPopBoxType.ErrorMsg,
-						message: t("msg_ApiServerError"),
-						btnBar: (
-							<div className="btnGroup">
-								<button
-									className="btn-cancel"
-									onClick={clickClose}>
-									{t("lbl_Close")}
-								</button>
-							</div>
-						)
-					});
+				if (isMountedRef.current) openErrorMessagePopBox();
 			}
 		);
 	};
@@ -103,33 +120,20 @@ export default () => {
 		api_promotion_GetPromotionListV2({
 			langId: userInfo.langId
 		}).then(
-			({ data: { data, errorCode } }) => {
-				const success = errorCode === 0;
+			({ data: { data, message, errorCode } }) => {
+				if (!isMountedRef.current) return;
 
+				const success = errorCode === 0;
 				if (success) {
 					let result = data.sort((a, b) => {
 						return a.periodFrom > b.periodFrom ? -1 : 1;
 					});
 					setInitPromoList(result);
 					onSetPromotionList(result, filter);
-				}
+				} else openErrorMessagePopBox(message || "error", errorCode);
 			},
 			err => {
-				if (isMountedRef.current)
-					setPopBox({
-						isOpen: true,
-						popBoxType: defPopBoxType.ErrorMsg,
-						message: t("msg_ApiServerError"),
-						btnBar: (
-							<div className="btnGroup">
-								<button
-									className="btn-cancel"
-									onClick={clickClose}>
-									{t("lbl_Close")}
-								</button>
-							</div>
-						)
-					});
+				if (isMountedRef.current) openErrorMessagePopBox();
 			}
 		);
 	}, [userInfo.isLogin, userInfo.langId]);
