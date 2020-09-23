@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default ({ func, btnActive = true }) => {
+export default ({ func, btnDisabled = false }) => {
 	const [spin, setSpin] = useState(false);
 	const isMountedRef = useRef(null);
 
@@ -24,7 +24,7 @@ export default ({ func, btnActive = true }) => {
 
 	return (
 		<button
-			disabled={btnActive}
+			disabled={btnDisabled}
 			aria-label="clickSpin"
 			onClick={clickSpin}
 			className={`icon icon-spinner11${spin ? " active" : ""}`}></button>

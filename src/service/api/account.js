@@ -44,3 +44,14 @@ export const api_account_GetMsgCount = () =>
 
 export const api_account_ChangePassword = ({ OldPassword, NewPassword }) =>
 	accountRequest.post("/ChangePassword", { OldPassword, NewPassword });
+
+export const api_account_GetCustSpecificBonus = ({
+	BonusCode,
+	TpId,
+	PromoCategoryId
+}) =>
+	accountRequest.post("/GetCustSpecificBonus", {
+		BonusCode,
+		TpId,
+		PromoCategoryId
+	});
