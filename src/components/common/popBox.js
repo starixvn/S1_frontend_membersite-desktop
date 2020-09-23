@@ -19,6 +19,7 @@ import WithdrawalSuccess from "./popBox.withdrawalSuccess";
 import OTPHint from "./popBox.otpHint";
 import VerifyPhoneForm from "./popBox.verifyPhoneForm";
 import UpdateProfile from "./popBox.updateProfile";
+import TurnoverAccumulated from "./popBox.turnoverAccumulated";
 
 export const defPopBoxType = {
 	Cancel: "Cancel",
@@ -38,7 +39,8 @@ export const defPopBoxType = {
 	OTPHint: "OTPHint",
 	VerifyPhoneForm: "verifyPhoneForm",
 	WithdrawalSuccess: "WithdrawalSuccess",
-	UpdateProfile: "UpdateProfile"
+	UpdateProfile: "UpdateProfile",
+	TurnoverAccumulated: "TurnoverAccumulated"
 };
 
 export default () => {
@@ -57,6 +59,16 @@ export default () => {
 
 		case defPopBoxType.Success:
 			content = <Success btnBar={popBox.btnBar} />;
+			break;
+		case defPopBoxType.ErrorMsg:
+			content = (
+				<ErrorMsg
+					btnBar={popBox.btnBar}
+					message={popBox.message}
+					errorCode={popBox.errorCode}
+					icon={popBox.icon}
+				/>
+			);
 			break;
 
 		case defPopBoxType.ErrorMsg:
@@ -153,7 +165,9 @@ export default () => {
 				/>
 			);
 			break;
-
+		case defPopBoxType.TurnoverAccumulated:
+			content = <TurnoverAccumulated {...popBox} />;
+			break;
 		case defPopBoxType.default:
 			break;
 

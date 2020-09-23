@@ -7,6 +7,7 @@ import PopBox from "./popBox";
 import "../../styles/css/swiper.css";
 import "../../styles/css/style.css";
 import "../../styles/css/font.css";
+import "../../styles/css/datePicker.css";
 
 const Layout = ({ children }) => {
 	return (
