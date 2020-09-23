@@ -356,5 +356,6 @@
 	"lbl_Licenses":"Licenses",
 	"lbl_Responsibility":"Responsibility",
 	"lbl_Security":"Security",
-	"lbl_Payment":"Payment"
+	"lbl_Payment":"Payment",
+    "lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils."
 }

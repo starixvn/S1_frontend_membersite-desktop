@@ -2860,7 +2860,7 @@ input[type="file"] {
 
 .Submit .icon, .Cancel .icon, .uploadSuccess .icon, .updateSuccess .icon, .Success .icon, .tokyc .icon, .addBankpop .icon, .changePassWordpop .icon, .editSuccess .icon {
   font-size: 36px;
-  color: #134DAE;
+  color: #f77900;
 }
 
 .Submit .icon.icon-bell, .Cancel .icon.icon-bell, .uploadSuccess .icon.icon-bell, .updateSuccess .icon.icon-bell, .Success .icon.icon-bell, .tokyc .icon.icon-bell, .addBankpop .icon.icon-bell, .changePassWordpop .icon.icon-bell, .editSuccess .icon.icon-bell {
@@ -2906,6 +2906,36 @@ input[type="file"] {
 .Submit .popList ul li:first-child, .Cancel .popList ul li:first-child, .uploadSuccess .popList ul li:first-child, .updateSuccess .popList ul li:first-child, .Success .popList ul li:first-child, .tokyc .popList ul li:first-child, .addBankpop .popList ul li:first-child, .changePassWordpop .popList ul li:first-child, .editSuccess .popList ul li:first-child {
   color: #1E85EC;
   font-weight: bold;
+}
+
+.Success .progressBarModule {
+  margin-top: 20px;
+  text-align: center;
+  line-height: 24px;
+}
+
+.Success .progressBarModule .bounsName {
+  color: white;
+}
+
+.Success .progressBarModule .turnover {
+  color: white;
+}
+
+.Success .progressBarModule .turnover span {
+  color: #f77900;
+}
+
+.Success .progressBarModule .progressBar .bar {
+  border: 1px solid #f77900;
+}
+
+.Success .progressBarModule .progressBar .bar .progress {
+  background: #f77900;
+}
+
+.Success .progressBarModule .progressBar .percentage {
+  color: #f77900;
 }
 
 .title {
