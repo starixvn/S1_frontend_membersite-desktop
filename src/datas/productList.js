@@ -27,8 +27,39 @@ export default {
 		tpId: 7,
 		gameId: 10
 	},
-	badmintion: {
+	cockFighting: {
+		tpId: 17
+	},
+	sabaClub: {
 		tpId: 1,
-		gameId: 9
+		gameId: 200
+	},
+	soccer: {
+		gameId: 1,
+		tpId: 1
+	},
+	basketball: {
+		gameId: 2,
+		tpId: 1
+	},
+	badminton: {
+		gameId: 9,
+		tpId: 1
+	},
+	football: {
+		gameId: 3,
+		tpId: 1
+	},
+	tennis: {
+		gameId: 5,
+		tpId: 1
+	},
+	hockey: {
+		gameId: 4,
+		tpId: 1
+	},
+	baseball: {
+		gameId: 8,
+		tpId: 1
 	}
 };

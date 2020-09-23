@@ -31,15 +31,28 @@ import IndexBannerKeno from "../../styles/img/indexBannerKeno.png";
 import IndexCenterBanner from "../../styles/img/indexCenterBanner.jpg";
 
 import Marquee from "./marquee";
+import productList from "../../datas/productList";
+import { Link } from "@reach/router";
+import path from "../../path";
+
+import {
+	GET_OPEN_RULE,
+	_ACTION_TYPE,
+	OPEN_IN_BLANK
+} from "../../service/enterPage";
+
+import { getUrl } from "../../components/common/linkItems";
 
 const defGameListDatas = [
 	{
+		productInfo: productList.sports,
 		leftImg: [{ src: NpcSoccerBG, className: "soccer" }],
 		displayKey: "lbl_Soccer",
 		mainImg: NpcSoccer,
 		icon: "icon icon-soccer"
 	},
 	{
+		productInfo: productList.basketball,
 		leftImg: [
 			{ src: NpcBasketballBG2, className: "basketball" },
 			{ src: NpcBasketballBG1, className: "basketball" }
@@ -49,24 +62,28 @@ const defGameListDatas = [
 		icon: "icon icon-basketball"
 	},
 	{
+		productInfo: productList.baseball,
 		leftImg: [{ src: NpcBaseballBG, className: "baseball" }],
 		displayKey: "lbl_Baseball",
 		mainImg: NpcBaseball,
 		icon: "icon icon-baseball"
 	},
 	{
+		productInfo: productList.badminton,
 		leftImg: [{ src: NpcBadmintonBG, className: "badminton" }],
 		displayKey: "lbl_badminton",
 		mainImg: NpcBadminton,
 		icon: "icon icon-badminton"
 	},
 	{
+		productInfo: productList.tennis,
 		leftImg: [{ src: NpcTennisBG, className: "tennis" }],
 		displayKey: "lbl_Tennis",
 		mainImg: NpcTennis,
 		icon: "icon icon-tennis"
 	},
 	{
+		productInfo: productList.eSport,
 		leftImg: [{ src: NpcESportBG, className: "esport" }],
 		displayKey: "lbl_eSports",
 		mainImg: NpcESport,
@@ -74,11 +91,144 @@ const defGameListDatas = [
 	}
 ];
 
+const SportsSection = ({ t, langId }) => {
+	const gameListRows = defGameListDatas.map(d => {
+		let leftImgs = d.leftImg.map((img, imgIdx) => {
+			return (
+				<img
+					key={`${d.displayKey}-leftImg-${imgIdx}`}
+					src={img.src}
+					className={img.className}
+					alt=""
+				/>
+			);
+		});
+
+		let displayText = t(d.displayKey) ?? d.displayKey;
+		return (
+			<Link
+				to={`/${langId}/${path.sports.root}?tpId=${d.productInfo.tpId}&gameId=${d.productInfo.gameId}`}
+				key={`Home-game-${d.displayKey}`}>
+				<div className="container">
+					<div className="card_right">{leftImgs}</div>
+					<span className={d.icon}>{displayText}</span>
+					<div className="npc">
+						<img src={d.mainImg} alt={`img of ${displayText}`} />
+					</div>
+				</div>
+			</Link>
+		);
+	});
+
+	return <div className="gamelistsport">{gameListRows}</div>;
+};
+
+const defSideBarProducts = [
+	{
+		path: path.promotion.root,
+		icon: "icon icon-livecasino",
+		displayKey: "lbl_LiveCasino",
+		descriptionKey: "Real Casino Experience",
+		mainImg: IndexBannerLiveCasino
+	},
+	{
+		path: path.casino.root,
+		icon: "icon icon-casino",
+		displayKey: "lbl_Casino",
+		descriptionKey: "Multiple Themes For Asian Market",
+		mainImg: IndexBannerCasino
+	},
+	{
+		productInfo: productList.keno,
+		icon: "icon icon-keno",
+		displayKey: "lbl_Keno",
+		descriptionKey: "Many ways to play,more chances to win !",
+		mainImg: IndexBannerKeno
+	}
+];
+
+const SideBarProductSection = ({ t, langId, isLogin, showLogin }) => {
+	const rows = defSideBarProducts.map(m => {
+		let displayText = t(m.displayKey) ?? m.displayKey;
+		let _path = m.path;
+		let key = `home-sideBarProduct-${m.displayKey}`;
+
+		const content = (
+			<>
+				<div>
+					<i className={m.icon}></i>
+					<span>{displayText}</span>
+					<span>{t(m.descriptionKey) ?? m.descriptionKey}</span>
+				</div>
+				<img src={m.mainImg} alt={`img of ${displayText}`} />
+			</>
+		);
+
+		if (m.productInfo) {
+			let rule = GET_OPEN_RULE(
+				langId,
+				m.productInfo.tpId,
+				m.productInfo.gameId
+			);
+
+			if (
+				m.productInfo.tpId === 1 &&
+				rule.actionType === _ACTION_TYPE.redirect
+			) {
+				_path = path.sports.root;
+			}
+
+			if (rule.needLogin && isLogin === false) {
+				return (
+					<button onClick={showLogin} key={key}>
+						{content}
+					</button>
+				);
+			} else if (rule.actionType === _ACTION_TYPE.blank) {
+				return (
+					<a
+						key={key}
+						onClick={OPEN_IN_BLANK.bind(
+							this,
+							rule.entPageUrl,
+							rule.windowKey
+						)}>
+						{content}
+					</a>
+				);
+			} else {
+				let _url = getUrl(`${langId}/${_path}`, m.productInfo);
+
+				return (
+					<Link key={key} to={_url}>
+						{content}
+					</Link>
+				);
+			}
+		} else {
+			return (
+				<Link key={key} to={`/${langId}/${_path}`}>
+					{content}
+				</Link>
+			);
+		}
+	});
+
+	return <div className="gamelistother">{rows}</div>;
+};
+
 const IndexPage = () => {
 	const { t } = useTranslation();
 
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+
+	const showLogin = () => {
+		setPopBox({
+			isOpen: true,
+			popBoxType: defPopBoxType.Login
+		});
+	};
 
 	const isMountedRef = useRef(null);
 	useEffect(() => {
@@ -123,63 +273,17 @@ const IndexPage = () => {
 		}
 	}, [userInfo.isLogin, userInfo.userName, setPopBox]);
 
-	const gameListRows = defGameListDatas.map(d => {
-		let leftImgs = d.leftImg.map((img, imgIdx) => {
-			return (
-				<img
-					key={`${d.displayKey}-leftImg-${imgIdx}`}
-					src={img.src}
-					className={img.className}
-				/>
-			);
-		});
-		return (
-			<a href="" key={`Home-game-${d.displayKey}`}>
-				<div className="container">
-					<div className="card_right">{leftImgs}</div>
-					<span className={d.icon}>{t(d.displayKey)}</span>
-					<div className="npc">
-						<img src={d.mainImg} />
-					</div>
-				</div>
-			</a>
-		);
-	});
 	return (
 		<main>
 			<SwipperBanner ImgFolder="Promotion" filterHideInHome={true} />
 			<Marquee />
 			<section>
-				<div className="gamelistsport">{gameListRows}</div>
-				<div className="gamelistother">
-					<a href="">
-						<div>
-							<i className="icon icon-livecasino"></i>
-							<span>{t("lbl_LiveCasino")}</span>
-							<span>Real Casino Experience</span>
-						</div>
-						<img
-							src={IndexBannerLiveCasino}
-							alt="IndexBannerLiveCasino"
-						/>
-					</a>
-					<a href="">
-						<div>
-							<i className="icon icon-casino"></i>
-							<span>{t("lbl_Casino")}</span>
-							<span>Multiple Themes For Asian Market</span>
-						</div>
-						<img src={IndexBannerCasino} alt="IndexBannerCasino" />
-					</a>
-					<a href="">
-						<div>
-							<i className="icon icon-keno"></i>
-							<span>{t("lbl_Keno")}</span>
-							<span>Many ways to play,more chances to win !</span>
-						</div>
-						<img src={IndexBannerKeno} alt="IndexBannerKeno" />
-					</a>
-				</div>
+				<SportsSection t={t} langId={userInfo.langId} />
+				<SideBarProductSection
+					t={t}
+					showLogin={showLogin}
+					{...userInfo}
+				/>
 			</section>
 			<img src={IndexCenterBanner} alt="IndexCenterBanner" />
 			{/* <div className="quickLink">
