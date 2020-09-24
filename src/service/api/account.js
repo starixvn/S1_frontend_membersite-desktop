@@ -56,5 +56,11 @@ export const api_account_GetCustSpecificBonus = ({
 		PromoCategoryId
 	});
 
+export const api_account_ExistsPhone = ({ AreaCode, Phone }) =>
+	accountRequest.post(`/ExistsPhoneNo`, {
+		AreaCode: AreaCode,
+		PhoneNo: Phone
+	});
+
 export const api_account_SetHideBalance = ({ value }) =>
 	accountRequest.get(`/SetHideBalance?value=${value}`);

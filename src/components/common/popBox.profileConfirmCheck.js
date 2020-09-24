@@ -10,11 +10,7 @@ export default ({ btnBar, accountName }) => {
 			<div className="title">
 				{t("lbl_Hi")} {accountName}
 			</div>
-			<div>
-				{t("lbl_EnsureTransactionsCorrect")}
-				<br />
-				{t("lbl_BankAccountNameHint")}
-			</div>
+			<div>{t("lbl_ProfileModifyWarning")}</div>
 			{btnBar}
 		</div>
 	);
