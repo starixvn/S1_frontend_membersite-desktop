@@ -55,3 +55,6 @@ export const api_account_GetCustSpecificBonus = ({
 		TpId,
 		PromoCategoryId
 	});
+
+export const api_account_SetHideBalance = ({ value }) =>
+	accountRequest.get(`/SetHideBalance?value=${value}`);
