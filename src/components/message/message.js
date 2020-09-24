@@ -18,7 +18,7 @@ export default () => {
 	const [msgListData, setMsgListData] = useState([]);
 	const [selectItems, setSelectItems] = useState([]);
 	const [isCheckAll, setIsCheckAll] = useState(false);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 	const [pagination, setPagination] = useState({
 		totalPages: 0,
 		currentPage: 1
