@@ -62,10 +62,6 @@ img {
   width: 100%;
 }
 
-a, button {
-  color: white;
-}
-
 .transition, .header > div.menu .subMenu-Wrapper, main .gamelistsport a .container .card_right img.basketball[src="img/basketballBG1.jpg"], main .gamelistsport a .container .card_left img.basketball[src="img/basketballBG1.jpg"], main .gamelistsport a:hover .card_right img.basketball[src="img/basketballBG2.jpg"], main .gamelistsport a:hover .card_left img.basketball[src="img/basketballBG2.jpg"], main .gamelistsport a:active .card_right img.basketball[src="img/basketballBG2.jpg"], main .gamelistsport a:active .card_left img.basketball[src="img/basketballBG2.jpg"], .tip, .dropdown > .dropdown-container, .personal .list .listBody {
   visibility: hidden;
   opacity: 0;
@@ -122,19 +118,13 @@ header {
   width: 1600px;
 }
 
-.header > div {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-}
-
 .header > div.menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-flex: 2.2;
+      -ms-flex: 2.2;
+          flex: 2.2;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   letter-spacing: 1px;
@@ -404,31 +394,21 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.header > div.function > div:before {
-  margin-right: 5px;
-}
-
-.header > div.function > div:last-child {
-  margin-right: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .header > div.function > div, .header > div.function > a, .header > div.function > button {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  margin-right: 3%;
-  max-width: 100px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .header > div.function > div[class=join], .header > div.function > a[class=join], .header > div.function > button[class=join] {
@@ -439,137 +419,19 @@ header {
   color: white;
 }
 
-.header > div.function > div .flag.ch:before, .header > div.function > a .flag.ch:before, .header > div.function > button .flag.ch:before {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 30px;
-  background: url(../img/flag/ch.png) no-repeat top left/cover;
-  border-radius: 100%;
-  cursor: pointer;
+.header > div.function > div[class=login], .header > div.function > a[class=login], .header > div.function > button[class=login] {
+  color: #1E85EC;
 }
 
-.header > div.function > div .flag.ch:hover:before, .header > div.function > a .flag.ch:hover:before, .header > div.function > button .flag.ch:hover:before {
-  content: "CH";
-  background: #1249A5;
+.header > div.function > div[class=login]:hover, .header > div.function > a[class=login]:hover, .header > div.function > button[class=login]:hover {
   color: white;
-  text-align: center;
-  line-height: 30px;
 }
 
-.header > div.function > div .flag.cs:before, .header > div.function > a .flag.cs:before, .header > div.function > button .flag.cs:before {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 30px;
-  background: url(../img/flag/cs.png) no-repeat top left/cover;
-  border-radius: 100%;
-  cursor: pointer;
+.header > div.function > div:before, .header > div.function > a:before, .header > div.function > button:before {
+  margin-right: 5px;
 }
 
-.header > div.function > div .flag.cs:hover:before, .header > div.function > a .flag.cs:hover:before, .header > div.function > button .flag.cs:hover:before {
-  content: "CS";
-  background: #1249A5;
-  color: white;
-  text-align: center;
-  line-height: 30px;
-}
-
-.header > div.function > div .flag.en:before, .header > div.function > a .flag.en:before, .header > div.function > button .flag.en:before {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 30px;
-  background: url(../img/flag/en.png) no-repeat top center/cover;
-  border-radius: 100%;
-  cursor: pointer;
-}
-
-.header > div.function > div .flag.en:hover:before, .header > div.function > a .flag.en:hover:before, .header > div.function > button .flag.en:hover:before {
-  content: "EN";
-  background: #1249A5;
-  color: white;
-  text-align: center;
-  line-height: 30px;
-}
-
-.header > div.function > div .flag.th:before, .header > div.function > a .flag.th:before, .header > div.function > button .flag.th:before {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 30px;
-  background: url(../img/flag/th.png) no-repeat top left/cover;
-  border-radius: 100%;
-  cursor: pointer;
-}
-
-.header > div.function > div .flag.th:hover:before, .header > div.function > a .flag.th:hover:before, .header > div.function > button .flag.th:hover:before {
-  content: "TH";
-  background: #1249A5;
-  color: white;
-  text-align: center;
-  line-height: 30px;
-}
-
-.header > div.function > div .flag.id:before, .header > div.function > a .flag.id:before, .header > div.function > button .flag.id:before {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 30px;
-  background: url(../img/flag/id.png) no-repeat top left/cover;
-  border-radius: 100%;
-  cursor: pointer;
-}
-
-.header > div.function > div .flag.id:hover:before, .header > div.function > a .flag.id:hover:before, .header > div.function > button .flag.id:hover:before {
-  content: "ID";
-  background: #1249A5;
-  color: white;
-  text-align: center;
-  line-height: 30px;
-}
-
-.header > div.function > div .flag.vn:before, .header > div.function > a .flag.vn:before, .header > div.function > button .flag.vn:before {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 30px;
-  background: url(../img/flag/vn.png) no-repeat top left/cover;
-  border-radius: 100%;
-  cursor: pointer;
-}
-
-.header > div.function > div .flag.vn:hover:before, .header > div.function > a .flag.vn:hover:before, .header > div.function > button .flag.vn:hover:before {
-  content: "VN";
-  background: #1249A5;
-  color: white;
-  text-align: center;
-  line-height: 30px;
-}
-
-.header > div.function .icon-email {
-  font-size: 24px;
-  position: relative;
-}
-
-.header > div.function .icon-email.active:after {
-  content: '●';
-  position: absolute;
-  font-size: 14px;
-  color: #f77900;
-  right: 0;
-  top: -2px;
-}
-
-.header > div.function .country {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  min-width: auto;
-  margin-right: 35%;
-}
-
-.header > div.function .country .countryList {
+.header > div.function > div .countryList, .header > div.function > a .countryList, .header > div.function > button .countryList {
   display: none;
   position: absolute;
   margin-top: 30px;
@@ -580,44 +442,104 @@ header {
   margin-left: -5px;
 }
 
-.header > div.function .country .countryList button, .header > div.function .country .countryList a {
+.header > div.function > div .countryList button, .header > div.function > div .countryList a, .header > div.function > a .countryList button, .header > div.function > a .countryList a, .header > div.function > button .countryList button, .header > div.function > button .countryList a {
   margin: 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.header > div.function .country.active .countryList {
+.header > div.function > div.active .countryList, .header > div.function > a.active .countryList, .header > div.function > button.active .countryList {
   display: block;
 }
 
-.header > div.function button[class=login] {
-  color: #1E85EC;
+.header > div.function > div .flag:before, .header > div.function > a .flag:before, .header > div.function > button .flag:before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  margin-right: 5px;
+}
+
+.header > div.function > div .flag.ch:before, .header > div.function > a .flag.ch:before, .header > div.function > button .flag.ch:before {
+  background: url(../img/flag/ch.png) no-repeat top left/cover;
+}
+
+.header > div.function > div .flag.ch:hover:before, .header > div.function > a .flag.ch:hover:before, .header > div.function > button .flag.ch:hover:before {
+  content: "CH";
+}
+
+.header > div.function > div .flag.cs:before, .header > div.function > a .flag.cs:before, .header > div.function > button .flag.cs:before {
+  background: url(../img/flag/cs.png) no-repeat top left/cover;
+}
+
+.header > div.function > div .flag.cs:hover:before, .header > div.function > a .flag.cs:hover:before, .header > div.function > button .flag.cs:hover:before {
+  content: "CS";
+}
+
+.header > div.function > div .flag.en:before, .header > div.function > a .flag.en:before, .header > div.function > button .flag.en:before {
+  background: url(../img/flag/en.png) no-repeat top center/cover;
+}
+
+.header > div.function > div .flag.en:hover:before, .header > div.function > a .flag.en:hover:before, .header > div.function > button .flag.en:hover:before {
+  content: "EN";
+}
+
+.header > div.function > div .flag.th:before, .header > div.function > a .flag.th:before, .header > div.function > button .flag.th:before {
+  background: url(../img/flag/th.png) no-repeat top left/cover;
+}
+
+.header > div.function > div .flag.th:hover:before, .header > div.function > a .flag.th:hover:before, .header > div.function > button .flag.th:hover:before {
+  content: "TH";
+}
+
+.header > div.function > div .flag.id:before, .header > div.function > a .flag.id:before, .header > div.function > button .flag.id:before {
+  background: url(../img/flag/id.png) no-repeat top left/cover;
+}
+
+.header > div.function > div .flag.id:hover:before, .header > div.function > a .flag.id:hover:before, .header > div.function > button .flag.id:hover:before {
+  content: "ID";
+}
+
+.header > div.function > div .flag.vn:before, .header > div.function > a .flag.vn:before, .header > div.function > button .flag.vn:before {
+  background: url(../img/flag/vn.png) no-repeat top left/cover;
+}
+
+.header > div.function > div .flag.vn:hover:before, .header > div.function > a .flag.vn:hover:before, .header > div.function > button .flag.vn:hover:before {
+  content: "VN";
+}
+
+.header > div.function > div .flag:hover:before, .header > div.function > a .flag:hover:before, .header > div.function > button .flag:hover:before {
+  background: #1249A5;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+}
+
+.header > div.function .icon-email {
+  font-size: 24px;
+  position: relative;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-  min-width: 100px;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  min-width: 100px;
-  font-size: 14px;
 }
 
-.header > div.function button[class=login]:hover {
-  color: white;
+.header > div.function .icon-email.active:after {
+  content: '●';
+  position: absolute;
+  font-size: 14px;
+  color: #f77900;
+  right: 5px;
+  top: -5px;
 }
 
 .header > div.function .cashier, .header > div.function .wallet, .header > div.function .memberfile {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
   position: relative;
-  color: white;
   cursor: pointer;
 }
 
@@ -685,7 +607,6 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: white;
 }
 
 .header > div.function .cashier.active:after, .header > div.function .wallet.active:after, .header > div.function .memberfile.active:after {
@@ -732,7 +653,6 @@ header {
 }
 
 .header > div.function .wallet .submenu div.balance i {
-  font-weight: normal;
   color: #1E85EC;
   margin-left: 5px;
   font-size: 12px;
@@ -743,12 +663,10 @@ header {
 }
 
 .header > div.function .wallet .submenu div.btnGroup {
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin: 20px 0 10px;
 }
 
 .header > div.function .wallet .submenu div.btnGroup a {
-  padding: 10px 0;
   font-size: 13px;
   padding: 0;
 }
@@ -1147,7 +1065,7 @@ footer {
   clear: both;
 }
 
-.webmap > div div a {
+.webmap > div div a, .webmap > div div button {
   font-size: 14px;
   line-height: 30px;
 }
@@ -1169,11 +1087,12 @@ footer {
   background: #f77900;
 }
 
-.webmap > div:nth-child(-n+4) a {
+.webmap > div:nth-child(-n+4) a, .webmap > div:nth-child(-n+4) button {
   color: #666;
+  text-align: left;
 }
 
-.webmap > div:nth-child(-n+4) a:hover {
+.webmap > div:nth-child(-n+4) a:hover, .webmap > div:nth-child(-n+4) button:hover {
   color: #f77900;
 }
 
@@ -1274,10 +1193,6 @@ footer {
   color: #64789b;
 }
 
-.txt-white {
-  color: white;
-}
-
 .txt-gray {
   color: #666;
 }
@@ -1333,7 +1248,7 @@ footer {
   text-align: right;
 }
 
-.inputBox, .inputBox-org, .inputBox-white, .inputBox-blue, .inputBox-gray {
+.inputBox, .inputBox-org, .inputBox-white, .inputBox-blue {
   width: calc(100% - 22px);
   border-radius: 20px;
   position: relative;
@@ -1345,38 +1260,32 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   padding: 8px 10px;
-  z-index: 1;
 }
 
-.inputBox::-webkit-input-placeholder, .inputBox-org::-webkit-input-placeholder, .inputBox-white::-webkit-input-placeholder, .inputBox-blue::-webkit-input-placeholder, .inputBox-gray::-webkit-input-placeholder {
+.inputBox::-webkit-input-placeholder, .inputBox-org::-webkit-input-placeholder, .inputBox-white::-webkit-input-placeholder, .inputBox-blue::-webkit-input-placeholder {
   color: #b2b2b2;
 }
 
-.inputBox:-ms-input-placeholder, .inputBox-org:-ms-input-placeholder, .inputBox-white:-ms-input-placeholder, .inputBox-blue:-ms-input-placeholder, .inputBox-gray:-ms-input-placeholder {
+.inputBox:-ms-input-placeholder, .inputBox-org:-ms-input-placeholder, .inputBox-white:-ms-input-placeholder, .inputBox-blue:-ms-input-placeholder {
   color: #b2b2b2;
 }
 
-.inputBox::-ms-input-placeholder, .inputBox-org::-ms-input-placeholder, .inputBox-white::-ms-input-placeholder, .inputBox-blue::-ms-input-placeholder, .inputBox-gray::-ms-input-placeholder {
+.inputBox::-ms-input-placeholder, .inputBox-org::-ms-input-placeholder, .inputBox-white::-ms-input-placeholder, .inputBox-blue::-ms-input-placeholder {
   color: #b2b2b2;
 }
 
-.inputBox::placeholder, .inputBox-org::placeholder, .inputBox-white::placeholder, .inputBox-blue::placeholder, .inputBox-gray::placeholder {
+.inputBox::placeholder, .inputBox-org::placeholder, .inputBox-white::placeholder, .inputBox-blue::placeholder {
   color: #b2b2b2;
 }
 
-.inputBox.active, .active.inputBox-org, .active.inputBox-white, .active.inputBox-blue, .active.inputBox-gray {
+.inputBox:focus-within, .inputBox-org:focus-within, .inputBox-white:focus-within, .inputBox-blue:focus-within {
   border: 1px solid #1E85EC;
   outline: #1E85EC;
 }
 
-.inputBox > .icon, .inputBox-org > .icon, .inputBox-white > .icon, .inputBox-blue > .icon, .inputBox-gray > .icon {
-  margin-right: 5px;
-}
-
-.inputBox input, .inputBox-org input, .inputBox-white input, .inputBox-blue input, .inputBox-gray input {
+.inputBox input, .inputBox-org input, .inputBox-white input, .inputBox-blue input {
   background: transparent;
   border: 0;
-  width: calc(100% - 60px);
   padding-left: 5px;
   color: white;
   outline: none;
@@ -1385,35 +1294,23 @@ footer {
           flex: auto;
 }
 
-.inputBox input[type="date"]::-webkit-inner-spin-button, .inputBox-org input[type="date"]::-webkit-inner-spin-button, .inputBox-white input[type="date"]::-webkit-inner-spin-button, .inputBox-blue input[type="date"]::-webkit-inner-spin-button, .inputBox-gray input[type="date"]::-webkit-inner-spin-button, .inputBox input[type="date"]::-webkit-calendar-picker-indicator, .inputBox-org input[type="date"]::-webkit-calendar-picker-indicator, .inputBox-white input[type="date"]::-webkit-calendar-picker-indicator, .inputBox-blue input[type="date"]::-webkit-calendar-picker-indicator, .inputBox-gray input[type="date"]::-webkit-calendar-picker-indicator {
+.inputBox input[type="date"]::-webkit-inner-spin-button, .inputBox-org input[type="date"]::-webkit-inner-spin-button, .inputBox-white input[type="date"]::-webkit-inner-spin-button, .inputBox-blue input[type="date"]::-webkit-inner-spin-button, .inputBox input[type="date"]::-webkit-calendar-picker-indicator, .inputBox-org input[type="date"]::-webkit-calendar-picker-indicator, .inputBox-white input[type="date"]::-webkit-calendar-picker-indicator, .inputBox-blue input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
 
-.inputBox input[type="date"] + .iconModule, .inputBox-org input[type="date"] + .iconModule, .inputBox-white input[type="date"] + .iconModule, .inputBox-blue input[type="date"] + .iconModule, .inputBox-gray input[type="date"] + .iconModule {
-  position: absolute;
-  right: 15px;
-  pointer-events: none;
-}
-
-.inputBox .iconModule, .inputBox-org .iconModule, .inputBox-white .iconModule, .inputBox-blue .iconModule, .inputBox-gray .iconModule {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.inputBox .iconModule .icon, .inputBox-org .iconModule .icon, .inputBox-white .iconModule .icon, .inputBox-blue .iconModule .icon, .inputBox-gray .iconModule .icon {
+.inputBox .iconModule .icon, .inputBox-org .iconModule .icon, .inputBox-white .iconModule .icon, .inputBox-blue .iconModule .icon {
   margin-left: 5px;
 }
 
-.inputBox .dropdown .btn, .inputBox-org .dropdown .btn, .inputBox-white .dropdown .btn, .inputBox-blue .dropdown .btn, .inputBox-gray .dropdown .btn {
+.inputBox .dropdown .btn, .inputBox-org .dropdown .btn, .inputBox-white .dropdown .btn, .inputBox-blue .dropdown .btn {
   color: #1E85EC;
 }
 
-.inputBox .dropdown .btn:after, .inputBox-org .dropdown .btn:after, .inputBox-white .dropdown .btn:after, .inputBox-blue .dropdown .btn:after, .inputBox-gray .dropdown .btn:after {
+.inputBox .dropdown .btn:after, .inputBox-org .dropdown .btn:after, .inputBox-white .dropdown .btn:after, .inputBox-blue .dropdown .btn:after {
   border-color: #1E85EC transparent transparent transparent;
 }
 
-.inputBox .dropdown .dropdown-item, .inputBox-org .dropdown .dropdown-item, .inputBox-white .dropdown .dropdown-item, .inputBox-blue .dropdown .dropdown-item, .inputBox-gray .dropdown .dropdown-item {
+.inputBox .dropdown .dropdown-item, .inputBox-org .dropdown .dropdown-item, .inputBox-white .dropdown .dropdown-item, .inputBox-blue .dropdown .dropdown-item {
   color: #1E85EC;
 }
 
@@ -1472,22 +1369,6 @@ footer {
 
 .inputBox-blue .icon:before {
   color: #1E85EC;
-}
-
-.inputBox-gray .dropdown .btn {
-  color: #666;
-}
-
-.inputBox-gray .dropdown .btn:after {
-  border-color: #666 transparent transparent transparent;
-}
-
-.inputBox-gray .dropdown .dropdown-container {
-  margin-left: 0;
-}
-
-.inputBox-gray .dropdown .dropdown-item {
-  color: #666;
 }
 
 input[type="file"] {
@@ -2143,6 +2024,7 @@ input[type="file"] {
   font-size: 12px;
   position: absolute;
   right: 5px;
+  color: white;
 }
 
 .list .listHeader button.icon-keyboard_arrow_down {
@@ -2449,6 +2331,10 @@ input[type="file"] {
   margin-right: 5px;
 }
 
+.infoModule .walletModule {
+  padding: 0 70px 5px;
+}
+
 .inside-title {
   padding: 40px;
   border-bottom: 1px solid #666;
@@ -2537,6 +2423,10 @@ input[type="file"] {
 .subModuleList .subModule .subModuleTitle div span:last-child {
   color: #333;
   font-size: 12px;
+}
+
+.subModuleList .subModule form.subModuleBody {
+  width: auto;
 }
 
 .subModuleList .subModule .subModuleBody {
@@ -3248,7 +3138,7 @@ input[type="file"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0 70px;
+  padding: 0 70px 30px;
 }
 
 .walletModule .walletBalanceModule {
@@ -3421,7 +3311,7 @@ input[type="file"] {
   content: 'To';
 }
 
-.walletTransfer .inputBox, .walletTransfer .inputBox-org, .walletTransfer .inputBox-white, .walletTransfer .inputBox-blue, .walletTransfer .inputBox-gray {
+.walletTransfer .inputBox, .walletTransfer .inputBox-org, .walletTransfer .inputBox-white, .walletTransfer .inputBox-blue {
   float: left;
   width: calc(100% - 161px);
   margin-right: 10px;
@@ -3726,7 +3616,7 @@ input[type="file"] {
 .addBankpop .inputBox-blue {
   padding: 2px 10px;
   width: calc(100% - 20px);
-  height: 28px;
+  min-height: 28px;
 }
 
 .addBankpop .inputBox-blue .dropdown > .btn {
@@ -3826,23 +3716,23 @@ input[type="file"] {
   background: #333;
 }
 
-.quickSelect > div.inputBox, .quickSelect > div.inputBox-org, .quickSelect > div.inputBox-white, .quickSelect > div.inputBox-blue, .quickSelect > div.inputBox-gray, .quickSelect > div:first-child {
+.quickSelect > div.inputBox, .quickSelect > div.inputBox-org, .quickSelect > div.inputBox-white, .quickSelect > div.inputBox-blue, .quickSelect > div:first-child {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin-right: 5px;
 }
 
-.quickSelect > div.inputBox.promoType, .quickSelect > div.promoType.inputBox-org, .quickSelect > div.promoType.inputBox-white, .quickSelect > div.promoType.inputBox-blue, .quickSelect > div.promoType.inputBox-gray, .quickSelect > div:first-child.promoType {
+.quickSelect > div.inputBox.promoType, .quickSelect > div.promoType.inputBox-org, .quickSelect > div.promoType.inputBox-white, .quickSelect > div.promoType.inputBox-blue, .quickSelect > div:first-child.promoType {
   max-width: none;
 }
 
-.quickSelect > div.inputBox.promoType button.orange, .quickSelect > div.promoType.inputBox-org button.orange, .quickSelect > div.promoType.inputBox-white button.orange, .quickSelect > div.promoType.inputBox-blue button.orange, .quickSelect > div.promoType.inputBox-gray button.orange, .quickSelect > div:first-child.promoType button.orange {
+.quickSelect > div.inputBox.promoType button.orange, .quickSelect > div.promoType.inputBox-org button.orange, .quickSelect > div.promoType.inputBox-white button.orange, .quickSelect > div.promoType.inputBox-blue button.orange, .quickSelect > div:first-child.promoType button.orange {
   position: relative;
   margin-left: 25px;
 }
 
-.quickSelect > div.inputBox.promoType button.orange:before, .quickSelect > div.promoType.inputBox-org button.orange:before, .quickSelect > div.promoType.inputBox-white button.orange:before, .quickSelect > div.promoType.inputBox-blue button.orange:before, .quickSelect > div.promoType.inputBox-gray button.orange:before, .quickSelect > div:first-child.promoType button.orange:before {
+.quickSelect > div.inputBox.promoType button.orange:before, .quickSelect > div.promoType.inputBox-org button.orange:before, .quickSelect > div.promoType.inputBox-white button.orange:before, .quickSelect > div.promoType.inputBox-blue button.orange:before, .quickSelect > div:first-child.promoType button.orange:before {
   content: '｜';
   color: #1E85EC;
   position: absolute;
@@ -3856,7 +3746,7 @@ input[type="file"] {
   max-width: 322px;
 }
 
-.quickSelect > div:first-child .inputBox, .quickSelect > div:first-child .inputBox-org, .quickSelect > div:first-child .inputBox-white, .quickSelect > div:first-child .inputBox-blue, .quickSelect > div:first-child .inputBox-gray {
+.quickSelect > div:first-child .inputBox, .quickSelect > div:first-child .inputBox-org, .quickSelect > div:first-child .inputBox-white, .quickSelect > div:first-child .inputBox-blue {
   position: absolute;
   -webkit-box-align: start;
       -ms-flex-align: start;
@@ -4732,7 +4622,7 @@ article p {
   color: #b2b2b2;
 }
 
-.rdt .inputBox, .rdt .inputBox-org, .rdt .inputBox-white, .rdt .inputBox-blue, .rdt .inputBox-gray {
+.rdt .inputBox, .rdt .inputBox-org, .rdt .inputBox-white, .rdt .inputBox-blue {
   width: 100%;
 }
 
@@ -5152,7 +5042,22 @@ input + .iconModule i.icon.icon-checkmark:before {
   width: 50%;
 }
 
-@keyframes rotate {
+@-webkit-keyframes rotate1 {
+  0% {
+    -webkit-transform: rotateX(-37.5deg) rotateY(45deg);
+            transform: rotateX(-37.5deg) rotateY(45deg);
+  }
+  50% {
+    -webkit-transform: rotateX(-37.5deg) rotateY(405deg);
+            transform: rotateX(-37.5deg) rotateY(405deg);
+  }
+  100% {
+    -webkit-transform: rotateX(-37.5deg) rotateY(405deg);
+            transform: rotateX(-37.5deg) rotateY(405deg);
+  }
+}
+
+@keyframes rotate1 {
   0% {
     -webkit-transform: rotateX(-37.5deg) rotateY(45deg);
             transform: rotateX(-37.5deg) rotateY(45deg);
@@ -5175,8 +5080,8 @@ input + .iconModule i.icon.icon-checkmark:before {
 }
 
 #Loading .sides {
-  -webkit-animation: rotate 3s ease infinite;
-          animation: rotate 3s ease infinite;
+  -webkit-animation: rotate1 3s ease infinite;
+          animation: rotate1 3s ease infinite;
   -webkit-animation-delay: .8s;
           animation-delay: .8s;
   -webkit-transform-style: preserve-3d;
@@ -5609,8 +5514,8 @@ input + .iconModule i.icon.icon-checkmark:before {
 #Loading h1 {
   -webkit-transform: rotateX(-37.5deg) rotateY(45deg);
           transform: rotateX(-37.5deg) rotateY(45deg);
-  -webkit-animation: rotate 3s ease infinite;
-          animation: rotate 3s ease infinite;
+  -webkit-animation: rotate1 3s ease infinite;
+          animation: rotate1 3s ease infinite;
   -webkit-animation-delay: .8s;
           animation-delay: .8s;
 }
