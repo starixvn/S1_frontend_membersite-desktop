@@ -26,7 +26,7 @@ export default ({
 	});
 
 	const toAmountPanel = () => {
-		dispatch({ type: defActionType.TO_OTHER_PANEL, step: 2 });
+		dispatch({ type: defActionType.TO_OTHER_PANEL, panel: "amount" });
 	};
 
 	const clickSubmit = () => {

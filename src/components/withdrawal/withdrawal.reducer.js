@@ -14,12 +14,13 @@ export const defActionType = {
 
 export const initState = {
 	balanceData: {},
-	step: 0,
+	step: 1,
 	custBankInfo: [],
 	selectedAccount: {},
 	kycStatus: "normal",
 	loading: true,
-	redirectPath: null
+	redirectPath: null,
+	panel: "amount"
 };
 
 export function reducer(state, action) {
@@ -39,7 +40,7 @@ export function reducer(state, action) {
 			};
 
 		case defActionType.SELECT_ACCOUNT:
-			_step = state.amount ? 2 : 1;
+			_step = state.amount ? 3 : 2;
 			return {
 				...state,
 				selectedAccount: action.selectedAccount,
@@ -47,7 +48,7 @@ export function reducer(state, action) {
 			};
 
 		case defActionType.EDIT_AMOUNT:
-			_step = state.selectedAccount.accountNo ? 2 : 0;
+			_step = state.selectedAccount.accountNo ? 3 : 1;
 			return {
 				...state,
 				amount: action.amount,
@@ -64,7 +65,7 @@ export function reducer(state, action) {
 		case defActionType.TO_OTHER_PANEL:
 			return {
 				...state,
-				step: action.step
+				panel: action.panel
 			};
 
 		case defActionType.SET_INIT_STATE:
