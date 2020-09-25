@@ -1,4 +1,5 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
+import { Link } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import { api_promotion_GetPromotionListV2 } from "../../service/api/promotion";
 import { api_account_GetCustSpecificBonus } from "../../service/api/account";
@@ -7,6 +8,8 @@ import PromotionList from "./promotion.list";
 import { userInfoContext, popBoxContext } from "../common/context";
 import { defPopBoxType } from "../common/popBox";
 import { isExpiry, isArrayNotEmpty } from "./promotion.common";
+import { getUrlParameter } from "../common/common";
+import path from "../../path";
 
 export default () => {
 	const { t } = useTranslation();
@@ -137,6 +140,31 @@ export default () => {
 			}
 		);
 	}, [userInfo.isLogin, userInfo.langId]);
+
+	useEffect(() => {
+		const { isLogin, accountName, phoneNo, email } = userInfo;
+		if (isLogin && accountName && phoneNo && email) {
+			setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.UpdateProfile,
+				title: t("lbl_ImportantNote"),
+				content: t("lbl_UpdatePersonalInfoPromotion"),
+				btnBar: (
+					<div className="btnGroup">
+						<Link
+							className="btn-check"
+							to={`/${userInfo.langId}/${
+								path.profile.root
+							}?from=${
+								path.promotion.root
+							}?BonusCode=${getUrlParameter("BonusCode")}`}>
+							{t("lbl_UpdatePersonalDetail")}
+						</Link>
+					</div>
+				)
+			});
+		}
+	}, [userInfo]);
 
 	useEffect(() => {
 		isMountedRef.current = true;
