@@ -1,13 +1,11 @@
 import React, { Component, createRef } from "react";
 import moment from "moment";
 import DateTime from "react-datetime";
-import { useTranslation } from "react-i18next";
 import { number_format } from "../common/common";
 import {
 	api_payment_UploadReceipt,
 	api_payment_SetDepositReceipt
 } from "../../service/api/payment";
-import style from "../../styles/css/datePicker.css";
 import config from "../../config";
 import ClipboardJS from "../../lib/clipboard.min";
 import Inputbox from "../common/inputbox";

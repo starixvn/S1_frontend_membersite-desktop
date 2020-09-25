@@ -131,6 +131,7 @@ header {
 }
 
 .header > div.menu > a, .header > div.menu > button {
+  font-family: "Microsoft YaHei", sans-serif;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
@@ -143,6 +144,7 @@ header {
   margin: 0 0 0 2%;
   border-bottom: 3px solid transparent;
   font-size: 14px;
+  color: white;
 }
 
 .header > div.menu > a:hover, .header > div.menu > button:hover {
@@ -1303,16 +1305,17 @@ footer {
   margin-left: 5px;
 }
 
-.inputBox .dropdown .btn, .inputBox-org .dropdown .btn, .inputBox-white .dropdown .btn, .inputBox-blue .dropdown .btn {
-  color: #1E85EC;
+.inputBox .iconModule .icon:before, .inputBox-org .iconModule .icon:before, .inputBox-white .iconModule .icon:before, .inputBox-blue .iconModule .icon:before {
+  font-weight: normal;
 }
 
-.inputBox .dropdown .btn:after, .inputBox-org .dropdown .btn:after, .inputBox-white .dropdown .btn:after, .inputBox-blue .dropdown .btn:after {
-  border-color: #1E85EC transparent transparent transparent;
+.inputBox .iconModule .icon.icon-cross:before, .inputBox-org .iconModule .icon.icon-cross:before, .inputBox-white .iconModule .icon.icon-cross:before, .inputBox-blue .iconModule .icon.icon-cross:before {
+  color: #f73201;
+  font-size: 12px;
 }
 
-.inputBox .dropdown .dropdown-item, .inputBox-org .dropdown .dropdown-item, .inputBox-white .dropdown .dropdown-item, .inputBox-blue .dropdown .dropdown-item {
-  color: #1E85EC;
+.inputBox .iconModule .icon.icon-checkmark:before, .inputBox-org .iconModule .icon.icon-checkmark:before, .inputBox-white .iconModule .icon.icon-checkmark:before, .inputBox-blue .iconModule .icon.icon-checkmark:before {
+  color: #007224;
 }
 
 .inputBox-org {
@@ -1352,7 +1355,7 @@ footer {
   color: #666;
 }
 
-.inputBox-white .iconModule i {
+.inputBox-white .iconModule .icon {
   color: #1E85EC;
 }
 
@@ -1360,11 +1363,11 @@ footer {
   border: 1px solid #1E85EC;
 }
 
-.inputBox-blue .dropdown .txt-white, .inputBox-blue .dropdown .btn {
+.inputBox-blue .dropdown .dropdown-container .txt-white, .inputBox-blue .dropdown .dropdown-container .btn {
   color: white;
 }
 
-.inputBox-blue .dropdown .dropdown-item {
+.inputBox-blue .dropdown .dropdown-container .dropdown-item {
   color: white;
 }
 
@@ -1478,27 +1481,6 @@ input[type="file"] {
   color: white;
 }
 
-.btnGroup button.yellow, .btnGroup a.yellow {
-  background: #fab617;
-  color: black;
-}
-
-.btnGroup button.yellow:hover, .btnGroup a.yellow:hover {
-  background: #dd8c00;
-}
-
-.btnGroup button.yellowborder, .btnGroup a.yellowborder {
-  border: 1px solid #fab617;
-  color: #fab617;
-  background: transparent;
-  border-radius: 10px;
-}
-
-.btnGroup button.yellowborder:hover, .btnGroup a.yellowborder:hover {
-  background: #fab617;
-  color: white;
-}
-
 .btnGroup button.red, .btnGroup a.red {
   background: #f73201;
   color: white;
@@ -1549,6 +1531,7 @@ input[type="file"] {
   font-size: 13px;
   margin: 5px 0;
   cursor: pointer;
+  color: #1E85EC;
 }
 
 .dropdown > .btn {
@@ -1564,6 +1547,7 @@ input[type="file"] {
           align-items: center;
   font-family: "Microsoft YaHei", sans-serif;
   margin-left: 5px;
+  color: #1E85EC;
 }
 
 .dropdown > .btn:after {
@@ -1574,6 +1558,7 @@ input[type="file"] {
   border-width: 5px 5px 0 5px;
   position: absolute;
   right: 15px;
+  border-color: #1E85EC transparent transparent transparent;
 }
 
 .Terms {
@@ -4925,20 +4910,6 @@ button.icon-books:hover:after {
 
 .promoType .icon-icon32px_ALL:before {
   margin-right: 5px;
-}
-
-input + .iconModule .icon:before {
-  color: #1E85EC;
-  font-weight: normal;
-}
-
-input + .iconModule i.icon.icon-cross:before {
-  color: #f73201;
-  font-size: 12px;
-}
-
-input + .iconModule i.icon.icon-checkmark:before {
-  color: #007224;
 }
 
 .checkBankSlip {
