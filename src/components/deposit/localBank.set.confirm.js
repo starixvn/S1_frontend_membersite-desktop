@@ -4,13 +4,12 @@ import { number_format } from "../common/common";
 import { userInfoContext, popBoxContext } from "../common/context";
 import { api_payment_DepositReqWireTransfer } from "../../service/api/payment";
 import { useTranslation } from "react-i18next";
-import { Redirect } from "@reach/router";
-import { defActionType } from "./locaLBank.reducer";
+import { Redirect, Link } from "@reach/router";
 import { defPopBoxType } from "../common/popBox";
 import config from "../../config";
 import path from "../../path";
 
-export default ({ bankInfo, amount, _isConvert, dispatch }) => {
+export default ({ bankInfo, amount, _isConvert }) => {
 	const { t } = useTranslation();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -27,7 +26,6 @@ export default ({ bankInfo, amount, _isConvert, dispatch }) => {
 			setPopBox({
 				isOpen: false
 			});
-			setRedirectPath(`/${userInfo.langId}/${path.deposit.root}`);
 		};
 
 		const ClickNo = () => {
@@ -42,17 +40,21 @@ export default ({ bankInfo, amount, _isConvert, dispatch }) => {
 					<button className="gray" onClick={ClickNo}>
 						{t("lbl_Cancel")}
 					</button>
-					<button className="orange" onClick={ClickYes}>
+					<Link
+						to={`/${userInfo.langId}/${path.deposit.root}`}
+						className="orange"
+						onClick={ClickYes}>
 						{t("lbl_Confirm")}
-					</button>
+					</Link>
 				</div>
 			)
 		});
 	};
 
 	const ClickConfirm = () => {
+		let real_amount = _isConvert ? Number(amount) * 1000 : Number(amount);
 		api_payment_DepositReqWireTransfer({
-			amount: Number(amount),
+			amount: real_amount,
 			sysId: bankInfo.sysId
 		}).then(
 			res => {
@@ -71,9 +73,10 @@ export default ({ bankInfo, amount, _isConvert, dispatch }) => {
 							popBoxType: defPopBoxType.UploadBankSlip,
 							depositTime: `${moment().format(
 								"yyyy-MM-DD "
-							)}${moment().format("HH:mm A")}`,
-							amount: number_format(amount, _isConvert),
+							)}${moment().format("hh:mm A")}`,
+							amount: real_amount,
 							backDeposit: backDeposit,
+							_isConvert: _isConvert,
 							...datas
 						});
 					} else {

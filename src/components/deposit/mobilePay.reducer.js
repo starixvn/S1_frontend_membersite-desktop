@@ -3,7 +3,8 @@ export const defActionType = {
 	SELECT_CHANNEL: "SELECT_CHANNEL",
 	EDIT_AMOUNT: "EDIT_AMOUNT",
 	SUBMIT_AMOUNT: "SUBMIT_AMOUNT",
-	CLICK_BACK: "CLICK_BACK"
+	CLICK_BACK: "CLICK_BACK",
+	SET_CHECK_STATUS: "SET_CHECK_STATUS"
 };
 
 const defStepModule = {
@@ -38,7 +39,10 @@ export function reducer(state, action) {
 				...state,
 				channelIdx: action.channelIdx,
 				step: newStep,
-				displayMoudle: defStepModule[newStep]
+				displayMoudle: defStepModule[newStep],
+				amount: null,
+				checked: null,
+				tip: ""
 			};
 
 		case defActionType.EDIT_AMOUNT:
@@ -61,6 +65,13 @@ export function reducer(state, action) {
 				...state,
 				step: newStep,
 				displayMoudle: defStepModule[newStep]
+			};
+
+		case defActionType.SET_CHECK_STATUS:
+			return {
+				...state,
+				checked: action.checked,
+				tip: action.tip
 			};
 
 		default:

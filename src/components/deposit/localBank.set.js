@@ -14,7 +14,6 @@ import DepositWrapper from "./wrapper";
 import BankPanel from "./localBank.set.bank";
 import AmountPanel from "./localBank.set.amount";
 import ConfirmPanel from "./localBank.set.confirm";
-import BankSlip from "./deposit.bankSlip";
 import path from "../../path";
 import {
 	reducer,
@@ -80,6 +79,8 @@ export default () => {
 					_isConvert={_isConvert}
 					amount={state.amount}
 					dispatch={dispatch}
+					checked={state.checked}
+					tip={state.tip}
 				/>
 			);
 			break;

@@ -9,6 +9,7 @@ import {
 } from "../../service/api/payment";
 import { isConvert, number_format } from "../common/common";
 import { defPopBoxType } from "../common/popBox";
+import ReloadSpin from "../common/reloadSpin";
 
 export default () => {
 	const { t } = useTranslation();
@@ -63,16 +64,19 @@ export default () => {
 		setPopBox({
 			isOpen: true,
 			popBoxType: defPopBoxType.UploadBankSlip,
-			depositTime: `${moment().format()}`,
+			depositTime: `${moment().format("yyyy-MM-DD ")}${moment().format(
+				"hh:mm A"
+			)}`,
 			...restBankInfo,
 			transId: transId,
 			accountNo: accountNo,
 			accountName: accountName,
 			isOpen: true,
-			amount: number_format(amount, _isConvert),
+			amount: amount,
 			picFileName: picFileName,
 			refId: refId,
-			refreshDatas: GetRecentDatas
+			refreshDatas: GetRecentDatas,
+			_isConvert: _isConvert
 		});
 	};
 
@@ -151,9 +155,7 @@ export default () => {
 				<div>{t("lbl_Status")}</div>
 				<div>
 					{t("lbl_Action")}
-					<button
-						className="icon icon-spinner11"
-						onClick={GetRecentDatas}></button>
+					<ReloadSpin func={GetRecentDatas} />
 				</div>
 			</div>
 			<div className="listBody">{arr}</div>
