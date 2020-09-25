@@ -87,12 +87,18 @@ export default () => {
 			);
 			break;
 		case defModule.AmountPanel:
+			let maxAmount = getUrlParameter("max");
+			let minAmount = getUrlParameter("min");
 			displayMoudle = (
 				<AmountPanel
 					dispatch={dispatch}
 					bankInfo={state.bankList[state.bankIdx]}
 					_isConvert={_isConvert}
 					amount={state.amount}
+					checked={state.checked}
+					tip={state.tip}
+					maxAmount={maxAmount}
+					minAmount={minAmount}
 				/>
 			);
 			break;

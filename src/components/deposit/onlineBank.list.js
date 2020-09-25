@@ -33,7 +33,7 @@ export default () => {
 		return (
 			<li key={`deposit-onlineBank-${p.payId}-${p.channelId}`}>
 				<Link
-					to={`${_path}?name=${p.payName}&pId=${p.payId}&cId=${p.channelId}`}
+					to={`${_path}?name=${p.payName}&pId=${p.payId}&cId=${p.channelId}&max=${p.maxAmount}&min=${p.minAmount}`}
 					className={`icon icon-${p.payName}`}></Link>
 				<LimitTip
 					minAmount={p.minAmount}

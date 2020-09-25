@@ -3,77 +3,103 @@ import { useTranslation } from "react-i18next";
 import config from "../../config";
 import LimitTip from "./limitTip";
 import { defActionType } from "./onlineBank.reducer";
-import { checkAmount } from "../common/common";
+import { checkAmount, getAmountTip } from "../common/common";
+import Inputbox from "../common/inputbox";
 
-export default ({ bankInfo, _isConvert, amount, dispatch }) => {
+export default ({
+	bankInfo,
+	_isConvert,
+	amount,
+	dispatch,
+	checked,
+	tip,
+	minAmount,
+	maxAmount
+}) => {
 	const { t } = useTranslation();
+
 	const EditAmount = e => {
 		let value = e.target.value;
-		VaildAmount(value);
+		value = value.replace(/^(0+)|[^\d]+/g, "");
+
+		ValidAmount(value);
 		dispatch({ type: defActionType.EDIT_AMOUNT, amount: value });
 	};
 
-	const VaildAmount = _amount => {
-		let result = checkAmount(
-			_amount,
-			bankInfo.minAmount,
-			bankInfo.maxAmount,
-			_isConvert,
-			t
-		);
+	const ValidAmount = _amount => {
+		let result = checkAmount(_amount, minAmount, maxAmount, _isConvert, t);
 		if (result.status !== 0) {
-			// setWarning({
-			// 	status: true,
-			// 	msg: result.msg
-			// });
+			dispatch({
+				type: defActionType.SET_CHECK_STATUS,
+				checked: false,
+				tip: result.msg
+			});
 		} else {
-			// setWarning({
-			// 	status: false,
-			// 	msg: ""
-			// });
+			dispatch({
+				type: defActionType.SET_CHECK_STATUS,
+				checked: true,
+				tip: ""
+			});
 		}
 		return result.status === 0;
 	};
 
-	const SubmitAmount = () => {
-		let result = VaildAmount(amount);
+	const clickInfo = () => {
+		let _msg = tip === "" ? getAmountTip(minAmount, _isConvert, t) : "";
+		dispatch({
+			type: defActionType.SET_CHECK_STATUS,
+			checked: null,
+			tip: _msg
+		});
+	};
+
+	const SubmitAmount = e => {
+		e.preventDefault();
+
+		let result = ValidAmount(amount);
 		if (result) {
 			dispatch({ type: defActionType.SUBMIT_AMOUNT });
 		}
 	};
 
 	return (
-		<div className="subModule">
-			<div className="subModuleBody column">
-				<div>
-					<div className="bankName">
-						<img
-							src={`${config.imgUrl}/common/images/BankLogo/${bankInfo.bankLogo}`}
-							alt={bankInfo.bankName}
+		<div className="subModuleList">
+			<div className="subModule">
+				<form className="subModuleBody column">
+					<div>
+						<div className="bankName">
+							<img
+								src={`${config.imgUrl}/common/images/BankLogo/${bankInfo.bankLogo}`}
+								alt={bankInfo.bankName}
+							/>
+						</div>
+						<LimitTip
+							minAmount={minAmount}
+							maxAmount={maxAmount}
+							displayTextLimit={"Limit"}
+							displayTextUnLimit={"Unlimit"}
+							_isConvert={_isConvert}
 						/>
 					</div>
-					<LimitTip
-						minAmount={bankInfo.minAmount}
-						maxAmount={bankInfo.maxAmount}
-						displayTextLimit={"Limit"}
-						displayTextUnLimit={"Unlimit"}
+					<Inputbox
+						className="inputBox-white"
+						title={t("lbl_Amount")}
+						value={amount}
+						onChange={EditAmount}
+						onBlur={ValidAmount.bind(this, amount)}
+						clickInfo={clickInfo}
+						checked={checked}
+						tip={tip}
 						_isConvert={_isConvert}
 					/>
-				</div>
-				<div className="inputBox-white">
-					<i className="Amount"></i>
-					<input
-						placeholder="Please Enter The Deposit Amount"
-						defaultValue={amount}
-						onBlur={EditAmount}
-					/>
-					<i className="rate"></i>
-				</div>
-				<div className="btnGroup">
-					<button className="darkGray" onClick={SubmitAmount}>
-						{t("lbl_Submit")}
-					</button>
-				</div>
+					<div className="btnGroup">
+						<button
+							className={`${checked ? "btn-check" : "darkGray"}`}
+							onClick={SubmitAmount}>
+							{t("lbl_Submit")}
+						</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	);

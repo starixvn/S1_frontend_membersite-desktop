@@ -1,98 +1,42 @@
-import React, {
-	useContext,
-	useEffect,
-	useState,
-	useRef,
-	createRef,
-	Component
-} from "react";
+import React, { Component, createRef } from "react";
 import moment from "moment";
 import DateTime from "react-datetime";
 import { useTranslation } from "react-i18next";
-import { userInfoContext } from "../common/context";
-import { number_format, isConvert } from "../common/common";
+import { number_format } from "../common/common";
 import {
 	api_payment_UploadReceipt,
 	api_payment_SetDepositReceipt
 } from "../../service/api/payment";
 import style from "../../styles/css/datePicker.css";
 import config from "../../config";
-
-export default props => {
-	const { t } = useTranslation();
-	const { userInfo } = useContext(userInfoContext);
-	const _isConvert = isConvert(userInfo.currencyId);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
-	});
-
-	return (
-		<>
-			<section className="inside">
-				<div id="leftMenu"></div>
-				<div className="rightModule">
-					<div className="infoModule">
-						<div className="deposit-title icon icon-library">
-							<span>{t("lbl_Deposit")}</span>
-							<div>{t("lbl_DepositOptionHint")}</div>
-						</div>
-						<div className="slipInfo">
-							<button className="icon icon-arrow-left2"></button>
-							<div className="smallList">
-								<ul>
-									<li>
-										{t("lbl_Date")} ({moment().format("Z")})
-									</li>
-									<li>
-										{moment(props.datas.depositTime).format(
-											"YYYY/MM/DD HH:mm:ss A"
-										)}
-									</li>
-									<li>{t("lbl_ID")}</li>
-									<li>{props.datas.transId}</li>
-									<li>{t("lbl_RealName")}</li>
-									<li>{props.datas.accountName}</li>
-									<li>{t("lbl_BankName")}</li>
-									<li>{props.datas.bankName}</li>
-									<li>{t("lbl_DepositAmount")}</li>
-									<li>{props.datas.amount}</li>
-								</ul>
-							</div>
-							<div className="subModuleList">
-								<div className="subModule">
-									<div className="subModuleBody column align-items-center">
-										<Module i18n={t} />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</>
-	);
-};
+import ClipboardJS from "../../lib/clipboard.min";
+import Inputbox from "../common/inputbox";
+import { defPopBoxType } from "../common/popBox";
 
 export class Module extends Component {
 	state = {
 		processing: false,
-		depositTime: this.props.depositTime ? this.props.depositTime : null,
+		depositTime: this.props.depositTime ? this.props.depositTime : moment(),
 		refId: this.props.refId ? this.props.refId : "",
 		picFileName: this.props.picFileName ? this.props.picFileName : null,
-		fileImg: null
+		fileImg: null,
+		refIdStatus: { checked: null, tip: "" }
 	};
 	isMountedRef = false;
 	filebox = createRef();
 
 	componentDidMount() {
 		this.isMountedRef = true;
+
+		this._clipboard = new ClipboardJS(".copyBtn");
+		this._clipboard.on("success", e => {});
+		this._clipboard.on("error", e => {});
 	}
 
 	componentWillUnmount() {
 		this.isMountedRef = false;
+
+		this._clipboard.destroy();
 	}
 
 	onUploadFile = (action, e) => {
@@ -118,7 +62,6 @@ export class Module extends Component {
 				res => {
 					if (this.isMountedRef) {
 						if (res.data.errorCode === 0) {
-							alert(this.props.i18n("lbl_UploadSuccess"));
 							if (this.props.refreshDatas) {
 								this.props.refreshDatas();
 							}
@@ -139,6 +82,7 @@ export class Module extends Component {
 	dragOver = e => {
 		e.preventDefault();
 	};
+
 	editField = (col, value, e) => {
 		this.setState({ [col]: value === null ? e.target.value : value });
 	};
@@ -147,7 +91,6 @@ export class Module extends Component {
 		e.preventDefault();
 		if (!this.state.processing) {
 			this.setState({ processing: true });
-			let bankSlip = this.props.bankSlip;
 
 			if (this.state.refId !== "") {
 				api_payment_SetDepositReceipt(
@@ -157,19 +100,34 @@ export class Module extends Component {
 				).then(
 					res => {
 						if (this.isMountedRef) {
+							this.setState({ processing: false });
+
 							if (res.data.errorCode === 0) {
-								alert(this.props.i18n("lbl_UpdateSuccess"));
+								const ClickClose = () => {
+									if (this.props.refreshDatas) {
+										this.props.refreshDatas();
+									} else if (this.props.backDeposit) {
+										this.props.backDeposit();
+									}
+									this.props.ClosePopBox();
+								};
+
+								this.props.setPopBox(prevS => ({
+									isOpen: true,
+									popBoxType: defPopBoxType.Success,
+									prevBtnBar: prevS.btnBar,
+									btnBar: (
+										<div className="btnGroup">
+											<button
+												className="btn-cancel"
+												onClick={ClickClose}>
+												{this.props.i18n("lbl_Close")}
+											</button>
+										</div>
+									)
+								}));
 							} else {
 								alert(res.data.message);
-							}
-							if (this.props.refreshDatas) {
-								this.props.refreshDatas();
-							} else if (this.props.backDeposit) {
-								this.props.backDeposit();
-							}
-							this.setState({ processing: false });
-							if (this.props.ClosePopBox) {
-								this.props.ClosePopBox();
 							}
 						}
 					},
@@ -182,12 +140,34 @@ export class Module extends Component {
 				);
 			} else {
 				if (this.isMountedRef) {
-					alert(this.props.i18n("lbl_RemindForRefNum"));
+					this.setState({
+						refIdStatus: {
+							checked: false,
+							tip: this.props.i18n("lbl_RemindForRefNum")
+						}
+					});
 					this.setState({ processing: false });
 				}
 			}
 		}
 	};
+
+	clickInfo = () => {
+		let _tip =
+			this.state.refIdStatus.tip === ""
+				? this.props.i18n("lbl_RefNoHint")
+				: "";
+
+		this.setState({ refIdStatus: { checked: null, tip: _tip } });
+	};
+
+	checkTip = e => {
+		let val = e.target.value;
+
+		let _tip = val === "" ? this.props.i18n("lbl_RemindForRefNum") : "";
+		this.setState({ refIdStatus: { checked: val !== "", tip: _tip } });
+	};
+
 	render() {
 		return (
 			<>
@@ -229,34 +209,93 @@ export class Module extends Component {
 						<li>{this.props.i18n("BankSlipHint3")}</li>
 					</ul>
 				</div>
+
+				<div className="smallList checkBankSlip">
+					<div className="txt-lightgray">
+						{this.props.i18n("lbl_TransactionHint")}
+					</div>
+					<ul>
+						<li>
+							<div className="bankName">
+								<img
+									src={`${config.imgUrl}/common/images/BankLogo/${this.props.bankLogo}`}
+									alt={this.props.bankName}
+								/>
+							</div>
+						</li>
+						<li>{this.props.bankName}</li>
+						<li>
+							<a
+								href={this.props.bankSite}
+								className="icon icon-new-tab"
+								target="_blank"></a>
+						</li>
+					</ul>
+					<ul>
+						<li>{this.props.i18n("lbl_BankAccountName")}</li>
+						<li>{this.props.accountName}</li>
+						<li>
+							<button
+								className="icon icon-files-empty copyBtn"
+								data-clipboard-text={
+									this.props.accountName
+								}></button>
+						</li>
+					</ul>
+					<ul>
+						<li>{this.props.i18n("lbl_BankNumber")}</li>
+						<li>{this.props.accountNo}</li>
+						<li>
+							<button
+								className="icon icon-files-empty copyBtn"
+								data-clipboard-text={
+									this.props.accountNo
+								}></button>
+						</li>
+					</ul>
+					<ul>
+						<li>{this.props.i18n("lbl_DepositAmount")}</li>
+						<li>
+							{number_format(
+								this.props.amount,
+								this.props._isConvert
+							)}
+						</li>
+						<li>
+							<button
+								className="icon icon-files-empty copyBtn"
+								data-clipboard-text={
+									this.props.amount
+								}></button>
+						</li>
+					</ul>
+				</div>
+
 				<form onSubmit={this.clickSubmit}>
 					<div className="inputBox-white">
 						<i className="txt-blue">
 							{this.props.i18n("lbl_DepositTime")}
 						</i>
 						<DateTime
-							value={moment(this.state.depositTime).format(
-								"YYYY-MM-DD HH:mm A"
-							)}
+							value={this.state.depositTime}
 							onChange={this.editField.bind(this, "depositTime")}
 						/>
 						<div className="iconModule">
 							<i className="icon icon-calendar"></i>
-							<i className="icon icon-information-solid"></i>
 						</div>
 					</div>
-					<div className="inputBox-white">
-						<i className="txt-blue">
-							{this.props.i18n("lbl_Refno")}
-						</i>
-						<input
-							value={this.state.refId}
-							onChange={this.editField.bind(this, "refId", null)}
-						/>
-						<div className="iconModule">
-							<i className="icon icon-information-solid"></i>
-						</div>
-					</div>
+
+					<Inputbox
+						className="inputBox-white"
+						title={this.props.i18n("lbl_Refno")}
+						value={this.state.refId}
+						onChange={this.editField.bind(this, "refId", null)}
+						onBlur={this.checkTip.bind(this)}
+						checked={this.state.refIdStatus.checked}
+						clickInfo={this.clickInfo}
+						tip={this.state.refIdStatus.tip}
+					/>
+
 					<div className="btnGroup">
 						<button
 							type="button"

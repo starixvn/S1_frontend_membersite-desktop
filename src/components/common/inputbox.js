@@ -50,7 +50,7 @@ export default props => {
 					</div>
 				) : null}
 			</div>
-			{props.inputType !== "date" && props.tip !== "" ? (
+			{props.inputType !== "date" ? (
 				<div className={`tip${props.tip ? " active" : ""}`}>
 					{props.tip}
 				</div>

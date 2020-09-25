@@ -3,7 +3,8 @@ export const defActionType = {
 	SELECT_BANK: "SELECT_BANK",
 	CLICK_BACK: "CLICK_BACK",
 	EDIT_AMOUNT: "EDIT_AMOUNT",
-	SUBMIT_AMOUNT: "SUBMIT_AMOUNT"
+	SUBMIT_AMOUNT: "SUBMIT_AMOUNT",
+	SET_CHECK_STATUS: "SET_CHECK_STATUS"
 };
 
 const defStepModule = {
@@ -39,7 +40,10 @@ export function reducer(state, action) {
 				...state,
 				bankIdx: action.bankIdx,
 				step: newStep,
-				displayMoudle: defStepModule[newStep]
+				displayMoudle: defStepModule[newStep],
+				amount: null,
+				checked: null,
+				tip: ""
 			};
 
 		case defActionType.CLICK_BACK:
@@ -63,6 +67,14 @@ export function reducer(state, action) {
 				step: newStep,
 				displayMoudle: defStepModule[newStep]
 			};
+
+		case defActionType.SET_CHECK_STATUS:
+			return {
+				...state,
+				checked: action.checked,
+				tip: action.tip
+			};
+
 		default:
 			console.log("action type not exists");
 			return state;
