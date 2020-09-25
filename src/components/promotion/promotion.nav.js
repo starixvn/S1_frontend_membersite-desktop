@@ -15,7 +15,7 @@ const defPromoNavs = [
 		selectedClassName: "blue icon icon-icon32px_ALL"
 	},
 	{
-		displayKey: "PromotionCategory1",
+		displayKey: "lbl_PromotionCategory1",
 		value: defFilterType.firstDeposit,
 		className: "blueBorder",
 		selectedClassName: "blue"

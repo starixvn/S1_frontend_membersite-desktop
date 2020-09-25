@@ -7,7 +7,7 @@ export const defNav = {
 	},
 	PROMO: {
 		key: "PROMO",
-		displayKey: "lbl_Promo",
+		displayKey: "lbl_Promotion",
 		hot: true
 	},
 	FEATURED: {
