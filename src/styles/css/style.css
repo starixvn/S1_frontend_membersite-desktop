@@ -555,6 +555,7 @@ header {
   font-size: 14px;
   -webkit-transition: 0.7s;
   transition: 0.7s;
+  white-space: nowrap;
 }
 
 .header > div.function .cashier .submenu, .header > div.function .wallet .submenu, .header > div.function .memberfile .submenu {
