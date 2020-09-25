@@ -65,7 +65,7 @@ export default ({ dispatch, state, t, _isConvert }) => {
 		let amountChecked = ValidAmount(state.amount);
 
 		if (state.selectedAccount.accountNo && amountChecked) {
-			dispatch({ type: defActionType.TO_OTHER_PANEL, step: 3 });
+			dispatch({ type: defActionType.TO_OTHER_PANEL, panel: "confirm" });
 		} else if (!state.selectedAccount.accountNo) {
 			setPopBox({
 				isOpen: true,

@@ -98,7 +98,7 @@ export default ({ dispatch, state, refreshData, KycCheck }) => {
 				custBankInfo={state.custBankInfo ?? []}
 			/>
 			<div className="subModuleList">
-				{state.step !== 3 ? (
+				{state.panel === "amount" ? (
 					<AmountPanel
 						dispatch={dispatch}
 						state={state}
