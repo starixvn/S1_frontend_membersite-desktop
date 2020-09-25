@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Redirect } from "@reach/router";
+import { Redirect, navigate } from "@reach/router";
 import * as ct from "../common/context";
 import { defaultLang } from "../../i18n/config";
 import { useTranslation } from "react-i18next";
@@ -162,6 +162,7 @@ export default ({ children, afterLogin = false }) => {
 				let pathLang = window.location.pathname.split("/")?.[1];
 				let currentLang =
 					readCookie(SiteInfo.langCookie) ?? userInfo.langId;
+
 				if (!pathLang && currentLang !== defaultLang) {
 					setRedirectPath(`/${currentLang}`);
 				} else if (pathLang !== "" && pathLang !== currentLang) {
@@ -171,7 +172,7 @@ export default ({ children, afterLogin = false }) => {
 					}));
 
 					let newPathArr = getNewLanguagePath(currentLang);
-					window.location.href = newPathArr;
+					navigate(newPathArr);
 				} else {
 					setCorrectPath(true);
 				}

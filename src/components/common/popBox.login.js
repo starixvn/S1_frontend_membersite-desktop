@@ -8,6 +8,8 @@ import { userInfoContext, popBoxContext } from "./context";
 import { defPopBoxType } from "../common/popBox";
 import { Link } from "@reach/router";
 import path from "../../path";
+import { setCookie } from "../common/common";
+import { SiteInfo } from "../../config";
 
 const initValue = {
 	username: "",
@@ -102,13 +104,12 @@ const LoginPanel = () => {
 				langId: userInfo.langId
 			}).then(res => {
 				if (res.errorCode === 0) {
-					if (isMountedRef.current) {
-						setUserInfo(() => ({
-							...res.userData,
-							isLogin: res.isLogin
-						}));
-						setPopBox({ isOpen: false });
-					}
+					setCookie(SiteInfo.langCookie, res.userData.langId);
+					setUserInfo(() => ({
+						...res.userData,
+						isLogin: res.isLogin
+					}));
+					setPopBox({ isOpen: false });
 				} else if (
 					res.errorCode === 1101 ||
 					res.errorCode === 1102 ||

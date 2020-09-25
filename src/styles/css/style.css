@@ -450,6 +450,7 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: white;
 }
 
 .header > div.function > div.active .countryList, .header > div.function > a.active .countryList, .header > div.function > button.active .countryList {
@@ -2880,11 +2881,6 @@ input[type="file"] {
   min-width: 75%;
 }
 
-.directions ~ form .inputBox-white .iconModule .icon:before {
-  color: #1E85EC;
-  font-weight: normal;
-}
-
 .directions ~ form .inputBox-white + .tip {
   max-width: 80%;
   min-width: 75%;
@@ -4929,6 +4925,11 @@ button.icon-books:hover:after {
 
 .promoType .icon-icon32px_ALL:before {
   margin-right: 5px;
+}
+
+input + .iconModule .icon:before {
+  color: #1E85EC;
+  font-weight: normal;
 }
 
 input + .iconModule i.icon.icon-cross:before {
