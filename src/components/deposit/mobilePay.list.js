@@ -1,51 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useTranslation } from "react-i18next";
-import { api_payment_GetMobilePayGroupList } from "../../service/api/payment";
+import React from "react";
 import path from "../../path";
 import { Link } from "gatsby";
+import { useTranslation } from "react-i18next";
 
 const _path = path.deposit.sub.mobilePay.root;
 
-export default () => {
+export default ({ paymentList }) => {
 	const { t } = useTranslation();
-	const [paymentList, setPaymentList] = useState([]);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
-	});
-
-	useEffect(() => {
-		api_payment_GetMobilePayGroupList().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						if (res.data.data.length > 0) {
-							setPaymentList(res.data.data);
-						}
-					} else {
-						// setPopBox({
-						// 	isOpen: true,
-						// 	title: i18n.lbl_ImportantNote,
-						// 	content: res.data.message
-						// });
-					}
-					// setLoading(false);
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					// setLoading(false);
-					// setPopBox({
-					// 	isOpen: true,
-					// 	title: i18n.lbl_ImportantNote,
-					// 	content: i18n.msg_ApiServerError
-					// });
-				}
-			}
-		);
-	}, []);
 
 	let rows = paymentList?.map(p => {
 		return (

@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "gatsby";
-import { api_payment_GetOnlinePaymentList } from "../../service/api/payment";
 import LimitTip from "./limitTip";
 import { isConvert } from "../common/common";
 import { userInfoContext } from "../common/context";
@@ -9,24 +8,9 @@ import { useTranslation } from "react-i18next";
 
 const _path = path.deposit.sub.onlineBank.root;
 
-export default () => {
+export default ({ onlineBankingList }) => {
 	const { t } = useTranslation();
-	const [onlineBankingList, setOnlineBankingList] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
-	const isMountedRef = useRef(null);
-
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
-	});
-
-	useEffect(() => {
-		api_payment_GetOnlinePaymentList().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setOnlineBankingList(res.data.data);
-			}
-		});
-	}, []);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	let rows = onlineBankingList?.map(p => {
