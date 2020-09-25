@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
-import Inputbox from "./inputbox";
 import Dropdown from "./dropdown";
 import DateTime from "react-datetime";
 
@@ -32,8 +31,12 @@ export default props => {
 	let _startDate = "";
 	let _endDate = "";
 
-	const valid = current => {
-		return current.isBefore(tomorrow);
+	const start_valid = current => {
+		return current.isBefore(endDate);
+	};
+
+	const end_valid = current => {
+		return current.isBefore(tomorrow) && current.isAfter(startDate);
 	};
 
 	const onSelectItem = i => {
@@ -75,9 +78,13 @@ export default props => {
 		setEndtDate(_endDate);
 	};
 
-	const selectDate = (col, val) => {
-		col === "start" ? setStartDate(val) : setEndtDate(val);
+	const onChangeDate = (col, val) => {
+		let _val = moment.isMoment(val) ? val : moment(val);
+		if (moment.isMoment(_val) && _val.isValid()) {
+			col === "start" ? setStartDate(_val) : setEndtDate(_val);
+		}
 	};
+
 	return (
 		<div className="quickSelect">
 			<div>
@@ -96,9 +103,9 @@ export default props => {
 			<div className="inputBox-blue">
 				<DateTime
 					value={moment(startDate).format("YYYY-MM-DD")}
-					onChange={selectDate.bind(this, "start")}
+					onChange={onChangeDate.bind(this, "start")}
 					timeFormat={false}
-					isValidDate={valid}
+					isValidDate={start_valid}
 				/>
 				<div className="iconModule">
 					<i className="icon icon-calendar"></i>
@@ -108,9 +115,9 @@ export default props => {
 			<div className="inputBox-blue">
 				<DateTime
 					value={moment(endDate).format("YYYY-MM-DD")}
-					onChange={selectDate.bind(this, "end")}
+					onChange={onChangeDate.bind(this, "end")}
 					timeFormat={false}
-					isValidDate={valid}
+					isValidDate={end_valid}
 				/>
 				<div className="iconModule">
 					<i className="icon icon-calendar"></i>
