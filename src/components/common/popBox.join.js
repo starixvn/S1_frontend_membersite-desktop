@@ -168,13 +168,13 @@ export default () => {
 		}));
 	};
 
-	const checkValue = (col, e) => {
+	const checkValue = async (col, e) => {
 		let val = e.target.value;
 		let checked = true;
 		let msg = "";
 
 		if (col === "username") {
-			let result = usernameCheck(val);
+			let result = await usernameCheck(val);
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "password") {
@@ -182,7 +182,7 @@ export default () => {
 			checked = result.checked;
 			msg = result.msg;
 		} else if (col === "email") {
-			let result = emailCheck(val);
+			let result = await emailCheck(val);
 			checked = result.checked;
 			msg = result.msg;
 		}
@@ -252,9 +252,9 @@ export default () => {
 					}
 				}
 			}
-
-			return { checked, msg };
 		}
+
+		return { checked, msg };
 	};
 
 	const clickDropdown = () => {
