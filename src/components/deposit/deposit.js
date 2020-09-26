@@ -90,7 +90,7 @@ export default () => {
 	useEffect(() => {
 		async function getData() {
 			setLoading(true);
-			await Promise.all([
+			await Promise.allSettled([
 				getBankInfoOffList(),
 				getOnlinePaymentList(),
 				getMobilePayGroupList()
