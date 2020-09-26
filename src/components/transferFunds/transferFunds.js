@@ -1,7 +1,11 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 
 import { useTranslation } from "react-i18next";
-import { userInfoContext, popBoxContext } from "..//common/context";
+import {
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "..//common/context";
 import { api_account_GetWalletInfo } from "../../service/api/account";
 import { isConvert, checkAmount } from "../common/common.js";
 import {
@@ -12,7 +16,6 @@ import { defPopBoxType } from "../common/popBox";
 import ShowWallets from "./showWallets";
 import SetAmount from "./setAmount";
 import RecentHistory from "./recentHistory";
-import Loading from "../common/loading";
 
 export default () => {
 	const defDirection = {
@@ -40,7 +43,7 @@ export default () => {
 	const [getHistory, setGetHistory] = useState(null);
 	const [status, setStatus] = useState(initStatus);
 	const isMountedRef = useRef(null);
-	const [loading, setLoading] = useState(true);
+	const { loading, setLoading } = useContext(loadingContext);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -48,16 +51,20 @@ export default () => {
 	});
 
 	useEffect(() => {
-		getWalletData();
-		getTransferRecent();
+		async function getData() {
+			setLoading(true);
+			await Promise.all([getWalletData(), getTransferRecent()]);
+			setLoading(false);
+		}
+		getData();
 	}, []);
 
 	const ClickClose = () => {
 		setPopBox({ isOpen: false });
 	};
 
-	const getWalletData = () => {
-		api_account_GetWalletInfo().then(
+	const getWalletData = async () => {
+		await api_account_GetWalletInfo().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
@@ -75,7 +82,6 @@ export default () => {
 							};
 						});
 						setWalletInfo([mainWallet, ...tpWalletArr]);
-						setLoading(false);
 					} else {
 						setPopBox({
 							isOpen: true,
@@ -91,7 +97,6 @@ export default () => {
 								</div>
 							)
 						});
-						setLoading(false);
 					}
 				}
 			},
@@ -111,15 +116,14 @@ export default () => {
 							</div>
 						)
 					});
-					setLoading(false);
 				}
 			}
 		);
 	};
 
-	const Transfer = (_tpId, _amount, _direction) => {
+	const Transfer = async (_tpId, _amount, _direction) => {
 		setLoading(true);
-		api_tp_Transfer({
+		await api_tp_Transfer({
 			TpId: _tpId === 0 ? 1 : _tpId,
 			amount: _amount,
 			direction: _direction
@@ -164,7 +168,6 @@ export default () => {
 							)
 						});
 					}
-					setLoading(false);
 				}
 			},
 			err => {
@@ -183,14 +186,14 @@ export default () => {
 							</div>
 						)
 					});
-					setLoading(false);
 				}
 			}
 		);
+		setLoading(false);
 	};
 
-	const getTransferRecent = () => {
-		api_tp_GetTransferRecent().then(
+	const getTransferRecent = async () => {
+		await api_tp_GetTransferRecent().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
@@ -353,9 +356,7 @@ export default () => {
 		}
 	};
 
-	return loading ? (
-		<Loading />
-	) : (
+	return loading ? null : (
 		<div className="rightModule">
 			<div className="infoModule">
 				<div className="inside-title icon icon-icon32px_Funds-transfer">
