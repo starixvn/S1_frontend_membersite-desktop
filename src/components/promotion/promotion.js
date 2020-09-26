@@ -143,7 +143,7 @@ export default () => {
 
 	useEffect(() => {
 		const { isLogin, accountName, phoneNo, email } = userInfo;
-		if (isLogin && accountName && phoneNo && email) {
+		if (isLogin && (!accountName || !phoneNo || !email)) {
 			setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.UpdateProfile,
