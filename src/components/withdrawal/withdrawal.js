@@ -3,7 +3,11 @@ import { useTranslation } from "react-i18next";
 import MainPanel from "./withdrawal.set";
 import WalletPanel from "./withdrawal.showWallet";
 import KycPanel from "./withdrawal.kyc";
-import { popBoxContext, userInfoContext } from "../common/context";
+import {
+	popBoxContext,
+	userInfoContext,
+	loadingContext
+} from "../common/context";
 import { defPopBoxType } from "../common/popBox";
 import { api_account_GetWithdrawalAvailableBalance } from "../../service/api/account";
 import {
@@ -14,7 +18,6 @@ import { initState, reducer, defActionType } from "./withdrawal.reducer";
 import RecentHistory from "./withdrawal.recentHistory";
 import StepBar from "../common/stepBar";
 import defStep from "./withdrawal.defStep";
-import Loading from "../common/loading";
 import path from "../../path";
 import { Link } from "@reach/router";
 
@@ -22,6 +25,7 @@ export default () => {
 	const { t } = useTranslation();
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { loading, setLoading } = useContext(loadingContext);
 	const [state, dispatch] = useReducer(reducer, initState);
 	const isMountedRef = useRef(null);
 
@@ -57,16 +61,23 @@ export default () => {
 	}, [userInfo]);
 
 	useEffect(() => {
-		GetWithdrawalAvailableBalance();
-		KycCheck();
+		async function getData() {
+			setLoading(true);
+			await Promise.allSettled([
+				GetWithdrawalAvailableBalance(),
+				KycCheck()
+			]);
+			setLoading(false);
+		}
+		getData();
 	}, []);
 
 	const ClosePopBox = () => {
 		setPopBox({ isOpen: false });
 	};
 
-	const GetWithdrawalAvailableBalance = () => {
-		api_account_GetWithdrawalAvailableBalance().then(
+	const GetWithdrawalAvailableBalance = async () => {
+		await api_account_GetWithdrawalAvailableBalance().then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
@@ -110,10 +121,6 @@ export default () => {
 							</div>
 						)
 					});
-					dispatch({
-						type: defActionType.SET_LOADING,
-						loading: false
-					});
 				}
 			}
 		);
@@ -127,10 +134,6 @@ export default () => {
 						dispatch({
 							type: defActionType.GET_RECENT_HISTORY,
 							recentHistory: res.data.data
-						});
-						dispatch({
-							type: defActionType.SET_LOADING,
-							loading: false
 						});
 					} else {
 						setPopBox({
@@ -147,10 +150,6 @@ export default () => {
 								</div>
 							)
 						});
-						dispatch({
-							type: defActionType.SET_LOADING,
-							loading: false
-						});
 					}
 				}
 			},
@@ -168,17 +167,13 @@ export default () => {
 							</div>
 						)
 					});
-					dispatch({
-						type: defActionType.SET_LOADING,
-						loading: false
-					});
 				}
 			}
 		);
 	};
 
-	const KycCheck = () => {
-		api_payment_KycCheck().then(
+	const KycCheck = async () => {
+		await api_payment_KycCheck().then(
 			res => {
 				if (isMountedRef.current) {
 					let errorCode = res.data.errorCode;
@@ -192,8 +187,7 @@ export default () => {
 					}
 					dispatch({
 						type: defActionType.SET_KYC_STATUS,
-						kycStatus: kycStatus,
-						loading: false
+						kycStatus: kycStatus
 					});
 				}
 			},
@@ -211,10 +205,6 @@ export default () => {
 							</div>
 						)
 					});
-					dispatch({
-						type: defActionType.SET_LOADING,
-						loading: false
-					});
 				}
 			}
 		);
@@ -225,9 +215,7 @@ export default () => {
 		GetWithdrawalInfoRecent();
 	};
 
-	return state.loading ? (
-		<Loading />
-	) : (
+	return loading ? null : (
 		<div className="rightModule">
 			<div className="infoModule">
 				<div className="inside-title icon icon-icon32px_Withdraw">
