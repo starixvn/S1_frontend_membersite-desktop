@@ -13,3 +13,4 @@ export const themeContext = createContext({});
 export const walletInfoContext = createContext({});
 export const bankSlipPopBoxContext = createContext({});
 export const msgCountContext = createContext({});
+export const loadingContext = createContext({});

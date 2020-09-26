@@ -4,6 +4,7 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import SEO from "../seo";
 import PopBox from "./popBox";
+import Loading from "./loading";
 import "../../styles/css/swiper.css";
 import "../../styles/css/style.css";
 import "../../styles/css/font.css";
@@ -17,6 +18,7 @@ const Layout = ({ children }) => {
 			{children}
 			<Footer />
 			<PopBox />
+			<Loading />
 		</>
 	);
 };
