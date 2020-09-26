@@ -90,6 +90,7 @@
 	"lbl_RemindForName": "*请填写与您银行账户一致的完整姓名，以加速存款和提款操作。",
 	"lbl_PhoneTooltip": "请输入您的电话号码，输入后将无法更改！",
 	"lbl_Submit": "提交",
+	"lbl_Preferred_Currency":"Preferred Currency",
 	"lbl_PreferredCurrencyToolTip": "一旦完成註冊，即無法修改选定幣別。",
 	"lbl_Check18TCTooltip": "请点选上方格子以确认符合账号注册条件",
 	"lbl_Guest": "访客",

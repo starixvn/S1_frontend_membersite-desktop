@@ -67,6 +67,10 @@ export default () => {
 	const [showPsw, setShowPsw] = useState(false);
 	const [siteCurrency, setSiteCurrency] = useState([]);
 	const isMountedRef = useRef(null);
+	const [defaultOption, setDefaultOption] = useState(
+		t("lbl_Preferred_Currency")
+	);
+	const [dropDownTip, setDropDownTip] = useState("");
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -138,8 +142,9 @@ export default () => {
 			msg = t("lbl_PasswordTooltip");
 		} else if (col === "email") {
 			msg = t("lbl_EmailToolTip");
+		} else if (col === "currency") {
+			msg = t("lbl_PreferredCurrencyToolTip");
 		}
-
 		if (tip[col].msg === msg) {
 			msg = "";
 		}
@@ -153,6 +158,11 @@ export default () => {
 				}
 			};
 		});
+	};
+
+	const clickDropDownInfo = () => {
+		let currency_tip = t("lbl_PreferredCurrencyToolTip");
+		setDropDownTip(dropDownTip === "" ? currency_tip : "");
 	};
 
 	const EditField = (col, e) => {
@@ -270,6 +280,7 @@ export default () => {
 	};
 
 	const onSelectItem = i => {
+		setDefaultOption(null);
 		setUserValue(prev => {
 			return { ...prev, currency: i };
 		});
@@ -547,6 +558,7 @@ export default () => {
 
 						<div className="inputBox-org">
 							<Dropdown
+								defaultOption={defaultOption}
 								mainKey="join_currency"
 								icon="icon-coin-dollar txt-orange"
 								options={siteCurrency}
@@ -555,10 +567,13 @@ export default () => {
 								onSelectItem={onSelectItem}
 								clickDropdown={clickDropdown}
 							/>
+							<i
+								className={`icon icon-information-solid`}
+								onClick={clickDropDownInfo}></i>
 						</div>
 
-						{tip.currency.msg !== "" ? (
-							<div className="tip active">{tip.currency.msg}</div>
+						{dropDownTip !== "" ? (
+							<div className="tip active">{dropDownTip}</div>
 						) : null}
 					</div>
 
