@@ -131,7 +131,7 @@ const AfterLogin = () => {
 				btnBar: (
 					<div className="btnGroup">
 						<button className="btn-cancel" onClick={ClickClose}>
-							{t("lbl_Close")}
+							OK
 						</button>
 					</div>
 				)
