@@ -40,11 +40,10 @@ export function reducer(state, action) {
 			};
 
 		case defActionType.SELECT_ACCOUNT:
-			_step = state.amount ? 3 : 2;
 			return {
 				...state,
 				selectedAccount: action.selectedAccount,
-				step: _step
+				step: action.step
 			};
 
 		case defActionType.EDIT_AMOUNT:
