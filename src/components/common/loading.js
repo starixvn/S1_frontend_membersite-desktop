@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { loadingContext } from "./context";
 
 export default () => {
-	return (
+	const { loading } = useContext(loadingContext);
+	return loading ? (
 		<div id="Loading" className="active">
 			<div className="container">
 				<div className="cube">
@@ -18,5 +20,5 @@ export default () => {
 				<div className="text">Loading...</div>
 			</div>
 		</div>
-	);
+	) : null;
 };

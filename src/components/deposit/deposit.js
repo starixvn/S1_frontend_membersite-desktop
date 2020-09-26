@@ -9,20 +9,20 @@ import OnlineBankList from "./onlineBank.list";
 import MobilePayList from "./mobilePay.list";
 import DepositWrapper from "./wrapper";
 import RecentHistory from "./deposit.recentHistory";
-import Loading from "../../pages/loading";
 import { useTranslation } from "react-i18next";
-import { popBoxContext } from "../common/context";
+import { popBoxContext, loadingContext } from "../common/context";
 import { defPopBoxType } from "../common/popBox";
 
 export default () => {
 	const { t } = useTranslation();
 
 	const isMountedRef = useRef(null);
-	const [loading, setLoading] = useState(false);
 	const [onlineBankingList, setOnlineBankingList] = useState([]);
 	const [localBankList, setLocalBankList] = useState([]);
 	const [paymentList, setPaymentList] = useState([]);
+
 	const { setPopBox } = useContext(popBoxContext);
+	const { loading, setLoading } = useContext(loadingContext);
 
 	const clickClose = () => {
 		setPopBox({ isOpen: false });
@@ -105,9 +105,7 @@ export default () => {
 		return () => (isMountedRef.current = false);
 	});
 
-	return loading ? (
-		<Loading />
-	) : (
+	return loading ? null : (
 		<>
 			<DepositWrapper step={1}>
 				<div className="subModuleList">

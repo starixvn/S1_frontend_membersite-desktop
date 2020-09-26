@@ -28,7 +28,7 @@ export default ({ children, afterLogin = false }) => {
 		isOpen: false,
 		popBoxType: null
 	});
-
+	const [loading, setLoading] = useState(false);
 	const [walletInfo, setWalletInfo] = useState({
 		main: null
 	});
@@ -233,7 +233,10 @@ export default ({ children, afterLogin = false }) => {
 							value={{ msgCount, setMsgCount }}>
 							<ct.popBoxContext.Provider
 								value={{ popBox, setPopBox }}>
-								{children}
+								<ct.loadingContext.Provider
+									value={{ loading, setLoading }}>
+									{children}
+								</ct.loadingContext.Provider>
 							</ct.popBoxContext.Provider>
 						</ct.msgCountContext.Provider>
 					</ct.walletInfoContext.Provider>
