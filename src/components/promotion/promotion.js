@@ -142,8 +142,8 @@ export default () => {
 	}, [userInfo.isLogin, userInfo.langId]);
 
 	useEffect(() => {
-		const { isLogin, accountName, phoneNo, email } = userInfo;
-		if (isLogin && (!accountName || !phoneNo || !email)) {
+		const { isLogin, accountName, phoneNo, email, currency } = userInfo;
+		if (isLogin && currency && (!accountName || !phoneNo || !email)) {
 			setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.UpdateProfile,

@@ -38,7 +38,7 @@ export default () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const [walletInfo, setWalletInfo] = useState([]);
-	const [amount, setAmount] = useState("1");
+	const [amount, setAmount] = useState("");
 	const [direction, setDirection] = useState(initDirection);
 	const [getHistory, setGetHistory] = useState(null);
 	const [status, setStatus] = useState(initStatus);
@@ -133,7 +133,7 @@ export default () => {
 					if (res.data.errorCode === 0) {
 						getWalletData();
 						getTransferRecent();
-						setAmount("1");
+						setAmount("");
 					} else if (res.data.errorCode === 9) {
 						setPopBox({
 							isOpen: true,
@@ -251,7 +251,6 @@ export default () => {
 
 	const EditAmount = e => {
 		let value = e.target.value;
-
 		value = value.replace(/^(0+)|[^\d]+/g, "");
 		ValidAmount(value);
 		setAmount(value);
@@ -324,7 +323,7 @@ export default () => {
 				Transfer(_wallet.id, real_amount, _direction);
 			}
 			setStatus(initStatus);
-			setAmount("1");
+			setAmount("");
 			setDirection(initDirection);
 		}
 	};
