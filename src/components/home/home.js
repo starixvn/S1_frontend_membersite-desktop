@@ -92,12 +92,16 @@ const defGameListDatas = [
 	}
 ];
 
-const SportsSection = ({ t, langId }) => {
-	const gameListRows = defGameListDatas.map(d => {
-		let leftImgs = d.leftImg.map((img, imgIdx) => {
+const SportsSection = ({ t, langId, isLogin, showLogin }) => {
+	const gameListRows = defGameListDatas.map(m => {
+		let displayText = t(m.displayKey) ?? m.displayKey;
+		let _path = m.path;
+		let key = `home-SportsSection-${m.displayKey}`;
+
+		let leftImgs = m.leftImg.map((img, imgIdx) => {
 			return (
 				<img
-					key={`${d.displayKey}-leftImg-${imgIdx}`}
+					key={`${m.displayKey}-leftImg-${imgIdx}`}
 					src={img.src}
 					className={img.className}
 					alt=""
@@ -105,20 +109,64 @@ const SportsSection = ({ t, langId }) => {
 			);
 		});
 
-		let displayText = t(d.displayKey) ?? d.displayKey;
-		return (
-			<Link
-				to={`/${langId}/${path.sports.root}?tpId=${d.productInfo.tpId}&gameId=${d.productInfo.gameId}`}
-				key={`Home-game-${d.displayKey}`}>
-				<div className="container">
-					<div className="card_right">{leftImgs}</div>
-					<span className={d.icon}>{displayText}</span>
-					<div className="npc">
-						<img src={d.mainImg} alt={`img of ${displayText}`} />
-					</div>
+		const content = (
+			<div className="container">
+				<div className="card_right">{leftImgs}</div>
+				<span className={m.icon}>{displayText}</span>
+				<div className="npc">
+					<img src={m.mainImg} alt={`img of ${displayText}`} />
 				</div>
-			</Link>
+			</div>
 		);
+
+		if (m.productInfo) {
+			let rule = GET_OPEN_RULE(
+				langId,
+				m.productInfo.tpId,
+				m.productInfo.gameId
+			);
+
+			if (
+				m.productInfo.tpId === 1 &&
+				rule.actionType === _ACTION_TYPE.redirect
+			) {
+				_path = path.sports.root;
+			}
+
+			if (rule.needLogin && isLogin === false) {
+				return (
+					<a onClick={showLogin} key={key}>
+						{content}
+					</a>
+				);
+			} else if (rule.actionType === _ACTION_TYPE.blank) {
+				return (
+					<a
+						key={key}
+						onClick={OPEN_IN_BLANK.bind(
+							this,
+							rule.entPageUrl,
+							rule.windowKey
+						)}>
+						{content}
+					</a>
+				);
+			} else {
+				let _url = getUrl(`${langId}/${_path}`, m.productInfo);
+
+				return (
+					<Link key={key} to={_url}>
+						{content}
+					</Link>
+				);
+			}
+		} else {
+			return (
+				<Link key={key} to={`/${langId}/${_path}`}>
+					{content}
+				</Link>
+			);
+		}
 	});
 
 	return <div className="gamelistsport">{gameListRows}</div>;
@@ -279,7 +327,7 @@ const IndexPage = () => {
 			<SwipperBanner ImgFolder="Promotion" filterHideInHome={true} />
 			<Marquee />
 			<section>
-				<SportsSection t={t} langId={userInfo.langId} />
+				<SportsSection t={t} showLogin={showLogin} {...userInfo} />
 				<SideBarProductSection
 					t={t}
 					showLogin={showLogin}

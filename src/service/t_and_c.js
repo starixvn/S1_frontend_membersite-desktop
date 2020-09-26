@@ -12,6 +12,7 @@ export default langId => {
 		FAQ: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/FAQ.html`,
 		AboutUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/AboutUs.html`,
 		Terms: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/Terms.html`,
-		ContactUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ContactUs.html`
+		ContactUs: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ContactUs.html`,
+		ResposibleGaming: `${config.t_and_cURL}/SiteSkin/${config.siteName}/Static/${langId}/ResposibleGaming.html`
 	};
 };
