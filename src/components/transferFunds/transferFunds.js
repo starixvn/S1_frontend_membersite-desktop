@@ -322,7 +322,6 @@ export default () => {
 			}
 			setStatus(initStatus);
 			setAmount("1");
-			setDirection(initDirection);
 		}
 	};
 
