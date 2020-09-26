@@ -7,9 +7,11 @@ import {
 	api_payment_GetDepositInfoRecent,
 	api_payment_SetDepositCancel
 } from "../../service/api/payment";
-import { isConvert, number_format } from "../common/common";
+import { isConvert } from "../common/common";
 import { defPopBoxType } from "../common/popBox";
 import ReloadSpin from "../common/reloadSpin";
+import { Link } from "@reach/router";
+import path from "../../path";
 
 export default () => {
 	const { t } = useTranslation();
@@ -143,22 +145,31 @@ export default () => {
 	});
 
 	return (
-		<div className="list">
-			<div className="listHeader">
-				<div>{t("NO")}</div>
-				<div>
-					{t("lbl_Date")} ({moment().format("Z")})
+		<>
+			<div className="list">
+				<div className="listHeader">
+					<div>{t("NO")}</div>
+					<div>
+						{t("lbl_Date")} ({moment().format("Z")})
+					</div>
+					<div>{t("lbl_ID")}</div>
+					<div>{t("lbl_Method")}</div>
+					<div>{t("lbl_Amount")}</div>
+					<div>{t("lbl_Status")}</div>
+					<div>
+						{t("lbl_Action")}
+						<ReloadSpin func={GetRecentDatas} />
+					</div>
 				</div>
-				<div>{t("lbl_ID")}</div>
-				<div>{t("lbl_Method")}</div>
-				<div>{t("lbl_Amount")}</div>
-				<div>{t("lbl_Status")}</div>
-				<div>
-					{t("lbl_Action")}
-					<ReloadSpin func={GetRecentDatas} />
-				</div>
+				{getHistory?.length > 0 ? (
+					<div className="listBody">{arr}</div>
+				) : (
+					<div className="nodata">{t("msg_NoData")}</div>
+				)}
 			</div>
-			<div className="listBody">{arr}</div>
-		</div>
+			<Link
+				to={`/${userInfo.langId}/${path.depositHistory.root}`}
+				className="icon icon-books"></Link>
+		</>
 	);
 };
