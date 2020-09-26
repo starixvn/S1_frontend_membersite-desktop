@@ -12,8 +12,7 @@ export default ({
 	t,
 	accountName,
 	GetCustBankInfo,
-	custBankInfo,
-	refreshData
+	custBankInfo
 }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const isMountedRef = useRef(null);
@@ -30,7 +29,8 @@ export default ({
 				bankName: accountData.bankName,
 				accountNo: accountData.accountNo,
 				sysId: accountData.sysId
-			}
+			},
+			step: state.amount ? 3 : 2
 		});
 	};
 
@@ -105,11 +105,16 @@ export default ({
 				res => {
 					if (isMountedRef.current) {
 						if (res.data.errorCode === 0) {
-							dispatch({
-								type: defActionType.SET_INIT_STATE
-							});
 							GetCustBankInfo();
-							refreshData();
+
+							if (accountNo === state.selectedAccount.accountNo) {
+								dispatch({
+									type: defActionType.SELECT_ACCOUNT,
+									selectedAccount: {},
+									step: 1
+								});
+							}
+
 							setPopBox({ isOpen: false });
 						} else {
 							setPopBox({
