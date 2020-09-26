@@ -7,7 +7,11 @@ import {
 import MessageList from "./messageList";
 import { Pagination } from "../common/pagination";
 import { useTranslation } from "react-i18next";
-import { popBoxContext, msgCountContext } from "../common/context";
+import {
+	popBoxContext,
+	msgCountContext,
+	loadingContext
+} from "../common/context";
 import { defPopBoxType } from "../common/popBox";
 import ReloadSpin from "../common/reloadSpin";
 
@@ -18,7 +22,6 @@ export default () => {
 	const [msgListData, setMsgListData] = useState([]);
 	const [selectItems, setSelectItems] = useState([]);
 	const [isCheckAll, setIsCheckAll] = useState(false);
-	const [loading, setLoading] = useState(false);
 	const [pagination, setPagination] = useState({
 		totalPages: 0,
 		currentPage: 1
@@ -26,15 +29,27 @@ export default () => {
 
 	const { setPopBox } = useContext(popBoxContext);
 	const { setMsgCount } = useContext(msgCountContext);
+	const { loading, setLoading } = useContext(loadingContext);
 
-	useEffect(() => {
-		isMountedRef.current = true;
-		return () => (isMountedRef.current = false);
-	});
-
-	useEffect(() => {
-		getMsgList(pagination.currentPage);
-	}, []);
+	const openErrorMessagePopBox = (
+		message = t("msg_ApiServerError"),
+		errorCode = null
+	) => {
+		setPopBox({
+			message,
+			errorCode,
+			isOpen: true,
+			popBoxType: defPopBoxType.ErrorMsg,
+			icon: "icon-bell",
+			btnBar: (
+				<div className="btnGroup">
+					<button className="btn-cancel" onClick={clickClose}>
+						{t("lbl_Close")}
+					</button>
+				</div>
+			)
+		});
+	};
 
 	const clickClose = () => {
 		setPopBox({ isOpen: false });
@@ -58,55 +73,19 @@ export default () => {
 		setSelectItems(result);
 	};
 
-	const getMsgList = pageNumber => {
-		setLoading(true);
-		api_account_GetMsgList({ PageNumber: pageNumber }).then(
-			res => {
-				if (isMountedRef.current) {
-					const success = res.data.errorCode === 0;
-					if (success) {
-						setMsgListData(res.data.data);
-						setPagination(prev => ({
-							...prev,
-							totalPages: res.data.totalPages
-						}));
-					} else {
-						setPopBox({
-							isOpen: true,
-							popBoxType: defPopBoxType.ErrorMsg,
-							message: res.data.message,
-							btnBar: (
-								<div className="btnGroup">
-									<button
-										className="btn-cancel"
-										onClick={clickClose}>
-										{t("lbl_Close")}
-									</button>
-								</div>
-							)
-						});
-					}
-				}
-				setLoading(false);
+	const getMsgList = async pageNumber => {
+		await api_account_GetMsgList({ PageNumber: pageNumber }).then(
+			({ data: { data, totalPages, message, errorCode } }) => {
+				if (!isMountedRef.current) return;
+
+				const success = errorCode === 0;
+				if (success) {
+					setMsgListData(data);
+					setPagination(prev => ({ ...prev, totalPages }));
+				} else openErrorMessagePopBox(message || "error", errorCode);
 			},
 			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						popBoxType: defPopBoxType.ErrorMsg,
-						message: t("msg_ApiServerError"),
-						btnBar: (
-							<div className="btnGroup">
-								<button
-									className="btn-cancel"
-									onClick={clickClose}>
-									{t("lbl_Close")}
-								</button>
-							</div>
-						)
-					});
-				}
-				setLoading(false);
+				if (isMountedRef.current) openErrorMessagePopBox();
 			}
 		);
 	};
@@ -119,62 +98,32 @@ export default () => {
 			setPopBox({ isOpen: false });
 
 			api_account_DelMsg(selectItems).then(
-				res => {
-					if (isMountedRef.current) {
-						const success = res.data.errorCode === 0;
-						if (success) {
-							getMsgList(pagination.currentPage);
-							setSelectItems([]);
-							setIsCheckAll(false);
+				({ data: { message, errorCode } }) => {
+					if (!isMountedRef.current) return;
 
-							api_account_GetMsgCount().then(res => {
-								if (isMountedRef.current) {
-									if (res.data.errorCode === 0) {
-										setMsgCount(res.data.data);
-									}
+					const success = errorCode === 0;
+					if (success) {
+						getMsgList(pagination.currentPage);
+						setSelectItems([]);
+						setIsCheckAll(false);
+
+						api_account_GetMsgCount().then(res => {
+							if (isMountedRef.current) {
+								if (res.data.errorCode === 0) {
+									setMsgCount(res.data.data);
 								}
-							});
-						} else {
-							setPopBox({
-								isOpen: true,
-								popBoxType: defPopBoxType.ErrorMsg,
-								message: res.data.message,
-								btnBar: (
-									<div className="btnGroup">
-										<button
-											className="btn-cancel"
-											onClick={clickClose}>
-											{t("lbl_Close")}
-										</button>
-									</div>
-								)
-							});
-						}
-						setLoading(false);
-					}
+							}
+						});
+					} else
+						openErrorMessagePopBox(message || "error", errorCode);
 				},
 				err => {
-					if (isMountedRef.current) {
-						setPopBox({
-							isOpen: true,
-							popBoxType: defPopBoxType.ErrorMsg,
-							message: t("msg_ApiServerError"),
-							btnBar: (
-								<div className="btnGroup">
-									<button
-										className="btn-cancel"
-										onClick={clickClose}>
-										{t("lbl_Close")}
-									</button>
-								</div>
-							)
-						});
-						setLoading(false);
-					}
+					if (isMountedRef.current) openErrorMessagePopBox();
 				}
 			);
 		};
-		if (selectItems.length > 0) {
+
+		if (selectItems.length > 0)
 			setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.ConfirmDelete,
@@ -191,10 +140,22 @@ export default () => {
 					</div>
 				)
 			});
-		}
 	};
 
-	return (
+	useEffect(() => {
+		async function getData() {
+			setLoading(true);
+			await Promise.allSettled([getMsgList(pagination.currentPage)]);
+			setLoading(false);
+		}
+		getData();
+	}, []);
+
+	useEffect(() => {
+		isMountedRef.current = true;
+		return () => (isMountedRef.current = false);
+	});
+	return loading ? null : (
 		<div className="infoModule">
 			<div className="inside-title icon icon-icon32px_openmail">
 				<span>{t("lbl_PersonalMsg")}</span>
