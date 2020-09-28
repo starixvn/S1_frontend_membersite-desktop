@@ -53,7 +53,7 @@ export default () => {
 	useEffect(() => {
 		async function getData() {
 			setLoading(true);
-			await Promise.allSettled([getWalletData(), getTransferRecent()]);
+			await Promise.all([getWalletData(), getTransferRecent()]);
 			setLoading(false);
 		}
 		getData();

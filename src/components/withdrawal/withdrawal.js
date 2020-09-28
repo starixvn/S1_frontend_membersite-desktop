@@ -63,10 +63,7 @@ export default () => {
 	useEffect(() => {
 		async function getData() {
 			setLoading(true);
-			await Promise.allSettled([
-				GetWithdrawalAvailableBalance(),
-				KycCheck()
-			]);
+			await Promise.all([GetWithdrawalAvailableBalance(), KycCheck()]);
 			setLoading(false);
 		}
 		getData();

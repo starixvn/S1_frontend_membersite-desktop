@@ -145,7 +145,7 @@ export default () => {
 	useEffect(() => {
 		async function getData() {
 			setLoading(true);
-			await Promise.allSettled([getMsgList(pagination.currentPage)]);
+			await Promise.all([getMsgList(pagination.currentPage)]);
 			setLoading(false);
 		}
 		getData();
