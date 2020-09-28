@@ -60,12 +60,11 @@ export default ({
 	};
 
 	useEffect(() => {
-		const cashLineWidthPercentage = widthPercentageCalculationHandlar(
-			amountValue,
-			availableBalance * (_isConvert ? 0.001 : 1)
-		);
+		let convertAmount = _isConvert ? amountValue * 1000 : amountValue;
 		setResultAmount(minMaxRange(amountValue, 0, availableBalance));
-		setCashLineWidthPercentage(minMaxRange(cashLineWidthPercentage));
+		setCashLineWidthPercentage(
+			minMaxRange((convertAmount / availableBalance) * 100, 0, 100)
+		);
 	}, [amountValue]);
 
 	useEffect(() => {
