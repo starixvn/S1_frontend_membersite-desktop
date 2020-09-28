@@ -10,8 +10,14 @@ import MobilePayList from "./mobilePay.list";
 import DepositWrapper from "./wrapper";
 import RecentHistory from "./deposit.recentHistory";
 import { useTranslation } from "react-i18next";
-import { popBoxContext, loadingContext } from "../common/context";
+import {
+	popBoxContext,
+	loadingContext,
+	userInfoContext
+} from "../common/context";
 import { defPopBoxType } from "../common/popBox";
+import path from "../../path";
+import { Link } from "@reach/router";
 
 export default () => {
 	const { t } = useTranslation();
@@ -22,6 +28,7 @@ export default () => {
 	const [paymentList, setPaymentList] = useState([]);
 
 	const { setPopBox } = useContext(popBoxContext);
+	const { userInfo } = useContext(userInfoContext);
 	const { loading, setLoading } = useContext(loadingContext);
 
 	const clickClose = () => {
@@ -104,6 +111,32 @@ export default () => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
+
+	useEffect(() => {
+		if (userInfo.isLogin === true) {
+			if (
+				(!userInfo.accountName && userInfo.accountName !== undefined) ||
+				(!userInfo.phoneNo && userInfo.phoneNo !== undefined) ||
+				(!userInfo.email && userInfo.email !== undefined)
+			) {
+				setPopBox({
+					isOpen: true,
+					popBoxType: defPopBoxType.UpdateProfile,
+					title: t("lbl_ImportantNote"),
+					content: t("lbl_UpdatePersonalInfoDeposit"),
+					btnBar: (
+						<div className="btnGroup">
+							<Link
+								className="btn-check"
+								to={`/${userInfo.langId}/${path.profile.root}?from=${path.deposit.root}`}>
+								{t("lbl_UpdatePersonalDetail")}
+							</Link>
+						</div>
+					)
+				});
+			}
+		}
+	}, [userInfo]);
 
 	return loading ? null : (
 		<>
