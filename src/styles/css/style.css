@@ -1200,6 +1200,11 @@ footer {
   color: white;
 }
 
+.joinpop .joinloginModule .joinloginFunction .icon-email, .loginpop .joinloginModule .joinloginFunction .icon-email {
+  font-weight: bold;
+  font-size: 16px;
+}
+
 .joinpop.active, .loginpop.active {
   display: block;
 }
@@ -1463,7 +1468,7 @@ input[type="file"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  min-width: 125px;
+  min-width: 123px;
   margin: 0 5px;
   font-weight: bold;
 }
@@ -2413,7 +2418,7 @@ input[type="file"] {
 }
 
 .subModuleList .subModule:nth-child(2) {
-  margin: 0 auto;
+  margin: 0 40px;
 }
 
 .subModuleList .subModule .subModuleTitle {
@@ -2659,6 +2664,10 @@ input[type="file"] {
   width: calc(100% - 20px);
 }
 
+.platformName + div.subModuleList .subModuleBody ul li a:hover {
+  background: white;
+}
+
 .column {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -2732,7 +2741,7 @@ input[type="file"] {
 
 #popup .pop {
   min-width: 600px;
-  background: rgba(0, 0, 0, 0.7);
+  background: #191919;
   padding: 40px;
   border-radius: 15px;
   max-height: calc(100% - 160px);
@@ -2752,6 +2761,7 @@ input[type="file"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
 }
 
 #popup .pop > div.active {
@@ -2923,6 +2933,7 @@ input[type="file"] {
 .smallList ul li:first-child {
   color: #1E85EC;
   font-weight: bold;
+  text-align: left;
 }
 
 .directions {
@@ -2991,9 +3002,18 @@ input[type="file"] {
   cursor: pointer;
 }
 
+.upload_img.error {
+  border-color: #f73201;
+}
+
 .upload_img .icon {
   font-size: 48px;
   color: #1E85EC;
+}
+
+.upload_img .icon.icon-broken_image:before {
+  font-size: 48px;
+  color: #666;
 }
 
 .upload_img img {
@@ -3616,6 +3636,7 @@ input[type="file"] {
 
 .calculation > div div:first-child {
   color: #1E85EC;
+  word-break: break-word;
 }
 
 .calculation > div span {
@@ -3947,10 +3968,6 @@ input[type="file"] {
           justify-content: unset;
 }
 
-.profileEdit .editModule .tip {
-  width: 100%;
-}
-
 .haveBank {
   width: 100%;
   display: -webkit-box;
@@ -4049,7 +4066,6 @@ input[type="file"] {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-weight: normal;
 }
 
 .announcement .list .listHeader div:nth-child(2) i, .personal .list .listHeader div:nth-child(2) i {
@@ -4631,6 +4647,7 @@ article p {
 .rdt + .icon-calendar {
   margin-right: 0;
   color: #b2b2b2;
+  cursor: pointer;
 }
 
 .rdt .inputBox, .rdt .inputBox-org, .rdt .inputBox-white, .rdt .inputBox-blue {
@@ -4808,8 +4825,8 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0px 1000px #030c1b inset;
-          box-shadow: 0 0 0px 1000px #030c1b inset;
+  -webkit-box-shadow: 0 0 0px 1000px #191919 inset;
+          box-shadow: 0 0 0px 1000px #191919 inset;
   -webkit-text-fill-color: white;
 }
 
@@ -4890,7 +4907,7 @@ button.icon-spinner11:before {
   margin: 0;
 }
 
-button.icon-books {
+.icon-books {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4902,7 +4919,7 @@ button.icon-books {
           justify-content: flex-end;
 }
 
-button.icon-books:hover:after {
+.icon-books:hover:after {
   content: 'ALL Transaction';
   font-size: 12px;
   margin-left: 10px;
@@ -5540,5 +5557,22 @@ button.icon-books:hover:after {
   position: absolute;
   margin-top: 200px;
   font-size: 14px;
+}
+
+.icon-information-solid {
+  color: #1E85EC;
+}
+
+.icon-information-solid.active {
+  color: white;
+}
+
+.icon-new-tab span, .icon-files-empty span {
+  display: none;
+  float: right;
+}
+
+.icon-new-tab:hover span, .icon-files-empty:hover span {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */
