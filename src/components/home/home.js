@@ -176,7 +176,7 @@ const SportsSection = ({ t, langId, isLogin, showLogin }) => {
 const defSideBarProducts = langId => [
 	{
 		path: path.promotion.root,
-		icon: "icon icon-livecasino",
+		icon: "icon icon-gift",
 		displayKey: "lbl_Promotions",
 		descriptionKey: "lbl_PromotionSlog",
 		mainImg: indexBannerPromotions
