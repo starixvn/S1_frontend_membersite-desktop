@@ -525,8 +525,8 @@ export default () => {
 					</div>
 					<div className="inputModule">
 						<Inputbox
-							className={`inputBox-org ${
-								tip.username.msg ? "error" : ""
+							className={`inputBox-org${
+								tip.username.msg ? " error" : ""
 							}`}
 							icon="icon-member txt-orange"
 							placeholder={t("lbl_Username")}
@@ -539,8 +539,8 @@ export default () => {
 						/>
 
 						<InputboxPSW
-							className={`inputBox-org ${
-								tip.password.msg ? "error" : ""
+							className={`inputBox-org${
+								tip.password.msg ? " error" : ""
 							}`}
 							icon="icon-key txt-orange"
 							inputType={`${!showPsw ? "password" : "text"}`}
@@ -556,8 +556,8 @@ export default () => {
 						/>
 
 						<Inputbox
-							className={`inputBox-org ${
-								tip.email.msg ? "error" : ""
+							className={`inputBox-org${
+								tip.email.msg ? " error" : ""
 							}`}
 							icon="icon-email txt-orange"
 							placeholder={t("lbl_Email")}
@@ -570,8 +570,8 @@ export default () => {
 						/>
 
 						<div
-							className={`inputBox-org  ${
-								tip.currency.msg ? "error" : ""
+							className={`inputBox-org${
+								tip.currency.msg ? " error" : ""
 							}`}
 							tabIndex="0"
 							onBlur={checkValue.bind(null, "currency")}>

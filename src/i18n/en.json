@@ -92,6 +92,7 @@
 	"lbl_Submit": "Submit",
 	"lbl_PrefferedCurrency":"Preferred Currency",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
+	"lbl_RemindPrefferedCurrency":"请选择首选货币",
 	"lbl_Check18TCTooltip": "Please click the above checkbox to confirm the account registration requirements",
 	"lbl_Guest": "Guest",
 	"lbl_SelectAll": "Select All",

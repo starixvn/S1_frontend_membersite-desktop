@@ -92,6 +92,7 @@
 	"lbl_Submit": "ตกลง",
 	"lbl_PrefferedCurrency":"สกุลเงินที่เลือก",
 	"lbl_PreferredCurrencyToolTip": "หลังจากลงทะเบียนจะไม่สามารถเปลี่ยนสกุลเงินที่เลือกไว้ได้",
+	"lbl_RemindPrefferedCurrency":"请选择首选货币",
 	"lbl_Check18TCTooltip": "โปรดคลิก เครื่องหมายด้านบนเพื่อยืนยันคำขอลงทะเบียนบัญชี",
 	"lbl_Guest": "ลูกค้า",
 	"lbl_SelectAll": "เลือกทั้งหมด",
