@@ -23,8 +23,16 @@ export const api_site_ForgetPwd = ({ Email }) =>
 
 export const api_site_GetTpIds = () => siteRequest.post(`/GetTpIds`);
 
-export const api_site_GetBanner = (FolderName, lang) =>
-	siteRequest.post(`/GetBanner/${lang}`, `FolderName=${FolderName}`);
+export const api_site_GetBanner = (
+	FolderName,
+	refId,
+	lang,
+	filterHideInHome = false
+) =>
+	siteRequest.post(
+		`/GetBanner/${lang}`,
+		`FolderName=${FolderName}&refId=${refId}&filterHideInHome=${filterHideInHome}`
+	);
 
 export const api_site_CheckResetPwdTokens = ({ key }) =>
 	siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);
