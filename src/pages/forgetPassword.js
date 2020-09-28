@@ -6,6 +6,7 @@ import Wrapper from "../components/common/wrapper";
 import Layout from "../components/common/layout";
 import Inputbox from "../components/common/inputbox";
 import { defPopBoxType } from "../components/common/popBox";
+import SideBarQuickLink from "../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -17,6 +18,7 @@ export default () => {
 							<Content />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>

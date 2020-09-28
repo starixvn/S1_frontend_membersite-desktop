@@ -11,6 +11,7 @@ import InputboxPassword from "../components/common/inputbox.password";
 import { getUrlParameter } from "../components/common/common";
 import { LOGOUT } from "../service/auth";
 import path from "../path";
+import SideBarQuickLink from "../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -22,6 +23,7 @@ export default () => {
 							<Content />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>

@@ -11,6 +11,7 @@ import { defPopBoxType } from "../components/common/popBox";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import LeftMenu from "../components/common/leftMenu";
+import SideBarQuickLink from "../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -23,6 +24,7 @@ export default () => {
 							<Content />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>
