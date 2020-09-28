@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { number_format } from "../common/common";
 
 export default ({
 	onChangeAmount,
@@ -19,7 +20,7 @@ export default ({
 	};
 
 	const widthPercentageCalculationHandlar = (currentVale, maxValue) => {
-		let result = (currentVale / maxValue) * 100;
+		let result = currentVale / maxValue;
 		return isNaN(result) ? 0 : result;
 	};
 
@@ -47,9 +48,8 @@ export default ({
 			cashBarElementWidth
 		);
 		let resultAmount =
-			Math.imul(availableBalance, cashLineWidthPercentage) *
-			0.01 *
-			(_isConvert ? 0.001 : 1);
+			(availableBalance * cashLineWidthPercentage) /
+			(_isConvert ? 1000 : 1);
 		onChangeAmount(Math.floor(resultAmount));
 	};
 
@@ -60,34 +60,33 @@ export default ({
 	};
 
 	useEffect(() => {
-		const amount = isNaN(amountValue) ? 0 : amountValue;
 		const cashLineWidthPercentage = widthPercentageCalculationHandlar(
-			amount * (_isConvert ? 1000 : 1),
-			availableBalance
+			amountValue,
+			availableBalance * (_isConvert ? 0.001 : 1)
 		);
-		setResultAmount(minMaxRange(amount, 0, availableBalance));
-		setCashLineWidthPercentage(
-			minMaxRange(cashLineWidthPercentage, 0, 100)
-		);
+		setResultAmount(minMaxRange(amountValue, 0, availableBalance));
+		setCashLineWidthPercentage(minMaxRange(cashLineWidthPercentage));
 	}, [amountValue]);
 
 	useEffect(() => {
 		if (typeof document !== `undefined`) {
-			document.addEventListener("mousedown", handleClickOutside);
+			document.addEventListener("mouseup", handleClickOutside);
 		}
 		return () => {
 			if (typeof document !== `undefined`) {
-				document.removeEventListener("mousedown", handleClickOutside);
+				document.removeEventListener("mouseup", handleClickOutside);
 			}
 		};
 	}, []);
 
-	// 禁止滑鼠反白選取此元件
 	const spanStyle = {
+		// 禁止滑鼠反白選取此元件
 		WebkitUserSelect: "none",
 		MozUserSelect: "none",
 		OUserSelect: "none",
-		msUserSelect: "none"
+		MsUserSelect: "none",
+		// 不斷行
+		whiteSpace: "nowrap"
 	};
 
 	return (
@@ -104,7 +103,7 @@ export default ({
 					style={{ cursor: "pointer" }}
 					className="cashPoint">
 					<span style={spanStyle}>
-						{`$${resultAmount}${_isConvert ? "('000)" : ""} `}
+						{`$${number_format(resultAmount, _isConvert)}`}
 					</span>
 				</div>
 			</div>
