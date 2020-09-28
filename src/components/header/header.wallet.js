@@ -122,8 +122,13 @@ class Dropdown extends Component {
 				ref={this.wrapper}
 				onClick={this.clickDropdown}>
 				<button>
-					{this.props.currencyId === 51 ? "VNĐ" : "$"}
-					{balance}
+					{`${
+						this.props.currencyId === 51
+							? "VNĐ"
+							: this.props.i18n(
+									`Currency_${this.props.currencyId}`
+							  )
+					} ${balance}`}
 				</button>
 				<button
 					aria-label="HandleDisplayBalance"
