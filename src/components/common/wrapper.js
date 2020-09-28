@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Redirect, navigate } from "@reach/router";
+import { Redirect, navigate, Link } from "@reach/router";
 import * as ct from "../common/context";
 import { defaultLang } from "../../i18n/config";
 import { useTranslation } from "react-i18next";
@@ -21,6 +21,7 @@ import { defPopBoxType } from "../common/popBox";
 import useInterval from "../hook/useInterval";
 import { GET_LANG_ID } from "../../service/language";
 import { SiteInfo } from "../../config";
+import path from "../../path";
 
 export default ({ children, afterLogin = false }) => {
 	const { t, i18n } = useTranslation();
@@ -179,6 +180,41 @@ export default ({ children, afterLogin = false }) => {
 			}
 		}
 	}, [currentPath, i18n.language, userInfo.langId, userInfo.isLogin]);
+
+	useEffect(() => {
+		if (userInfo.isLogin && userInfo.isJoin) {
+			const clickClose = () => {
+				setPopBox({ isOpen: false });
+				setUserInfo(prev => ({ ...prev, isJoin: false }));
+			};
+
+			setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.RegisterSuccess,
+				closeBtn: (
+					<button
+						className="icon icon-close"
+						onClick={clickClose}></button>
+				),
+				btnBar: (
+					<div className="btnGroup">
+						<Link
+							className="blue"
+							onClick={clickClose}
+							to={`/${userInfo.langId}/${path.deposit.root}`}>
+							{t("lbl_DepositNow")}
+						</Link>
+						<Link
+							className="btn-check"
+							onClick={clickClose}
+							to={`/${userInfo.langId}/${path.profile.root}`}>
+							{t("lbl_UpdatePersonalDetail")}
+						</Link>
+					</div>
+				)
+			});
+		}
+	}, [userInfo.isLogin, userInfo.isJoin, t]);
 
 	useEffect(() => {
 		let AffId = getUrlParameter("AffId");

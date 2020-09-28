@@ -8,7 +8,11 @@ export default ({ btnBar }) => {
 		<div className="Cancel active">
 			<div className="icon icon-bell"></div>
 			<div className="title">Oh</div>
-			<div>{t("lbl_CancelConfirm")}</div>
+			<div>
+				{t("lbl_CancelConfirmHint1")}
+				<br />
+				{t("lbl_CancelConfirmHint2")}
+			</div>
 			{btnBar}
 		</div>
 	);

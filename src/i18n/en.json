@@ -28,7 +28,6 @@
 	"msg_EnterOTPCode": "Please enter OTP code.",
 	"msg_OTP_NotReceiveVerificationCode": "Did not receive verification code?",
 
-
 	"BankSlipHint1": "Maximum file size 4 MB each",
 	"BankSlipHint2": "Maximum number of file:1",
 	"BankSlipHint3": "Accepted file types: JPG, JPGE, PNG, GIF",
@@ -125,7 +124,7 @@
 	"lbl_Direction": "Direction",
 	"lbl_Memo": "Memo",
 	"lbl_WithdrawalStatus0": "Draft",
-	"lbl_WithdrawalStatus1": "Pending",
+	"lbl_WithdrawalStatus1": "Processing",
 	"lbl_WithdrawalStatus2": "Processing",
 	"lbl_WithdrawalStatus3": "Processing",
 	"lbl_WithdrawalStatus4": "Processing",
@@ -134,6 +133,8 @@
 	"lbl_WithdrawalStatus7": "Rejected",
 	"lbl_WithdrawalStatus99": "Error",
 	"lbl_CancelConfirm": "Are you sure you want to cancel? It cannot restore after cancellation!",
+	"lbl_CancelConfirmHint1": "Are you sure you want to cancel?",
+	"lbl_CancelConfirmHint2": "It cannot restore after cancellation!",
 	"lbl_TypeName": "Type Name",
 	"lbl_BeforeAmount": "Before Amount",
 	"lbl_AfterAmount": "After Amount",
@@ -356,5 +357,13 @@
 	"lbl_Security":"Security",
 	"lbl_Payment":"Payment",
 	"lbl_PromotionCategory1": "First Deposit",
-    "lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils."
+    "lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils.",
+	"lbl_Congratulations":"Congratulations",
+	"lbl_BecomingDistinguishedPlayer":"Becoming A Distinguished Player",
+	"lbl_ForAccountSecurity":"For account security,",
+	"lbl_CompleteYourProfile":"we need you to complete your personal information.",
+	"lbl_HomeSideBarPromoDesc":"",
+	"lbl_HomeSideBarCasino":"Multiple Themes For Asian Market",
+	"lbl_Affiliate":"AFFILIATE",
+	"lbl_HomeSideBarAffiliate":"Your Partner to Success"
 }
