@@ -178,21 +178,21 @@ const defSideBarProducts = [
 		path: path.promotion.root,
 		icon: "icon icon-livecasino",
 		displayKey: "lbl_Promotions",
-		descriptionKey: "lbl_HomeSideBarPromoDesc",
+		descriptionKey: "lbl_PromotionSlog",
 		mainImg: indexBannerPromotions
 	},
 	{
 		path: path.casino.root,
 		icon: "icon icon-casino",
 		displayKey: "lbl_Casino",
-		descriptionKey: "lbl_HomeSideBarCasino",
+		descriptionKey: "lbl_CasinoSlog",
 		mainImg: IndexBannerCasino
 	},
 	{
 		href: SiteInfo.affiliateLink,
 		icon: "icon icon-affiliate",
-		displayKey: "lbl_Affiliate",
-		descriptionKey: "lbl_HomeSideBarAffiliate",
+		displayKey: "lbl_Affiliates",
+		descriptionKey: "lbl_AffiliateSlog",
 		mainImg: indexBannerAffiliate
 	}
 ];
