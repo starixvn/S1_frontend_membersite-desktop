@@ -41,7 +41,8 @@ export const defPopBoxType = {
 	VerifyPhoneForm: "verifyPhoneForm",
 	WithdrawalSuccess: "WithdrawalSuccess",
 	UpdateProfile: "UpdateProfile",
-	TurnoverAccumulated: "TurnoverAccumulated"
+	TurnoverAccumulated: "TurnoverAccumulated",
+	RegisterSuccess: "RegisterSuccess"
 };
 
 export default () => {

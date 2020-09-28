@@ -5,41 +5,14 @@ import { useTranslation } from "react-i18next";
 import { Link } from "@reach/router";
 import config from "../../config";
 import path from "../../path";
-import { defPopBoxType } from "../common/popBox";
+import { defActionType } from "./onlineBank.reducer";
 
-export default ({ bankInfo, amount, _isConvert }) => {
+export default ({ bankInfo, amount, _isConvert, dispatch }) => {
 	const { userInfo } = useContext(userInfoContext);
-	const { setPopBox } = useContext(popBoxContext);
 	const { t } = useTranslation();
 	const ClickCancel = () => {
-		const ClickYes = () => {
-			setPopBox({
-				isOpen: false
-			});
-		};
-
-		const ClickNo = () => {
-			setPopBox({
-				isOpen: false
-			});
-		};
-
-		setPopBox({
-			isOpen: true,
-			popBoxType: defPopBoxType.Cancel,
-			btnBar: (
-				<div className="btnGroup">
-					<button className="gray" onClick={ClickNo}>
-						{t("lbl_Cancel")}
-					</button>
-					<Link
-						to={`/${userInfo.langId}/${path.deposit.root}`}
-						className="orange"
-						onClick={ClickYes}>
-						{t("lbl_Confirm")}
-					</Link>
-				</div>
-			)
+		dispatch({
+			type: defActionType.CLICK_BACK
 		});
 	};
 

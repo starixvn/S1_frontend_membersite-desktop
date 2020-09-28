@@ -142,6 +142,7 @@ export default ({ dispatch, state, t, _isConvert }) => {
 						tip={state.tip}
 						_isConvert={_isConvert}
 						onBlur={ValidAmount.bind(this, state.amount)}
+						isAmount={true}
 					/>
 					<div className="btnGroup">
 						<button

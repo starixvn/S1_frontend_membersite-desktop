@@ -109,6 +109,7 @@ export default () => {
 					bankInfo={state.bankList[state.bankIdx]}
 					_isConvert={_isConvert}
 					amount={state.amount}
+					dispatch={dispatch}
 				/>
 			);
 			break;

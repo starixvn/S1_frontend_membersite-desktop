@@ -18,7 +18,9 @@ export class Module extends Component {
 		refId: this.props.refId ? this.props.refId : "",
 		picFileName: this.props.picFileName ? this.props.picFileName : null,
 		fileImg: null,
-		refIdStatus: { checked: null, tip: "" }
+		refIdStatus: { checked: null, tip: "" },
+		picFormatTip: null,
+		depositTimeTip: ""
 	};
 	isMountedRef = false;
 	filebox = createRef();
@@ -52,10 +54,13 @@ export class Module extends Component {
 			this.setState({ fileImg: reader.result });
 		};
 
-		if (files.length > 0) {
+		if (files.length > 0 && files[0].type.includes("image")) {
+			this.setState({ picFormatTip: null });
+
 			let formData = new FormData();
 			formData.append("TransId", this.props.transId);
 			formData.append("Receipt", files[0]);
+
 			api_payment_UploadReceipt(formData).then(
 				res => {
 					if (this.isMountedRef) {
@@ -74,6 +79,11 @@ export class Module extends Component {
 					}
 				}
 			);
+		} else {
+			this.setState({
+				picFileName: null,
+				picFormatTip: this.props.i18n("lbl_PicFormatTip")
+			});
 		}
 	};
 
@@ -119,7 +129,7 @@ export class Module extends Component {
 											<button
 												className="btn-cancel"
 												onClick={ClickClose}>
-												{this.props.i18n("lbl_Close")}
+												OK
 											</button>
 										</div>
 									)
@@ -150,20 +160,29 @@ export class Module extends Component {
 		}
 	};
 
-	clickInfo = () => {
-		let _tip =
-			this.state.refIdStatus.tip === ""
-				? this.props.i18n("lbl_RefNoHint")
-				: "";
-
-		this.setState({ refIdStatus: { checked: null, tip: _tip } });
-	};
-
 	checkTip = e => {
 		let val = e.target.value;
 
 		let _tip = val === "" ? this.props.i18n("lbl_RemindForRefNum") : "";
 		this.setState({ refIdStatus: { checked: val !== "", tip: _tip } });
+	};
+
+	clickInfo = col => {
+		let _tip = "";
+
+		if (col === "depositTimeTip") {
+			_tip =
+				this.state.depositTimeTip === ""
+					? this.props.i18n("lbl_DepositTimeToolTip")
+					: "";
+			this.setState({ depositTimeTip: _tip });
+		} else {
+			_tip =
+				this.state.refIdStatus.tip === ""
+					? this.props.i18n("lbl_RefNoHint")
+					: "";
+			this.setState({ refIdStatus: { checked: null, tip: _tip } });
+		}
 	};
 
 	render() {
@@ -176,7 +195,9 @@ export class Module extends Component {
 					{this.props.i18n("lbl_AttachFile")}
 				</div>
 				<label
-					className="upload_img"
+					className={`upload_img${
+						this.state.picFormatTip ? " error" : ""
+					}`}
 					onDragOver={this.dragOver.bind(this)}
 					onDrop={this.onUploadFile.bind(this, "onDrop")}>
 					<input
@@ -189,16 +210,20 @@ export class Module extends Component {
 						<img
 							src={
 								this.state.fileImg === null
-									? `${config.apiURL}/Cashier/DepositReceip.jpg?transId=${this.props.transId}&FileName=${this.state.picFileName}`
+									? `${config.apiURL}/${this.props.langId}/Cashier/DepositReceip.jpg?transId=${this.props.transId}&FileName=${this.state.picFileName}`
 									: `${this.state.fileImg}`
 							}
 						/>
+					) : this.state.picFormatTip ? (
+						<i className="icon icon-broken_image"></i>
 					) : (
 						<i className="icon icon-plus"></i>
 					)}
 				</label>
 				{this.state.picFileName !== null ? (
 					<span>{this.state.picFileName}</span>
+				) : this.state.picFormatTip !== null ? (
+					<div className="txt-red">{this.state.picFormatTip}</div>
 				) : null}
 				<div className="directions">
 					<ul>
@@ -226,7 +251,11 @@ export class Module extends Component {
 							<a
 								href={this.props.bankSite}
 								className="icon icon-new-tab"
-								target="_blank"></a>
+								target="_blank">
+								<span>
+									{this.props.i18n("lbl_OpenOtherSite")}
+								</span>
+							</a>
 						</li>
 					</ul>
 					<ul>
@@ -235,9 +264,9 @@ export class Module extends Component {
 						<li>
 							<button
 								className="icon icon-files-empty copyBtn"
-								data-clipboard-text={
-									this.props.accountName
-								}></button>
+								data-clipboard-text={this.props.accountName}>
+								<span>{this.props.i18n("lbl_Copy")}</span>
+							</button>
 						</li>
 					</ul>
 					<ul>
@@ -246,9 +275,9 @@ export class Module extends Component {
 						<li>
 							<button
 								className="icon icon-files-empty copyBtn"
-								data-clipboard-text={
-									this.props.accountNo
-								}></button>
+								data-clipboard-text={this.props.accountNo}>
+								<span>{this.props.i18n("lbl_Copy")}</span>
+							</button>
 						</li>
 					</ul>
 					<ul>
@@ -262,9 +291,9 @@ export class Module extends Component {
 						<li>
 							<button
 								className="icon icon-files-empty copyBtn"
-								data-clipboard-text={
-									this.props.amount
-								}></button>
+								data-clipboard-text={this.props.amount}>
+								<span>{this.props.i18n("lbl_Copy")}</span>
+							</button>
 						</li>
 					</ul>
 				</div>
@@ -272,7 +301,9 @@ export class Module extends Component {
 				<form onSubmit={this.clickSubmit}>
 					<div className="inputBox-white">
 						<i className="txt-blue">
-							{this.props.i18n("lbl_DepositTime")}
+							{`${this.props.i18n(
+								"lbl_DepositTime"
+							)} (${moment().format("Z")})`}
 						</i>
 						<DateTime
 							value={this.state.depositTime}
@@ -280,7 +311,19 @@ export class Module extends Component {
 						/>
 						<div className="iconModule">
 							<i className="icon icon-calendar"></i>
+							<i
+								className={`icon icon-information-solid`}
+								onClick={this.clickInfo.bind(
+									this,
+									"depositTimeTip"
+								)}></i>
 						</div>
+					</div>
+					<div
+						className={`tip${
+							this.state.depositTimeTip ? " active" : ""
+						}`}>
+						{this.state.depositTimeTip}
 					</div>
 
 					<Inputbox
@@ -290,7 +333,7 @@ export class Module extends Component {
 						onChange={this.editField.bind(this, "refId", null)}
 						onBlur={this.checkTip.bind(this)}
 						checked={this.state.refIdStatus.checked}
-						clickInfo={this.clickInfo}
+						clickInfo={this.clickInfo.bind(this, "refIdStatus")}
 						tip={this.state.refIdStatus.tip}
 					/>
 

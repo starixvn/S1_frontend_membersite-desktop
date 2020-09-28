@@ -223,6 +223,7 @@ export default () => {
 	const refreshData = () => {
 		GetWithdrawalAvailableBalance();
 		GetWithdrawalInfoRecent();
+		KycCheck();
 	};
 
 	return state.loading ? (

@@ -124,7 +124,7 @@
 	"lbl_Direction": "方向",
 	"lbl_Memo": "备忘录",
 	"lbl_WithdrawalStatus0": "草稿",
-	"lbl_WithdrawalStatus1": "待定",
+	"lbl_WithdrawalStatus1": "搁置",
 	"lbl_WithdrawalStatus2": "搁置",
 	"lbl_WithdrawalStatus3": "搁置",
 	"lbl_WithdrawalStatus4": "搁置",
@@ -359,5 +359,10 @@
 	"lbl_Congratulations":"恭喜",
 	"lbl_BecomingDistinguishedPlayer":"成为杰出玩家前",
 	"lbl_ForAccountSecurity":"为了您的帐号安全，",
-	"lbl_CompleteYourProfile":"请先填妥您的个人资料。"
+	"lbl_CompleteYourProfile":"请先填妥您的个人资料。",
+	"lbl_PromotionSlog":"点击这里查看您现有的优惠",
+	"lbl_CasinoSlog":"享受最刺激的线上游戏",
+	"lbl_AffiliateSlog":"您的成功伴侣",
+	"lbl_DepositTimeToolTip":" 請提交您的存充值入時間。"
+
 }
