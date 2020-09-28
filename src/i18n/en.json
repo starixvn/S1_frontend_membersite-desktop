@@ -134,6 +134,8 @@
 	"lbl_WithdrawalStatus7": "Rejected",
 	"lbl_WithdrawalStatus99": "Error",
 	"lbl_CancelConfirm": "Are you sure you want to cancel? It cannot restore after cancellation!",
+	"lbl_CancelConfirmHint1": "Are you sure you want to cancel?",
+	"lbl_CancelConfirmHint2": "It cannot restore after cancellation!",
 	"lbl_TypeName": "Type Name",
 	"lbl_BeforeAmount": "Before Amount",
 	"lbl_AfterAmount": "After Amount",
