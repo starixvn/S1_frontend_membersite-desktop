@@ -101,9 +101,9 @@ export default ({
 					onMouseDown={onMouseDownHandlar}
 					style={{ cursor: "pointer" }}
 					className="cashPoint">
-					<span style={spanStyle}>
-						{`$${number_format(resultAmount, _isConvert)}`}
-					</span>
+					<span style={spanStyle}>{`$${number_format(resultAmount)} ${
+						_isConvert ? "('000)" : ""
+					}`}</span>
 				</div>
 			</div>
 		</div>
