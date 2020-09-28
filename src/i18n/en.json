@@ -28,7 +28,6 @@
 	"msg_EnterOTPCode": "Please enter OTP code.",
 	"msg_OTP_NotReceiveVerificationCode": "Did not receive verification code?",
 
-
 	"BankSlipHint1": "Maximum file size 4 MB each",
 	"BankSlipHint2": "Maximum number of file:1",
 	"BankSlipHint3": "Accepted file types: JPG, JPGE, PNG, GIF",
@@ -358,5 +357,9 @@
 	"lbl_Security":"Security",
 	"lbl_Payment":"Payment",
 	"lbl_PromotionCategory1": "First Deposit",
-    "lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils."
+    "lbl_TurnoverAccmulateHint":"Your Fund are locked to transfer out due to Rollover requirement is not fulfils.",
+	"lbl_Congratulations":"Congratulations",
+	"lbl_BecomingDistinguishedPlayer":"Becoming A Distinguished Player",
+	"lbl_ForAccountSecurity":"For account security,",
+	"lbl_CompleteYourProfile":"we need you to complete your personal information."
 }
