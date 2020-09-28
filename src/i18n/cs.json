@@ -362,5 +362,7 @@
 	"lbl_CompleteYourProfile":"请先填妥您的个人资料。",
 	"lbl_PromotionSlog":"点击这里查看您现有的优惠",
 	"lbl_CasinoSlog":"享受最刺激的线上游戏",
-	"lbl_AffiliateSlog":"您的成功伴侣"
+	"lbl_AffiliateSlog":"您的成功伴侣",
+	"lbl_DepositTimeToolTip":" 請提交您的存充值入時間。"
+
 }
