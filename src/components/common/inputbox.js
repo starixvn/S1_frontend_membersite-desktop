@@ -26,7 +26,7 @@ export default props => {
 				{props.title ? <i className="txt-blue">{props.title}</i> : null}
 				<input
 					type={props.inputType ?? "text"}
-					className={props._isConvert ? "text-right" : ""}
+					className={props.isAmount ? "text-right" : ""}
 					placeholder={props.placeholder}
 					onBlur={props.onBlur}
 					onChange={props.onChange}

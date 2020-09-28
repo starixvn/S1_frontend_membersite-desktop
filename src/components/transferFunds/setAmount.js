@@ -26,18 +26,20 @@ export default props => {
 					</div>
 				</div>
 				<form className="inputModuleRow" onSubmit={props.clickSubmit}>
-					<Inputbox
-						className="inputBox-white"
-						title={props.i18n("lbl_Amount")}
-						value={props.amount}
-						onChange={props.onChange}
-						onBlur={props.onBlur}
-						clickInfo={props.clickInfo}
-						checked={props.checked}
-						tip={props.tip}
-						_isConvert={props._isConvert}
-					/>
-
+					<div className="inputModuleRow">
+						<Inputbox
+							className="inputBox-white"
+							title={props.i18n("lbl_Amount")}
+							value={props.amount}
+							onChange={props.onChange}
+							onBlur={props.onBlur}
+							clickInfo={props.clickInfo}
+							checked={props.checked}
+							tip={props.tip}
+							_isConvert={props._isConvert}
+							isAmount={true}
+						/>
+					</div>
 					<div className="btnGroup">
 						<button className="btn-check" type="submit">
 							{props.i18n("lbl_Submit")}
