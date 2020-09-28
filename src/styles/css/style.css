@@ -2841,7 +2841,7 @@ input[type="file"] {
   font-weight: bold;
 }
 
-#popup .pop .joinSuccess .btnGroup button {
+#popup .pop .joinSuccess .btnGroup a {
   min-width: 175px;
 }
 
