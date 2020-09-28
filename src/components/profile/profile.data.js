@@ -23,7 +23,11 @@ export const initStatus = {
 	}
 };
 
-export const InfoList = () => {
+const CountryFormat = (value, dataList) => {
+	return dataList.find(x => x.code === value)?.countryName || value;
+};
+
+export const InfoList = ({ countryList }) => {
 	const { userInfo } = useContext(userInfoContext);
 
 	const infoList = [
@@ -53,7 +57,9 @@ export const InfoList = () => {
 		{
 			displayKey: "lbl_Country",
 			content: userInfo.perCountry,
-			show: Boolean(userInfo.perCountry)
+			show: Boolean(userInfo.perCountry),
+			format: CountryFormat,
+			bindingData: countryList
 		},
 		{
 			displayKey: "lbl_Email",

@@ -124,7 +124,7 @@
 	"lbl_Direction": "arah",
 	"lbl_Memo": "Memo",
 	"lbl_WithdrawalStatus0": "Draft",
-	"lbl_WithdrawalStatus1": "Ditunda",
+	"lbl_WithdrawalStatus1": "Sedang diproses",
 	"lbl_WithdrawalStatus2": "Sedang diproses",
 	"lbl_WithdrawalStatus3": "Sedang diproses",
 	"lbl_WithdrawalStatus4": "Sedang diproses",
@@ -355,5 +355,10 @@
 	"lbl_Security":"Keamanan",
     "lbl_Payment":"Pembayaran",
     "lbl_PromotionCategory1": "Setoran pertama",
-    "lbl_TurnoverAccmulateHint":"YDana Anda terkunci untuk ditransfer karena persyaratan Rollover belum terpenuhi."
+    "lbl_TurnoverAccmulateHint":"YDana Anda terkunci untuk ditransfer karena persyaratan Rollover belum terpenuhi.",
+	"lbl_PromotionSlog":"Klik disini untuk melihat promosi yang tersedia",
+	"lbl_CasinoSlog":"Pengalaman dunia game",
+	"lbl_AffiliateSlog":"Partner Anda menuju Sukses",
+	"lbl_DepositTimeToolTip":"Kirimkan waktu Setoran anda"
+
 }

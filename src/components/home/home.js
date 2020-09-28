@@ -25,9 +25,9 @@ import NpcTennisBG from "../../styles/img/tennisBG.jpg";
 import NpcESport from "../../styles/img/npc-esport.png";
 import NpcESportBG from "../../styles/img/esportBG.jpg";
 
-import IndexBannerLiveCasino from "../../styles/img/indexBannerLiveCasion.png";
+import indexBannerPromotions from "../../styles/img/indexBannerPromotions.png";
 import IndexBannerCasino from "../../styles/img/indexBannerCasion.png";
-import IndexBannerKeno from "../../styles/img/indexBannerKeno.png";
+import indexBannerAffiliate from "../../styles/img/indexBannerAffiliate.png";
 import IndexCenterBanner from "../../styles/img/indexCenterBanner.jpg";
 
 import Marquee from "./marquee";
@@ -43,6 +43,7 @@ import {
 } from "../../service/enterPage";
 
 import { getUrl } from "../../components/common/linkItems";
+import { SiteInfo } from "../../config";
 
 const defGameListDatas = [
 	{
@@ -176,23 +177,23 @@ const defSideBarProducts = [
 	{
 		path: path.promotion.root,
 		icon: "icon icon-livecasino",
-		displayKey: "lbl_LiveCasino",
-		descriptionKey: "Real Casino Experience",
-		mainImg: IndexBannerLiveCasino
+		displayKey: "lbl_Promotions",
+		descriptionKey: "lbl_PromotionSlog",
+		mainImg: indexBannerPromotions
 	},
 	{
 		path: path.casino.root,
 		icon: "icon icon-casino",
 		displayKey: "lbl_Casino",
-		descriptionKey: "Multiple Themes For Asian Market",
+		descriptionKey: "lbl_CasinoSlog",
 		mainImg: IndexBannerCasino
 	},
 	{
-		productInfo: productList.keno,
-		icon: "icon icon-keno",
-		displayKey: "lbl_Keno",
-		descriptionKey: "Many ways to play,more chances to win !",
-		mainImg: IndexBannerKeno
+		href: SiteInfo.affiliateLink,
+		icon: "icon icon-affiliate",
+		displayKey: "lbl_Affiliates",
+		descriptionKey: "lbl_AffiliateSlog",
+		mainImg: indexBannerAffiliate
 	}
 ];
 
@@ -254,6 +255,12 @@ const SideBarProductSection = ({ t, langId, isLogin, showLogin }) => {
 					</Link>
 				);
 			}
+		} else if (m.href) {
+			return (
+				<a key={key} target="_blank" href={m.href}>
+					{content}
+				</a>
+			);
 		} else {
 			return (
 				<Link key={key} to={`/${langId}/${_path}`}>

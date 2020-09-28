@@ -60,6 +60,7 @@ a {
 
 img {
   width: 100%;
+  display: block;
 }
 
 .icon:before {
@@ -126,9 +127,9 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 2.2;
-      -ms-flex: 2.2;
-          flex: 2.2;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   letter-spacing: 1px;
@@ -211,6 +212,7 @@ header {
   min-height: 160px;
   -webkit-transition: 0.7s;
   transition: 0.7s;
+  color: white;
 }
 
 .header > div.menu .gameList a img, .header > div.menu .gameList button img, .header > div.menu .casinoList a img, .header > div.menu .casinoList button img, .header > div.menu .livecasinoList a img, .header > div.menu .livecasinoList button img {
@@ -1103,6 +1105,14 @@ footer {
   color: #f77900;
 }
 
+.webmap > div:nth-child(n+5) a, .webmap > div:nth-child(n+5) button {
+  cursor: auto;
+}
+
+.webmap > div:last-child a, .webmap > div:last-child button {
+  cursor: pointer;
+}
+
 .webmap > div:nth-last-child(2) div, .webmap > div:nth-last-child(5) div {
   display: block;
 }
@@ -1129,6 +1139,7 @@ footer {
   width: -moz-fit-content;
   width: fit-content;
   padding: 0 5px;
+  cursor: auto;
 }
 
 .copyright {
@@ -1182,6 +1193,16 @@ footer {
 .joinpop .joinloginModule .joinloginFunction .noAccount, .loginpop .joinloginModule .joinloginFunction .noAccount {
   font-size: 12px;
   margin-top: 15px;
+}
+
+.joinpop .joinloginModule .joinloginFunction .dropdown > .btn, .loginpop .joinloginModule .joinloginFunction .dropdown > .btn {
+  width: auto;
+  color: white;
+}
+
+.joinpop .joinloginModule .joinloginFunction .icon-email, .loginpop .joinloginModule .joinloginFunction .icon-email {
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .joinpop.active, .loginpop.active {
@@ -1266,6 +1287,11 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   padding: 6px 10px;
+  z-index: 1;
+}
+
+.inputBox.error, .error.inputBox-org, .error.inputBox-white, .error.inputBox-blue {
+  border-color: #f73201;
 }
 
 .inputBox::-webkit-input-placeholder, .inputBox-org::-webkit-input-placeholder, .inputBox-white::-webkit-input-placeholder, .inputBox-blue::-webkit-input-placeholder {
@@ -1446,7 +1472,7 @@ input[type="file"] {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  min-width: 125px;
+  min-width: 123px;
   margin: 0 5px;
   font-weight: bold;
 }
@@ -1567,6 +1593,7 @@ input[type="file"] {
 .Terms {
   font-size: 12px;
   line-height: 25px;
+  margin-top: 20px;
 }
 
 .Terms .agree {
@@ -1625,6 +1652,7 @@ input[type="file"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0;
 }
 
 #Marquee .marquee-box .marquee-run {
@@ -1674,13 +1702,12 @@ input[type="file"] {
 
 .quickLink {
   position: fixed;
-  right: 0;
+  right: -10px;
   top: 25%;
   z-index: 1;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  width: 170px;
-  height: 185px;
+  width: 215px;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1689,6 +1716,7 @@ input[type="file"] {
           transform: translateX(77%);
   -webkit-transition: 0.7s;
   transition: 0.7s;
+  padding-right: 10px;
   cursor: pointer;
 }
 
@@ -1701,18 +1729,44 @@ input[type="file"] {
   -webkit-box-flex: 0.5;
       -ms-flex: 0.5;
           flex: 0.5;
+  height: 200px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.quickLink > div:nth-child(1) .icon-chat {
+  background: white;
+  color: #1E85EC;
+  font-weight: bold;
+  position: absolute;
+  width: 43px;
+  height: 43px;
+  left: 0;
+  font-size: 18px;
+  z-index: 1;
+  top: 0;
 }
 
 .quickLink > div:nth-child(1) i {
-  -webkit-writing-mode: vertical-lr;
-      -ms-writing-mode: tb-lr;
-          writing-mode: vertical-lr;
-  -webkit-transform: scale(-1);
-          transform: scale(-1);
-}
-
-.quickLink > div:nth-child(1) i:before {
-  margin-bottom: 5px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  height: 43px;
+  letter-spacing: 1px;
 }
 
 .quickLink > div:nth-child(2) {
@@ -1721,6 +1775,7 @@ input[type="file"] {
       -ms-flex: 3.5;
           flex: 3.5;
   padding: 5px 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .quickLink > div:nth-child(2) ul {
@@ -1744,6 +1799,8 @@ input[type="file"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  line-height: 42px;
+  color: #666;
 }
 
 .quickLink > div:nth-child(2) ul li.icon:before {
@@ -1769,6 +1826,17 @@ input[type="file"] {
   color: #666;
   background: transparent;
   font-size: 19px;
+}
+
+.quickLink > div:nth-child(2) ul li.icon-whatsapp, .quickLink > div:nth-child(2) ul li.icon-line {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.quickLink > div:nth-child(2) ul li.icon-whatsapp > div, .quickLink > div:nth-child(2) ul li.icon-line > div {
+  margin-left: 30px;
+  line-height: 24px;
 }
 
 .quickLink > div:nth-child(2) ul li a {
@@ -2366,7 +2434,7 @@ input[type="file"] {
 }
 
 .subModuleList .subModule:nth-child(2) {
-  margin: 0 auto;
+  margin: 0 40px;
 }
 
 .subModuleList .subModule .subModuleTitle {
@@ -2480,6 +2548,10 @@ input[type="file"] {
 .subModuleList .subModule .subModuleBody ul li a:before {
   font-size: 40px;
   margin-right: 0;
+}
+
+.subModuleList .subModule .subModuleBody ul li a:hover {
+  background: #1E85EC;
 }
 
 .subModuleList .subModule .subModuleBody ul li span {
@@ -2608,6 +2680,10 @@ input[type="file"] {
   width: calc(100% - 20px);
 }
 
+.platformName + div.subModuleList .subModuleBody ul li a:hover {
+  background: white;
+}
+
 .column {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -2664,9 +2740,6 @@ input[type="file"] {
   top: 0;
   width: 100%;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -2684,7 +2757,7 @@ input[type="file"] {
 
 #popup .pop {
   min-width: 600px;
-  background: rgba(0, 0, 0, 0.7);
+  background: #191919;
   padding: 40px;
   border-radius: 15px;
   max-height: calc(100% - 160px);
@@ -2712,7 +2785,48 @@ input[type="file"] {
   display: flex;
 }
 
-.Submit, .Cancel, .uploadSuccess, .updateSuccess, .Success, .tokyc, .addBankpop, .changePassWordpop, .editSuccess {
+#popup .pop .joinSuccess {
+  position: relative;
+}
+
+#popup .pop .joinSuccess .icon-icon_1_cop {
+  color: #1E85EC;
+  font-size: 48px;
+  width: 120px;
+  height: 120px;
+  background: url(../img/joinSuccessBg.png) no-repeat top center/cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#popup .pop .joinSuccess .title {
+  margin-bottom: 0;
+}
+
+#popup .pop .joinSuccess .txt-orange {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+#popup .pop .joinSuccess .btnGroup button {
+  min-width: 175px;
+}
+
+#popup .pop .joinSuccess .icon-close {
+  font-size: 16px;
+  position: absolute;
+  right: -120px;
+  top: -20px;
+}
+
+.Submit, .Cancel, .uploadSuccess, .updateSuccess, .Success, .tokyc, .addBankpop, .changePassWordpop, .editSuccess, .joinSuccess {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -2725,18 +2839,18 @@ input[type="file"] {
   margin: auto;
 }
 
-.Submit.active, .Cancel.active, .uploadSuccess.active, .updateSuccess.active, .Success.active, .tokyc.active, .addBankpop.active, .changePassWordpop.active, .editSuccess.active {
+.Submit.active, .Cancel.active, .uploadSuccess.active, .updateSuccess.active, .Success.active, .tokyc.active, .addBankpop.active, .changePassWordpop.active, .editSuccess.active, .joinSuccess.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.Submit .icon, .Cancel .icon, .uploadSuccess .icon, .updateSuccess .icon, .Success .icon, .tokyc .icon, .addBankpop .icon, .changePassWordpop .icon, .editSuccess .icon {
+.Submit .icon, .Cancel .icon, .uploadSuccess .icon, .updateSuccess .icon, .Success .icon, .tokyc .icon, .addBankpop .icon, .changePassWordpop .icon, .editSuccess .icon, .joinSuccess .icon {
   font-size: 36px;
   color: #f77900;
 }
 
-.Submit .icon.icon-bell, .Cancel .icon.icon-bell, .uploadSuccess .icon.icon-bell, .updateSuccess .icon.icon-bell, .Success .icon.icon-bell, .tokyc .icon.icon-bell, .addBankpop .icon.icon-bell, .changePassWordpop .icon.icon-bell, .editSuccess .icon.icon-bell {
+.Submit .icon.icon-bell, .Cancel .icon.icon-bell, .uploadSuccess .icon.icon-bell, .updateSuccess .icon.icon-bell, .Success .icon.icon-bell, .tokyc .icon.icon-bell, .addBankpop .icon.icon-bell, .changePassWordpop .icon.icon-bell, .editSuccess .icon.icon-bell, .joinSuccess .icon.icon-bell {
   color: #f77900;
   -webkit-transform-origin: bottom;
           transform-origin: bottom;
@@ -2744,20 +2858,20 @@ input[type="file"] {
           transform: rotate(20deg);
 }
 
-.Submit .title, .Cancel .title, .uploadSuccess .title, .updateSuccess .title, .Success .title, .tokyc .title, .addBankpop .title, .changePassWordpop .title, .editSuccess .title {
+.Submit .title, .Cancel .title, .uploadSuccess .title, .updateSuccess .title, .Success .title, .tokyc .title, .addBankpop .title, .changePassWordpop .title, .editSuccess .title, .joinSuccess .title {
   margin: 10px 0 20px;
 }
 
-.Submit .txt-lightgray, .Cancel .txt-lightgray, .uploadSuccess .txt-lightgray, .updateSuccess .txt-lightgray, .Success .txt-lightgray, .tokyc .txt-lightgray, .addBankpop .txt-lightgray, .changePassWordpop .txt-lightgray, .editSuccess .txt-lightgray {
+.Submit .txt-lightgray, .Cancel .txt-lightgray, .uploadSuccess .txt-lightgray, .updateSuccess .txt-lightgray, .Success .txt-lightgray, .tokyc .txt-lightgray, .addBankpop .txt-lightgray, .changePassWordpop .txt-lightgray, .editSuccess .txt-lightgray, .joinSuccess .txt-lightgray {
   text-align: center;
 }
 
-.Submit .popList, .Cancel .popList, .uploadSuccess .popList, .updateSuccess .popList, .Success .popList, .tokyc .popList, .addBankpop .popList, .changePassWordpop .popList, .editSuccess .popList {
+.Submit .popList, .Cancel .popList, .uploadSuccess .popList, .updateSuccess .popList, .Success .popList, .tokyc .popList, .addBankpop .popList, .changePassWordpop .popList, .editSuccess .popList, .joinSuccess .popList {
   width: 100%;
   margin-top: 30px;
 }
 
-.Submit .popList ul, .Cancel .popList ul, .uploadSuccess .popList ul, .updateSuccess .popList ul, .Success .popList ul, .tokyc .popList ul, .addBankpop .popList ul, .changePassWordpop .popList ul, .editSuccess .popList ul {
+.Submit .popList ul, .Cancel .popList ul, .uploadSuccess .popList ul, .updateSuccess .popList ul, .Success .popList ul, .tokyc .popList ul, .addBankpop .popList ul, .changePassWordpop .popList ul, .editSuccess .popList ul, .joinSuccess .popList ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2770,13 +2884,13 @@ input[type="file"] {
           justify-content: space-between;
 }
 
-.Submit .popList ul li, .Cancel .popList ul li, .uploadSuccess .popList ul li, .updateSuccess .popList ul li, .Success .popList ul li, .tokyc .popList ul li, .addBankpop .popList ul li, .changePassWordpop .popList ul li, .editSuccess .popList ul li {
+.Submit .popList ul li, .Cancel .popList ul li, .uploadSuccess .popList ul li, .updateSuccess .popList ul li, .Success .popList ul li, .tokyc .popList ul li, .addBankpop .popList ul li, .changePassWordpop .popList ul li, .editSuccess .popList ul li, .joinSuccess .popList ul li {
   line-height: 30px;
   letter-spacing: 1px;
   font-size: 12px;
 }
 
-.Submit .popList ul li:first-child, .Cancel .popList ul li:first-child, .uploadSuccess .popList ul li:first-child, .updateSuccess .popList ul li:first-child, .Success .popList ul li:first-child, .tokyc .popList ul li:first-child, .addBankpop .popList ul li:first-child, .changePassWordpop .popList ul li:first-child, .editSuccess .popList ul li:first-child {
+.Submit .popList ul li:first-child, .Cancel .popList ul li:first-child, .uploadSuccess .popList ul li:first-child, .updateSuccess .popList ul li:first-child, .Success .popList ul li:first-child, .tokyc .popList ul li:first-child, .addBankpop .popList ul li:first-child, .changePassWordpop .popList ul li:first-child, .editSuccess .popList ul li:first-child, .joinSuccess .popList ul li:first-child {
   color: #1E85EC;
   font-weight: bold;
 }
@@ -2834,6 +2948,7 @@ input[type="file"] {
 .smallList ul li:first-child {
   color: #1E85EC;
   font-weight: bold;
+  text-align: left;
 }
 
 .directions {
@@ -2902,9 +3017,18 @@ input[type="file"] {
   cursor: pointer;
 }
 
+.upload_img.error {
+  border-color: #f73201;
+}
+
 .upload_img .icon {
   font-size: 48px;
   color: #1E85EC;
+}
+
+.upload_img .icon.icon-broken_image:before {
+  font-size: 48px;
+  color: #666;
 }
 
 .upload_img img {
@@ -3251,10 +3375,6 @@ input[type="file"] {
   margin: 0 10px;
 }
 
-.walletTransfer .walletModule .from, .walletTransfer .walletModule .to {
-  color: black;
-}
-
 .walletTransfer .walletModule .from span, .walletTransfer .walletModule .to span {
   color: white;
   display: none;
@@ -3266,12 +3386,9 @@ input[type="file"] {
   display: flex;
 }
 
-.walletTransfer .walletModule .from:before {
-  content: 'From';
-}
-
-.walletTransfer .walletModule .to:before {
-  content: 'To';
+.walletTransfer .walletModule .from span:nth-child(1), .walletTransfer .walletModule .to span:nth-child(1) {
+  display: block;
+  color: black;
 }
 
 .walletTransfer .inputBox, .walletTransfer .inputBox-org, .walletTransfer .inputBox-white, .walletTransfer .inputBox-blue {
@@ -3302,33 +3419,6 @@ input[type="file"] {
 
 .bonusTip {
   background: rgba(30, 133, 236, 0.5);
-}
-
-.index .header, .index .inside {
-  width: 1010px;
-}
-
-.index header .header > div.menu {
-  width: calc(100% - (100% - 1010px));
-  padding: 0 calc((100% - 1010px) / 2);
-}
-
-.index main section > div, .index footer .copyright {
-  max-width: 1010px;
-}
-
-.index footer {
-  width: 100%;
-  min-width: 1010px;
-}
-
-.index footer .webmap {
-  padding: 0 calc((100% - 1010px) / 2);
-  padding-top: 40px;
-}
-
-.index .casinoList, .index .livecasinoList {
-  max-width: 1010px;
 }
 
 .addBank {
@@ -3561,6 +3651,7 @@ input[type="file"] {
 
 .calculation > div div:first-child {
   color: #1E85EC;
+  word-break: break-word;
 }
 
 .calculation > div span {
@@ -3892,10 +3983,6 @@ input[type="file"] {
           justify-content: unset;
 }
 
-.profileEdit .editModule .tip {
-  width: 100%;
-}
-
 .haveBank {
   width: 100%;
   display: -webkit-box;
@@ -3994,7 +4081,6 @@ input[type="file"] {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-weight: normal;
 }
 
 .announcement .list .listHeader div:nth-child(2) i, .personal .list .listHeader div:nth-child(2) i {
@@ -4411,6 +4497,10 @@ form {
   margin-right: 5px;
 }
 
+.casinoSelect > div  .inputBox-white {
+  min-height: 22px;
+}
+
 .slotList > div, .newsList > div {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 calc(100% / 5 - 45px);
@@ -4567,6 +4657,7 @@ article p {
 
 .rdt > input {
   width: calc(100% + 9px);
+  cursor: pointer;
 }
 
 .rdt + .icon-calendar {
@@ -4749,8 +4840,8 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0px 1000px #030c1b inset;
-          box-shadow: 0 0 0px 1000px #030c1b inset;
+  -webkit-box-shadow: 0 0 0px 1000px #191919 inset;
+          box-shadow: 0 0 0px 1000px #191919 inset;
   -webkit-text-fill-color: white;
 }
 
@@ -4831,7 +4922,7 @@ button.icon-spinner11:before {
   margin: 0;
 }
 
-button.icon-books {
+.icon-books {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4843,7 +4934,7 @@ button.icon-books {
           justify-content: flex-end;
 }
 
-button.icon-books:hover:after {
+.icon-books:hover:after {
   content: 'ALL Transaction';
   font-size: 12px;
   margin-left: 10px;
@@ -5481,5 +5572,34 @@ button.icon-books:hover:after {
   position: absolute;
   margin-top: 200px;
   font-size: 14px;
+}
+
+.icon-information-solid {
+  color: #1E85EC;
+}
+
+.icon-information-solid.active {
+  color: white;
+}
+
+.icon-new-tab, .icon-files-empty {
+  position: relative;
+}
+
+.icon-new-tab span, .icon-files-empty span {
+  display: none;
+  float: right;
+}
+
+.icon-new-tab:hover span, .icon-files-empty:hover span {
+  display: block;
+}
+
+.icon-new-tab span {
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  -webkit-transform: translateY(20px);
+          transform: translateY(20px);
 }
 /*# sourceMappingURL=style.css.map */

@@ -210,6 +210,7 @@ export default () => {
 	const refreshData = () => {
 		GetWithdrawalAvailableBalance();
 		GetWithdrawalInfoRecent();
+		KycCheck();
 	};
 
 	return loading ? null : (

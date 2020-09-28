@@ -95,6 +95,7 @@ export default () => {
 					channelInfo={state.channelList[state.channelIdx]}
 					_isConvert={_isConvert}
 					amount={state.amount}
+					dispatch={dispatch}
 				/>
 			);
 			break;
