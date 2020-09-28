@@ -1290,6 +1290,10 @@ footer {
   z-index: 1;
 }
 
+.inputBox.error, .error.inputBox-org, .error.inputBox-white, .error.inputBox-blue {
+  border-color: #f73201;
+}
+
 .inputBox::-webkit-input-placeholder, .inputBox-org::-webkit-input-placeholder, .inputBox-white::-webkit-input-placeholder, .inputBox-blue::-webkit-input-placeholder {
   color: #b2b2b2;
 }
@@ -1589,6 +1593,7 @@ input[type="file"] {
 .Terms {
   font-size: 12px;
   line-height: 25px;
+  margin-top: 20px;
 }
 
 .Terms .agree {
@@ -1727,6 +1732,13 @@ input[type="file"] {
   height: 200px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .quickLink > div:nth-child(1) .icon-chat {
@@ -1739,18 +1751,22 @@ input[type="file"] {
   left: 0;
   font-size: 18px;
   z-index: 1;
+  top: 0;
 }
 
 .quickLink > div:nth-child(1) i {
-  -webkit-writing-mode: vertical-lr;
-      -ms-writing-mode: tb-lr;
-          writing-mode: vertical-lr;
-  -webkit-transform: scale(-1);
-          transform: scale(-1);
-}
-
-.quickLink > div:nth-child(1) i:before {
-  margin-bottom: 5px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  height: 43px;
+  letter-spacing: 1px;
 }
 
 .quickLink > div:nth-child(2) {
@@ -2761,7 +2777,6 @@ input[type="file"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: center;
 }
 
 #popup .pop > div.active {
@@ -4642,12 +4657,12 @@ article p {
 
 .rdt > input {
   width: calc(100% + 9px);
+  cursor: pointer;
 }
 
 .rdt + .icon-calendar {
   margin-right: 0;
   color: #b2b2b2;
-  cursor: pointer;
 }
 
 .rdt .inputBox, .rdt .inputBox-org, .rdt .inputBox-white, .rdt .inputBox-blue {
@@ -5567,6 +5582,10 @@ button.icon-spinner11:before {
   color: white;
 }
 
+.icon-new-tab, .icon-files-empty {
+  position: relative;
+}
+
 .icon-new-tab span, .icon-files-empty span {
   display: none;
   float: right;
@@ -5574,5 +5593,13 @@ button.icon-spinner11:before {
 
 .icon-new-tab:hover span, .icon-files-empty:hover span {
   display: block;
+}
+
+.icon-new-tab span {
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  -webkit-transform: translateY(20px);
+          transform: translateY(20px);
 }
 /*# sourceMappingURL=style.css.map */

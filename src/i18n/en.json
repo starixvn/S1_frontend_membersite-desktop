@@ -365,5 +365,10 @@
 	"lbl_CompleteYourProfile":"we need you to complete your personal information.",
 	"lbl_PromotionSlog":"Click here to see your availiable promotions",
 	"lbl_CasinoSlog":"Multiple Themes For Asian Market",
-	"lbl_AffiliateSlog":"Your Partner to Success"
+	"lbl_AffiliateSlog":"Your Partner to Success",
+	"lbl_Copy":"Copy",
+	"lbl_OpenOtherSite":" Open another window and redirect",
+	"lbl_DepositTimeToolTip":" Please submit your deposit time.",
+	"lbl_PicFormatTip":"File format error, please try again."
+
 }
