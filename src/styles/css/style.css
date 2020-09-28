@@ -595,6 +595,9 @@ header {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .header > div.function .cashier .submenu .icon-exit:before, .header > div.function .wallet .submenu .icon-exit:before, .header > div.function .memberfile .submenu .icon-exit:before {
@@ -662,9 +665,10 @@ header {
   font-weight: bold;
 }
 
-.header > div.function .wallet .submenu div.balance i {
+.header > div.function .wallet .submenu div.balance button {
   color: #1E85EC;
   font-size: 12px;
+  margin-left: 5px;
 }
 
 .header > div.function .wallet .submenu div.walletBalance {
@@ -1887,9 +1891,8 @@ input[type="file"] {
   padding: 10px;
   width: 100%;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 1px;
-  font-weight: bold;
   text-align: left;
 }
 
@@ -1941,7 +1944,11 @@ input[type="file"] {
   z-index: 1;
 }
 
-#leftMenu .menuModule .menuSelect.active:after {
+#leftMenu .menuModule .menuSelect.active {
+  background: #333;
+}
+
+#leftMenu .menuModule .menuSelect:hover:after {
   content: '';
   width: 100%;
   height: 100%;
@@ -2305,16 +2312,18 @@ input[type="file"] {
   width: 100%;
 }
 
-.cashBar:before {
-  content: "Min";
-  -webkit-transform: translateX(-160%);
-          transform: translateX(-160%);
+.cashBar .min, .cashBar .max {
+  color: white;
 }
 
-.cashBar:after {
-  content: "Max";
-  -webkit-transform: translateX(160%);
-          transform: translateX(160%);
+.cashBar .min {
+  -webkit-transform: translateX(-200%);
+          transform: translateX(-200%);
+}
+
+.cashBar .max {
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
 }
 
 .cashBar .cashLine {
@@ -3665,6 +3674,7 @@ input[type="file"] {
 
 .addBankpop .icon {
   font-size: 14px;
+  color: #1E85EC;
 }
 
 .addBankpop .inputBox-blue .dropdown > .btn {
@@ -4258,9 +4268,6 @@ input[type="file"] {
   padding: 0 40px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   line-height: 20px;
 }
 
@@ -4506,7 +4513,7 @@ form {
       -ms-flex: 0 0 calc(100% / 5 - 45px);
           flex: 0 0 calc(100% / 5 - 45px);
   padding: 15px;
-  margin: 10px 0;
+  margin: 10px 7px;
 }
 
 .slotList > div .txt-darkBlue, .newsList > div .txt-darkBlue {
@@ -4522,11 +4529,11 @@ form {
 }
 
 .slotList > div .btnGroup button, .newsList > div .btnGroup button {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(50% - 5px);
-          flex: 0 0 calc(50% - 5px);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   min-width: auto;
-  margin: 0;
+  margin: 0 1px;
 }
 
 .slotList > div .brand, .newsList > div .brand {

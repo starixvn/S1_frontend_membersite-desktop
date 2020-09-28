@@ -201,7 +201,7 @@
 	"lbl_AddNewAccount": "Add New Account",
 	"lbl_NumberOfBankAccounts": "Number of bank accounts",
 	"lbl_SelectBank_Required": "Please select bank accounts",
-	"lbl_Deduction": "Offset rollover difference amount",
+	"lbl_Deduction": "Rollover difference amount",
 	"lbl_Balance": "Balance",
 	"lbl_ConfirmWithdrawal": "Please confirm the withdrawal information.",
 	"lbl_WithdrawalTo": "Withdrawal To",
