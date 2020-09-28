@@ -70,7 +70,7 @@ export default () => {
 	const [siteCurrency, setSiteCurrency] = useState([]);
 	const isMountedRef = useRef(null);
 	const [defaultOption, setDefaultOption] = useState(
-		t("lbl_Preferred_Currency")
+		t("lbl_PrefferedCurrency")
 	);
 	const { userInfo } = useContext(userInfoContext);
 
@@ -192,6 +192,10 @@ export default () => {
 			let result = await emailCheck(val);
 			checked = result.checked;
 			msg = result.msg;
+		} else if (col === "currency") {
+			let result = currencyCheck();
+			checked = result.checked;
+			msg = result.msg;
 		}
 
 		setTip(prev => {
@@ -264,16 +268,14 @@ export default () => {
 		return { checked, msg };
 	};
 
-	const clickDropdown = () => {
-		setTip(prev => {
-			return {
-				...prev,
-				currency: {
-					checked: true,
-					msg: t("lbl_PreferredCurrencyToolTip")
-				}
-			};
-		});
+	const currencyCheck = () => {
+		let checked = true;
+		let msg = "";
+		if (defaultOption !== null) {
+			checked = false;
+			msg = "lbl_RemindPrefferedCurrency";
+		}
+		return { checked, msg };
 	};
 
 	const onSelectItem = i => {
@@ -302,7 +304,7 @@ export default () => {
 				let _usernameCheck = res[0];
 				let _emailCheck = res[1];
 				let _passwordCheck = passwordCheck(userValue.password);
-
+				let _currencyCheck = currencyCheck();
 				let _termsCheck = userValue.termsCheck;
 				let _ageCheck = userValue.ageCheck;
 
@@ -310,6 +312,7 @@ export default () => {
 					_usernameCheck.checked &&
 					_passwordCheck.checked &&
 					_emailCheck.checked &&
+					_currencyCheck.checked &&
 					_termsCheck &&
 					_ageCheck;
 
@@ -332,6 +335,10 @@ export default () => {
 							email: {
 								checked: _emailCheck.checked,
 								msg: t(_emailCheck.msg)
+							},
+							currency: {
+								checked: _currencyCheck.checked,
+								msg: t(_currencyCheck.msg)
 							},
 							checkbox: {
 								checked: true,
@@ -518,6 +525,9 @@ export default () => {
 					</div>
 					<div className="inputModule">
 						<Inputbox
+							className={`inputBox-org ${
+								tip.username.msg ? "error" : ""
+							}`}
 							icon="icon-member txt-orange"
 							placeholder={t("lbl_Username")}
 							value={userValue.username}
@@ -526,10 +536,12 @@ export default () => {
 							clickInfo={clickInfo.bind(this, "username")}
 							onChange={EditField.bind(null, "username")}
 							onBlur={checkValue.bind(null, "username")}
-							className="inputBox-org"
 						/>
 
 						<InputboxPSW
+							className={`inputBox-org ${
+								tip.password.msg ? "error" : ""
+							}`}
 							icon="icon-key txt-orange"
 							inputType={`${!showPsw ? "password" : "text"}`}
 							placeholder={t("lbl_Password")}
@@ -541,10 +553,12 @@ export default () => {
 							showPswHandler={showPswHandler}
 							checked={tip.password.checked}
 							clickInfo={clickInfo.bind(this, "password")}
-							className="inputBox-org"
 						/>
 
 						<Inputbox
+							className={`inputBox-org ${
+								tip.email.msg ? "error" : ""
+							}`}
 							icon="icon-email txt-orange"
 							placeholder={t("lbl_Email")}
 							value={userValue.email}
@@ -553,10 +567,14 @@ export default () => {
 							clickInfo={clickInfo.bind(this, "email")}
 							onChange={EditField.bind(null, "email")}
 							onBlur={checkValue.bind(null, "email")}
-							className="inputBox-org"
 						/>
 
-						<div className="inputBox-org">
+						<div
+							className={`inputBox-org  ${
+								tip.currency.msg ? "error" : ""
+							}`}
+							tabIndex="0"
+							onBlur={checkValue.bind(null, "currency")}>
 							<Dropdown
 								defaultOption={defaultOption}
 								mainKey="join_currency"
@@ -565,12 +583,17 @@ export default () => {
 								selectedIdx={userValue.currency}
 								i18n={t}
 								onSelectItem={onSelectItem}
-								clickDropdown={clickDropdown}
 							/>
 						</div>
+						{tip.currency.msg ? (
+							<div className="active">{tip.currency.msg}</div>
+						) : null}
 					</div>
 
 					<div className="Terms">
+						<div className="tip active">
+							{t("lbl_PreferredCurrencyToolTip")}
+						</div>
 						<Checkbox
 							id="joinTermsCheck"
 							checked={userValue.termsCheck}

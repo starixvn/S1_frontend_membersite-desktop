@@ -90,7 +90,7 @@
 	"lbl_RemindForName": "*FULL NAME must match name in your bank account for instant deposit & withdrawal.",
 	"lbl_PhoneTooltip": "Please enter your phone number, it can not change once enter!",
 	"lbl_Submit": "Submit",
-	"lbl_Preferred_Currency":"Preferred Currency",
+	"lbl_PrefferedCurrency":"Preferred Currency",
 	"lbl_PreferredCurrencyToolTip": "Preferred currency can not be changed after registration.",
 	"lbl_Check18TCTooltip": "Please click the above checkbox to confirm the account registration requirements",
 	"lbl_Guest": "Guest",
