@@ -3,6 +3,7 @@ import Wrapper from "../components/common/wrapper";
 import Layout from "../components/common/layout";
 import LeftMenu from "../components/common/leftMenu";
 import Profile from "../components/profile/profile";
+import SideBarQuickLink from "../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -15,6 +16,7 @@ export default () => {
 							<Profile />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>

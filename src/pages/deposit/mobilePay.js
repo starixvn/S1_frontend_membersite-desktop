@@ -4,6 +4,7 @@ import Layout from "../../components/common/layout";
 import LeftMenu from "../../components/common/leftMenu";
 import RecentHistory from "../../components/deposit/deposit.recentHistory";
 import MobilePaySet from "../../components/deposit/mobilePay.set";
+import SideBarQuickLink from "../../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -17,6 +18,7 @@ export default () => {
 							<RecentHistory />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>

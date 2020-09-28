@@ -10,6 +10,7 @@ import Filter from "../components/common/historyFilter";
 import moment from "moment";
 import LeftMenu from "../components/common/leftMenu";
 import { defPopBoxType } from "../components/common/popBox";
+import SideBarQuickLink from "../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -22,6 +23,7 @@ export default () => {
 							<Content />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>
