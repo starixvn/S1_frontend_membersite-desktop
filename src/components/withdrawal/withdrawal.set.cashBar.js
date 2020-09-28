@@ -15,6 +15,10 @@ export default ({
 
 	const cashBarRef = useRef(null);
 
+	const _maxValue = Math.floor(
+		_isConvert ? availableBalance / 1000 : availableBalance
+	);
+
 	const minMaxRange = (val, min, max) => {
 		return Math.floor(Math.min(Math.max(val, min), max));
 	};
@@ -47,10 +51,8 @@ export default ({
 			minMaxRange(cashLinewidth, 0, cashBarElementWidth),
 			cashBarElementWidth
 		);
-		let resultAmount =
-			(availableBalance * cashLineWidthPercentage) /
-			(_isConvert ? 1000 : 1);
-		onChangeAmount(Math.floor(resultAmount));
+		let resultAmount = _maxValue * cashLineWidthPercentage;
+		onChangeAmount(minMaxRange(Math.floor(resultAmount), 1, _maxValue));
 	};
 
 	const handleClickOutside = e => {
@@ -60,11 +62,12 @@ export default ({
 	};
 
 	useEffect(() => {
-		let convertAmount = _isConvert ? amountValue * 1000 : amountValue;
-		setResultAmount(minMaxRange(amountValue, 0, availableBalance));
+		setResultAmount(minMaxRange(amountValue, 1, _maxValue));
 		setCashLineWidthPercentage(
-			minMaxRange((convertAmount / availableBalance) * 100, 0, 100)
+			minMaxRange((amountValue / _maxValue) * 100, 1, 100)
 		);
+
+		if (amountValue > _maxValue) onChangeAmount(_maxValue);
 	}, [amountValue]);
 
 	useEffect(() => {
@@ -88,13 +91,13 @@ export default ({
 		whiteSpace: "nowrap"
 	};
 
-	return (
+	return _maxValue > 1 ? (
 		<div
 			ref={cashBarRef}
 			onMouseMove={onMouseMoveHandlar}
 			onMouseUp={onMouseUpHandlar}
 			className="cashBar">
-			<button class="min" onClick={() => onChangeAmount(1)}>
+			<button className="min" onClick={() => onChangeAmount(1)}>
 				Min
 			</button>
 
@@ -110,18 +113,9 @@ export default ({
 					}`}</span>
 				</div>
 			</div>
-			<button
-				class="max"
-				onClick={() =>
-					onChangeAmount(
-						// max value format
-						_isConvert
-							? Math.floor(availableBalance / 1000)
-							: availableBalance
-					)
-				}>
+			<button className="max" onClick={() => onChangeAmount(_maxValue)}>
 				Max
 			</button>
 		</div>
-	);
+	) : null;
 };
