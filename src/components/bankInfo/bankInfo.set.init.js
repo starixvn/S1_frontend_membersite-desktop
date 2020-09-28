@@ -14,18 +14,15 @@ export default ({ dispatch, numberOfAccount }) => {
 				{numberOfAccount < 3 ? (
 					<div className="addBankName noBank" onClick={toNextStep}>
 						<div className="icon icon-plus"></div>
-						<div>
-							{t("lbl_AddNewAccount")}
-						</div>
+						<div>{t("lbl_AddNewAccount")}</div>
 					</div>
-				) : (
-					<div className="addBankName noBank">
-						<div className="icon icon-warning"></div>
-						<div>
-							{t("lbl_BankCardsFull")}
-						</div>
-					</div>
-				)}
+				) : // <div className="addBankName noBank">
+				// 	<div className="icon icon-warning"></div>
+				// 	<div>
+				// 		{t("lbl_BankCardsFull")}
+				// 	</div>
+				// </div>
+				null}
 
 				<div className="remainder">
 					{t("lbl_NumberOfBankAccounts")}:{" "}
