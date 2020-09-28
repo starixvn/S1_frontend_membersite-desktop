@@ -17,6 +17,11 @@ import ShowWallets from "./showWallets";
 import SetAmount from "./setAmount";
 import RecentHistory from "./recentHistory";
 
+const walletIcon = [
+	"icon-icon32px_Main-Wallet",
+	"icon-icon32px_Sportsbook-Wallet"
+];
+
 export default () => {
 	const defDirection = {
 		MainToTp: 1,
@@ -71,16 +76,20 @@ export default () => {
 						let mainWallet = {
 							id: 0,
 							displayKey: "lbl_MainWallet",
-							balance: res.data.data.balance
+							balance: res.data.data.balance,
+							walletIcon: walletIcon[0]
 						};
 
-						let tpWalletArr = res.data.data.tpWallets.map(item => {
-							return {
-								id: item.tpId,
-								displayKey: `lbl_TpWallet_${item.tpId}`,
-								balance: item.balance
-							};
-						});
+						let tpWalletArr = res.data.data.tpWallets.map(
+							(item, i) => {
+								return {
+									id: item.tpId,
+									displayKey: `lbl_TpWallet_${item.tpId}`,
+									balance: item.balance,
+									walletIcon: walletIcon[i + 1]
+								};
+							}
+						);
 						setWalletInfo([mainWallet, ...tpWalletArr]);
 					} else {
 						setPopBox({

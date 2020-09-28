@@ -7,7 +7,7 @@ const ShowWallet = props => {
 	let arr = props.walletInfo?.map((item, idx) => {
 		return (
 			<div className="walletBalanceModule" key={`wallets-${item.id}`}>
-				<span className="icon icon-balance">
+				<span className={`icon ${item.walletIcon}`}>
 					{props.i18n(item.displayKey)}
 				</span>
 				<span>{number_format(item.balance, props._isConvert)}</span>
