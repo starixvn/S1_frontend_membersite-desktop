@@ -72,7 +72,6 @@ export default () => {
 	const [defaultOption, setDefaultOption] = useState(
 		t("lbl_Preferred_Currency")
 	);
-	const [dropDownTip, setDropDownTip] = useState("");
 	const { userInfo } = useContext(userInfoContext);
 
 	useEffect(() => {
@@ -161,11 +160,6 @@ export default () => {
 				}
 			};
 		});
-	};
-
-	const clickDropDownInfo = () => {
-		let currency_tip = t("lbl_PreferredCurrencyToolTip");
-		setDropDownTip(dropDownTip === "" ? currency_tip : "");
 	};
 
 	const EditField = (col, e) => {
@@ -573,14 +567,7 @@ export default () => {
 								onSelectItem={onSelectItem}
 								clickDropdown={clickDropdown}
 							/>
-							<i
-								className={`icon icon-information-solid`}
-								onClick={clickDropDownInfo}></i>
 						</div>
-
-						{dropDownTip !== "" ? (
-							<div className="tip active">{dropDownTip}</div>
-						) : null}
 					</div>
 
 					<div className="Terms">
