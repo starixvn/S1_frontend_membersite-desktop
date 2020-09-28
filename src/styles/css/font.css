@@ -474,6 +474,10 @@
   content: "\e910";
 }
 
+.icon-broken_image:before {
+  content: "\e998";
+}
+
 .icon-keyboard_arrow_up:before {
   content: "\e95b";
 }
