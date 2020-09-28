@@ -124,7 +124,7 @@
 	"lbl_Direction": "Direction",
 	"lbl_Memo": "Memo",
 	"lbl_WithdrawalStatus0": "Draft",
-	"lbl_WithdrawalStatus1": "Pending",
+	"lbl_WithdrawalStatus1": "Processing",
 	"lbl_WithdrawalStatus2": "Processing",
 	"lbl_WithdrawalStatus3": "Processing",
 	"lbl_WithdrawalStatus4": "Processing",
