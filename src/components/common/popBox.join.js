@@ -590,10 +590,11 @@ export default () => {
 						) : null}
 					</div>
 
+					<div className="tip active">
+						{t("lbl_PreferredCurrencyToolTip")}
+					</div>
+
 					<div className="Terms">
-						<div className="tip active">
-							{t("lbl_PreferredCurrencyToolTip")}
-						</div>
 						<Checkbox
 							id="joinTermsCheck"
 							checked={userValue.termsCheck}
