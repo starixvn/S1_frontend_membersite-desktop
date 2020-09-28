@@ -1732,6 +1732,13 @@ input[type="file"] {
   height: 200px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .quickLink > div:nth-child(1) .icon-chat {
@@ -1744,18 +1751,22 @@ input[type="file"] {
   left: 0;
   font-size: 18px;
   z-index: 1;
+  top: 0;
 }
 
 .quickLink > div:nth-child(1) i {
-  -webkit-writing-mode: vertical-lr;
-      -ms-writing-mode: tb-lr;
-          writing-mode: vertical-lr;
-  -webkit-transform: scale(-1);
-          transform: scale(-1);
-}
-
-.quickLink > div:nth-child(1) i:before {
-  margin-bottom: 5px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200px;
+  height: 43px;
+  letter-spacing: 1px;
 }
 
 .quickLink > div:nth-child(2) {
@@ -4650,6 +4661,7 @@ article p {
 
 .rdt > input {
   width: calc(100% + 9px);
+  cursor: pointer;
 }
 
 .rdt + .icon-calendar {

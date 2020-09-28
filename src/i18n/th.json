@@ -356,5 +356,9 @@
 	"lbl_Security":"ความปลอดภัย",
 	"lbl_Payment":"การชำระเงิน",
 	"lbl_PromotionCategory1": "First Deposit",
-    "lbl_TurnoverAccmulateHint":"เงินของคุณถูกล็อคไม่ให้โอนออกเนื่องจากข้อกำหนดโรลโอเวอร์ไม่เป็นไปตามข้อกำหนด"
+    "lbl_TurnoverAccmulateHint":"เงินของคุณถูกล็อคไม่ให้โอนออกเนื่องจากข้อกำหนดโรลโอเวอร์ไม่เป็นไปตามข้อกำหนด",
+	"lbl_PromotionSlog":"คลิกที่นี่ เพื่อตรวจสอบโปรโมชั่นของคุณ",
+	"lbl_CasinoSlog":"สัมผัสกับโลกแห่งเกมส์",
+	"lbl_AffiliateSlog":"ข้อเสนอคอมมิชชั่นสุดพิเศษ!",
+	"lbl_DepositTimeToolTip":"โปรดใส่เวลาที่ทำการฝากเงิน"
 }

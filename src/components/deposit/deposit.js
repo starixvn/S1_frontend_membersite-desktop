@@ -138,7 +138,9 @@ export default () => {
 		}
 	}, [userInfo]);
 
-	return loading ? null : (
+	return loading ? (
+		<></>
+	) : (
 		<>
 			<DepositWrapper step={1}>
 				<div className="subModuleList">

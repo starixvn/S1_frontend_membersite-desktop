@@ -173,32 +173,32 @@ const SportsSection = ({ t, langId, isLogin, showLogin }) => {
 	return <div className="gamelistsport">{gameListRows}</div>;
 };
 
-const defSideBarProducts = [
+const defSideBarProducts = langId => [
 	{
 		path: path.promotion.root,
 		icon: "icon icon-livecasino",
 		displayKey: "lbl_Promotions",
-		descriptionKey: "lbl_HomeSideBarPromoDesc",
+		descriptionKey: "lbl_PromotionSlog",
 		mainImg: indexBannerPromotions
 	},
 	{
 		path: path.casino.root,
 		icon: "icon icon-casino",
 		displayKey: "lbl_Casino",
-		descriptionKey: "lbl_HomeSideBarCasino",
+		descriptionKey: "lbl_CasinoSlog",
 		mainImg: IndexBannerCasino
 	},
 	{
-		href: SiteInfo.affiliateLink,
+		href: `${SiteInfo.affiliateLink}/?lang=${langId}`,
 		icon: "icon icon-affiliate",
-		displayKey: "lbl_Affiliate",
-		descriptionKey: "lbl_HomeSideBarAffiliate",
+		displayKey: "lbl_Affiliates",
+		descriptionKey: "lbl_AffiliateSlog",
 		mainImg: indexBannerAffiliate
 	}
 ];
 
 const SideBarProductSection = ({ t, langId, isLogin, showLogin }) => {
-	const rows = defSideBarProducts.map(m => {
+	const rows = defSideBarProducts(langId).map(m => {
 		let displayText = t(m.displayKey) ?? m.displayKey;
 		let _path = m.path;
 		let key = `home-sideBarProduct-${m.displayKey}`;

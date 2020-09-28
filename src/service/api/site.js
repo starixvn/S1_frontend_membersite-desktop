@@ -28,3 +28,6 @@ export const api_site_GetBanner = (FolderName, lang) =>
 
 export const api_site_CheckResetPwdTokens = ({ key }) =>
 	siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);
+
+export const api_site_GetCountryList = ({ langId }) =>
+	siteRequest.post(`/GetCountryList/${langId}`);

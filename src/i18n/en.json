@@ -132,6 +132,7 @@
 	"lbl_WithdrawalStatus5": "Cancelled",
 	"lbl_WithdrawalStatus6": "Approved",
 	"lbl_WithdrawalStatus7": "Rejected",
+	"lbl_WithdrawalStatus8": "Processing",
 	"lbl_WithdrawalStatus99": "Error",
 	"lbl_CancelConfirm": "Are you sure you want to cancel? It cannot restore after cancellation!",
 	"lbl_CancelConfirmHint1": "Are you sure you want to cancel?",
@@ -363,8 +364,12 @@
 	"lbl_BecomingDistinguishedPlayer":"Becoming A Distinguished Player",
 	"lbl_ForAccountSecurity":"For account security,",
 	"lbl_CompleteYourProfile":"we need you to complete your personal information.",
-	"lbl_HomeSideBarPromoDesc":"",
-	"lbl_HomeSideBarCasino":"Multiple Themes For Asian Market",
-	"lbl_Affiliate":"AFFILIATE",
-	"lbl_HomeSideBarAffiliate":"Your Partner to Success"
+	"lbl_PromotionSlog":"Click here to see your availiable promotions",
+	"lbl_CasinoSlog":"Multiple Themes For Asian Market",
+	"lbl_AffiliateSlog":"Your Partner to Success",
+	"lbl_Copy":"Copy",
+	"lbl_OpenOtherSite":" Open another window and redirect",
+	"lbl_DepositTimeToolTip":" Please submit your deposit time.",
+	"lbl_PicFormatTip":"File format error, please try again."
+
 }
