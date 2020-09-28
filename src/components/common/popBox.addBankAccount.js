@@ -196,13 +196,13 @@ export default ({ bankInfoSysList = [], GetCustBankInfo }) => {
 
 	return (
 		<div className="addBankpop active" onSubmit={ClickSubmit}>
-			<span className="title">{t("lbl_AddNewAccount")}</span>
+			<span className="title">{t("lbl_AddBankAccount")}</span>
 			<div className="txt-lightgray">{t("lbl_UpdateBankInfo")}</div>
 			{!userInfo.accountName ? (
 				<Inputbox
 					value={userValue.realName}
 					onChange={editField.bind(this, "realName")}
-					title={t("lbl_RealName")}
+					title={t("lbl_BankAccountName")}
 					onBlur={checkAll.bind(this, userValue.realName, "realName")}
 					clickInfo={clickInfo.bind(this, "realName")}
 					checked={status.realName.checked}
@@ -214,7 +214,7 @@ export default ({ bankInfoSysList = [], GetCustBankInfo }) => {
 					<div className="txt">
 						<div>
 							<span className="txt-blue">
-								{t("lbl_RealName")}
+								{t("lbl_BankAccountName")}
 							</span>
 							<span>{userInfo.accountName}</span>
 						</div>
@@ -241,6 +241,7 @@ export default ({ bankInfoSysList = [], GetCustBankInfo }) => {
 					imgUrl={`${config.imgUrl}/common/images/BankLogo/`}
 					className="bankLogo"
 					i18n={t}
+					title={t("lbl_BankNumber")}
 				/>
 			</div>
 			<Inputbox
