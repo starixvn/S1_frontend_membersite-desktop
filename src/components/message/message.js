@@ -155,7 +155,9 @@ export default () => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
-	return loading ? null : (
+	return loading ? (
+		<></>
+	) : (
 		<div className="infoModule">
 			<div className="inside-title icon icon-icon32px_openmail">
 				<span>{t("lbl_PersonalMsg")}</span>

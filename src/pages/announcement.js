@@ -112,7 +112,9 @@ const Content = () => {
 		);
 	});
 
-	return loading ? null : (
+	return loading ? (
+		<></>
+	) : (
 		<div className="infoModule">
 			<div className="inside-title icon icon-icon32px_openmail">
 				<span>{t("lbl_Announcement")}</span>

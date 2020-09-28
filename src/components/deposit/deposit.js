@@ -105,7 +105,9 @@ export default () => {
 		return () => (isMountedRef.current = false);
 	});
 
-	return loading ? null : (
+	return loading ? (
+		<></>
+	) : (
 		<>
 			<DepositWrapper step={1}>
 				<div className="subModuleList">

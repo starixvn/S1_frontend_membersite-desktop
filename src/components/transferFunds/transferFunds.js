@@ -355,7 +355,9 @@ export default () => {
 		}
 	};
 
-	return loading ? null : (
+	return loading ? (
+		<></>
+	) : (
 		<div className="rightModule">
 			<div className="infoModule">
 				<div className="inside-title icon icon-icon32px_Funds-transfer">
