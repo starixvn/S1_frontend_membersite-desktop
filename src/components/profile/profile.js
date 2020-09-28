@@ -12,6 +12,7 @@ import { getUrlParameter } from "../common/common";
 import { Link } from "@reach/router";
 import path from "../../path";
 import Loading from "../common/loading";
+import { api_site_GetCountryList } from "../../service/api/site";
 
 export default () => {
 	const { t } = useTranslation();
@@ -21,7 +22,8 @@ export default () => {
 	const [status, setStatus] = useState(initStatus);
 	const [loading, setLoading] = useState(true);
 	const isMountedRef = useRef(null);
-	const infoList = InfoList();
+	const [countryList, setCountryList] = useState([]);
+	const infoList = InfoList({ countryList });
 
 	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
 	const _areaCode = country ? areaCode[country].AreaCode : "";
@@ -30,6 +32,20 @@ export default () => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
+
+	useEffect(() => {
+		if (isMountedRef.current) {
+			if (userInfo.isLogin) {
+				api_site_GetCountryList({ langId: userInfo.langId }).then(
+					res => {
+						if (res.data.errorCode === 0) {
+							setCountryList(res.data.data);
+						}
+					}
+				);
+			}
+		}
+	}, [userInfo.langId]);
 
 	useEffect(() => {
 		if (
@@ -346,12 +362,17 @@ export default () => {
 	};
 
 	const arr = infoList?.map(item => {
+		let displayValue = item.content;
+		if (item.format) {
+			displayValue = item.format(item.content, item.bindingData);
+		}
+
 		return item.show ? (
 			<DisplayRow
 				key={`profile-${item.displayKey}`}
 				t={t}
 				displayKey={item.displayKey}
-				content={item.content}
+				content={displayValue}
 				areaCode={_areaCode}
 			/>
 		) : null;
