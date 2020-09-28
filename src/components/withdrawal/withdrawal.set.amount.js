@@ -113,7 +113,7 @@ export default ({ dispatch, state, t, _isConvert }) => {
 					</div>
 					<div>=</div>
 					<div>
-						<div>{t("lbl_Deduction")}</div>
+						<div>{t("lbl_EligibleWithdrawalAmount")}</div>
 						<div>
 							{t(`Currency_${userInfo.currencyId}`)}
 							<span>
