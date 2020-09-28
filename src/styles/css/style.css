@@ -476,7 +476,7 @@ header {
 }
 
 .header > div.function > div .flag.ch:before, .header > div.function > a .flag.ch:before, .header > div.function > button .flag.ch:before {
-  background: url(../img/flag/ch.png) no-repeat top left/cover;
+  background: url(../img/flag/ch.jpg) no-repeat top left/cover;
 }
 
 .header > div.function > div .flag.ch:hover:before, .header > div.function > a .flag.ch:hover:before, .header > div.function > button .flag.ch:hover:before {
@@ -484,7 +484,7 @@ header {
 }
 
 .header > div.function > div .flag.cs:before, .header > div.function > a .flag.cs:before, .header > div.function > button .flag.cs:before {
-  background: url(../img/flag/cs.png) no-repeat top left/cover;
+  background: url(../img/flag/cs.jpg) no-repeat top left/cover;
 }
 
 .header > div.function > div .flag.cs:hover:before, .header > div.function > a .flag.cs:hover:before, .header > div.function > button .flag.cs:hover:before {
@@ -492,7 +492,7 @@ header {
 }
 
 .header > div.function > div .flag.en:before, .header > div.function > a .flag.en:before, .header > div.function > button .flag.en:before {
-  background: url(../img/flag/en.png) no-repeat top center/cover;
+  background: url(../img/flag/en.jpg) no-repeat top left/cover;
 }
 
 .header > div.function > div .flag.en:hover:before, .header > div.function > a .flag.en:hover:before, .header > div.function > button .flag.en:hover:before {
@@ -500,7 +500,7 @@ header {
 }
 
 .header > div.function > div .flag.th:before, .header > div.function > a .flag.th:before, .header > div.function > button .flag.th:before {
-  background: url(../img/flag/th.png) no-repeat top left/cover;
+  background: url(../img/flag/th.jpg) no-repeat top left/cover;
 }
 
 .header > div.function > div .flag.th:hover:before, .header > div.function > a .flag.th:hover:before, .header > div.function > button .flag.th:hover:before {
@@ -508,7 +508,7 @@ header {
 }
 
 .header > div.function > div .flag.id:before, .header > div.function > a .flag.id:before, .header > div.function > button .flag.id:before {
-  background: url(../img/flag/id.png) no-repeat top left/cover;
+  background: url(../img/flag/id.jpg) no-repeat top left/cover;
 }
 
 .header > div.function > div .flag.id:hover:before, .header > div.function > a .flag.id:hover:before, .header > div.function > button .flag.id:hover:before {
@@ -516,7 +516,7 @@ header {
 }
 
 .header > div.function > div .flag.vn:before, .header > div.function > a .flag.vn:before, .header > div.function > button .flag.vn:before {
-  background: url(../img/flag/vn.png) no-repeat top left/cover;
+  background: url(../img/flag/vn.jpg) no-repeat top left/cover;
 }
 
 .header > div.function > div .flag.vn:hover:before, .header > div.function > a .flag.vn:hover:before, .header > div.function > button .flag.vn:hover:before {
@@ -2403,9 +2403,9 @@ input[type="file"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .inside-title.icon:before {
@@ -2415,7 +2415,7 @@ input[type="file"] {
 .inside-title span {
   font-size: 18px;
   font-weight: bold;
-  margin-right: 40px;
+  margin: 0 40px;
 }
 
 .inside-title div {
@@ -2602,12 +2602,29 @@ input[type="file"] {
   position: relative;
 }
 
-.platformName button.icon {
+.platformName button.icon, .platformName a.icon {
   font-size: 24px;
   position: absolute;
   right: 0;
   bottom: -40px;
   color: #1E85EC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.platformName button.icon:hover:before, .platformName a.icon:hover:before {
+  content: "\e98a";
+  font-size: 20px;
+}
+
+.platformName button.icon:hover span, .platformName a.icon:hover span {
+  display: block;
+}
+
+.platformName button span, .platformName a span {
+  display: none;
+  font-size: 14px;
 }
 
 .platformName .icon {
@@ -3284,7 +3301,7 @@ input[type="file"] {
   margin-left: 10px;
 }
 
-.walletModule .walletBalanceModule span.icon-balance {
+.walletModule .walletBalanceModule span.icon-icon32px_Main-Wallet, .walletModule .walletBalanceModule span.icon-icon32px_Sportsbook-Wallet {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3296,8 +3313,9 @@ input[type="file"] {
           flex: 1;
 }
 
-.walletModule .walletBalanceModule span.icon-balance.icon:before {
+.walletModule .walletBalanceModule span.icon-icon32px_Main-Wallet.icon:before, .walletModule .walletBalanceModule span.icon-icon32px_Sportsbook-Wallet.icon:before {
   color: white;
+  font-size: 24px;
 }
 
 .walletModule .walletBalanceModule .icon-spinner11:before {
@@ -4654,10 +4672,6 @@ article p {
   margin-bottom: 18px;
   letter-spacing: 1px;
   color: #b2b2b2;
-}
-
-.icon-calendar {
-  cursor: pointer;
 }
 
 .rdt {
