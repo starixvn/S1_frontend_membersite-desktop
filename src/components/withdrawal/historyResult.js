@@ -17,7 +17,7 @@ export const TransactionHistory = props => {
 	const { t } = useTranslation();
 
 	let btnGroup = null;
-	if (props.status === 1) {
+	if (props.status === 1||props.status === 8) {
 		btnGroup = (
 			<button className="btn-cancel" onClick={props.ClickCancel}>
 				{t("lbl_Cancel")}

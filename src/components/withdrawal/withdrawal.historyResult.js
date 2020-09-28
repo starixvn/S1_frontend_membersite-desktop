@@ -14,7 +14,7 @@ const statusClassName = {
 
 export const HistoryResult = props => {
 	let btnGroup = null;
-	if (props.status === 1) {
+	if (props.status === 1 || props.status === 8) {
 		btnGroup = (
 			<button className="gray" onClick={props.ClickCancel}>
 				{props.i18n("lbl_Cancel")}
