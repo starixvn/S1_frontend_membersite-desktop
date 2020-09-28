@@ -6,9 +6,11 @@ import { number_format } from "../common/common";
 const statusClassName = {
 	1: "pending",
 	2: "pending",
-	3: "approved",
-	4: "reject",
-	5: "cancel"
+	3: "pending",
+	4: "pending",
+	5: "cancel",
+	6: "approved",
+	7: "reject"
 };
 
 export const TransactionHistory = props => {

@@ -7,7 +7,7 @@ import {
 	api_site_ExistsEmail
 } from "../../service/api/site";
 import { api_accountStrict_GetCustProfile } from "../../service/api/accountStrict";
-import { getUrlParameter, readCookie } from "./common";
+import { getUrlParameter, readCookie, setCookie } from "./common";
 import { defPopBoxType } from "../common/popBox";
 import { userInfoContext, popBoxContext } from "./context";
 import { GET_LANG_ID } from "../../service/language";
@@ -18,6 +18,8 @@ import InputboxPSW from "./inputbox.password";
 import Dropdown from "./dropdown";
 import Checkbox from "./checkbox";
 import joinBanner from "../../styles/img/joinBanner.jpg";
+import path from "../../path";
+import { Link } from "@reach/router";
 
 const initValue = {
 	username: "",
@@ -71,6 +73,7 @@ export default () => {
 		t("lbl_Preferred_Currency")
 	);
 	const [dropDownTip, setDropDownTip] = useState("");
+	const { userInfo } = useContext(userInfoContext);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -382,7 +385,10 @@ export default () => {
 											userName: userValue.username
 										};
 										if (res_custInfo.data.errorCode === 0) {
+											let cookieName = `balanceHint${_user.userName}`;
+											setCookie(cookieName, "1", 1);
 											_user = {
+												isJoin: true,
 												..._user,
 												...res_custInfo.data.data
 											};

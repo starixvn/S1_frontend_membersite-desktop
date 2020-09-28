@@ -1,6 +1,7 @@
 const siteName = "Nova88";
 
 export const SiteInfo = {
+	affiliateLink: "https://aff.nova88.net",
 	langCookie: "nova88LangId",
 	socialMedia: {
 		fb: {
