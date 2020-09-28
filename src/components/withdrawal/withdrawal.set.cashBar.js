@@ -94,6 +94,10 @@ export default ({
 			onMouseMove={onMouseMoveHandlar}
 			onMouseUp={onMouseUpHandlar}
 			className="cashBar">
+			<button class="min" onClick={() => onChangeAmount(1)}>
+				Min
+			</button>
+
 			<div
 				className="cashLine"
 				style={{ width: `${cashLineWidthPercentage}%` }}>
@@ -106,6 +110,18 @@ export default ({
 					}`}</span>
 				</div>
 			</div>
+			<button
+				class="max"
+				onClick={() =>
+					onChangeAmount(
+						// max value format
+						_isConvert
+							? Math.floor(availableBalance / 1000)
+							: availableBalance
+					)
+				}>
+				Max
+			</button>
 		</div>
 	);
 };
