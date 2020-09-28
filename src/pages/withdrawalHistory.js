@@ -5,7 +5,7 @@ import {
 	api_payment_SetWithdrawalCancel
 } from "../service/api/payment";
 import { userInfoContext, popBoxContext } from "../components/common/context";
-import { TransactionHistory } from "../components/withdrawal/historyResult";
+import { HistoryResult } from "../components/withdrawal/withdrawal.historyResult";
 import { defPopBoxType } from "../components/common/popBox";
 import { Pagination } from "../components/common/pagination";
 import Wrapper from "../components/common/wrapper";
@@ -217,15 +217,13 @@ const Content = () => {
 
 	let arr = getHistory?.map((item, i) => {
 		return (
-			<TransactionHistory
-				key={`withdrawaal-${item.transId}`}
+			<HistoryResult
+				key={`withdrawal-${item.transId}`}
 				idx={i + 1}
-				transId={item.transId}
-				createTime={item.createTime}
-				amount={item.amount}
-				status={item.status}
-				ClickCancel={ClickCancel.bind(this, item.transId)}
+				i18n={t}
 				_isConvert={_isConvert}
+				{...item}
+				ClickCancel={ClickCancel.bind(this, item.transId)}
 			/>
 		);
 	});

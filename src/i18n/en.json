@@ -131,6 +131,7 @@
 	"lbl_WithdrawalStatus5": "Cancelled",
 	"lbl_WithdrawalStatus6": "Approved",
 	"lbl_WithdrawalStatus7": "Rejected",
+	"lbl_WithdrawalStatus8": "Processing",
 	"lbl_WithdrawalStatus99": "Error",
 	"lbl_CancelConfirm": "Are you sure you want to cancel? It cannot restore after cancellation!",
 	"lbl_CancelConfirmHint1": "Are you sure you want to cancel?",
