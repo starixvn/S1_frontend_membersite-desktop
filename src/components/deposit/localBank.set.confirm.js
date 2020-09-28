@@ -4,12 +4,13 @@ import { number_format } from "../common/common";
 import { userInfoContext, popBoxContext } from "../common/context";
 import { api_payment_DepositReqWireTransfer } from "../../service/api/payment";
 import { useTranslation } from "react-i18next";
-import { Redirect, Link } from "@reach/router";
+import { Redirect } from "@reach/router";
+import { defActionType } from "./localBank.reducer";
 import { defPopBoxType } from "../common/popBox";
 import config from "../../config";
 import path from "../../path";
 
-export default ({ bankInfo, amount, _isConvert }) => {
+export default ({ bankInfo, amount, _isConvert, dispatch }) => {
 	const { t } = useTranslation();
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
@@ -22,32 +23,8 @@ export default ({ bankInfo, amount, _isConvert }) => {
 	});
 
 	const ClickCancel = () => {
-		const ClickYes = () => {
-			setPopBox({
-				isOpen: false
-			});
-		};
-
-		const ClickNo = () => {
-			setPopBox({ isOpen: false });
-		};
-
-		setPopBox({
-			isOpen: true,
-			popBoxType: defPopBoxType.Cancel,
-			btnBar: (
-				<div className="btnGroup">
-					<button className="gray" onClick={ClickNo}>
-						{t("lbl_Cancel")}
-					</button>
-					<Link
-						to={`/${userInfo.langId}/${path.deposit.root}`}
-						className="orange"
-						onClick={ClickYes}>
-						{t("lbl_Confirm")}
-					</Link>
-				</div>
-			)
+		dispatch({
+			type: defActionType.CLICK_BACK
 		});
 	};
 
