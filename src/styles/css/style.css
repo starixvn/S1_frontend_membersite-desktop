@@ -4656,6 +4656,10 @@ article p {
   color: #b2b2b2;
 }
 
+.icon-calendar {
+  cursor: pointer;
+}
+
 .rdt {
   -webkit-box-flex: 1;
       -ms-flex: auto;
