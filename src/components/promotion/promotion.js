@@ -10,6 +10,7 @@ import { defPopBoxType } from "../common/popBox";
 import { isExpiry, isArrayNotEmpty } from "./promotion.common";
 import { getUrlParameter } from "../common/common";
 import path from "../../path";
+import StaticPromotionList from "../../datas/promotionList";
 
 export default () => {
 	const { t } = useTranslation();
@@ -171,6 +172,51 @@ export default () => {
 		return () => (isMountedRef.current = false);
 	});
 
+	const OpenStaticPromotion = ({ url, bonusCode }) => {
+		let windowKey = `static-promotion-${bonusCode}`;
+		window.open(
+			url,
+			windowKey,
+			"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
+		);
+	};
+
+	let _staticRows = StaticPromotionList.map(p => {
+		return (
+			<div
+				key={`static-promotion.list-${p.bonusCode}-${p.categoryId}-${p.tpId}`}
+				className={""}>
+				<div className=""></div>
+				<img
+					src={p.imgUrl?.[userInfo.langId]}
+					alt={p.title?.[userInfo.langId]}
+				/>
+				<div className="txt-darkBlue">{p.title?.[userInfo.langId]}</div>
+				<div className="txt-dark">{t("lbl_PromotionsDesc")}</div>
+				<div className="txt-gray">
+					{p.description?.[userInfo.langId]}
+				</div>
+
+				<div className="rollover">
+					<div>
+						<div className="icon icon-icon32px_">
+							{t("lbl_RollOver")}
+						</div>
+					</div>
+					<div className="txt-orange">
+						<div>1X</div>
+					</div>
+				</div>
+				<a
+					href={p.bannerLink?.[userInfo.langId]}
+					className="btnGroup"
+					target="_blank">
+					<button className="blue">{t("lbl_Details")}</button>
+				</a>
+			</div>
+		);
+	});
+
 	return (
 		<div className="infoModule">
 			<div className="inside-title icon icon-gift">
@@ -183,7 +229,9 @@ export default () => {
 			/>
 
 			{userInfo.isLogin !== null ? (
-				isArrayNotEmpty(promoList) ? (
+				isArrayNotEmpty(promoList) ||
+				(filter === defFilterType.all &&
+					isArrayNotEmpty(StaticPromotionList)) ? (
 					<PromotionList
 						promoList={promoList}
 						t={t}
@@ -192,6 +240,7 @@ export default () => {
 						currency={userInfo.currencyId}
 						filter={filter}
 						refreshProcessBar={refreshProcessBar}
+						staticPromotions={_staticRows}
 					/>
 				) : (
 					<div className="nodata">{t("msg_NoData")}</div>
