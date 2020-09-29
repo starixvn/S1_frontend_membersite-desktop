@@ -6,7 +6,9 @@ import {
 	api_site_Register,
 	api_site_ExistsEmail
 } from "../../service/api/site";
+import { api_account_ExistsPhone } from "../../service/api/account";
 import { api_accountStrict_GetCustProfile } from "../../service/api/accountStrict";
+import areaCode from "../../datas/areaCode";
 import { getUrlParameter, readCookie, setCookie } from "./common";
 import { defPopBoxType } from "../common/popBox";
 import { userInfoContext, popBoxContext } from "./context";
@@ -18,47 +20,14 @@ import InputboxPSW from "./inputbox.password";
 import Dropdown from "./dropdown";
 import Checkbox from "./checkbox";
 import joinBanner from "../../styles/img/joinBanner.jpg";
-import path from "../../path";
-import { Link } from "@reach/router";
-
-const initValue = {
-	username: "",
-	password: "",
-	email: "",
-	currency: 0,
-	termsCheck: false,
-	ageCheck: false
-};
-
-const initTip = {
-	username: { checked: null, msg: "" },
-	password: { checked: null, msg: "" },
-	email: { checked: null, msg: "" },
-	currency: { checked: null, msg: "" },
-	checkbox: { checked: null, msg: "" }
-};
+import {
+	initValue,
+	initTip,
+	passwordCheck,
+	currencyToAreacode
+} from "./join.data";
 
 const defaultLangId = GET_LANG_ID();
-
-const passwordCheck = val => {
-	let checked = true;
-	let msg = "";
-
-	const regx = /^[a-zA-Z0-9@$*!%#?&]*$/;
-	if (val === "") {
-		checked = false;
-		msg = "msg_PasswordReq";
-	} else if (val != null) {
-		if (val.length < 6 || val.length > 18) {
-			checked = false;
-			msg = "msg_PasswordLength";
-		} else if (!regx.test(val)) {
-			checked = false;
-			msg = "msg_PasswordVaildate";
-		}
-	}
-	return { checked, msg };
-};
 
 export default () => {
 	const { t } = useTranslation();
@@ -98,7 +67,7 @@ export default () => {
 								<div className="btnGroup">
 									<button
 										className="btn-cancel"
-										onClick={ClickClose}>
+										onClick={ClosePopBox}>
 										{t("lbl_Close")}
 									</button>
 								</div>
@@ -117,7 +86,7 @@ export default () => {
 							<div className="btnGroup">
 								<button
 									className="btn-cancel"
-									onClick={ClickClose}>
+									onClick={ClosePopBox}>
 									{t("lbl_Close")}
 								</button>
 							</div>
@@ -128,7 +97,12 @@ export default () => {
 		);
 	}, []);
 
-	const ClickClose = () => {
+	const _areaCode =
+		userValue.currency !== null
+			? areaCode[currencyToAreacode[userValue.currency]].AreaCode
+			: null;
+
+	const ClosePopBox = () => {
 		setPopBox({ isOpen: false });
 	};
 
@@ -146,6 +120,8 @@ export default () => {
 			msg = t("lbl_EmailToolTip");
 		} else if (col === "currency") {
 			msg = t("lbl_PreferredCurrencyToolTip");
+		} else if (col === "phone") {
+			msg = t("lbl_PhoneTooltip");
 		}
 		if (tip[col].msg === msg) {
 			msg = "";
@@ -196,6 +172,10 @@ export default () => {
 			let result = currencyCheck();
 			checked = result.checked;
 			msg = result.msg;
+		} else if (col === "phone") {
+			let result = await phoneCheck(val);
+			checked = result.checked;
+			msg = result.msg;
 		}
 
 		setTip(prev => {
@@ -230,6 +210,37 @@ export default () => {
 					if (res.data.data === true) {
 						checked = false;
 						msg = "msg_UsernameNotAvailable";
+					}
+				}
+			}
+		}
+
+		return { checked, msg };
+	};
+
+	const phoneCheck = async val => {
+		let checked = true;
+		let msg = "";
+		const regx = /^[0-9\s]*$/;
+
+		if (val === "") {
+			checked = false;
+			msg = "lbl_PhoneRequired";
+		} else if (!regx.test(val)) {
+			checked = false;
+			msg = "lbl_PhoneTooltip";
+		}
+
+		if (checked && userValue.areaCode) {
+			const res = await api_account_ExistsPhone({
+				AreaCode: _areaCode,
+				Phone: val
+			});
+			if (isMountedRef.current) {
+				if (res.data.errorCode === 0) {
+					if (res.data.data === true) {
+						checked = false;
+						msg = "msg_PhoneExisted";
 					}
 				}
 			}
@@ -280,6 +291,7 @@ export default () => {
 
 	const onSelectItem = i => {
 		setDefaultOption(null);
+
 		setUserValue(prev => {
 			return { ...prev, currency: i };
 		});
@@ -291,18 +303,16 @@ export default () => {
 		});
 	};
 
-	const clickCancel = () => {
-		setPopBox({ isOpen: false });
-	};
-
 	const checkAll = async () => {
 		return await Promise.all([
 			usernameCheck(userValue.username),
+			phoneCheck(userValue.phone),
 			emailCheck(userValue.email)
 		]).then(
 			res => {
 				let _usernameCheck = res[0];
-				let _emailCheck = res[1];
+				let _phoneCheck = res[1];
+				let _emailCheck = res[2];
 				let _passwordCheck = passwordCheck(userValue.password);
 				let _currencyCheck = currencyCheck();
 				let _termsCheck = userValue.termsCheck;
@@ -311,6 +321,7 @@ export default () => {
 				let checked =
 					_usernameCheck.checked &&
 					_passwordCheck.checked &&
+					_phoneCheck.checked &&
 					_emailCheck.checked &&
 					_currencyCheck.checked &&
 					_termsCheck &&
@@ -331,6 +342,10 @@ export default () => {
 							password: {
 								checked: _passwordCheck.checked,
 								msg: t(_passwordCheck.msg)
+							},
+							phone: {
+								checked: _phoneCheck.checked,
+								msg: t(_phoneCheck.msg)
 							},
 							email: {
 								checked: _emailCheck.checked,
@@ -364,6 +379,7 @@ export default () => {
 				UserName: userValue.username,
 				Userpwd: userValue.password,
 				Email: userValue.email,
+				PhoneNo: userValue.phone,
 				CurrencyId: siteCurrency[userValue.currency].id,
 				UserLang: defaultLangId
 			};
@@ -393,6 +409,7 @@ export default () => {
 												..._user,
 												...res_custInfo.data.data
 											};
+											console.log(_user);
 										} else {
 											setPopBox({
 												isOpen: true,
@@ -405,7 +422,7 @@ export default () => {
 														<button
 															className="btn-cancel"
 															onClick={
-																ClickClose
+																ClosePopBox
 															}>
 															{t("lbl_Close")}
 														</button>
@@ -427,7 +444,7 @@ export default () => {
 												<div className="btnGroup">
 													<button
 														className="btn-cancel"
-														onClick={ClickClose}>
+														onClick={ClosePopBox}>
 														{t("lbl_Close")}
 													</button>
 												</div>
@@ -470,7 +487,7 @@ export default () => {
 									<div className="btnGroup">
 										<button
 											className="btn-cancel"
-											onClick={ClickClose}>
+											onClick={ClosePopBox}>
 											{t("lbl_Close")}
 										</button>
 									</div>
@@ -489,7 +506,7 @@ export default () => {
 								<div className="btnGroup">
 									<button
 										className="btn-cancel"
-										onClick={ClickClose}>
+										onClick={ClosePopBox}>
 										{t("lbl_Close")}
 									</button>
 								</div>
@@ -594,6 +611,25 @@ export default () => {
 						{t("lbl_PreferredCurrencyToolTip")}
 					</div>
 
+					{userValue.currency !== null ? (
+						<Inputbox
+							className={`inputBox-org${
+								tip.phone.msg ? " error" : ""
+							}`}
+							icon="icon-phone txt-orange"
+							areaCode={_areaCode}
+							placeholder={t("lbl_Phone")}
+							value={userValue.phone}
+							tip={tip.phone.msg}
+							checked={tip.phone.checked}
+							clickInfo={clickInfo.bind(this, "phone")}
+							onChange={EditField.bind(null, "phone")}
+							onBlur={checkValue.bind(null, "phone")}
+						/>
+					) : (
+						<></>
+					)}
+
 					<div className="Terms">
 						<Checkbox
 							id="joinTermsCheck"
@@ -633,7 +669,7 @@ export default () => {
 						<button
 							type="button"
 							className="btn-cancel"
-							onClick={clickCancel}>
+							onClick={ClosePopBox}>
 							{t("lbl_Cancel")}
 						</button>
 						<button className="btn-check" type="submit">

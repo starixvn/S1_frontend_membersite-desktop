@@ -24,6 +24,9 @@ export default props => {
 			<div className={props.className ?? "inputBox"}>
 				{props.icon ? <i className={`icon ${props.icon}`}></i> : null}
 				{props.title ? <i className="txt-blue">{props.title}</i> : null}
+				{props.areaCode ? (
+					<span className="txt-orange">{props.areaCode}</span>
+				) : null}
 				<input
 					type={props.inputType ?? "text"}
 					className={props.isAmount ? "text-right" : ""}
