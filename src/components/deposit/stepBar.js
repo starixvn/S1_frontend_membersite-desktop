@@ -1,25 +1,28 @@
 import React from "react";
-
-const defStep = [
-	{
-		title: "01",
-		description: "Select Payment Mode"
-	},
-	{
-		title: "02",
-		description: "Select Bank"
-	},
-	{
-		title: "03",
-		description: "Enter Amount"
-	},
-	{
-		title: "OK",
-		description: "Confirm"
-	}
-];
+import { useTranslation } from "react-i18next";
 
 export default ({ step }) => {
+	const { t } = useTranslation();
+
+	const defStep = [
+		{
+			title: "01",
+			description: t("lbl_SelectPaymentModes")
+		},
+		{
+			title: "02",
+			description: t("lbl_SelectBank")
+		},
+		{
+			title: "03",
+			description: t("lbl_EnterAmount")
+		},
+		{
+			title: "OK",
+			description: t("lbl_Confirm")
+		}
+	];
+
 	let rows = defStep.map((s, sIdx) => {
 		return (
 			<div
