@@ -41,7 +41,7 @@ export default () => {
 					<li className="icon icon-chat" onClick={openLiveChat}>
 						<a>Live Chat</a>
 					</li>
-					<li className="icon icon-instagram">
+					{/* <li className="icon icon-instagram">
 						<a href={SiteInfo.socialMedia.ig.link} target="_blank">
 							{t(SiteInfo.socialMedia.ig.displayKey)}
 						</a>
@@ -57,7 +57,7 @@ export default () => {
 							target="_blank">
 							{t(SiteInfo.socialMedia.twitter.displayKey)}
 						</a>
-					</li>
+					</li> */}
 					<li
 						className="icon icon-whatsapp"
 						onClick={() =>
