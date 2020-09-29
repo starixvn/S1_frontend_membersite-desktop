@@ -1199,6 +1199,7 @@ footer {
   margin: auto;
   padding: 0;
   height: 100%;
+  overflow: hidden;
 }
 
 .joinpop.active, .loginpop.active {
@@ -1254,24 +1255,221 @@ footer {
   width: auto;
   height: auto;
   position: absolute;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 
 .joinpop .joinloginModule .loginAnimation img.animationlogo, .joinpop .joinloginModule .joinAnimation img.animationlogo, .loginpop .joinloginModule .loginAnimation img.animationlogo, .loginpop .joinloginModule .joinAnimation img.animationlogo {
   bottom: 0;
+  left: 30px;
+  -webkit-animation: animationlogo 1s;
+          animation: animationlogo 1s;
 }
 
-.joinpop .joinloginModule .loginAnimation img.npc2, .joinpop .joinloginModule .joinAnimation img.npc2, .loginpop .joinloginModule .loginAnimation img.npc2, .loginpop .joinloginModule .joinAnimation img.npc2 {
-  z-index: 2;
+.joinpop .joinloginModule .loginAnimation img.npc1, .joinpop .joinloginModule .joinAnimation img.npc1, .loginpop .joinloginModule .loginAnimation img.npc1, .loginpop .joinloginModule .joinAnimation img.npc1 {
+  left: 40px;
+  top: 0;
+  -webkit-animation: loginnpc1 1s;
+          animation: loginnpc1 1s;
 }
 
 .joinpop .joinloginModule .loginAnimation img.welcome, .joinpop .joinloginModule .joinAnimation img.welcome, .loginpop .joinloginModule .loginAnimation img.welcome, .loginpop .joinloginModule .joinAnimation img.welcome {
   z-index: 1;
   left: 50%;
+  bottom: 0;
+  -webkit-animation: welcome 1s;
+          animation: welcome 1s;
 }
 
 .joinpop .joinloginModule .loginAnimation img.back, .joinpop .joinloginModule .joinAnimation img.back, .loginpop .joinloginModule .loginAnimation img.back, .loginpop .joinloginModule .joinAnimation img.back {
-  left: 50%;
+  right: 100px;
   bottom: 0;
+  -webkit-animation: back 1s;
+          animation: back 1s;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.animationlogo, .joinpop .joinloginModule .joinAnimation:hover img.animationlogo, .loginpop .joinloginModule .loginAnimation:hover img.animationlogo, .loginpop .joinloginModule .joinAnimation:hover img.animationlogo {
+  left: -30px;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.npc1, .joinpop .joinloginModule .joinAnimation:hover img.npc1, .loginpop .joinloginModule .loginAnimation:hover img.npc1, .loginpop .joinloginModule .joinAnimation:hover img.npc1 {
+  left: 140px;
+  top: 50px;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.welcome, .joinpop .joinloginModule .joinAnimation:hover img.welcome, .loginpop .joinloginModule .loginAnimation:hover img.welcome, .loginpop .joinloginModule .joinAnimation:hover img.welcome {
+  bottom: 200px;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.back, .joinpop .joinloginModule .joinAnimation:hover img.back, .loginpop .joinloginModule .loginAnimation:hover img.back, .loginpop .joinloginModule .joinAnimation:hover img.back {
+  bottom: -50px;
+}
+
+.joinpop .joinloginModule .loginAnimation img.npc2, .loginpop .joinloginModule .loginAnimation img.npc2 {
+  z-index: 2;
+  right: -100px;
+  bottom: -15px;
+  -webkit-animation: loginnpc2 1s;
+          animation: loginnpc2 1s;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.npc2, .loginpop .joinloginModule .loginAnimation:hover img.npc2 {
+  right: -200px;
+}
+
+.joinpop .joinloginModule .joinAnimation img.npc2, .loginpop .joinloginModule .joinAnimation img.npc2 {
+  z-index: 2;
+  right: -10px;
+  bottom: 15px;
+  -webkit-animation: joinnpc2 1s;
+          animation: joinnpc2 1s;
+}
+
+.joinpop .joinloginModule .joinAnimation img.back, .loginpop .joinloginModule .joinAnimation img.back {
+  right: 80px;
+  bottom: 0;
+  -webkit-animation: back 1s;
+          animation: back 1s;
+}
+
+.joinpop .joinloginModule .joinAnimation:hover img.npc2, .loginpop .joinloginModule .joinAnimation:hover img.npc2 {
+  right: -100px;
+}
+
+@-webkit-keyframes animationlogo {
+  from {
+    left: -30px;
+    opacity: 0;
+  }
+  to {
+    left: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes animationlogo {
+  from {
+    left: -30px;
+    opacity: 0;
+  }
+  to {
+    left: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes loginnpc1 {
+  from {
+    left: 140px;
+    top: 50px;
+    opacity: 0;
+  }
+  to {
+    left: 40px;
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes loginnpc1 {
+  from {
+    left: 140px;
+    top: 50px;
+    opacity: 0;
+  }
+  to {
+    left: 40px;
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes loginnpc2 {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -100px;
+    opacity: 1;
+  }
+}
+
+@keyframes loginnpc2 {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -100px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes joinnpc2 {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -10px;
+    opacity: 1;
+  }
+}
+
+@keyframes joinnpc2 {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -10px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes welcome {
+  from {
+    bottom: 200px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes welcome {
+  from {
+    bottom: 200px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes back {
+  from {
+    bottom: -50px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes back {
+  from {
+    bottom: -50px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
 
 .txt-orange {
@@ -1768,7 +1966,7 @@ input[type="file"] {
 .quickLink {
   position: fixed;
   right: -10px;
-  top: 25%;
+  top: 15%;
   z-index: 1;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
