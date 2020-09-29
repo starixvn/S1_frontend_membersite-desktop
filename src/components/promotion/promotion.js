@@ -207,12 +207,14 @@ export default () => {
 						<div>1X</div>
 					</div>
 				</div>
-				<a
-					href={p.bannerLink?.[userInfo.langId]}
-					className="btnGroup"
-					target="_blank">
+				<div
+					onClick={OpenStaticPromotion.bind(this, {
+						url: p.bannerLink?.[userInfo.langId],
+						bonusCode: p.bonusCode
+					})}
+					className="btnGroup">
 					<button className="blue">{t("lbl_Details")}</button>
-				</a>
+				</div>
 			</div>
 		);
 	});
