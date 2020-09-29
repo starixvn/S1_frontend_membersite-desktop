@@ -189,7 +189,7 @@
 	"lbl_MainWallet": "วอลเล็ทหลัก",
 	"lbl_Wallet_Saba": "สปอร์ตบุค วอลเล็ท",
 	"lbl_Transfer": "โอน",
-	"lbl_RestoreAll": "คืนค่าทั้งหมด",
+	"lbl_RestoreAll": "โอนคลิกเดียว",
 	"lbl_Success": "ความสำเร็จ",
 	"lbl_Fail": "ล้มเหลว",
 	"lbl_Close": "ปิด",
