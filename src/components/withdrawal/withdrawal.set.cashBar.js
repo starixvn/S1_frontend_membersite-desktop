@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { number_format } from "../common/common";
 
-const ORIGIN_VALUE = 1;
+const DEFAULT_MIN_VALUE = 1;
 
 export default ({
 	onChangeAmount,
@@ -67,7 +67,8 @@ export default ({
 		setResultAmount(minMaxRange(amountValue, 1, _maxValue));
 		setCashLineWidthPercentage(
 			minMaxRange(
-				((amountValue - ORIGIN_VALUE) / (_maxValue - ORIGIN_VALUE)) *
+				((amountValue - DEFAULT_MIN_VALUE) /
+					(_maxValue - DEFAULT_MIN_VALUE)) *
 					100,
 				0,
 				100
