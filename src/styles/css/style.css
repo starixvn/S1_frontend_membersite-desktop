@@ -2442,6 +2442,10 @@ input[type="file"] {
   overflow: hidden;
 }
 
+.subModuleList .subModule:hover .subModuleTitle {
+  background: #134DAE;
+}
+
 .subModuleList .subModule:nth-child(2) {
   margin: 0 40px;
 }
@@ -4495,6 +4499,11 @@ input[type="file"] {
 
 .promotionsInfo .proData .proDataTitle .btnGroup button {
   max-width: 130px;
+}
+
+.promotionsInfo .proData .proDataBody {
+  color: black;
+  margin-top: 20px;
 }
 
 .icon-icon32px_deposit + .stepBar + .subModuleList .subModule {
