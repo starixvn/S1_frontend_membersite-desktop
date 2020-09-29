@@ -87,7 +87,7 @@
 	"lbl_EmailFormatError": "电子邮箱格式错误",
 	"lbl_Age21Warning": "年龄至少在21岁以上",
 	"lbl_EnsureTransactionsCorrect": "为确保所有交易正确无误，",
-	"lbl_RemindForName": "*请填写与您银行账户一致的完整姓名，以加速存款和提款操作。",
+	"lbl_RemindForName": "请填写与您银行账户一致的完整姓名，以加速存款和提款操作。",
 	"lbl_PhoneTooltip": "请输入您的电话号码，输入后将无法更改！",
 	"lbl_Submit": "提交",
 	"lbl_PrefferedCurrency":"首选货币",
