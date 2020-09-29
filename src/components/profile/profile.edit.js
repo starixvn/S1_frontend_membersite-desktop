@@ -34,6 +34,7 @@ export default ({
 						checked={status.accountName.checked}
 						clickInfo={clickInfo.bind(this, "accountName")}
 						tip={status.accountName.tip}
+						tooltip={t("lbl_RemindForName")}
 					/>
 				) : null}
 

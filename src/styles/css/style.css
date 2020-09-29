@@ -1201,6 +1201,10 @@ footer {
   height: 100%;
 }
 
+.joinpop.active, .loginpop.active {
+  display: block;
+}
+
 .joinpop .joinloginModule, .loginpop .joinloginModule {
   width: 100%;
   display: -webkit-box;
@@ -1240,8 +1244,34 @@ footer {
   font-size: 16px;
 }
 
-.joinpop.active, .loginpop.active {
-  display: block;
+.joinpop .joinloginModule .loginAnimation, .joinpop .joinloginModule .joinAnimation, .loginpop .joinloginModule .loginAnimation, .loginpop .joinloginModule .joinAnimation {
+  width: 400px;
+  height: 380px;
+  position: relative;
+}
+
+.joinpop .joinloginModule .loginAnimation img, .joinpop .joinloginModule .joinAnimation img, .loginpop .joinloginModule .loginAnimation img, .loginpop .joinloginModule .joinAnimation img {
+  width: auto;
+  height: auto;
+  position: absolute;
+}
+
+.joinpop .joinloginModule .loginAnimation img.animationlogo, .joinpop .joinloginModule .joinAnimation img.animationlogo, .loginpop .joinloginModule .loginAnimation img.animationlogo, .loginpop .joinloginModule .joinAnimation img.animationlogo {
+  bottom: 0;
+}
+
+.joinpop .joinloginModule .loginAnimation img.npc2, .joinpop .joinloginModule .joinAnimation img.npc2, .loginpop .joinloginModule .loginAnimation img.npc2, .loginpop .joinloginModule .joinAnimation img.npc2 {
+  z-index: 2;
+}
+
+.joinpop .joinloginModule .loginAnimation img.welcome, .joinpop .joinloginModule .joinAnimation img.welcome, .loginpop .joinloginModule .loginAnimation img.welcome, .loginpop .joinloginModule .joinAnimation img.welcome {
+  z-index: 1;
+  left: 50%;
+}
+
+.joinpop .joinloginModule .loginAnimation img.back, .joinpop .joinloginModule .joinAnimation img.back, .loginpop .joinloginModule .loginAnimation img.back, .loginpop .joinloginModule .joinAnimation img.back {
+  left: 50%;
+  bottom: 0;
 }
 
 .txt-orange {
@@ -4038,6 +4068,25 @@ input[type="file"] {
       -ms-flex: auto;
           flex: auto;
   z-index: auto;
+}
+
+.profileEdit .editModule .inputBox-white .description {
+  display: none;
+  top: -5px;
+  position: absolute;
+  right: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  background: rgba(19, 77, 174, 0.9);
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-right: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+
+.profileEdit .editModule .inputBox-white:hover .description {
+  display: block;
 }
 
 .profileEdit .editModule .btnGroup {
