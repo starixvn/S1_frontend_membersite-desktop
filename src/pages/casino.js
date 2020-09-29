@@ -2,6 +2,7 @@ import React from "react";
 import Wrapper from "../components/common/wrapper";
 import Layout from "../components/common/layout";
 import Casino from "../components/casino/casino";
+import SideBarQuickLink from "../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -13,6 +14,7 @@ export default () => {
 							<Casino />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>

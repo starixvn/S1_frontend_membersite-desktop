@@ -13,6 +13,7 @@ import { defPopBoxType } from "../components/common/popBox";
 import ReloadSpin from "../components/common/reloadSpin";
 import { isConvert } from "../components/common/common";
 import Loading from "../components/common/loading";
+import SideBarQuickLink from "../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -25,6 +26,7 @@ export default () => {
 							<Content />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>

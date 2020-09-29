@@ -61,7 +61,8 @@ export default ({ dispatch, state, t, _isConvert }) => {
 		setPopBox({ isOpen: false });
 	};
 
-	const clickSubmit = () => {
+	const clickSubmit = e => {
+		e.preventDefault();
 		let amountChecked = ValidAmount(state.amount);
 
 		if (state.selectedAccount.accountNo && amountChecked) {
@@ -113,7 +114,7 @@ export default ({ dispatch, state, t, _isConvert }) => {
 					</div>
 					<div>=</div>
 					<div>
-						<div>{t("lbl_Deduction")}</div>
+						<div>{t("lbl_EligibleWithdrawalAmount")}</div>
 						<div>
 							{t(`Currency_${userInfo.currencyId}`)}
 							<span>
@@ -131,7 +132,7 @@ export default ({ dispatch, state, t, _isConvert }) => {
 					availableBalance={state.balanceData?.availableBalance}
 					_isConvert={_isConvert}
 				/>
-				<div className="inputModuleRow">
+				<form className="inputModuleRow" onSubmit={clickSubmit}>
 					<Inputbox
 						className="inputBox-white"
 						value={state.amount}
@@ -148,11 +149,11 @@ export default ({ dispatch, state, t, _isConvert }) => {
 						<button
 							className={state.checked ? "btn-check" : "gray"}
 							disabled={!state.checked}
-							onClick={clickSubmit}>
+							type="submit">
 							{t("lbl_Submit")}
 						</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	);

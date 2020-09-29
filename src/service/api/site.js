@@ -19,12 +19,20 @@ export const api_site_CheckSignIn = () => siteRequest.post(`/CheckSignIn/`);
 export const api_site_GetGamelist = () => siteRequest.post(`/GetGamelist`);
 
 export const api_site_ForgetPwd = ({ Email }) =>
-	siteRequest.post(`/ForgetPwd`, { Email: Email });
+	siteRequest.post(`/ForgetPwdV2`, { Email: Email });
 
 export const api_site_GetTpIds = () => siteRequest.post(`/GetTpIds`);
 
-export const api_site_GetBanner = (FolderName, lang) =>
-	siteRequest.post(`/GetBanner/${lang}`, `FolderName=${FolderName}`);
+export const api_site_GetBanner = (
+	FolderName,
+	refId,
+	lang,
+	filterHideInHome = false
+) =>
+	siteRequest.post(
+		`/GetBanner/${lang}`,
+		`FolderName=${FolderName}&refId=${refId}&filterHideInHome=${filterHideInHome}`
+	);
 
 export const api_site_CheckResetPwdTokens = ({ key }) =>
 	siteRequest.post(`/CheckResetPwdToken`, `key=${key}`);

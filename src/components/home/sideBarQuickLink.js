@@ -30,7 +30,7 @@ export default () => {
 
 				<i
 					className={`icon ${
-						active ? "icon-cancel-circle" : "icon-arrow-right2"
+						active ? "icon-cancel-circle" : "icon-arrow-up2"
 					} `}
 					onClick={activeToggleHandler}>
 					{t("lbl_ContactUs")}

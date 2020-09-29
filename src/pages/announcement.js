@@ -2,11 +2,16 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import Wrapper from "../components/common/wrapper";
 import Layout from "../components/common/layout";
 import { api_message_GetAnnouncement } from "../service/api/message";
-import { userInfoContext, popBoxContext } from "../components/common/context";
+import {
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../components/common/context";
 import { defPopBoxType } from "../components/common/popBox";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import LeftMenu from "../components/common/leftMenu";
+import SideBarQuickLink from "../components/home/sideBarQuickLink";
 
 export default () => {
 	return (
@@ -19,6 +24,7 @@ export default () => {
 							<Content />
 						</div>
 					</section>
+					<SideBarQuickLink />
 				</main>
 			</Layout>
 		</Wrapper>
@@ -31,6 +37,7 @@ const Content = () => {
 
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { loading, setLoading } = useContext(loadingContext);
 
 	const isMountedRef = useRef(null);
 
@@ -38,56 +45,52 @@ const Content = () => {
 		setPopBox({ isOpen: false });
 	};
 
+	const openErrorMessagePopBox = (
+		message = t("msg_ApiServerError"),
+		errorCode = null
+	) => {
+		setPopBox({
+			message,
+			errorCode,
+			isOpen: true,
+			popBoxType: defPopBoxType.ErrorMsg,
+			icon: "icon-bell",
+			btnBar: (
+				<div className="btnGroup">
+					<button className="btn-cancel" onClick={clickClose}>
+						{t("lbl_Close")}
+					</button>
+				</div>
+			)
+		});
+	};
+
+	useEffect(() => {
+		async function getData() {
+			setLoading(true);
+			await api_message_GetAnnouncement(userInfo.langId).then(
+				({ data: { data, message, errorCode } }) => {
+					if (!isMountedRef.current) return;
+
+					const success = errorCode === 0;
+					success
+						? setAnnouncementDatas(data)
+						: openErrorMessagePopBox(message || "error", errorCode);
+				},
+				err => {
+					if (isMountedRef.current) openErrorMessagePopBox();
+				}
+			);
+			setLoading(false);
+		}
+
+		getData();
+	}, []);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
-
-	useEffect(() => {
-		api_message_GetAnnouncement(userInfo.langId).then(
-			res => {
-				if (isMountedRef.current) {
-					const success = res.data.errorCode === 0;
-					if (success) {
-						setAnnouncementDatas(res.data.data);
-					} else {
-						setPopBox({
-							isOpen: true,
-							popBoxType: defPopBoxType.ErrorMsg,
-							message: res.data.message,
-							btnBar: (
-								<div className="btnGroup">
-									<button
-										className="btn-cancel"
-										onClick={clickClose}>
-										{t("lbl_Close")}
-									</button>
-								</div>
-							)
-						});
-					}
-				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						popBoxType: defPopBoxType.ErrorMsg,
-						message: t("msg_ApiServerError"),
-						btnBar: (
-							<div className="btnGroup">
-								<button
-									className="btn-cancel"
-									onClick={clickClose}>
-									{t("lbl_Close")}
-								</button>
-							</div>
-						)
-					});
-				}
-			}
-		);
-	}, []);
 
 	let arr = announcementDatas?.map(item => {
 		let isToday =
@@ -111,7 +114,9 @@ const Content = () => {
 		);
 	});
 
-	return (
+	return loading ? (
+		<></>
+	) : (
 		<div className="infoModule">
 			<div className="inside-title icon icon-icon32px_openmail">
 				<span>{t("lbl_Announcement")}</span>
