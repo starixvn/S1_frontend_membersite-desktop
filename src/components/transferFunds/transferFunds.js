@@ -333,7 +333,6 @@ export default () => {
 			}
 			setStatus(initStatus);
 			setAmount("");
-			setDirection(initDirection);
 		}
 	};
 
