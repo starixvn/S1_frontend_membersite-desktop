@@ -53,9 +53,7 @@ export default ({
 			_className = `${_className} hot`;
 		}
 
-		let displayText = toUpperCase
-			? t(m.displayKey)?.toUpperCase()
-			: t(m.displayKey);
+		let displayText = t(m.displayKey);
 
 		let _path = m.path;
 
