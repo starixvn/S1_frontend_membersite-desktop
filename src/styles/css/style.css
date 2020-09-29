@@ -4037,6 +4037,7 @@ input[type="file"] {
   -webkit-box-flex: 1;
       -ms-flex: auto;
           flex: auto;
+  z-index: auto;
 }
 
 .profileEdit .editModule .btnGroup {
@@ -5684,5 +5685,15 @@ button.icon-spinner11:before {
   bottom: 0;
   -webkit-transform: translateY(20px);
           transform: translateY(20px);
+}
+
+.phone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.phone .txt-orange {
+  font-size: 12px;
 }
 /*# sourceMappingURL=style.css.map */

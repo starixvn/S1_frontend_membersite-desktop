@@ -1,4 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
+import { number_format } from "../common/common";
+
+const DEFAULT_MIN_VALUE = 1;
 
 export default ({
 	onChangeAmount,
@@ -14,12 +17,16 @@ export default ({
 
 	const cashBarRef = useRef(null);
 
+	const _maxValue = Math.floor(
+		_isConvert ? availableBalance / 1000 : availableBalance
+	);
+
 	const minMaxRange = (val, min, max) => {
 		return Math.floor(Math.min(Math.max(val, min), max));
 	};
 
 	const widthPercentageCalculationHandlar = (currentVale, maxValue) => {
-		let result = (currentVale / maxValue) * 100;
+		let result = currentVale / maxValue;
 		return isNaN(result) ? 0 : result;
 	};
 
@@ -46,11 +53,8 @@ export default ({
 			minMaxRange(cashLinewidth, 0, cashBarElementWidth),
 			cashBarElementWidth
 		);
-		let resultAmount =
-			Math.imul(availableBalance, cashLineWidthPercentage) *
-			0.01 *
-			(_isConvert ? 0.001 : 1);
-		onChangeAmount(Math.floor(resultAmount));
+		let resultAmount = _maxValue * cashLineWidthPercentage;
+		onChangeAmount(minMaxRange(Math.floor(resultAmount), 1, _maxValue));
 	};
 
 	const handleClickOutside = e => {
@@ -60,42 +64,51 @@ export default ({
 	};
 
 	useEffect(() => {
-		const amount = isNaN(amountValue) ? 0 : amountValue;
-		const cashLineWidthPercentage = widthPercentageCalculationHandlar(
-			amount * (_isConvert ? 1000 : 1),
-			availableBalance
-		);
-		setResultAmount(minMaxRange(amount, 0, availableBalance));
+		setResultAmount(minMaxRange(amountValue, 1, _maxValue));
 		setCashLineWidthPercentage(
-			minMaxRange(cashLineWidthPercentage, 0, 100)
+			minMaxRange(
+				((amountValue - DEFAULT_MIN_VALUE) /
+					(_maxValue - DEFAULT_MIN_VALUE)) *
+					100,
+				0,
+				100
+			)
 		);
+
+		if (amountValue > _maxValue) onChangeAmount(_maxValue);
 	}, [amountValue]);
 
 	useEffect(() => {
 		if (typeof document !== `undefined`) {
-			document.addEventListener("mousedown", handleClickOutside);
+			document.addEventListener("mouseup", handleClickOutside);
 		}
 		return () => {
 			if (typeof document !== `undefined`) {
-				document.removeEventListener("mousedown", handleClickOutside);
+				document.removeEventListener("mouseup", handleClickOutside);
 			}
 		};
 	}, []);
 
-	// 禁止滑鼠反白選取此元件
 	const spanStyle = {
+		// 禁止滑鼠反白選取此元件
 		WebkitUserSelect: "none",
 		MozUserSelect: "none",
 		OUserSelect: "none",
-		msUserSelect: "none"
+		MsUserSelect: "none",
+		// 不斷行
+		whiteSpace: "nowrap"
 	};
 
-	return (
+	return _maxValue > 1 ? (
 		<div
 			ref={cashBarRef}
 			onMouseMove={onMouseMoveHandlar}
 			onMouseUp={onMouseUpHandlar}
 			className="cashBar">
+			<button className="min" onClick={() => onChangeAmount(1)}>
+				Min
+			</button>
+
 			<div
 				className="cashLine"
 				style={{ width: `${cashLineWidthPercentage}%` }}>
@@ -103,11 +116,14 @@ export default ({
 					onMouseDown={onMouseDownHandlar}
 					style={{ cursor: "pointer" }}
 					className="cashPoint">
-					<span style={spanStyle}>
-						{`$${resultAmount}${_isConvert ? "('000)" : ""} `}
-					</span>
+					<span style={spanStyle}>{`$${number_format(resultAmount)} ${
+						_isConvert ? "('000)" : ""
+					}`}</span>
 				</div>
 			</div>
+			<button className="max" onClick={() => onChangeAmount(_maxValue)}>
+				Max
+			</button>
 		</div>
-	);
+	) : null;
 };
