@@ -14,7 +14,7 @@ export default props => {
 					</div>
 					<button
 						aria-label="changeDirection"
-						className="icon icon-arrow-right2"
+						className="icon icon-loop"
 						onClick={props.changeDirection}>
 						<span>{props.i18n("lbl_Exchange")}</span>
 					</button>

@@ -1246,8 +1246,9 @@ footer {
 }
 
 .joinpop .joinloginModule .loginAnimation, .joinpop .joinloginModule .joinAnimation, .loginpop .joinloginModule .loginAnimation, .loginpop .joinloginModule .joinAnimation {
-  width: 400px;
-  height: 380px;
+  min-width: 400px;
+  max-height: 380px;
+  min-height: 380px;
   position: relative;
 }
 
@@ -3628,7 +3629,7 @@ input[type="file"] {
   display: block;
 }
 
-.walletTransfer .walletModule .icon-arrow-right2 {
+.walletTransfer .walletModule .icon-loop {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3643,14 +3644,15 @@ input[type="file"] {
       -ms-flex-align: center;
           align-items: center;
   width: 55px;
+  font-size: 20px;
 }
 
-.walletTransfer .walletModule .icon-arrow-right2 span {
+.walletTransfer .walletModule .icon-loop span {
   display: none;
   font-size: 12px;
 }
 
-.walletTransfer .walletModule .icon-arrow-right2:hover span {
+.walletTransfer .walletModule .icon-loop:hover span {
   display: block;
 }
 
@@ -3679,6 +3681,10 @@ input[type="file"] {
 .walletTransfer .walletModule .from span:nth-child(1), .walletTransfer .walletModule .to span:nth-child(1) {
   display: block;
   color: black;
+}
+
+.walletTransfer .walletModule .to {
+  background: #f77900;
 }
 
 .walletTransfer .inputBox, .walletTransfer .inputBox-org, .walletTransfer .inputBox-white, .walletTransfer .inputBox-blue {
@@ -4983,10 +4989,11 @@ article p {
 }
 
 iframe {
-  width: 100%;
-  margin: auto;
-  height: 100%;
   min-height: 810px;
+  position: absolute;
+  width: 1600px;
+  height: calc(100% - 125px);
+  margin-left: -20px;
 }
 
 .progressBarModule {
