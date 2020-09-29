@@ -79,7 +79,7 @@
 	"lbl_EmailToolTip": "Email cannot be changed after submission.",
 	"lbl_Phone": "Phone Number",
 	"lbl_Birthday": "Birthday",
-	"lbl_ProfileModifyWarning": "Ensure account security,Personal information cannot be modified after filling.",
+	"lbl_ProfileModifyWarning": "Ensure account security, personal information cannot be modified after filling.",
 	"lbl_NameRequired": "Please fill in the name field",
 	"lbl_BirthRequired": "Please fill in the birthday field",
 	"lbl_PhoneRequired": "Please fill in the phone field",
