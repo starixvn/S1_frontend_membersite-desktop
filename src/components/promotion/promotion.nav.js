@@ -27,7 +27,7 @@ const defPromoNavs = [
 		selectedClassName: "blue"
 	},
 	{
-		displayKey: "lbl_Expired",
+		displayKey: "lbl_Expired_Promo",
 		value: defFilterType.expiry,
 		className: "red",
 		selectedClassName: "red"

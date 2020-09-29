@@ -133,14 +133,16 @@ export default ({ children, afterLogin = false }) => {
 						let tpWallets = res.data.data.tpWallets?.map(t => {
 							return {
 								tpId: t.tpId,
-								balance: t.balance
+								balance: t.balance,
+								tpName: t.tpName,
+								bonus: t.bonus
 							};
 						});
 						setWalletInfo(prevState => ({
 							...prevState,
 							isHideBalance: res.data.data.isHideBalance,
 							main: res.data.data?.balance,
-							tpWallets: tpWallets,
+							tpWallets,
 							lastTransaction: res.data.data.lastTransaction
 						}));
 					}
