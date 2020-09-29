@@ -143,8 +143,38 @@ export const defMenuLinks = {
 	},
 	lottery: {
 		productInfo: productList.lottery,
-		path: path.sports.root,
-		displayKey: "lbl_Lottery"
+		displayKey: "lbl_Lottery",
+		subMenu: [
+			{
+				...productList.keno,
+				className: "keno",
+				displayKey: "lbl_Keno",
+				menuType: defMenuType.LinkOrBtn,
+				parameter: { ...productList.keno }
+			},
+			{
+				...productList.lottery,
+				className: "lottery",
+				displayKey: "lbl_Lottery",
+				menuType: defMenuType.LinkOrBtn,
+				parameter: { ...productList.lottery }
+			},
+			{
+				...productList.numberGame,
+				path: path.sports.root,
+				className: "numberGame",
+				displayKey: "lbl_NumberGame",
+				menuType: defMenuType.Link,
+				parameter: { ...productList.numberGame }
+			},
+			{
+				...productList.indo4D,
+				className: "indo",
+				displayKey: "Indo 4D",
+				menuType: defMenuType.LinkOrBtn,
+				parameter: { ...productList.indo4D }
+			}
+		]
 	},
 	fishing: {
 		productInfo: productList.fishing,
@@ -160,5 +190,5 @@ export const defMenuLinks = {
 export const defSubListClassName = {
 	casino: "casinoList",
 	liveCasino: "livecasinoList",
-	games: "gameList"
+	lottery: "gameList"
 };
