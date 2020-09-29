@@ -58,7 +58,7 @@ export default ({
 				filter === defFilterType.expiry ? " expired" : ""
 			}`}>
 			{rows}
-			{filter === defFilterType.expiry ? null : staticPromotions}
+			{filter === defFilterType.all ? staticPromotions : null}
 		</div>
 	);
 };
