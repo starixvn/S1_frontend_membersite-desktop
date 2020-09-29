@@ -679,7 +679,31 @@ header {
 }
 
 .header > div.function .wallet .submenu div.walletBalance {
-  border-bottom: 1px solid #1E85EC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: rgba(51, 51, 51, 0.5);
+  border-radius: 5px;
+  padding: 4px 8px;
+  line-height: 20px;
+  font-size: 12px;
+  margin-top: 5px;
+  position: relative;
+}
+
+.header > div.function .wallet .submenu div.walletBalance > div {
+  max-width: 88%;
+}
+
+.header > div.function .wallet .submenu div.walletBalance button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -8px;
 }
 
 .header > div.function .wallet .submenu div.btnGroup {
@@ -5084,6 +5108,24 @@ button.icon-spinner11:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.deposit-btn {
+  color: #1E85EC;
+  margin-right: 3%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
+}
+
+.deposit-btn:before {
+  font-size: 32px;
+  margin-top: -8px;
+  margin-right: 5px;
 }
 
 #Loading {
