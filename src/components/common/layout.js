@@ -10,13 +10,13 @@ import "../../styles/css/style.css";
 import "../../styles/css/font.css";
 import "../../styles/css/datePicker.css";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, showFooter = false }) => {
 	return (
 		<>
 			<SEO />
 			<Header />
 			{children}
-			<Footer />
+			{showFooter ? <Footer /> : null}
 			<PopBox />
 			<Loading />
 		</>
