@@ -77,7 +77,8 @@ export default () => {
 							openLink("https://lin.ee/SAPymLI ", "line.me")
 						}>
 						Line
-						<div>
+						<div className="txt-blue">
+							@nova88thai
 							<img src={require("../../styles/img/lineQR.jpg")} />
 						</div>
 					</li>
