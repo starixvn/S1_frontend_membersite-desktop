@@ -28,38 +28,51 @@ export default ({ listClassName, subItems, menuKey, mainUrl }) => {
 		});
 	};
 
-	let rows = subItems.map(s => {
-		let displayText = s.displayText ? s.displayText : t(s.displayKey);
-		let key = `${menuKey}-${userInfo.isLogin}-${displayText}`;
+	let rows = subItems
+		.filter(
+			s =>
+				userInfo.isLogin !== true ||
+				!s.allowCurrency ||
+				s.allowCurrency.includes(userInfo.currency)
+		)
+		.map(s => {
+			let displayText = s.displayText ? s.displayText : t(s.displayKey);
+			let key = `${menuKey}-${userInfo.isLogin}-${displayText}`;
 
-		let params = null;
-		if (s.parameter) {
-			params = Object.keys(s.parameter).map(key => {
-				return `${key}=${s.parameter[key]}`;
-			});
-		}
+			let params = null;
+			if (s.parameter) {
+				params = Object.keys(s.parameter).map(key => {
+					return `${key}=${s.parameter[key]}`;
+				});
+			}
 
-		let _urlParams = params !== null ? `?${params.join("&")}` : "";
-		if (s.menuType === defMenuType.Link) {
-			return (
-				<Link
-					key={key}
-					className={s.className}
-					to={`/${userInfo.langId}/${mainUrl}${_urlParams}`}>
-					<span className={s.icon}>{displayText}</span>
-				</Link>
-			);
-		} else {
-			return (
-				<button
-					key={key}
-					className={s.className}
-					onClick={ClickItem.bind(this, s.tpId, s.gameId, userInfo)}>
-					<span className={s.icon}>{displayText}</span>
-				</button>
-			);
-		}
-	});
+			let _urlParams = params !== null ? `?${params.join("&")}` : "";
+			if (s.menuType === defMenuType.Link) {
+				let url = s.path || mainUrl;
+				return (
+					<Link
+						key={key}
+						className={s.className}
+						to={`/${userInfo.langId}/${url}${_urlParams}`}>
+						<span className={s.icon}>{displayText}</span>
+					</Link>
+				);
+			} else {
+				return (
+					<button
+						key={key}
+						className={s.className}
+						onClick={ClickItem.bind(
+							this,
+							s.tpId,
+							s.gameId,
+							userInfo
+						)}>
+						<span className={s.icon}>{displayText}</span>
+					</button>
+				);
+			}
+		});
 
 	return <div className={`${listClassName} active`}>{rows}</div>;
 };

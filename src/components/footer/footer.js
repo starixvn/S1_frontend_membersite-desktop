@@ -12,6 +12,7 @@ import {
 import LinkItems from "../common/linkItems";
 import { userInfoContext } from "../common/context";
 import config, { SiteInfo } from "../../config";
+import saba from "../../styles/img/saba.png";
 
 const SportsBettingSection = ({ t, isLogin, langId }) => (
 	<div>
@@ -109,7 +110,7 @@ const AboutUsSection = ({ t, langId }) => (
 const PlatformSection = () => (
 	<div className="platform">
 		<button>
-			<img src={`${config.imgUrl}/common/images/logo/saba.png`} />
+			<img src={saba} />
 		</button>
 		<button>
 			<img src={`${config.imgUrl}/common/images/logo/ab.png`} />

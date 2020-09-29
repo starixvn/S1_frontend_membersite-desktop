@@ -67,7 +67,6 @@
 
 .icon-line:before {
   content: "\e993";
-  color: white;
 }
 
 .icon-EB:before {
@@ -828,6 +827,10 @@
 
 .icon-conversation:before {
   content: "\e935";
+}
+
+.icon-mail-envelope-open:before {
+  content: "\e999";
 }
 
 .icon-moon:before {

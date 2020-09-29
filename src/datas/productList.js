@@ -61,5 +61,10 @@ export default {
 	baseball: {
 		gameId: 8,
 		tpId: 1
+	},
+	indo4D: {
+		gameId: 223,
+		tpId: 1,
+		allowCurrency: [4, 15]
 	}
 };

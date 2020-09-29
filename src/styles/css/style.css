@@ -116,6 +116,13 @@ header {
   display: flex;
 }
 
+.logo img {
+  max-width: 130px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2442,6 +2449,10 @@ input[type="file"] {
   overflow: hidden;
 }
 
+.subModuleList .subModule:hover .subModuleTitle {
+  background: #134DAE;
+}
+
 .subModuleList .subModule:nth-child(2) {
   margin: 0 40px;
 }
@@ -2551,11 +2562,11 @@ input[type="file"] {
 }
 
 .subModuleList .subModule .subModuleBody ul li a.icon-VNPay:before {
-  font-size: 20px;
+  font-size: 1.3vw;
 }
 
 .subModuleList .subModule .subModuleBody ul li a:before {
-  font-size: 40px;
+  font-size: 2.5vw;
   margin-right: 0;
 }
 
@@ -4495,6 +4506,11 @@ input[type="file"] {
 
 .promotionsInfo .proData .proDataTitle .btnGroup button {
   max-width: 130px;
+}
+
+.promotionsInfo .proData .proDataBody {
+  color: black;
+  margin-top: 20px;
 }
 
 .icon-icon32px_deposit + .stepBar + .subModuleList .subModule {

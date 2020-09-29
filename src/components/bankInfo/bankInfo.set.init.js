@@ -16,12 +16,12 @@ export default ({ dispatch, numberOfAccount }) => {
 						<div className="icon icon-plus"></div>
 						<div>{t("lbl_AddBankAccount")}</div>
 					</div>
-				) : null
-				// <div className="addBankName noBank">
-				// 	<div className="icon icon-warning"></div>
-				// 	<div>{t("lbl_BankCardsFull")}</div>
-				// </div>
-				}
+				) : (
+					<div className="addBankName noBank">
+						<div className="icon icon-warning"></div>
+						<div>{t("lbl_BankCardsFull")}</div>
+					</div>
+				)}
 
 				<div className="remainder">
 					{t("lbl_NumberOfBankAccounts")}:{" "}
