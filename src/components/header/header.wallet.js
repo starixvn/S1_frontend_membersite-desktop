@@ -97,14 +97,16 @@ class Dropdown extends Component {
 			(prev, curr) => prev + curr.balance,
 			0
 		);
+
 		let balance = isHideBalance
 			? "*****"
-			: this.props.walletInfo.main
-			? number_format(
-					this.props.walletInfo.main + tpWalletsBonusSum,
+			: number_format(
+					(this.props.walletInfo.main
+						? this.props.walletInfo.main
+						: 0) + tpWalletsBonusSum,
 					false
-			  )
-			: 0;
+			  );
+
 		const tpWallets =
 			this.props.walletInfo.tpWallets &&
 			this.props.walletInfo.tpWallets.map(t => {
@@ -170,7 +172,10 @@ class Dropdown extends Component {
 							`Currency_${this.props.currencyId}`
 						)}`}</span>
 						<span>
-							{this.props.walletInfo.main}
+							{`${number_format(
+								this.props.walletInfo.main,
+								this.props._isConvert
+							)}`}
 							<ReloadSpin
 								btnActive={false}
 								func={this.props.RefreshBalance}
