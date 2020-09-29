@@ -32,7 +32,7 @@ export default ({ onlineBankingList }) => {
 
 	return onlineBankingList !== null || onlineBankingList.length > 0 ? (
 		<div className="subModule">
-			<div className="subModuleTitle icon icon-plus">
+			<div className="subModuleTitle">
 				<div>
 					<span>{t("lbl_DepositType1")}</span>
 					<span>

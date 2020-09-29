@@ -20,7 +20,7 @@ export default ({ paymentList }) => {
 
 	return paymentList !== null && paymentList.length > 0 ? (
 		<div className="subModule">
-			<div className="subModuleTitle icon icon-plus">
+			<div className="subModuleTitle">
 				<div>
 					<span>{t("lbl_MobileDeposit")}</span>
 					<span>
