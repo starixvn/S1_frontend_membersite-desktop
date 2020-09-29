@@ -39,7 +39,7 @@ export default props => {
 					readOnly={props.readOnly}
 				/>
 				{props.tooltip ? (
-					<div class="description">{props.tooltip}</div>
+					<div className="description">{props.tooltip}</div>
 				) : null}
 
 				{props.checked !== undefined ? (
