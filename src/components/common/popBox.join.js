@@ -20,7 +20,7 @@ import Inputbox from "./inputbox";
 import InputboxPSW from "./inputbox.password";
 import Dropdown from "./dropdown";
 import Checkbox from "./checkbox";
-import joinBanner from "../../styles/img/joinBanner.jpg";
+
 import {
 	initValue,
 	initTip,
