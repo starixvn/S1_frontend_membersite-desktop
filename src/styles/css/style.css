@@ -1008,7 +1008,7 @@ main .gamelistother > a {
 }
 
 main .gamelistother > a > img {
-  max-width: 75%;
+  max-width: 70%;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
@@ -1040,7 +1040,7 @@ main .gamelistother > a div > :nth-child(3) {
   margin-top: 12px;
   font-size: 12px;
   opacity: 0.8;
-  width: 45%;
+  width: 35%;
 }
 
 main .gamelistother > a:hover {
