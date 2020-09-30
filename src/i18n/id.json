@@ -65,7 +65,7 @@
 	"lbl_ChangePasswordHint": "Ubah kata sandi saat masuk, dan modifikasi rutin bermanfaat untuk keamanan akun.", 
     "lbl_OldPassword": "Kata sandi lama",
     "lbl_NewPassword": "Kata Sandi Baru",
-    "lbl_ForgetPwdSuccess": "Password baru Anda telah di kirimkan ke email Anda.", 
+    "lbl_ForgotPwdMailSent": "Link reset password telah dikirim ke alamat email Anda yang terdaftar.", 
 	"lbl_ForgetPwdHint": "Jika anda lupa username dan password anda, silakan konfirmasi email anda dan kami akan mengirimkan password baru anda ke email terdaftar anda.",
 	"lbl_ResetPassword": "Permintaan Atur Ulang Kata Sandi",
     "lbl_PasswordTooltip": "6-18 karakter alfanumerik (A-Z, a-z, 0-9) atau karakter khusus @ $ *!% #? &",

@@ -97,7 +97,7 @@ const Content = () => {
 								isOpen: true,
 								popBoxType: defPopBoxType.ChangePsw,
 								title: t("lbl_ForgetPsw"),
-								message: t("lbl_ForgetPwdSuccess"),
+								message: t("lbl_ForgotPwdMailSent"),
 								btnBar: (
 									<div className="btnGroup">
 										<button
