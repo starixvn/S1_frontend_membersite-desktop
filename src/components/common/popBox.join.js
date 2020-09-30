@@ -382,7 +382,8 @@ export default () => {
 				Email: userValue.email,
 				PhoneNo: userValue.phone,
 				CurrencyId: siteCurrency[userValue.currency].id,
-				UserLang: defaultLangId
+				UserLang: defaultLangId,
+				AreaCode: _areaCode
 			};
 
 			regData["RefId"] = getUrlParameter("RefId") || readCookie("RefId");
