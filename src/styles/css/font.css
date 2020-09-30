@@ -705,6 +705,10 @@
   content: "\ea14";
 }
 
+.icon-loop:before {
+  content: "\ea2d";
+}
+
 .icon-arrow-up-left2:before {
   content: "\ea39";
 }

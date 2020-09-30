@@ -1199,6 +1199,11 @@ footer {
   margin: auto;
   padding: 0;
   height: 100%;
+  overflow: hidden;
+}
+
+.joinpop.active, .loginpop.active {
+  display: block;
 }
 
 .joinpop .joinloginModule, .loginpop .joinloginModule {
@@ -1240,8 +1245,232 @@ footer {
   font-size: 16px;
 }
 
-.joinpop.active, .loginpop.active {
-  display: block;
+.joinpop .joinloginModule .loginAnimation, .joinpop .joinloginModule .joinAnimation, .loginpop .joinloginModule .loginAnimation, .loginpop .joinloginModule .joinAnimation {
+  min-width: 400px;
+  max-height: 380px;
+  min-height: 380px;
+  position: relative;
+}
+
+.joinpop .joinloginModule .loginAnimation img, .joinpop .joinloginModule .joinAnimation img, .loginpop .joinloginModule .loginAnimation img, .loginpop .joinloginModule .joinAnimation img {
+  width: auto;
+  height: auto;
+  position: absolute;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.joinpop .joinloginModule .loginAnimation img.animationlogo, .joinpop .joinloginModule .joinAnimation img.animationlogo, .loginpop .joinloginModule .loginAnimation img.animationlogo, .loginpop .joinloginModule .joinAnimation img.animationlogo {
+  bottom: 0;
+  left: 30px;
+  -webkit-animation: animationlogo 1s;
+          animation: animationlogo 1s;
+}
+
+.joinpop .joinloginModule .loginAnimation img.npc1, .joinpop .joinloginModule .joinAnimation img.npc1, .loginpop .joinloginModule .loginAnimation img.npc1, .loginpop .joinloginModule .joinAnimation img.npc1 {
+  left: 40px;
+  top: 0;
+  -webkit-animation: loginnpc1 1s;
+          animation: loginnpc1 1s;
+}
+
+.joinpop .joinloginModule .loginAnimation img.welcome, .joinpop .joinloginModule .joinAnimation img.welcome, .loginpop .joinloginModule .loginAnimation img.welcome, .loginpop .joinloginModule .joinAnimation img.welcome {
+  z-index: 1;
+  left: 50%;
+  bottom: 0;
+  -webkit-animation: welcome 1s;
+          animation: welcome 1s;
+}
+
+.joinpop .joinloginModule .loginAnimation img.back, .joinpop .joinloginModule .joinAnimation img.back, .loginpop .joinloginModule .loginAnimation img.back, .loginpop .joinloginModule .joinAnimation img.back {
+  right: 100px;
+  bottom: 0;
+  -webkit-animation: back 1s;
+          animation: back 1s;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.animationlogo, .joinpop .joinloginModule .joinAnimation:hover img.animationlogo, .loginpop .joinloginModule .loginAnimation:hover img.animationlogo, .loginpop .joinloginModule .joinAnimation:hover img.animationlogo {
+  left: -30px;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.npc1, .joinpop .joinloginModule .joinAnimation:hover img.npc1, .loginpop .joinloginModule .loginAnimation:hover img.npc1, .loginpop .joinloginModule .joinAnimation:hover img.npc1 {
+  left: 140px;
+  top: 50px;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.welcome, .joinpop .joinloginModule .joinAnimation:hover img.welcome, .loginpop .joinloginModule .loginAnimation:hover img.welcome, .loginpop .joinloginModule .joinAnimation:hover img.welcome {
+  bottom: 200px;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.back, .joinpop .joinloginModule .joinAnimation:hover img.back, .loginpop .joinloginModule .loginAnimation:hover img.back, .loginpop .joinloginModule .joinAnimation:hover img.back {
+  bottom: -50px;
+}
+
+.joinpop .joinloginModule .loginAnimation img.npc2, .loginpop .joinloginModule .loginAnimation img.npc2 {
+  z-index: 2;
+  right: -100px;
+  bottom: -15px;
+  -webkit-animation: loginnpc2 1s;
+          animation: loginnpc2 1s;
+}
+
+.joinpop .joinloginModule .loginAnimation:hover img.npc2, .loginpop .joinloginModule .loginAnimation:hover img.npc2 {
+  right: -200px;
+}
+
+.joinpop .joinloginModule .joinAnimation img.npc2, .loginpop .joinloginModule .joinAnimation img.npc2 {
+  z-index: 2;
+  right: -10px;
+  bottom: 15px;
+  -webkit-animation: joinnpc2 1s;
+          animation: joinnpc2 1s;
+}
+
+.joinpop .joinloginModule .joinAnimation img.back, .loginpop .joinloginModule .joinAnimation img.back {
+  right: 80px;
+  bottom: 0;
+  -webkit-animation: back 1s;
+          animation: back 1s;
+}
+
+.joinpop .joinloginModule .joinAnimation:hover img.npc2, .loginpop .joinloginModule .joinAnimation:hover img.npc2 {
+  right: -100px;
+}
+
+@-webkit-keyframes animationlogo {
+  from {
+    left: -30px;
+    opacity: 0;
+  }
+  to {
+    left: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes animationlogo {
+  from {
+    left: -30px;
+    opacity: 0;
+  }
+  to {
+    left: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes loginnpc1 {
+  from {
+    left: 140px;
+    top: 50px;
+    opacity: 0;
+  }
+  to {
+    left: 40px;
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes loginnpc1 {
+  from {
+    left: 140px;
+    top: 50px;
+    opacity: 0;
+  }
+  to {
+    left: 40px;
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes loginnpc2 {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -100px;
+    opacity: 1;
+  }
+}
+
+@keyframes loginnpc2 {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -100px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes joinnpc2 {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -10px;
+    opacity: 1;
+  }
+}
+
+@keyframes joinnpc2 {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -10px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes welcome {
+  from {
+    bottom: 200px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes welcome {
+  from {
+    bottom: 200px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes back {
+  from {
+    bottom: -50px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes back {
+  from {
+    bottom: -50px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
 
 .txt-orange {
@@ -1738,7 +1967,7 @@ input[type="file"] {
 .quickLink {
   position: fixed;
   right: -10px;
-  top: 25%;
+  top: 15%;
   z-index: 1;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -3400,7 +3629,7 @@ input[type="file"] {
   display: block;
 }
 
-.walletTransfer .walletModule .icon-arrow-right2 {
+.walletTransfer .walletModule .icon-loop {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3415,15 +3644,12 @@ input[type="file"] {
       -ms-flex-align: center;
           align-items: center;
   width: 55px;
+  font-size: 20px;
 }
 
-.walletTransfer .walletModule .icon-arrow-right2 span {
+.walletTransfer .walletModule .icon-loop span {
   display: none;
   font-size: 12px;
-}
-
-.walletTransfer .walletModule .icon-arrow-right2:hover span {
-  display: block;
 }
 
 .walletTransfer .walletModule .walletBalanceModule {
@@ -3451,6 +3677,10 @@ input[type="file"] {
 .walletTransfer .walletModule .from span:nth-child(1), .walletTransfer .walletModule .to span:nth-child(1) {
   display: block;
   color: black;
+}
+
+.walletTransfer .walletModule .to {
+  background: #f77900;
 }
 
 .walletTransfer .inputBox, .walletTransfer .inputBox-org, .walletTransfer .inputBox-white, .walletTransfer .inputBox-blue {
@@ -4038,6 +4268,25 @@ input[type="file"] {
       -ms-flex: auto;
           flex: auto;
   z-index: auto;
+}
+
+.profileEdit .editModule .inputBox-white .description {
+  display: none;
+  top: -5px;
+  position: absolute;
+  right: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  background: rgba(19, 77, 174, 0.9);
+  border-radius: 5px;
+  padding: 0 5px;
+  margin-right: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+
+.profileEdit .editModule .inputBox-white:hover .description {
+  display: block;
 }
 
 .profileEdit .editModule .btnGroup {
@@ -4736,10 +4985,11 @@ article p {
 }
 
 iframe {
-  width: 100%;
-  margin: auto;
-  height: 100%;
   min-height: 810px;
+  position: absolute;
+  width: 1600px;
+  height: calc(100% - 125px);
+  margin-left: -20px;
 }
 
 .progressBarModule {
