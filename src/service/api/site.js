@@ -41,3 +41,6 @@ export const api_site_CheckResetPwdTokens = ({ key }) =>
 
 export const api_site_GetCountryList = ({ langId }) =>
 	siteRequest.post(`/GetCountryList/${langId}`);
+
+export const api_site_ExistsPhoneNo = ({ AreaCode, Phone }) =>
+	siteRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });

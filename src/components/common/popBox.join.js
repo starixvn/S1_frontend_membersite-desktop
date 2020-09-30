@@ -5,9 +5,9 @@ import {
 	api_site_GetSiteCurrencyList,
 	// api_site_Register,
 	api_site_Signup,
-	api_site_ExistsEmail
+	api_site_ExistsEmail,
+	api_site_ExistsPhoneNo
 } from "../../service/api/site";
-import { api_account_ExistsPhone } from "../../service/api/account";
 import { api_accountStrict_GetCustProfile } from "../../service/api/accountStrict";
 import areaCode from "../../datas/areaCode";
 import { getUrlParameter, readCookie, setCookie } from "./common";
@@ -232,8 +232,8 @@ export default () => {
 			msg = "lbl_PhoneTooltip";
 		}
 
-		if (checked && userValue.areaCode) {
-			const res = await api_account_ExistsPhone({
+		if (checked) {
+			const res = await api_site_ExistsPhoneNo({
 				AreaCode: _areaCode,
 				Phone: val
 			});
