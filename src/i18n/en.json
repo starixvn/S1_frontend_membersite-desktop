@@ -65,7 +65,7 @@
 	"lbl_ChangePasswordHint": "Modify the password when logging in,and regular modification is beneficial to account security.",
 	"lbl_OldPassword": "Old Password",
 	"lbl_NewPassword": "New Password",
-	"lbl_ForgetPwdSuccess": "Your new password has been sent to your registered e-mail address.",
+	"lbl_ForgotPwdMailSent": "Reset password link has sent to your registered email address.",
 	"lbl_ForgetPwdHint": "If you have forgotten your password, please provide your email and we will send your new password to your registered email address.",
 	"lbl_ResetPassword": "Reset password",
 	"lbl_PasswordTooltip": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
