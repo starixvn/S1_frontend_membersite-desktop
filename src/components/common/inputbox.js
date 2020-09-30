@@ -41,6 +41,10 @@ export default props => {
 					max={props.max ? props.max : null}
 					readOnly={props.readOnly}
 				/>
+				{props.tooltip ? (
+					<div className="description">{props.tooltip}</div>
+				) : null}
+
 				{props.checked !== undefined ? (
 					<div className="iconModule">
 						{props._isConvert ? <i>('000)</i> : null}

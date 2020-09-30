@@ -14,7 +14,8 @@ export default ({
 	isLogin,
 	currency,
 	filter,
-	refreshProcessBar
+	refreshProcessBar,
+	staticPromotions
 }) => {
 	let rows = promoList?.map(p => {
 		let _isClaimed = isClaimed(p);
@@ -50,12 +51,14 @@ export default ({
 			</div>
 		);
 	});
+
 	return (
 		<div
 			className={`proList${
 				filter === defFilterType.expiry ? " expired" : ""
 			}`}>
 			{rows}
+			{filter === defFilterType.all ? staticPromotions : null}
 		</div>
 	);
 };

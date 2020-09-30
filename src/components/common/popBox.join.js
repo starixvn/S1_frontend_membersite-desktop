@@ -528,7 +528,28 @@ export default () => {
 	return (
 		<div className="joinpop active">
 			<div className="joinloginModule">
-				<img src={joinBanner} alt="joinBanner" />
+				<div className="joinAnimation">
+					<img
+						src={require("../../styles/img/animationLogo.png")}
+						className="animationlogo"
+					/>
+					<img
+						src={require("../../styles/img/joinNpc01.png")}
+						className="npc1"
+					/>
+					<img
+						src={require("../../styles/img/joinNpc02.png")}
+						className="npc2"
+					/>
+					<img
+						src={require("../../styles/img/welcome.png")}
+						className="welcome"
+					/>
+					<img
+						src={require("../../styles/img/back.png")}
+						className="back"
+					/>
+				</div>
 				<form className="joinloginFunction" onSubmit={clickSubmit}>
 					<span className="title txt-orange">{t("lbl_JoinNow")}</span>
 					<div>

@@ -13,6 +13,7 @@ import LinkItems from "../common/linkItems";
 import { userInfoContext } from "../common/context";
 import config, { SiteInfo } from "../../config";
 import saba from "../../styles/img/saba.png";
+import eb from "../../styles/img/eb.png";
 
 const SportsBettingSection = ({ t, isLogin, langId }) => (
 	<div>
@@ -103,6 +104,12 @@ const AboutUsSection = ({ t, langId }) => (
 			<a href={TandC(langId).ContactUs} target="_blank" rel="noreferrer">
 				{t("lbl_ContactUs")}
 			</a>
+			<a
+				href={`${SiteInfo.affiliateLink}/?lang=${langId}`}
+				target="_blank"
+				rel="noreferrer">
+				{t("lbl_Affiliates")}
+			</a>
 		</div>
 	</div>
 );
@@ -144,6 +151,9 @@ const PlatformSection = () => (
 		</button>
 		<button>
 			<img src={`${config.imgUrl}/common/images/logo/pg.png`} />
+		</button>
+		<button>
+			<img src={eb} />
 		</button>
 	</div>
 );
