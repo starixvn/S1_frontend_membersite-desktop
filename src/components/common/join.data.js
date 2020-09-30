@@ -18,11 +18,11 @@ export const initTip = {
 };
 
 export const currencyToAreacode = {
-	0: "MY",
-	1: "TH",
-	2: "CS",
-	3: "ID",
-	4: "VN"
+	2: "MY",
+	4: "TH",
+	13: "CS",
+	15: "ID",
+	51: "VN"
 };
 
 export const passwordCheck = val => {

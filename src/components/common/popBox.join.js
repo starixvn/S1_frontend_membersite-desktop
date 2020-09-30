@@ -98,9 +98,15 @@ export default () => {
 		);
 	}, []);
 
+	let _currencyId = siteCurrency[userValue.currency]?.id;
+
+	let currencyToCountryCode = _currencyId
+		? currencyToAreacode[_currencyId]
+		: null;
+
 	const _areaCode =
-		userValue.currency !== null
-			? areaCode[currencyToAreacode[userValue.currency]].AreaCode
+		currencyToCountryCode !== null
+			? areaCode[currencyToCountryCode]?.AreaCode
 			: null;
 
 	const ClosePopBox = () => {
