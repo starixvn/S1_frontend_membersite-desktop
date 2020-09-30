@@ -50,6 +50,7 @@ const defGameListDatas = [
 		productInfo: productList.sports,
 		leftImg: [{ src: NpcSoccerBG, className: "soccer" }],
 		displayKey: "lbl_Soccer",
+		cardClassName: "card_right",
 		mainImg: NpcSoccer,
 		icon: "icon icon-soccer"
 	},
@@ -59,6 +60,7 @@ const defGameListDatas = [
 			{ src: NpcBasketballBG2, className: "basketball" },
 			{ src: NpcBasketballBG1, className: "basketball" }
 		],
+		cardClassName: "card_left",
 		displayKey: "lbl_Basketball",
 		mainImg: NpcBasketball,
 		icon: "icon icon-basketball"
@@ -67,6 +69,7 @@ const defGameListDatas = [
 		productInfo: productList.baseball,
 		leftImg: [{ src: NpcBaseballBG, className: "baseball" }],
 		displayKey: "lbl_Baseball",
+		cardClassName: "card_right",
 		mainImg: NpcBaseball,
 		icon: "icon icon-baseball"
 	},
@@ -74,6 +77,7 @@ const defGameListDatas = [
 		productInfo: productList.badminton,
 		leftImg: [{ src: NpcBadmintonBG, className: "badminton" }],
 		displayKey: "lbl_badminton",
+		cardClassName: "card_right",
 		mainImg: NpcBadminton,
 		icon: "icon icon-badminton"
 	},
@@ -81,6 +85,7 @@ const defGameListDatas = [
 		productInfo: productList.tennis,
 		leftImg: [{ src: NpcTennisBG, className: "tennis" }],
 		displayKey: "lbl_Tennis",
+		cardClassName: "card_left",
 		mainImg: NpcTennis,
 		icon: "icon icon-tennis"
 	},
@@ -88,6 +93,7 @@ const defGameListDatas = [
 		productInfo: productList.eSport,
 		leftImg: [{ src: NpcESportBG, className: "esport" }],
 		displayKey: "lbl_eSports",
+		cardClassName: "card_right",
 		mainImg: NpcESport,
 		icon: "icon icon-esport"
 	}
@@ -112,7 +118,7 @@ const SportsSection = ({ t, langId, isLogin, showLogin }) => {
 
 		const content = (
 			<div className="container">
-				<div className="card_right">{leftImgs}</div>
+				<div className={m.cardClassName}>{leftImgs}</div>
 				<span className={m.icon}>{displayText}</span>
 				<div className="npc">
 					<img src={m.mainImg} alt={`img of ${displayText}`} />

@@ -20,6 +20,8 @@ import AccountPanel from "./bankInfo.set.account";
 import ShowCard from "./bankInfo.set.bankCard";
 import { defPopBoxType } from "../common/popBox";
 import Loading from "../common/loading";
+import StepBar from "../common/stepBar";
+import bankInfoStep from "./bankInfo.set.defStep";
 
 export default () => {
 	const { t } = useTranslation();
@@ -154,6 +156,8 @@ export default () => {
 					<span>{t("lbl_BankInfo")}</span>
 					<div>{t("lbl_UpdateBankInfo")}</div>
 				</div>
+
+				<StepBar t={t} step={state.step ?? 0} defStep={bankInfoStep} />
 
 				<div className="accountName">
 					{userInfo.accountName ? (

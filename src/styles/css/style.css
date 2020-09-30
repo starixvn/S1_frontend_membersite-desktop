@@ -1008,7 +1008,7 @@ main .gamelistother > a {
 }
 
 main .gamelistother > a > img {
-  max-width: 75%;
+  max-width: 70%;
   -webkit-transition: 0.7s;
   transition: 0.7s;
 }
@@ -1040,7 +1040,7 @@ main .gamelistother > a div > :nth-child(3) {
   margin-top: 12px;
   font-size: 12px;
   opacity: 0.8;
-  width: 45%;
+  width: 35%;
 }
 
 main .gamelistother > a:hover {
@@ -3582,6 +3582,12 @@ input[type="file"] {
   font-size: 24px;
 }
 
+.walletModule .walletBalanceModule span.icon-icon32px_Main-Wallet + span + .btnGroup button, .walletModule .walletBalanceModule span.icon-icon32px_Sportsbook-Wallet + span + .btnGroup button {
+  height: 30px;
+  min-width: 90px;
+  padding: 10px 0;
+}
+
 .walletModule .walletBalanceModule .icon-spinner11:before {
   margin: 0 5px;
 }
@@ -3601,6 +3607,10 @@ input[type="file"] {
   color: #1E85EC;
 }
 
+.walletModule .icon-icon32px_Main-Wallet {
+  color: #f77900;
+}
+
 .walletTransfer {
   background: #212121;
   border-radius: 15px;
@@ -3614,77 +3624,6 @@ input[type="file"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.walletTransfer .walletModule {
-  width: 100%;
-  padding: 0;
-}
-
-.walletTransfer .walletModule button {
-  display: none;
-}
-
-.walletTransfer .walletModule button.active {
-  display: block;
-}
-
-.walletTransfer .walletModule .icon-loop {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 55px;
-  font-size: 20px;
-}
-
-.walletTransfer .walletModule .icon-loop span {
-  display: none;
-  font-size: 12px;
-}
-
-.walletTransfer .walletModule .icon-loop:hover span {
-  display: block;
-}
-
-.walletTransfer .walletModule .walletBalanceModule {
-  background: #1E85EC;
-  font-weight: bold;
-  margin-right: 0;
-  padding: 30px;
-}
-
-.walletTransfer .walletModule .walletBalanceModule span {
-  margin: 0 10px;
-}
-
-.walletTransfer .walletModule .from span, .walletTransfer .walletModule .to span {
-  color: white;
-  display: none;
-}
-
-.walletTransfer .walletModule .from span.active, .walletTransfer .walletModule .to span.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.walletTransfer .walletModule .from span:nth-child(1), .walletTransfer .walletModule .to span:nth-child(1) {
-  display: block;
-  color: black;
-}
-
-.walletTransfer .walletModule .to {
-  background: #f77900;
 }
 
 .walletTransfer .inputBox, .walletTransfer .inputBox-org, .walletTransfer .inputBox-white, .walletTransfer .inputBox-blue {
@@ -5949,5 +5888,76 @@ button.icon-spinner11:before {
 
 .phone .txt-orange {
   font-size: 12px;
+}
+
+.transferModule {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 40px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.transferModule button {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #1E85EC;
+  font-size: 24px;
+  width: 25%;
+}
+
+.transferModule .walletBalanceModule {
+  position: absolute;
+  width: calc((100% - 25%) / 2 - 100px);
+  height: 70px;
+  padding: 0 50px;
+}
+
+.transferModule .walletBalanceModule.from, .transferModule .walletBalanceModule.to {
+  font-weight: bold;
+}
+
+.transferModule .walletBalanceModule.from span:nth-child(1), .transferModule .walletBalanceModule.to span:nth-child(1) {
+  display: block;
+  color: black;
+}
+
+.transferModule .walletBalanceModule.from {
+  background: #f77900;
+  left: 0;
+  position: absolute;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.transferModule .walletBalanceModule.from.active {
+  left: 100%;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.transferModule .walletBalanceModule.to {
+  background: #1E85EC;
+  left: 100%;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  position: absolute;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.transferModule .walletBalanceModule.to.active {
+  left: 0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 /*# sourceMappingURL=style.css.map */
