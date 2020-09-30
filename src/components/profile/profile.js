@@ -79,14 +79,16 @@ export default () => {
 	};
 
 	const editField = (col, e) => {
-		let val = e.target.value;
+		let val = null;
 
 		if (col === "birth") {
 			val = moment(e).format("YYYY-MM-DD");
 		} else if (col === "accountName") {
+			val = e.target.value;
 			let pattern = new RegExp(/["'`_^+-@#!<>%;)(&$.]/);
 			val = val.replace(pattern, "");
 		} else {
+			val = e.target.value;
 			val = val.replace(/[^\d]+/g, "");
 		}
 
