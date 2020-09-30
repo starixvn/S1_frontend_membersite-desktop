@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import {
 	api_site_ExistsUserName,
 	api_site_GetSiteCurrencyList,
-	api_site_Register,
+	// api_site_Register,
+	api_site_Signup,
 	api_site_ExistsEmail
 } from "../../service/api/site";
 import { api_account_ExistsPhone } from "../../service/api/account";
@@ -387,7 +388,7 @@ export default () => {
 			regData["RefId"] = getUrlParameter("RefId") || readCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || readCookie("AffId");
 			regData["Aff"] = getUrlParameter("Aff") || readCookie("Aff");
-			api_site_Register(regData).then(
+			api_site_Signup(regData, defaultLangId).then(
 				res => {
 					if (isMountedRef.current) {
 						const errorCode = res.data.errorCode;
@@ -409,7 +410,6 @@ export default () => {
 												..._user,
 												...res_custInfo.data.data
 											};
-											console.log(_user);
 										} else {
 											setPopBox({
 												isOpen: true,
