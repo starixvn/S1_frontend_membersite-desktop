@@ -409,6 +409,9 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -1216,6 +1219,7 @@ footer {
 .joinpop .joinloginModule img, .loginpop .joinloginModule img {
   width: 400px;
   height: 380px;
+  pointer-events: none;
 }
 
 .joinpop .joinloginModule .joinloginFunction, .loginpop .joinloginModule .joinloginFunction {
@@ -1290,7 +1294,7 @@ footer {
 }
 
 .joinpop .joinloginModule .loginAnimation:hover img.animationlogo, .joinpop .joinloginModule .joinAnimation:hover img.animationlogo, .loginpop .joinloginModule .loginAnimation:hover img.animationlogo, .loginpop .joinloginModule .joinAnimation:hover img.animationlogo {
-  left: -30px;
+  left: 0;
 }
 
 .joinpop .joinloginModule .loginAnimation:hover img.npc1, .joinpop .joinloginModule .joinAnimation:hover img.npc1, .loginpop .joinloginModule .loginAnimation:hover img.npc1, .loginpop .joinloginModule .joinAnimation:hover img.npc1 {
@@ -1315,7 +1319,7 @@ footer {
 }
 
 .joinpop .joinloginModule .loginAnimation:hover img.npc2, .loginpop .joinloginModule .loginAnimation:hover img.npc2 {
-  right: -200px;
+  right: -130px;
 }
 
 .joinpop .joinloginModule .joinAnimation img.npc2, .loginpop .joinloginModule .joinAnimation img.npc2 {
@@ -1334,12 +1338,12 @@ footer {
 }
 
 .joinpop .joinloginModule .joinAnimation:hover img.npc2, .loginpop .joinloginModule .joinAnimation:hover img.npc2 {
-  right: -100px;
+  right: -60px;
 }
 
 @-webkit-keyframes animationlogo {
   from {
-    left: -30px;
+    left: 0;
     opacity: 0;
   }
   to {
@@ -1350,7 +1354,7 @@ footer {
 
 @keyframes animationlogo {
   from {
-    left: -30px;
+    left: 0;
     opacity: 0;
   }
   to {
@@ -5924,11 +5928,13 @@ button.icon-spinner11:before {
 
 .transferModule .walletBalanceModule.from, .transferModule .walletBalanceModule.to {
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .transferModule .walletBalanceModule.from span:nth-child(1), .transferModule .walletBalanceModule.to span:nth-child(1) {
   display: block;
   color: black;
+  margin-right: 5px;
 }
 
 .transferModule .walletBalanceModule.from {
@@ -5959,5 +5965,15 @@ button.icon-spinner11:before {
   left: 0;
   -webkit-transform: translateX(0);
           transform: translateX(0);
+}
+
+.swiper-casino {
+  width: 1560px;
+  margin-top: 30px;
+  border-radius: 15px;
+}
+
+.swiper-casino .swiper-slide img {
+  max-width: 1560px;
 }
 /*# sourceMappingURL=style.css.map */
