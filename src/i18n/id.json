@@ -70,7 +70,7 @@
 	"lbl_ResetPassword": "Permintaan Atur Ulang Kata Sandi",
     "lbl_PasswordTooltip": "6-18 karakter alfanumerik (A-Z, a-z, 0-9) atau karakter khusus @ $ *!% #? &",
     "lbl_ForgetPsw": "Lupa Password", 
-	"lbl_Check18TC1": "Saya setuju dengan ",
+	"lbl_Check18TC1": "Saya setuju dengan",
 	"lbl_TermsConditions": "Persyaratan dan Ketentuan",
 	"lbl_Check18TC2": "dan",
 	"lbl_RuleRegulations": "Peraturan dan Ketetapan Taruhan",

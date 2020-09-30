@@ -657,7 +657,7 @@ export default () => {
 							id="joinTermsCheck"
 							checked={userValue.termsCheck}
 							onChange={checkboxHandler.bind(null, "termsCheck")}>
-							{t("lbl_Check18TC1")}&nbsp;
+							{t("lbl_Check18TC1")}
 							<a
 								target="_blank"
 								rel="noreferrer"
@@ -665,7 +665,7 @@ export default () => {
 								{t("lbl_TermsConditions")}
 							</a>
 							&nbsp;
-							{t("lbl_Check18TC2")}&nbsp;
+							{t("lbl_Check18TC2")}
 							<a
 								target="_blank"
 								rel="noreferrer"
@@ -673,7 +673,8 @@ export default () => {
 								{t("lbl_RuleRegulations")}
 							</a>
 							&nbsp;
-							{t("lbl_Check18TC3")}&nbsp;{config.siteName}.
+							{t("lbl_Check18TC3")}
+							{config.siteName}.
 						</Checkbox>
 
 						<Checkbox
