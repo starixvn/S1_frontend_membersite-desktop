@@ -9,7 +9,8 @@ const statusClassName = {
 	4: "pending",
 	5: "cancel",
 	6: "approved",
-	7: "reject"
+	7: "reject",
+	8: "pending"
 };
 
 export const HistoryResult = props => {

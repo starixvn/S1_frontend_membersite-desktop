@@ -173,7 +173,28 @@ const LoginPanel = () => {
 	return (
 		<div className="loginpop active">
 			<div className="joinloginModule">
-				<img src={loginBanner} />
+				<div className="loginAnimation">
+					<img
+						src={require("../../styles/img/animationLogo.png")}
+						className="animationlogo"
+					/>
+					<img
+						src={require("../../styles/img/loginNpc01.png")}
+						className="npc1"
+					/>
+					<img
+						src={require("../../styles/img/loginNpc02.png")}
+						className="npc2"
+					/>
+					<img
+						src={require("../../styles/img/welcome.png")}
+						className="welcome"
+					/>
+					<img
+						src={require("../../styles/img/back.png")}
+						className="back"
+					/>
+				</div>
 				<form className="joinloginFunction" onSubmit={handleLogin}>
 					<div className="title txt-orange">{t("lbl_Login")}</div>
 					<div className="noAccount">

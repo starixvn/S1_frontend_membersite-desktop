@@ -103,6 +103,12 @@ const AboutUsSection = ({ t, langId }) => (
 			<a href={TandC(langId).ContactUs} target="_blank" rel="noreferrer">
 				{t("lbl_ContactUs")}
 			</a>
+			<a
+				href={`${SiteInfo.affiliateLink}/?lang=${langId}`}
+				target="_blank"
+				rel="noreferrer">
+				{t("lbl_Affiliates")}
+			</a>
 		</div>
 	</div>
 );
