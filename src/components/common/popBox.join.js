@@ -114,7 +114,7 @@ export default () => {
 		} else if (col === "email") {
 			msg = t("lbl_EmailToolTip");
 		} else if (col === "currency") {
-			msg = t("lbl_PreferredCurrencyToolTip");
+			msg = t("lbl_CantChangePreferredCurrency");
 		} else if (col === "phone") {
 			msg = t("lbl_PhoneTooltip");
 		}
@@ -135,9 +135,11 @@ export default () => {
 
 	const EditField = (col, e) => {
 		let val = e.target.value;
-
 		if (col === "username") {
 			val = val.replace(/[\W]/g, "");
+		}
+		if (col === "phone") {
+			val = val.replace(/[^0-9]+/g, "");
 		}
 
 		setUserValue(prev => ({
@@ -185,17 +187,18 @@ export default () => {
 	};
 
 	const usernameCheck = async val => {
-		let checked = true;
+		let checked = false;
 		let msg = "";
 
 		if (val === "") {
 			checked = false;
 			msg = "msg_UsernameReq";
-		} else if (val !== "") {
-			if (val.length < 6 || val.length > 18) {
-				checked = false;
-				msg = "msg_UsernameLength";
-			}
+		} else if (val.length < 6 || val.length > 18) {
+			checked = false;
+			msg = "msg_UsernameLength";
+		} else {
+			checked = true;
+			msg = "lbl_CantChangeUsername";
 		}
 
 		if (checked === true) {
@@ -213,17 +216,47 @@ export default () => {
 		return { checked, msg };
 	};
 
-	const phoneCheck = async val => {
-		let checked = true;
+	const emailCheck = async val => {
+		let checked = false;
 		let msg = "";
-		const regx = /^[0-9\s]*$/;
+		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+
+		if (val === "") {
+			checked = false;
+			msg = "msg_MailWrongFormat";
+		} else if (!regx.test(val)) {
+			checked = false;
+			msg = "msg_MailWrongFormat";
+		} else {
+			checked = true;
+			msg = "lbl_CantChangeEmail";
+		}
+
+		if (checked === true) {
+			const res = await api_site_ExistsEmail({ Email: val });
+			if (isMountedRef.current) {
+				if (res.data.errorCode === 0) {
+					if (res.data.data === true) {
+						checked = false;
+						msg = "msg_MailExisted";
+					}
+				}
+			}
+		}
+
+		return { checked, msg };
+	};
+
+	const phoneCheck = async val => {
+		let checked = false;
+		let msg = "";
 
 		if (val === "") {
 			checked = false;
 			msg = "lbl_PhoneRequired";
-		} else if (!regx.test(val)) {
-			checked = false;
-			msg = "lbl_PhoneTooltip";
+		} else {
+			checked = true;
+			msg = "lbl_CantChangePhone";
 		}
 
 		if (checked) {
@@ -236,36 +269,6 @@ export default () => {
 					if (res.data.data === true) {
 						checked = false;
 						msg = "msg_PhoneExisted";
-					}
-				}
-			}
-		}
-
-		return { checked, msg };
-	};
-
-	const emailCheck = async val => {
-		let checked = true;
-		let msg = "";
-		const regx = /^\w+((-\w+)|(\.\w+))*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
-
-		if (val === "") {
-			checked = false;
-			msg = "msg_MailWrongFormat";
-		} else if (val !== "") {
-			if (!regx.test(val)) {
-				checked = false;
-				msg = "msg_MailWrongFormat";
-			}
-		}
-
-		if (checked === true) {
-			const res = await api_site_ExistsEmail({ Email: val });
-			if (isMountedRef.current) {
-				if (res.data.errorCode === 0) {
-					if (res.data.data === true) {
-						checked = false;
-						msg = "msg_MailExisted";
 					}
 				}
 			}
@@ -570,7 +573,9 @@ export default () => {
 					<div className="inputModule">
 						<Inputbox
 							className={`inputBox-org${
-								tip.username.msg ? " error" : ""
+								!tip.username.checked && tip.username.msg !== ""
+									? " error"
+									: ""
 							}`}
 							icon="icon-member txt-orange"
 							placeholder={t("lbl_Username")}
@@ -584,7 +589,9 @@ export default () => {
 
 						<InputboxPSW
 							className={`inputBox-org${
-								tip.password.msg ? " error" : ""
+								!tip.password.checked && tip.password.msg !== ""
+									? " error"
+									: ""
 							}`}
 							icon="icon-key txt-orange"
 							inputType={`${!showPsw ? "password" : "text"}`}
@@ -601,7 +608,9 @@ export default () => {
 
 						<Inputbox
 							className={`inputBox-org${
-								tip.email.msg ? " error" : ""
+								!tip.email.checked && tip.email.msg !== ""
+									? " error"
+									: ""
 							}`}
 							icon="icon-email txt-orange"
 							placeholder={t("lbl_Email")}
@@ -615,7 +624,7 @@ export default () => {
 
 						<div
 							className={`inputBox-org${
-								tip.currency.msg ? " error" : ""
+								tip.currency.msg !== "" ? " error" : ""
 							}`}
 							tabIndex="0"
 							onBlur={checkValue.bind(null, "currency")}>
@@ -635,13 +644,15 @@ export default () => {
 					</div>
 
 					<div className="tip active">
-						{t("lbl_PreferredCurrencyToolTip")}
+						{t("lbl_CantChangePreferredCurrency")}
 					</div>
 
 					{userValue.currencyIdx !== null ? (
 						<Inputbox
 							className={`inputBox-org${
-								tip.phone.msg ? " error" : ""
+								!tip.phone.checked && tip.phone.msg !== ""
+									? " error"
+									: ""
 							}`}
 							icon="icon-phone txt-orange"
 							areaCode={_areaCode}
@@ -678,7 +689,7 @@ export default () => {
 								{t("lbl_RuleRegulations")}
 							</a>
 							&nbsp;
-							{t("lbl_Check18TC3")}
+							{t("lbl_Check18TC3")} &nbsp;
 							{config.siteName}.
 						</Checkbox>
 
