@@ -690,7 +690,7 @@ export default () => {
 								{t("lbl_RuleRegulations")}
 							</a>
 							&nbsp;
-							{t("lbl_Check18TC3")}
+							{t("lbl_Check18TC3")} &nbsp;
 							{config.siteName}.
 						</Checkbox>
 
