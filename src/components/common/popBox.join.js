@@ -135,9 +135,12 @@ export default () => {
 
 	const EditField = (col, e) => {
 		let val = e.target.value;
-
+		console.log(col);
 		if (col === "username") {
 			val = val.replace(/[\W]/g, "");
+		}
+		if (col === "phone") {
+			val = val.replace(/[^0-9\-.]+/g, "");
 		}
 
 		setUserValue(prev => ({
@@ -248,14 +251,10 @@ export default () => {
 	const phoneCheck = async val => {
 		let checked = false;
 		let msg = "";
-		const regx = /^[0-9\s]*$/;
 
 		if (val === "") {
 			checked = false;
 			msg = "lbl_PhoneRequired";
-		} else if (!regx.test(val)) {
-			checked = false;
-			msg = "lbl_PhoneTooltip";
 		} else {
 			checked = true;
 			msg = "lbl_CantChangePhone";
