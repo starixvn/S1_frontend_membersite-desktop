@@ -182,7 +182,7 @@
 	"lbl_ConfirmDeposit": "Harap konfirmasi informasi setoran.",
 	"lbl_SelectedChannel": "Saluran yang dipilih", 
 	"lbl_Information": "Informasi", 
-	"lbl_DepositAmountReq": "Pilih jumlah setoran", 
+	"lbl_DepositAmountReq": "Harap masukkan jumlah setoran ",  
 	"lbl_NO": "NO.",
 	"lbl_No": "No",
 	"lbl_Yes": "Yes",

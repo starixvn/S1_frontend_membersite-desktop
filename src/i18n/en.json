@@ -182,7 +182,7 @@
 	"lbl_ConfirmDeposit": "Please confirm the deposit information.",
 	"lbl_SelectedChannel": "Selected Channel",
 	"lbl_Information": "Information",
-	"lbl_DepositAmountReq": "Please select the deposit amount",
+	"lbl_DepositAmountReq": "Please enter the deposit amount ",
 	"lbl_NO": "NO.",
 	"lbl_No": "No",
 	"lbl_Yes": "Yes",
