@@ -42,7 +42,6 @@ export default () => {
 	const [defaultOption, setDefaultOption] = useState(
 		t("lbl_PrefferedCurrency")
 	);
-	const { userInfo } = useContext(userInfoContext);
 
 	useEffect(() => {
 		isMountedRef.current = true;
