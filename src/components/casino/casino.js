@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import Nav from "./casino.nav";
 import SearchBox from "./casino.searchBox";
 import GameList from "./casino.gamelist";
-import SwipperBanner from "../common/swipperBanner";
 import { api_site_GetGamelist } from "../../service/api/site";
 import {
 	api_account_SetFavoriteGame,
@@ -303,12 +302,6 @@ export default () => {
 
 	return (
 		<div className="infoModule">
-			<SwipperBanner
-				ImgFolder="Casino"
-				withBtn={false}
-				openInBlank={true}
-			/>
-
 			<div className="inside-title icon icon-ow-casino">
 				<span>{t("lbl_Casino")}</span>
 			</div>

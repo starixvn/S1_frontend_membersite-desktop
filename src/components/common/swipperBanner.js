@@ -68,7 +68,8 @@ const Panel = ({
 	ImgFolder,
 	withBtn,
 	openInBlank,
-	filterHideInHome = false
+	filterHideInHome = false,
+	className = ""
 }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
@@ -155,7 +156,11 @@ const Panel = ({
 		}
 	});
 
-	return withBtn ? <AutoPlayWithBtn Rows={rows} /> : <Autoplay Rows={rows} />;
+	return withBtn ? (
+		<AutoPlayWithBtn Rows={rows} className={className} />
+	) : (
+		<Autoplay Rows={rows} className={className} />
+	);
 };
 
 const defSwipperConfig = {
@@ -173,12 +178,20 @@ const defSwipperConfig = {
 	rebuildOnUpdate: true
 };
 
-const Autoplay = props => {
+const Autoplay = ({ Rows, className }) => {
 	const params = defSwipperConfig;
-	return <Swiper {...params}>{props.Rows}</Swiper>;
+	return Rows && Rows.length > 0 ? (
+		<div className={`swiper-container ${className}`}>
+			<div className="swiper-wrapper">
+				<Swiper {...params}>{Rows}</Swiper>
+			</div>
+		</div>
+	) : (
+		<></>
+	);
 };
 
-const AutoPlayWithBtn = ({ Rows }) => {
+const AutoPlayWithBtn = ({ Rows, className }) => {
 	const params = {
 		...defSwipperConfig,
 		navigation: {
@@ -211,7 +224,7 @@ const AutoPlayWithBtn = ({ Rows }) => {
 
 	return Rows && Rows.length > 0 ? (
 		<>
-			<div className="swiper-container">
+			<div className={`swiper-container ${className}`}>
 				<div className="swiper-wrapper">
 					<Swiper {...params}>{Rows}</Swiper>
 				</div>
