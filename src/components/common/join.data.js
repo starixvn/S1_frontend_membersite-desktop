@@ -3,7 +3,7 @@ export const initValue = {
 	password: "",
 	phone: "",
 	email: "",
-	currency: null,
+	currencyIdx: null,
 	termsCheck: false,
 	ageCheck: false
 };
