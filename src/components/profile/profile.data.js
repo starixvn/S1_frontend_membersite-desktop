@@ -45,11 +45,6 @@ export const InfoList = ({ countryList }) => {
 				Boolean(userInfo.birth_y)
 		},
 		{
-			displayKey: "lbl_Phone",
-			content: userInfo?.phoneNo,
-			show: Boolean(userInfo.phoneNo)
-		},
-		{
 			displayKey: "lbl_Username",
 			content: userInfo.userName,
 			show: Boolean(userInfo.userName)
@@ -60,6 +55,11 @@ export const InfoList = ({ countryList }) => {
 			show: Boolean(userInfo.perCountry),
 			format: CountryFormat,
 			bindingData: countryList
+		},
+		{
+			displayKey: "lbl_Phone",
+			content: userInfo?.phoneNo,
+			show: Boolean(userInfo.phoneNo)
 		},
 		{
 			displayKey: "lbl_Email",

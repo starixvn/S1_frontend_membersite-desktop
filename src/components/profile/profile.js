@@ -25,7 +25,10 @@ export default () => {
 	const [countryList, setCountryList] = useState([]);
 	const infoList = InfoList({ countryList });
 
-	const country = userInfo.country ? userInfo.country : userInfo.perCountry;
+	const country =
+		userInfo.country && userInfo.country !== "null"
+			? userInfo.country
+			: userInfo.perCountry;
 	const _areaCode = country ? areaCode[country].AreaCode : "";
 
 	useEffect(() => {

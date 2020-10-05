@@ -1223,7 +1223,7 @@ footer {
 }
 
 .joinpop .joinloginModule .joinloginFunction, .loginpop .joinloginModule .joinloginFunction {
-  margin-left: 40px;
+  margin-left: 25px;
 }
 
 .joinpop .joinloginModule .joinloginFunction a, .joinpop .joinloginModule .joinloginFunction > div button.txt-orange, .loginpop .joinloginModule .joinloginFunction a, .loginpop .joinloginModule .joinloginFunction > div button.txt-orange {
@@ -1941,6 +1941,7 @@ input[type="file"] {
   font-size: 14px;
   white-space: nowrap;
   margin-right: 10px;
+  font-weight: bold;
 }
 
 #Marquee .mq-btn {
@@ -3716,6 +3717,7 @@ input[type="file"] {
 .addBank .addBankName .addBankInfo .checkbox {
   -webkit-transform: translateY(0);
           transform: translateY(0);
+  margin-right: 9px;
 }
 
 .addBank .addBankName .addBankInfo .checkbox label {
@@ -4932,11 +4934,12 @@ article p {
 }
 
 iframe {
-  min-height: 810px;
   position: absolute;
-  width: 1600px;
   height: calc(100% - 125px);
   margin-left: -20px;
+  width: 100%;
+  max-width: 1560px;
+  width: calc(100% - 45px);
 }
 
 .progressBarModule {

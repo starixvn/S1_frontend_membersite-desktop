@@ -6,7 +6,9 @@ export const api_site_ExistsUserName = ({ UserName }) =>
 export const api_site_ExistsEmail = ({ Email }) =>
 	siteRequest.post(`/ExistsEmail`, { Email: Email });
 
-export const api_site_Register = data => siteRequest.post(`/Register/`, data);
+// export const api_site_Register = data => siteRequest.post(`/Register/`, data);
+export const api_site_Signup = (data, langId) =>
+	siteRequest.post(`/Signup/${langId}`, data);
 
 export const api_site_GetSiteCurrencyList = () =>
 	siteRequest.post(`/GetSiteCurrencyList/`);
@@ -39,3 +41,6 @@ export const api_site_CheckResetPwdTokens = ({ key }) =>
 
 export const api_site_GetCountryList = ({ langId }) =>
 	siteRequest.post(`/GetCountryList/${langId}`);
+
+export const api_site_ExistsPhoneNo = ({ AreaCode, Phone }) =>
+	siteRequest.post(`/ExistsPhoneNo`, { AreaCode, PhoneNo: Phone });

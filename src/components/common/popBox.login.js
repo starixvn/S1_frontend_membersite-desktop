@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { useTranslation } from "react-i18next";
-import loginBanner from "../../styles/img/loginBanner.jpg";
 import Inputbox from "./inputbox";
 import InputboxPSW from "./inputbox.password";
 import { LOGIN } from "../../service/auth";
