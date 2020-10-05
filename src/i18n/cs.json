@@ -185,7 +185,7 @@
 	"lbl_ConfirmDeposit": "请确认充值资讯。",
 	"lbl_SelectedChannel": "所选频道",
 	"lbl_Information": "资讯",
-	"lbl_DepositAmountReq": "请选择存款金额",
+	"lbl_DepositAmountReq": "请输入存款金额 ",
 	"lbl_NO": "NO.",
 	"lbl_No": "No",
 	"lbl_Yes": "Yes",

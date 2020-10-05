@@ -77,7 +77,7 @@ const defGameListDatas = [
 		productInfo: productList.badminton,
 		leftImg: [{ src: NpcBadmintonBG, className: "badminton" }],
 		displayKey: "lbl_badminton",
-		cardClassName: "card_right",
+		cardClassName: "card_left",
 		mainImg: NpcBadminton,
 		icon: "icon icon-badminton"
 	},
@@ -85,7 +85,7 @@ const defGameListDatas = [
 		productInfo: productList.tennis,
 		leftImg: [{ src: NpcTennisBG, className: "tennis" }],
 		displayKey: "lbl_Tennis",
-		cardClassName: "card_left",
+		cardClassName: "card_right",
 		mainImg: NpcTennis,
 		icon: "icon icon-tennis"
 	},
@@ -93,7 +93,7 @@ const defGameListDatas = [
 		productInfo: productList.eSport,
 		leftImg: [{ src: NpcESportBG, className: "esport" }],
 		displayKey: "lbl_eSports",
-		cardClassName: "card_right",
+		cardClassName: "card_left",
 		mainImg: NpcESport,
 		icon: "icon icon-esport"
 	}
