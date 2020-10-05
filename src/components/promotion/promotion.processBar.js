@@ -1,6 +1,7 @@
 import React from "react";
 import { number_format, isConvert } from "../common/common";
 import ReloadSpin from "../common/reloadSpin";
+import { defPromotionType } from "./promotion.def";
 
 export default ({
 	custRollOver,
@@ -9,9 +10,14 @@ export default ({
 	t,
 	currency,
 	refreshProcessBar,
-	hideReloadBtn
+	hideReloadBtn,
+	promotionType
 }) => {
-	if (isJoin) {
+	if (
+		isJoin &&
+		promotionType !== defPromotionType.cashback &&
+		promotionType !== defPromotionType.rebate
+	) {
 		let _isConvert = isConvert(currency);
 		let percentage =
 			custTurnOver > custRollOver

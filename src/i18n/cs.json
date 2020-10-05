@@ -372,5 +372,6 @@
 	"lbl_Copy":"复制",
 	"lbl_OpenOtherSite":" 另开视窗并重导向",
 	"lbl_PicFormatTip":"档案格式错误，请重试。",
-	"lbl_DepositTimeToolTip":" 請提交您的存充值入時間。"
+	"lbl_DepositTimeToolTip":" 請提交您的存充值入時間。",
+	"lbl_PromotionRebateAndCashback":"Rebate / Cashback"
 }
