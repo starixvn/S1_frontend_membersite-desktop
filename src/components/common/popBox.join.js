@@ -135,12 +135,11 @@ export default () => {
 
 	const EditField = (col, e) => {
 		let val = e.target.value;
-		console.log(col);
 		if (col === "username") {
 			val = val.replace(/[\W]/g, "");
 		}
 		if (col === "phone") {
-			val = val.replace(/[^0-9\-.]+/g, "");
+			val = val.replace(/[^0-9]+/g, "");
 		}
 
 		setUserValue(prev => ({
