@@ -98,17 +98,6 @@ export default () => {
 		);
 	}, []);
 
-	let _currencyId = siteCurrency[userValue.currency]?.id;
-
-	let currencyToCountryCode = _currencyId
-		? currencyToAreacode[_currencyId]
-		: null;
-
-	const _areaCode =
-		currencyToCountryCode !== null
-			? areaCode[currencyToCountryCode]?.AreaCode
-			: null;
-
 	const ClosePopBox = () => {
 		setPopBox({ isOpen: false });
 	};
@@ -286,6 +275,17 @@ export default () => {
 		return { checked, msg };
 	};
 
+	let _currencyId = siteCurrency[userValue.currencyIdx]?.id;
+
+	let currencyToCountryCode = _currencyId
+		? currencyToAreacode[_currencyId]
+		: null;
+
+	const _areaCode =
+		currencyToCountryCode !== null
+			? areaCode[currencyToCountryCode]?.AreaCode
+			: null;
+
 	const currencyCheck = () => {
 		let checked = true;
 		let msg = "";
@@ -300,7 +300,7 @@ export default () => {
 		setDefaultOption(null);
 
 		setUserValue(prev => {
-			return { ...prev, currency: i };
+			return { ...prev, currencyIdx: i };
 		});
 	};
 
@@ -387,7 +387,7 @@ export default () => {
 				Userpwd: userValue.password,
 				Email: userValue.email,
 				PhoneNo: userValue.phone,
-				CurrencyId: siteCurrency[userValue.currency].id,
+				CurrencyId: _currencyId,
 				UserLang: defaultLangId,
 				AreaCode: _areaCode
 			};
@@ -625,7 +625,7 @@ export default () => {
 								mainKey="join_currency"
 								icon="icon-coin-dollar txt-orange"
 								options={siteCurrency}
-								selectedIdx={userValue.currency}
+								selectedIdx={userValue.currencyIdx}
 								i18n={t}
 								onSelectItem={onSelectItem}
 							/>
@@ -639,7 +639,7 @@ export default () => {
 						{t("lbl_PreferredCurrencyToolTip")}
 					</div>
 
-					{userValue.currency !== null ? (
+					{userValue.currencyIdx !== null ? (
 						<Inputbox
 							className={`inputBox-org${
 								tip.phone.msg ? " error" : ""
