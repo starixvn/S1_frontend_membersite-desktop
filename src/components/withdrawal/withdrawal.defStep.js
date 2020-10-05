@@ -8,7 +8,7 @@ export default [
 		displayKey: "lbl_EnterAmount"
 	},
 	{
-		title: "03",
+		title: "OK",
 		displayKey: "lbl_Confirm"
 	}
 ];
