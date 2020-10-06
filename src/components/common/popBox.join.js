@@ -135,7 +135,6 @@ export default () => {
 
 	const EditField = (col, e) => {
 		let val = e.target.value;
-		console.log(col);
 		if (col === "username") {
 			val = val.replace(/[\W]/g, "");
 		}

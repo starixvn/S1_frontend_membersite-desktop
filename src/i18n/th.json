@@ -185,7 +185,7 @@
 	"lbl_ConfirmDeposit": "กรุณายืนยันข้อมูลการฝากเงิน",
 	"lbl_SelectedChannel": "เลือกช่องทางการชำระเงิน",
 	"lbl_Information": "ข้อมูล",
-	"lbl_DepositAmountReq": "กรุณาเลือกจำนวนเงินฝาก",
+	"lbl_DepositAmountReq": "กรุณากรอกจำนวนเงินฝาก ",
 	"lbl_NO": "NO.",
 	"lbl_No": "ไม่",
 	"lbl_Yes": "ใช่",
