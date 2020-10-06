@@ -158,7 +158,7 @@ export default () => {
 			break;
 
 		case defPopBoxType.VerifyPhoneForm:
-			content = <VerifyPhoneForm request_id={popBox.request_id} />;
+			content = <VerifyPhoneForm startUnixTime={popBox.startUnixTime} />;
 			break;
 
 		case defPopBoxType.UpdateProfile:

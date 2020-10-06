@@ -81,7 +81,17 @@ export const InfoList = ({ countryList }) => {
 	return infoList;
 };
 
-export const DisplayRow = ({ t, displayKey, content, areaCode }) => {
+export const DisplayRow = ({
+	t,
+	displayKey,
+	content,
+	areaCode,
+	mobileVerificationLoading,
+	sendOTPSMS
+}) => {
+	const {
+		userInfo: { phoneVerified }
+	} = useContext(userInfoContext);
 	return (
 		<div>
 			<div>{t(displayKey)}</div>
@@ -89,18 +99,21 @@ export const DisplayRow = ({ t, displayKey, content, areaCode }) => {
 				{displayKey === "lbl_Phone"
 					? `(${areaCode})${content}`
 					: content}
-				{/* {displayKey === "lbl_Phone" ? (
-					<>
+
+				{displayKey === "lbl_Phone" ? (
+					mobileVerificationLoading ? (
+						<div className="otpLoading">
+							<i className="icon icon-spinner11"></i>
+						</div>
+					) : phoneVerified ? (
 						<span className="icon icon-checkmark"></span>
-						<br />
-						<button>
+					) : (
+						<button onClick={sendOTPSMS}>
 							<span className="icon icon-error otp"></span>
 							<span>{t("lbl_MobileVerifiy")}</span>
 						</button>
-					</>
-				) : (
-					<></>
-				)} */}
+					)
+				) : null}
 			</div>
 		</div>
 	);
