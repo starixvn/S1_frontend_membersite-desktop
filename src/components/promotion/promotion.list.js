@@ -69,6 +69,7 @@ const PromoRule = ({
 	periodTo,
 	custExpiryTime,
 	rollOver,
+	requiredAmount,
 	t
 }) => {
 	let expiryTime = moment.duration(
@@ -97,10 +98,14 @@ const PromoRule = ({
 					{t("lbl_RemainingTime")}
 				</div>
 				<div className="icon icon-icon32px_">{t("lbl_RollOver")}</div>
+				<div className="icon icon-coin-dollar">
+					{t("lbl_RequiredAmount")}
+				</div>
 			</div>
 			<div className="txt-orange">
 				<div>{displayExpiryTime}</div>
 				<div>{rollOver}X</div>
+				<div>{requiredAmount}$</div>
 			</div>
 		</div>
 	);

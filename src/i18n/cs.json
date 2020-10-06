@@ -289,6 +289,7 @@
 	"lbl_All": "全部",
 	"lbl_RemainingTime": "剩余时间",
 	"lbl_RollOver": "您的优惠回馈流水未达最低金额",
+	"lbl_RequiredAmount":"RequiredAmount",
 	"lbl_TurnoverAccumulated": "累计流水",
 	"lbl_Req": "条件",
 	"lbl_Expired": "已过期",
