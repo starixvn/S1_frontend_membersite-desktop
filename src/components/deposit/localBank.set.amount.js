@@ -90,6 +90,7 @@ export default ({ bankInfo, _isConvert, amount, dispatch, checked, tip }) => {
 							tip={tip}
 							_isConvert={_isConvert}
 							isAmount={true}
+							placeholder={t("lbl_DepositAmountReq")}
 						/>
 					</div>
 					<div className="btnGroup">
