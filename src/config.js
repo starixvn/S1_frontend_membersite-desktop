@@ -1,7 +1,7 @@
 const siteName = "Nova88";
 
 export const SiteInfo = {
-	affiliateLink: "https://aff.nova88.net",
+	affiliateLink: `https://aff.${window.location.hostname}`,
 	langCookie: "nova88LangId",
 	socialMedia: {
 		fb: {
@@ -30,17 +30,13 @@ export default process.env.NODE_ENV === "production"
 	: {
 			siteName,
 			appURL: "http://localhost:8000",
+
 			// apiURL: "http://localhost:60930",
 			// imgUrl: "http://localhost:60930",
-			// t_and_cURL: "http://localhost:60930",
+			// t_and_cURL: "http://localhost:60930"
 
-			apiURL: "http://52.77.157.115:5068",
-			imgUrl: "http://52.77.157.115:5068",
-			t_and_cURL: "http://52.77.157.115:5068",
-			openURL: "http://52.77.157.115:5068"
-
-			// apiURL: "http://www.n88dev.com",
-			// imgUrl: "http://www.n88dev.com",
-			// t_and_cURL: "http://www.n88dev.com",
-			// openURL: "http://www.n88dev.com"
+			apiURL: "http://www.n88dev.com",
+			imgUrl: "http://www.n88dev.com",
+			t_and_cURL: "http://www.n88dev.com",
+			openURL: "http://www.n88dev.com"
 	  };
