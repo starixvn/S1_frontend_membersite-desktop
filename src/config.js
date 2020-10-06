@@ -1,10 +1,18 @@
 const siteName = "Nova88";
 
+const getAffiliate = () => {
+	if (typeof window === `undefined`) return "";
+
+	let fullPath = window.location.hostname;
+	let arr = fullPath.split(".");
+
+	return arr.length === 3
+		? `https://aff.${arr.filter((p, idx) => idx !== 0).join(".")}`
+		: `https://aff.${arr.join(".")}`;
+};
+
 export const SiteInfo = {
-	affiliateLink:
-		typeof window !== `undefined`
-			? `https://aff.${window?.location.hostname}`
-			: "",
+	affiliateLink: getAffiliate(),
 	langCookie: "nova88LangId",
 	socialMedia: {
 		fb: {
