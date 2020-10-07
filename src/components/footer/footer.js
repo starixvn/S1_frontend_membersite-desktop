@@ -95,6 +95,13 @@ const AboutUsSection = ({ t, langId }) => (
 	<div>
 		<span className="title">Nova88</span>
 		<div>
+			<a
+				style={{ fontWeight: "bold" }}
+				href={`${SiteInfo.affiliateLink}/?lang=${langId}`}
+				target="_blank"
+				rel="noreferrer">
+				{t("lbl_Affiliates")}
+			</a>
 			<a href={TandC(langId).AboutUs} target="_blank" rel="noreferrer">
 				{t("lbl_AboutUs")}
 			</a>
@@ -103,12 +110,6 @@ const AboutUsSection = ({ t, langId }) => (
 			</a>
 			<a href={TandC(langId).ContactUs} target="_blank" rel="noreferrer">
 				{t("lbl_ContactUs")}
-			</a>
-			<a
-				href={`${SiteInfo.affiliateLink}/?lang=${langId}`}
-				target="_blank"
-				rel="noreferrer">
-				{t("lbl_Affiliates")}
 			</a>
 		</div>
 	</div>
