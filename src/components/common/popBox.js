@@ -21,6 +21,7 @@ import VerifyPhoneForm from "./popBox.verifyPhoneForm";
 import UpdateProfile from "./popBox.updateProfile";
 import TurnoverAccumulated from "./popBox.turnoverAccumulated";
 import RegisterSuccess from "./popBox.registerSuccess";
+import PromotionDepositConfirm from "./popBox.promotionDepositConfirm";
 
 export const defPopBoxType = {
 	Cancel: "Cancel",
@@ -42,7 +43,8 @@ export const defPopBoxType = {
 	WithdrawalSuccess: "WithdrawalSuccess",
 	UpdateProfile: "UpdateProfile",
 	TurnoverAccumulated: "TurnoverAccumulated",
-	RegisterSuccess: "RegisterSuccess"
+	RegisterSuccess: "RegisterSuccess",
+	PromotionDepositConfirm: "PromotionDepositConfirm"
 };
 
 export default () => {
@@ -179,6 +181,14 @@ export default () => {
 				<RegisterSuccess
 					btnBar={popBox.btnBar}
 					closeBtn={popBox.closeBtn}
+				/>
+			);
+			break;
+		case defPopBoxType.PromotionDepositConfirm:
+			content = (
+				<PromotionDepositConfirm
+					hint={popBox.hint}
+					btnBar={popBox.btnBar}
 				/>
 			);
 			break;
