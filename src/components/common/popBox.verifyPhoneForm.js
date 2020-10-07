@@ -204,11 +204,11 @@ export default ({ startUnixTime }) => {
 				{retransmitCountDownSecond > 0 ? (
 					<>
 						<div className="txt-blue2">
-							{secondsToTime(retransmitCountDownSecond)}
+							( {secondsToTime(retransmitCountDownSecond)} )
 						</div>
-						<div className="txt-blue2">
-							Re-send in five minutes.
-						</div>
+						{/* <div className="txt-blue2">
+							{t("lbl_ResendAfter5Mins")}
+						</div> */}
 					</>
 				) : (
 					<>

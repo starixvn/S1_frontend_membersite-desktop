@@ -110,7 +110,7 @@ export const DisplayRow = ({
 					) : (
 						<button onClick={sendOTPSMS}>
 							<span className="icon icon-error otp"></span>
-							<span>{t("lbl_MobileVerifiy")}</span>
+							<span>{t("lbl_MobileVerify")}</span>
 						</button>
 					)
 				) : null}
