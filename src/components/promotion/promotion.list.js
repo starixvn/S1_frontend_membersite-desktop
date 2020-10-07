@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { userInfoContext } from "../common/context";
 import moment from "moment";
 import { Link } from "@reach/router";
 import path from "../../path";
@@ -6,6 +7,7 @@ import ProcessBar from "./promotion.processBar";
 import { defFilterType } from "./promotion.nav";
 import { promoStatus } from "./promotion.def";
 import { isNew, isClaimed, isExpiry } from "./promotion.common";
+import { isConvert, number_format } from "../common/common";
 
 export default ({
 	promoList,
@@ -35,7 +37,7 @@ export default ({
 				<div className="txt-darkBlue">{p.title}</div>
 				<div className="txt-dark">{t("lbl_PromotionsDesc")}</div>
 				<div className="txt-gray">{p.description}</div>
-				<PromoRule t={t} {...p} />
+				<Rollover t={t} {...p} />
 				<ProcessBar
 					{...p}
 					t={t}
@@ -63,19 +65,21 @@ export default ({
 	);
 };
 
-const PromoRule = ({
+const Rollover = ({
 	isJoin,
 	status,
 	periodTo,
 	custExpiryTime,
 	rollOver,
+	requiredAmount,
 	t
 }) => {
+	const { userInfo } = useContext(userInfoContext);
 	let expiryTime = moment.duration(
 		moment
 			.unix(
 				isJoin && status === promoStatus.running && custExpiryTime
-					? custExpiryTime
+					? moment(custExpiryTime).unix()
 					: periodTo
 			)
 			.diff(new Date())
@@ -93,12 +97,25 @@ const PromoRule = ({
 	return (
 		<div className="rollover">
 			<div>
+				{requiredAmount > 0 ? (
+					<div className="icon icon-icon32px_money">
+						{t("lbl_MinAmount")}
+					</div>
+				) : null}
 				<div className="icon icon-icon32px_time">
 					{t("lbl_RemainingTime")}
 				</div>
 				<div className="icon icon-icon32px_">{t("lbl_RollOver")}</div>
 			</div>
 			<div className="txt-orange">
+				{requiredAmount ? (
+					<div>
+						{number_format(
+							requiredAmount,
+							isConvert(userInfo.currencyId)
+						)}
+					</div>
+				) : null}
 				<div>{displayExpiryTime}</div>
 				<div>{rollOver}X</div>
 			</div>
