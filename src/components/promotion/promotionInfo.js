@@ -87,14 +87,14 @@ export default () => {
 			});
 		}
 
-		if (canJoin && !isJoin && result === 1) {
+		if (canJoin && !isJoin && result && requiredAmount > 0) {
 			let lessAmount = number_format(
 				requiredAmount - depositAmount,
 				isConvert(userInfo.currencyId)
 			);
 
 			let hint = `${_currency} ${lessAmount}$`;
-			setPopBox({
+			return setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.PromotionDepositConfirm,
 				hint,
@@ -185,7 +185,7 @@ export default () => {
 		_isClaimed = isClaimed(promotionInfo);
 		_isExpiry = isExpiry({
 			...promotionInfo,
-			isLogin: userInfoContext.isLogin
+			isLogin: userInfo.isLogin
 		});
 	}
 
