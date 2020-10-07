@@ -375,5 +375,6 @@
 	"lbl_Copy":"Copy",
 	"lbl_OpenOtherSite":"Open another window and redirect",
 	"lbl_PicFormatTip":"File format error, please try again.",
-	"lbl_DepositTimeToolTip":" Please submit your deposit time."
+	"lbl_DepositTimeToolTip":" Please submit your deposit time.",
+	"lbl_PromotionRebateAndCashback":"Rebate / Cashback"
 }
