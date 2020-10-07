@@ -87,7 +87,7 @@ export default () => {
 			});
 		}
 
-		if (canJoin && !isJoin && result && requiredAmount > 0) {
+		if (canJoin && !isJoin && result === 1 && requiredAmount > 0) {
 			let lessAmount = number_format(
 				requiredAmount - depositAmount,
 				isConvert(userInfo.currencyId)
