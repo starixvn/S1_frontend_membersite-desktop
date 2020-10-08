@@ -88,7 +88,7 @@ export default () => {
 				popBoxType: defPopBoxType.Login
 			});
 
-		if (currencyId && (!accountName || !phoneNo || email))
+		if (currencyId && (!accountName || !phoneNo || !email))
 			return setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.UpdateProfile,
