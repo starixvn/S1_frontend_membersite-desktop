@@ -14,9 +14,9 @@ export default ({
 	promotionType
 }) => {
 	if (
-		isJoin &&
-		promotionType !== defPromotionType.cashback &&
-		promotionType !== defPromotionType.rebate
+		isJoin
+		// promotionType !== defPromotionType.cashback &&
+		// promotionType !== defPromotionType.rebate
 	) {
 		let _isConvert = isConvert(currency);
 		let percentage =

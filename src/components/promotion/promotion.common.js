@@ -16,9 +16,9 @@ export const isExpiry = ({
 	let bonusExpiry = false;
 	if (
 		isLogin &&
-		isJoin &&
-		promotionType !== defPromotionType.rebate &&
-		promotionType !== defPromotionType.cashback
+		isJoin
+		// promotionType !== defPromotionType.rebate &&
+		// promotionType !== defPromotionType.cashback
 	) {
 		bonusExpiry =
 			moment(moment.unix(custExpiryTime)).isBefore(new moment()) ||
