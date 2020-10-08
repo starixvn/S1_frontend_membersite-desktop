@@ -188,15 +188,17 @@ export default ({ startUnixTime }) => {
 				{verifyPhoneError}
 			</div>
 			<div className="btnGroup">
-				<button className="btn-cancel" onClick={clickClose}>
-					{t("lbl_Close")}
-				</button>
 				{verifyPhoneloading ? (
 					<MobileVerificationLoading />
 				) : (
-					<button onClick={verifyOTP} className="btn-check">
-						{t("lbl_Submit")}
-					</button>
+					<>
+						<button className="btn-cancel" onClick={clickClose}>
+							{t("lbl_Close")}
+						</button>
+						<button onClick={verifyOTP} className="btn-check">
+							{t("lbl_Submit")}
+						</button>
+					</>
 				)}
 			</div>
 
