@@ -7,12 +7,12 @@ export default ({
 	custTurnOver,
 	isJoin,
 	t,
-	currency,
+	currencyId,
 	refreshProcessBar,
 	hideReloadBtn
 }) => {
 	if (isJoin) {
-		let _isConvert = isConvert(currency);
+		let _isConvert = isConvert(currencyId);
 		let percentage =
 			custTurnOver > custRollOver
 				? 100
@@ -23,10 +23,10 @@ export default ({
 				<div className="bounsName">{t("lbl_TurnoverAccumulated")}</div>
 				<div className="turnover">
 					<span>
-						{t(`Currency_${currency}`)}{" "}
+						{t(`Currency_${currencyId}`)}{" "}
 						{number_format(custTurnOver, _isConvert)}
 					</span>{" "}
-					({t("lbl_Req")} {t(`Currency_${currency}`)}{" "}
+					({t("lbl_Req")} {t(`Currency_${currencyId}`)}{" "}
 					{number_format(custRollOver, _isConvert)})
 					{hideReloadBtn ? null : (
 						<ReloadSpin func={refreshProcessBar} />

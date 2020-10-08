@@ -14,7 +14,7 @@ export default ({
 	t,
 	langId,
 	isLogin,
-	currency,
+	currencyId,
 	filter,
 	refreshProcessBar,
 	staticPromotions
@@ -41,7 +41,7 @@ export default ({
 				<ProcessBar
 					{...p}
 					t={t}
-					currency={currency}
+					currencyId={currencyId}
 					refreshProcessBar={() => refreshProcessBar(p)}
 					hideReloadBtn={isExpiry({ ...p, isLogin })}
 				/>

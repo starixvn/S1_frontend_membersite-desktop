@@ -80,17 +80,39 @@ export default () => {
 			depositAmount
 		} = promotionInfo;
 
-		if (userInfo.isLogin === false) {
+		const { isLogin, currencyId, accountName, phoneNo, email } = userInfo;
+
+		if (isLogin === false)
 			return setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.Login
 			});
-		}
+
+		if (currencyId && (!accountName || !phoneNo || email))
+			return setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.UpdateProfile,
+				title: t("lbl_ImportantNote"),
+				content: t("lbl_UpdatePersonalInfoPromotion"),
+				btnBar: (
+					<div className="btnGroup">
+						<Link
+							className="btn-check"
+							to={`/${userInfo.langId}/${
+								path.profile.root
+							}?from=${
+								path.promotion.root
+							}?BonusCode=${getUrlParameter("BonusCode")}`}>
+							{t("lbl_UpdatePersonalDetail")}
+						</Link>
+					</div>
+				)
+			});
 
 		if (canJoin && !isJoin && result === 1 && requiredAmount > 0) {
 			let lessAmount = number_format(
 				requiredAmount - depositAmount,
-				isConvert(userInfo.currencyId)
+				isConvert(currencyId)
 			);
 
 			let hint = `${_currency} ${lessAmount}$`;
@@ -248,7 +270,7 @@ export default () => {
 							...promotionInfo,
 							isLogin: userInfo.isLogin
 						})}
-						currency={userInfo.currencyId}
+						currencyId={userInfo.currencyId}
 					/>
 					<Rollover promotionInfo={promotionInfo} t={t} />
 					<div
