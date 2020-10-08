@@ -7,7 +7,7 @@
 	"msg_PasswordVaildate": "6-18 ตัวอักษรและตัวเลข(A-Z, a-z, 0-9) หรือตัวอักษรพิเศษ @$*!%#?&",
 	"msg_MailWrongFormat": "รูปแบบอีเมล์ไม่ถูกต้อง",
 	"msg_MailExisted": "ชื่ออีเมล์นี้มีผู้ใช้แล้ว",
-	"msg_ApiServerError": "API เซริฟเวอร์ขัดข้อง",
+	"msg_ApiServerError": "อุ๊ปส์! มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง",
 	"msg_API_SendOTPSMS_5002": "Entered the wrong phone number.",
 	"msg_NoData": "ไม่มีข้อมูล",
 	"msg_NeedAccountNo": "ต้องใส่หมายเลขบัญชี",

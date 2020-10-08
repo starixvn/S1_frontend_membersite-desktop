@@ -7,7 +7,7 @@
 	"msg_PasswordVaildate": "6到18个数字、英文字母大小写或特殊符号(@$*!%#?&)",
 	"msg_MailWrongFormat": "电子邮箱格式错误",
 	"msg_MailExisted": "此电子邮件地址已有人使用。",
-	"msg_ApiServerError": "API 数据库错误",
+	"msg_ApiServerError": "糟糕！出现错误，请再尝试。",
 	"msg_API_SendOTPSMS_5002": "Entered the wrong phone number.",
 	"msg_NoData": "无资料",
 	"msg_NeedAccountNo": "需要账户号码",
