@@ -71,16 +71,24 @@ export default () => {
 		);
 	};
 
-	const onJoinPromotion = (langId, bonusCode) => {
+	const onJoinPromotion = () => {
 		const {
 			canJoin,
 			isJoin,
 			result,
 			requiredAmount,
-			depositAmount
+			depositAmount,
+			bonusCode
 		} = promotionInfo;
 
-		const { isLogin, currencyId, accountName, phoneNo, email } = userInfo;
+		const {
+			isLogin,
+			currencyId,
+			accountName,
+			phoneNo,
+			email,
+			langId
+		} = userInfo;
 
 		if (isLogin === false)
 			return setPopBox({
@@ -239,12 +247,7 @@ export default () => {
 							<div className="btnGroup">
 								<button
 									className="btn-check"
-									onClick={() =>
-										onJoinPromotion(
-											userInfo.langId,
-											promotionInfo.bonusCode
-										)
-									}>
+									onClick={onJoinPromotion}>
 									{t("lbl_PromoJoinNow")}
 								</button>
 							</div>
