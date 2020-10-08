@@ -272,7 +272,11 @@ export default () => {
 						})}
 						currencyId={userInfo.currencyId}
 					/>
-					<Rollover promotionInfo={promotionInfo} t={t} />
+					<Rollover
+						promotionInfo={promotionInfo}
+						t={t}
+						currencyId={userInfo.currencyId}
+					/>
 					<div
 						className="proDataBody"
 						dangerouslySetInnerHTML={{
@@ -291,7 +295,8 @@ const Rollover = ({ promotionInfo, t }) => {
 		custExpiryTime,
 		periodTo,
 		requiredAmount,
-		rollOver
+		rollOver,
+		currencyId
 	} = promotionInfo;
 
 	let expiryTime = moment.duration(
@@ -328,7 +333,11 @@ const Rollover = ({ promotionInfo, t }) => {
 			</div>
 
 			<div className="txt-orange">
-				{requiredAmount > 0 ? <div>{requiredAmount}</div> : null}
+				{requiredAmount > 0 ? (
+					<div>
+						{number_format(requiredAmount, isConvert(currencyId))}
+					</div>
+				) : null}
 				<div>{displayExpiryTime}</div>
 				<div>{rollOver}X</div>
 			</div>
