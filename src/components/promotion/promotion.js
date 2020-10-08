@@ -11,6 +11,7 @@ import { isExpiry, isArrayNotEmpty } from "./promotion.common";
 import { getUrlParameter } from "../common/common";
 import path from "../../path";
 import StaticPromotionList from "../../datas/promotionList";
+import { defPromotionType } from "./promotion.def";
 
 export default () => {
 	const { t } = useTranslation();
@@ -62,7 +63,15 @@ export default () => {
 			//put 'bonus wallet' type into first deposit category as short term solution.
 			afterFilterList = _promoList.filter(
 				p =>
-					(p.promotionType === type || p.promotionType === 5) &&
+					(p.promotionType === type ||
+						p.promotionType === defPromotionType.walletBonus) &&
+					!isExpiry({ ...p, isLogin: userInfo.isLogin })
+			);
+		} else if (type === defFilterType.Rebate_and_cashback) {
+			afterFilterList = _promoList.filter(
+				p =>
+					(p.promotionType === defPromotionType.rebate ||
+						p.promotionType === defPromotionType.cashback) &&
 					!isExpiry({ ...p, isLogin: userInfo.isLogin })
 			);
 		} else {
