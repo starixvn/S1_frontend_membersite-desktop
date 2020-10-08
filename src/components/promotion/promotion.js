@@ -152,31 +152,6 @@ export default () => {
 	}, [userInfo.isLogin, userInfo.langId]);
 
 	useEffect(() => {
-		const { isLogin, accountName, phoneNo, email, currency } = userInfo;
-		if (isLogin && currency && (!accountName || !phoneNo || !email)) {
-			setPopBox({
-				isOpen: true,
-				popBoxType: defPopBoxType.UpdateProfile,
-				title: t("lbl_ImportantNote"),
-				content: t("lbl_UpdatePersonalInfoPromotion"),
-				btnBar: (
-					<div className="btnGroup">
-						<Link
-							className="btn-check"
-							to={`/${userInfo.langId}/${
-								path.profile.root
-							}?from=${
-								path.promotion.root
-							}?BonusCode=${getUrlParameter("BonusCode")}`}>
-							{t("lbl_UpdatePersonalDetail")}
-						</Link>
-					</div>
-				)
-			});
-		}
-	}, [userInfo]);
-
-	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
@@ -248,7 +223,7 @@ export default () => {
 						t={t}
 						langId={userInfo.langId}
 						isLogin={userInfo.isLogin}
-						currency={userInfo.currencyId}
+						currencyId={userInfo.currencyId}
 						filter={filter}
 						refreshProcessBar={refreshProcessBar}
 						staticPromotions={_staticRows}
