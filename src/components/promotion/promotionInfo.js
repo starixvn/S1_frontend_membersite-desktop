@@ -87,14 +87,14 @@ export default () => {
 			});
 		}
 
-		if (canJoin && !isJoin && result === 1) {
+		if (canJoin && !isJoin && result === 1 && requiredAmount > 0) {
 			let lessAmount = number_format(
 				requiredAmount - depositAmount,
 				isConvert(userInfo.currencyId)
 			);
 
 			let hint = `${_currency} ${lessAmount}$`;
-			setPopBox({
+			return setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.PromotionDepositConfirm,
 				hint,
@@ -185,7 +185,7 @@ export default () => {
 		_isClaimed = isClaimed(promotionInfo);
 		_isExpiry = isExpiry({
 			...promotionInfo,
-			isLogin: userInfoContext.isLogin
+			isLogin: userInfo.isLogin
 		});
 	}
 
@@ -238,7 +238,6 @@ export default () => {
 						promotionInfo={promotionInfo}
 						t={t}
 					/>
-					<Rollover promotionInfo={promotionInfo} t={t} />
 					<ProcessBar
 						t={t}
 						{...promotionInfo}
@@ -249,7 +248,9 @@ export default () => {
 							...promotionInfo,
 							isLogin: userInfo.isLogin
 						})}
+						currency={userInfo.currencyId}
 					/>
+					<Rollover promotionInfo={promotionInfo} t={t} />
 					<div
 						className="proDataBody"
 						dangerouslySetInnerHTML={{
@@ -275,7 +276,7 @@ const Rollover = ({ promotionInfo, t }) => {
 		moment
 			.unix(
 				isJoin && status === promoStatus.running && custExpiryTime
-					? custExpiryTime
+					? moment(custExpiryTime).unix()
 					: periodTo
 			)
 			.diff(new Date())
@@ -305,7 +306,7 @@ const Rollover = ({ promotionInfo, t }) => {
 			</div>
 
 			<div className="txt-orange">
-				{requiredAmount > 0 ? <div>{requiredAmount}$</div> : null}
+				{requiredAmount > 0 ? <div>{requiredAmount}</div> : null}
 				<div>{displayExpiryTime}</div>
 				<div>{rollOver}X</div>
 			</div>
@@ -328,7 +329,7 @@ const DepositMenu = ({
 		return (
 			<div className="minAmount">
 				<div>
-					<div>ID</div>
+					<div>{t("lbl_ID")}</div>
 					<div>{depositId}</div>
 				</div>
 				<div>

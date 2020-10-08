@@ -10,8 +10,11 @@ export const getUrlParameter = name => {
 };
 
 export const number_format = (n, IsConvertRequired = false) => {
-	if (!isNaN(n) && IsConvertRequired) {
-		n /= 1000;
+	if (!isNaN(n)) {
+		if (IsConvertRequired) {
+			n /= 1000;
+		}
+		n = Number(n).toFixed(2);
 	}
 
 	n += "";

@@ -7,7 +7,7 @@ export default ({ hint, btnBar }) => {
 	return (
 		<div className="editSuccess active">
 			<div className="icon icon-icon32px_notification"></div>
-			<div className="title">Important Note</div>
+			<div className="title">{t("lbl_ImportantNote")}</div>
 			<div className="txt-lightgray">
 				{t("lbl_RequireMinAmountHint_Front")}{" "}
 				<span className="txt-orange">{hint}</span>

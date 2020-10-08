@@ -79,7 +79,7 @@ const Rollover = ({
 		moment
 			.unix(
 				isJoin && status === promoStatus.running && custExpiryTime
-					? custExpiryTime
+					? moment(custExpiryTime).unix()
 					: periodTo
 			)
 			.diff(new Date())
@@ -114,7 +114,6 @@ const Rollover = ({
 							requiredAmount,
 							isConvert(userInfo.currencyId)
 						)}
-						$
 					</div>
 				) : null}
 				<div>{displayExpiryTime}</div>
