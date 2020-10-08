@@ -33,7 +33,7 @@ export default ({ listClassName, subItems, menuKey, mainUrl }) => {
 			s =>
 				userInfo.isLogin !== true ||
 				!s.allowCurrency ||
-				s.allowCurrency.includes(userInfo.currencyId)
+				s.allowCurrency.includes(userInfo.currency)
 		)
 		.map(s => {
 			let displayText = s.displayText ? s.displayText : t(s.displayKey);
