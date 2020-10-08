@@ -5,7 +5,10 @@ import { InfoList, initValue, initStatus, DisplayRow } from "./profile.data";
 import areaCode from "../../datas/areaCode";
 import moment from "moment";
 import { api_account_ExistsPhone } from "../../service/api/account";
-import { api_accountStrict_SetProfile } from "../../service/api/accountStrict";
+import {
+	api_accountStrict_SetProfile,
+	api_accountStrict_SendOTPSMS
+} from "../../service/api/accountStrict";
 import { defPopBoxType } from "../common/popBox";
 import EditModule from "./profile.edit";
 import { getUrlParameter } from "../common/common";
@@ -24,7 +27,9 @@ export default () => {
 	const isMountedRef = useRef(null);
 	const [countryList, setCountryList] = useState([]);
 	const infoList = InfoList({ countryList });
-
+	const [mobileVerificationLoading, setMobileVerificationLoading] = useState(
+		false
+	);
 	const country =
 		userInfo.country && userInfo.country !== "null"
 			? userInfo.country
@@ -61,6 +66,26 @@ export default () => {
 
 	const closePopBox = () => {
 		setPopBox({ isOpen: false });
+	};
+
+	const openErrorMessagePopBox = (
+		message = t("msg_ApiServerError"),
+		errorCode = null
+	) => {
+		setPopBox({
+			message,
+			errorCode,
+			isOpen: true,
+			popBoxType: defPopBoxType.ErrorMsg,
+			icon: "icon-bell",
+			btnBar: (
+				<div className="btnGroup">
+					<button className="btn-cancel" onClick={closePopBox}>
+						{t("lbl_Close")}
+					</button>
+				</div>
+			)
+		});
 	};
 
 	const clickInfo = col => {
@@ -365,8 +390,57 @@ export default () => {
 		}
 	};
 
+	const sendOTPSMS = () => {
+		setMobileVerificationLoading(true);
+
+		api_accountStrict_SendOTPSMS().then(
+			res => {
+				if (isMountedRef.current) {
+					const {
+						data: {
+							data: { startUnixTime },
+							errorCode,
+							message
+						}
+					} = res;
+					const success = errorCode === 0;
+					const alreadyVerifiedPhone = errorCode === 5001;
+
+					if (alreadyVerifiedPhone) {
+						setUserInfo(prev => ({
+							...prev,
+							phoneVerified: true
+						}));
+						closePopBox();
+					} else if (success) {
+						setPopBox({
+							isOpen: true,
+							startUnixTime,
+							popBoxType: defPopBoxType.VerifyPhoneForm
+						});
+					} else {
+						openErrorMessagePopBox(
+							errorCode === 5002
+								? t(`msg_API_SendOTPSMS_${errorCode}`)
+								: message || "error",
+							errorCode
+						);
+					}
+					setMobileVerificationLoading(false);
+				}
+			},
+			err => {
+				if (isMountedRef.current) {
+					openErrorMessagePopBox();
+					setMobileVerificationLoading(false);
+				}
+			}
+		);
+	};
+
 	const arr = infoList?.map(item => {
 		let displayValue = item.content;
+
 		if (item.format) {
 			displayValue = item.format(item.content, item.bindingData);
 		}
@@ -377,7 +451,9 @@ export default () => {
 				t={t}
 				displayKey={item.displayKey}
 				content={displayValue}
+				mobileVerificationLoading={mobileVerificationLoading}
 				areaCode={_areaCode}
+				sendOTPSMS={sendOTPSMS}
 			/>
 		) : null;
 	});

@@ -55,3 +55,17 @@ export const api_accountStrict_UploadCustPhotoId = formData =>
 			"Content-Type": "multipart/form-data"
 		}
 	});
+
+export const api_accountStrict_SendOTPSMS = () =>
+	accountStrictRequest.post("/SendOTPSMS");
+
+export const api_accountStrict_VerifyOTP = ({ inputOTPcode }) =>
+	accountStrictRequest.post(
+		"/VerifyOTP",
+		{ inputOTPcode },
+		{
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}
+	);

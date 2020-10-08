@@ -4010,6 +4010,25 @@ input[type="file"] {
 
 .quickSelect > div.inputBox.promoType, .quickSelect > div.promoType.inputBox-org, .quickSelect > div.promoType.inputBox-white, .quickSelect > div.promoType.inputBox-blue, .quickSelect > div:first-child.promoType {
   max-width: none;
+  display: block;
+}
+
+.quickSelect > div.inputBox.promoType button, .quickSelect > div.promoType.inputBox-org button, .quickSelect > div.promoType.inputBox-white button, .quickSelect > div.promoType.inputBox-blue button, .quickSelect > div.inputBox.promoType a, .quickSelect > div.promoType.inputBox-org a, .quickSelect > div.promoType.inputBox-white a, .quickSelect > div.promoType.inputBox-blue a, .quickSelect > div:first-child.promoType button, .quickSelect > div:first-child.promoType a {
+  float: left;
+}
+
+.quickSelect > div.inputBox.promoType button:last-child, .quickSelect > div.promoType.inputBox-org button:last-child, .quickSelect > div.promoType.inputBox-white button:last-child, .quickSelect > div.promoType.inputBox-blue button:last-child, .quickSelect > div.inputBox.promoType a:last-child, .quickSelect > div.promoType.inputBox-org a:last-child, .quickSelect > div.promoType.inputBox-white a:last-child, .quickSelect > div.promoType.inputBox-blue a:last-child, .quickSelect > div:first-child.promoType button:last-child, .quickSelect > div:first-child.promoType a:last-child {
+  float: right;
+  position: relative;
+}
+
+.quickSelect > div.inputBox.promoType button:last-child:before, .quickSelect > div.promoType.inputBox-org button:last-child:before, .quickSelect > div.promoType.inputBox-white button:last-child:before, .quickSelect > div.promoType.inputBox-blue button:last-child:before, .quickSelect > div.inputBox.promoType a:last-child:before, .quickSelect > div.promoType.inputBox-org a:last-child:before, .quickSelect > div.promoType.inputBox-white a:last-child:before, .quickSelect > div.promoType.inputBox-blue a:last-child:before, .quickSelect > div:first-child.promoType button:last-child:before, .quickSelect > div:first-child.promoType a:last-child:before {
+  content: '';
+  position: absolute;
+  left: -27.5px;
+  background: #666;
+  width: 1px;
+  height: 100%;
 }
 
 .quickSelect > div.inputBox.promoType button.orange, .quickSelect > div.promoType.inputBox-org button.orange, .quickSelect > div.promoType.inputBox-white button.orange, .quickSelect > div.promoType.inputBox-blue button.orange, .quickSelect > div:first-child.promoType button.orange {
@@ -4045,6 +4064,14 @@ input[type="file"] {
 
 .quickSelect i:before {
   color: #1E85EC;
+}
+
+.quickSelect + .nodata {
+  width: calc(100% - 50px);
+  margin: auto;
+  margin-top: 10px;
+  border-top: 1px solid #212121;
+  border-radius: 15px;
 }
 
 .pageSelect {
@@ -4700,6 +4727,29 @@ input[type="file"] {
   border-radius: 15px;
   margin-top: 20px;
   padding: 40px;
+}
+
+.promotionsInfo .proData .rollover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.promotionsInfo .proData .rollover > div {
+  margin-right: 20px;
+  color: #1E85EC;
+}
+
+.promotionsInfo .proData .rollover > div:last-child {
+  color: #f77900;
+}
+
+.promotionsInfo .proData .rollover > div .icon:before {
+  font-weight: normal;
+  margin-right: 5px;
 }
 
 .promotionsInfo .proData .proDataTitle {
@@ -5978,5 +6028,36 @@ button.icon-spinner11:before {
 
 .swiper-casino .swiper-slide img {
   max-width: 1560px;
+}
+
+.minAmount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 300px;
+  font-size: 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.minAmount > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.minAmount > div > div {
+  border: 1px solid #134DAE;
+  padding: 5px 10px;
+  background: #134DAE;
+}
+
+.minAmount > div > div:last-child {
+  color: #1E85EC;
+  background: white;
 }
 /*# sourceMappingURL=style.css.map */
