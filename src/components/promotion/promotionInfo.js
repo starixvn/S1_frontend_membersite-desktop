@@ -288,15 +288,14 @@ export default () => {
 	);
 };
 
-const Rollover = ({ promotionInfo, t }) => {
+const Rollover = ({ promotionInfo, t, currencyId }) => {
 	const {
 		isJoin,
 		status,
 		custExpiryTime,
 		periodTo,
 		requiredAmount,
-		rollOver,
-		currencyId
+		rollOver
 	} = promotionInfo;
 
 	let expiryTime = moment.duration(
