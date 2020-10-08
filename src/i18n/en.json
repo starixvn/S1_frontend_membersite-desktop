@@ -7,7 +7,7 @@
 	"msg_PasswordVaildate": "6-18 alphanumeric (A-Z, a-z, 0-9) characters or special characters @$*!%#?&",
 	"msg_MailWrongFormat": "Mail Format is wrong.",
 	"msg_MailExisted": "Mail already exists.",
-	"msg_ApiServerError": "API Server Error.",
+	"msg_ApiServerError": "Oops! Something wrong, please try again.",
 	"msg_API_SendOTPSMS_5002": "Entered the wrong phone number.",
 	"msg_NoData": "No Data",
 	"msg_NeedAccountNo": "Need Account Number",

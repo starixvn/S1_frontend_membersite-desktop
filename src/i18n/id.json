@@ -7,7 +7,7 @@
 	"msg_PasswordVaildate": "6-18 karakter alfanumerik (A-Z, a-z, 0-9) atau karakter khusus @ $ *!% #? &.",
 	"msg_MailWrongFormat": "Format Email salah",
 	"msg_MailExisted": "Email ini sudah digunakan.",
-	"msg_ApiServerError": "API Server Error.",
+	"msg_ApiServerError": "Ups! Ada kesalahan, silakan dicoba kembali.",
 	"msg_API_SendOTPSMS_5002": "Entered the wrong phone number.",
 	"msg_NoData": "Tidak ada data",
 	"msg_NeedAccountNo": "Butuh Nomor Rekening",
