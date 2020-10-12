@@ -67,13 +67,13 @@ export default () => {
 						p.promotionType === defPromotionType.walletBonus) &&
 					!isExpiry({ ...p, isLogin: userInfo.isLogin })
 			);
-			// } else if (type === defFilterType.Rebate_and_cashback) {
-			// 	afterFilterList = _promoList.filter(
-			// 		p =>
-			// 			(p.promotionType === defPromotionType.rebate ||
-			// 				p.promotionType === defPromotionType.cashback) &&
-			// 			!isExpiry({ ...p, isLogin: userInfo.isLogin })
-			// 	);
+		} else if (type === defFilterType.Rebate_and_cashback) {
+			afterFilterList = _promoList.filter(
+				p =>
+					(p.promotionType === defPromotionType.rebate ||
+						p.promotionType === defPromotionType.cashback) &&
+					!isExpiry({ ...p, isLogin: userInfo.isLogin })
+			);
 		} else {
 			afterFilterList = _promoList.filter(
 				p =>

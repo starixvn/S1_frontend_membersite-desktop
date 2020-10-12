@@ -21,7 +21,6 @@ export default [
 			th:
 				"https://image.n88media.com/NovaPromotion/WIN+EXTRA+10%25+ON+FOUR+MAJOR+LEAGUE+NEW+SEASON/CMS/Nova88/Promotion/th/banner-WINEXTRA10ON4MAJORLEAGUE.jpg"
 		},
-
 		title: {
 			en: "WIN EXTRA 10% ON FOUR MAJOR LEAGUE NEW SEASON",
 			cs: "欧洲四大联赛新赛季 赢上加赢 10% ！",
