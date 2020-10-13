@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import DateTime from "react-datetime";
 import Inputbox from "../common/inputbox";
+import areaCode from "../../datas/areaCode";
 
 export default ({
 	t,
@@ -20,6 +21,7 @@ export default ({
 		return current.isBefore(legalDate);
 	};
 
+	let _areaCode = areaCode[userInfo.perCountry]?.AreaCode;
 	return (
 		<div className="profileEdit">
 			<div className="profile">{arr}</div>
@@ -78,6 +80,7 @@ export default ({
 						checked={status.phoneNo.checked}
 						clickInfo={clickInfo.bind(this, "phoneNo")}
 						tip={status.phoneNo.tip}
+						areaCode={_areaCode}
 					/>
 				) : null}
 
