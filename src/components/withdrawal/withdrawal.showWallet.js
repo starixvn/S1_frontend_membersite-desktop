@@ -26,8 +26,9 @@ export default ({ balanceData, GetWithdrawalAvailableBalance }) => {
 			{userInfo.accountName ? (
 				<div className="walletBalanceModule">
 					<span className="icon icon-balance">
-						{userInfo?.accountName}
+						{t("lbl_BankAccountName")}
 					</span>
+					<span>{userInfo?.accountName}</span>
 					<button
 						className="icon icon-error"
 						onClick={showRealNameTip}></button>
