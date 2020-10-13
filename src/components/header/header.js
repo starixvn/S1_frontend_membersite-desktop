@@ -1,15 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "@reach/router";
-import { userInfoContext } from "../common/context";
+import { Link, navigate } from "@reach/router";
+import { userInfoContext, popBoxContext } from "../common/context";
 import Logo from "../../styles/img/logo.svg";
 import Menu from "./header.menu";
 import config from "../../config";
 import Functions from "./header.functions";
 import LanguageDropDown from "./header.langDropdown";
 import { api_site_GetTpIds } from "../../service/api/site";
+import { LOGOUT } from "../../service/auth";
+import path from "../../path";
+import { defPopBoxType } from "../common/popBox";
+import { useTranslation } from "react-i18next";
 
 export default () => {
-	const { userInfo } = useContext(userInfoContext);
+	const { t } = useTranslation();
+	const { userInfo, setUserInfo } = useContext(userInfoContext);
+	const { setPopBox } = useContext(popBoxContext);
 	const [casinoTpIds, setCasinoTpIds] = useState(null);
 
 	useEffect(() => {
@@ -30,6 +36,47 @@ export default () => {
 		}
 	}, [userInfo.isLogin, casinoTpIds]);
 
+	const handleLogout = () => {
+		LOGOUT(() => {
+			const clickClose = () => {
+				if (
+					window.location.pathname.includes(
+						`/${userInfo.langId}/${path.resetPassword.root}`
+					)
+				) {
+					navigate(`/${userInfo.langId}`);
+				}
+
+				setPopBox({ isOpen: false });
+				setUserInfo(prevState => ({
+					isLogin: false,
+					langId: prevState.langId,
+					kickout: true,
+					willLogout: true
+				}));
+			};
+
+			setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.LogoutHint,
+				content: t("msg_loggedout"),
+				btnBar: (
+					<div className="btnGroup">
+						<button className="btn-cancel" onClick={clickClose}>
+							OK
+						</button>
+					</div>
+				)
+			});
+		});
+	};
+
+	const LogoutButton = () => {
+		if (!userInfo.isLogin) return null;
+
+		return <button className="icon icon-exit" onClick={handleLogout} />;
+	};
+
 	return (
 		<header>
 			<div className="header">
@@ -40,8 +87,9 @@ export default () => {
 				</div>
 				<Menu casinoTpIds={casinoTpIds} />
 				<div className="function">
-					<LanguageDropDown />
 					<Functions />
+					<LanguageDropDown />
+					<LogoutButton />
 				</div>
 			</div>
 		</header>
