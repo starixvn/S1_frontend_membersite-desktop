@@ -143,7 +143,7 @@ const Iovation = () => {
 				`}
 			</script>
 			<script
-				src={`https://mpsnare.iesnare.com/general5/wdp.js?loaderVer=5.2.2&compat=false&tp=true&tp_split=false&fp_static=true&fp_dyn=true&flash=true`}
+				src={`https://nova88-banner.s3-ap-southeast-1.amazonaws.com/apidoc/loader_only.js`}
 				type="text/javascript"></script>
 		</Helmet>
 	);
