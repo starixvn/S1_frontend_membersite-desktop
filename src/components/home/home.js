@@ -339,7 +339,7 @@ const IndexPage = () => {
 		<main>
 			<SwipperBanner
 				ImgFolder="Promotion"
-				withBtn={true}
+				withBtn={false}
 				filterHideInHome={true}
 			/>
 			<Marquee />

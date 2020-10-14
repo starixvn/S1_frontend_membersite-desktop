@@ -2051,7 +2051,7 @@ input[type="file"] {
   position: fixed;
   right: -10px;
   top: 15%;
-  z-index: 1;
+  z-index: 2;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   width: 215px;
