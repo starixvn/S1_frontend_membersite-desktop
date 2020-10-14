@@ -12,6 +12,7 @@ const getAffiliate = () => {
 };
 
 export const SiteInfo = {
+	siteName: siteName,
 	affiliateLink: getAffiliate(),
 	langCookie: "nova88LangId",
 	socialMedia: {

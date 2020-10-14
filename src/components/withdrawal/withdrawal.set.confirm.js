@@ -4,6 +4,7 @@ import { number_format } from "../common/common";
 import { defPopBoxType } from "../common/popBox";
 import { defActionType } from "./withdrawal.reducer";
 import { api_payment_WithdrawalReq } from "../../service/api/payment";
+import { Iov_GetBlackBox } from "../common/iovation";
 
 export default ({
 	dispatch,
@@ -29,7 +30,7 @@ export default ({
 		dispatch({ type: defActionType.TO_OTHER_PANEL, panel: "amount" });
 	};
 
-	const clickSubmit = () => {
+	const clickSubmit = async () => {
 		let real_amount = _isConvert ? Number(amount) * 1000 : Number(amount);
 
 		const setInitState = () => {
@@ -45,10 +46,12 @@ export default ({
 			setPopBox({ isOpen: false });
 		};
 
+		let blackbox = await Iov_GetBlackBox();
 		api_payment_WithdrawalReq(
 			selectedAccount.accountNo,
 			real_amount,
-			selectedAccount.sysId
+			selectedAccount.sysId,
+			blackbox
 		).then(
 			res => {
 				if (isMountedRef.current) {

@@ -20,6 +20,7 @@ import Inputbox from "./inputbox";
 import InputboxPSW from "./inputbox.password";
 import Dropdown from "./dropdown";
 import Checkbox from "./checkbox";
+import { Iov_GetBlackBox } from "../common/iovation";
 
 import {
 	initValue,
@@ -397,6 +398,9 @@ export default () => {
 			regData["RefId"] = getUrlParameter("RefId") || readCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || readCookie("AffId");
 			regData["Aff"] = getUrlParameter("Aff") || readCookie("Aff");
+
+			regData["blackbox"] = await Iov_GetBlackBox();
+
 			api_site_Signup(regData, defaultLangId).then(
 				res => {
 					if (isMountedRef.current) {

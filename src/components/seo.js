@@ -8,7 +8,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, withPrefix } from "gatsby";
+import { SiteInfo } from "../config";
 
 function SEO({ description, lang, meta, title }) {
 	const { site } = useStaticQuery(
@@ -72,6 +73,7 @@ function SEO({ description, lang, meta, title }) {
 			/>
 			<GATag gaCode={"UA-163834722-1"} />
 			<LiveChat />
+			<Iovation />
 		</>
 	);
 }
@@ -119,6 +121,31 @@ const GATag = ({ gaCode }) => {
 
 					gtag('config', '${gaCode}');`}
 			</script>
+		</Helmet>
+	);
+};
+
+const Iovation = () => {
+	return (
+		<Helmet>
+			<script>
+				{`
+				window.io_global_object_name = "IGLOO"
+				window.IGLOO = window.IGLOO || {
+				  "enable_flash" : false,
+				  "bbout_element_id" : "",  // this can be changed to store in a different hidden field (or removed to use a different collection method)
+				  "loader" : {
+					"uri_hook" : "iojs",
+					"subkey"  : "${SiteInfo.siteName}",
+					"version" : "general5",
+					"fp_static" : false
+				  }
+				};
+				`}
+			</script>
+			<script
+				src="https://nova88-banner.s3-ap-southeast-1.amazonaws.com/apidoc/loader_only.js"
+				type="text/javascript"></script>
 		</Helmet>
 	);
 };
