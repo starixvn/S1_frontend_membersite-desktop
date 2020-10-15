@@ -120,7 +120,16 @@ const Panel = ({
 			return (
 				<Link
 					key={key}
-					to={`${userInfo.langId}/${path.sports.root}?tpId=${b.tpId}&gameId=${b.gameId}&matchid=${b.matchid}`}>
+					to={`/${userInfo.langId}/${path.sports.root}?tpId=${b.tpId}&gameId=${b.gameId}&matchid=${b.matchid}`}>
+					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
+				</Link>
+			);
+		} else if (actionLink?.startsWith("Promotion/Bonus?")) {
+			let promoUrlParam = actionLink.split("?")?.[1];
+			return (
+				<Link
+					key={key}
+					to={`/${userInfo.langId}/${path.promotion.root}/${path.promotion.sub.promotionInfo.root}?${promoUrlParam}`}>
 					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
 				</Link>
 			);
