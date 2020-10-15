@@ -4,12 +4,13 @@ import config from "../../config";
 import { api_site_GetBanner } from "../../service/api/site";
 import {
 	userInfoContext,
-	navContext,
+	popBoxContext,
 	defNavPanel
 } from "../../components/common/context";
 import { SET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import { Link } from "@reach/router";
+import { defPopBoxType } from "../common/popBox";
 
 export const defBannerFolder = {
 	Sports: "Sports"
@@ -27,7 +28,7 @@ export const ClickLink = (
 	isOuterLink,
 	urlWithLang,
 	isLogin,
-	setNav,
+	setPopBox,
 	matchid,
 	openInBlank
 ) => {
@@ -57,7 +58,10 @@ export const ClickLink = (
 			matchid,
 			isLogin: isLogin === true,
 			loginCallback: () => {
-				setNav(defNavPanel.login);
+				setPopBox({
+					isOpen: true,
+					popBoxType: defPopBoxType.Login
+				});
 			},
 			openInBlank: openInBlank
 		});
@@ -73,7 +77,7 @@ const Panel = ({
 }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
+	const { setPopBox } = useContext(popBoxContext);
 
 	useEffect(() => {
 		let mounted = true;
@@ -154,7 +158,7 @@ const Panel = ({
 						b.outerLink === true,
 						b.urlWithLang,
 						userInfo.isLogin,
-						setNav,
+						setPopBox,
 						b.matchid,
 						openInBlank
 					)}
