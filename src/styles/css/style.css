@@ -140,16 +140,28 @@ header {
   letter-spacing: 1px;
   position: absolute;
   margin-top: 85px;
-  min-width: 1600px;
   height: 50px;
-  background: rgba(3, 12, 27, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   left: 0;
-  padding: 0 calc((100% - 1600px) / 2);
   text-transform: uppercase;
+  width: 100%;
 }
 
-.header > div.menu > a, .header > div.menu > button {
-  font-family: "Microsoft YaHei", sans-serif;
+.header > div.menu > div {
+  width: 1600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  height: 100%;
+}
+
+.header > div.menu > div > a, .header > div.menu > div > button {
+  margin-right: 20px;
+  font-family: Microsoft YaHei,sans-serif;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
@@ -162,16 +174,17 @@ header {
   margin-right: 30px;
   border-bottom: 3px solid transparent;
   font-size: 14px;
-  color: white;
+  color: #fff;
+  height: calc(100% - 3px);
 }
 
-.header > div.menu > a:hover, .header > div.menu > button:hover {
+.header > div.menu > div > a:hover, .header > div.menu > div > button:hover {
   color: #f77900;
   border-color: #f77900;
   cursor: pointer;
 }
 
-.header > div.menu > a.icon-home, .header > div.menu > button.icon-home {
+.header > div.menu > div > a.icon-home, .header > div.menu > div > button.icon-home {
   font-size: 24px;
 }
 
@@ -211,8 +224,8 @@ header {
 
 .header > div.menu .gameList a, .header > div.menu .gameList button, .header > div.menu .casinoList a, .header > div.menu .casinoList button, .header > div.menu .livecasinoList a, .header > div.menu .livecasinoList button {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+      -ms-flex: 1 1 160px;
+          flex: 1 1 160px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -230,6 +243,7 @@ header {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   color: white;
+  margin-bottom: 50px;
 }
 
 .header > div.menu .gameList a img, .header > div.menu .gameList button img, .header > div.menu .casinoList a img, .header > div.menu .casinoList button img, .header > div.menu .livecasinoList a img, .header > div.menu .livecasinoList button img {
@@ -426,12 +440,14 @@ header {
 }
 
 .header > div.function > a:nth-child(-n+5) {
-  border-left: 2px dotted #abafae;
-  padding-left: 10px;
-  min-height: 10px;
-  max-height: 10px;
-  position: relative;
   color: #abafae;
+}
+
+.header > div.function > a:nth-child(-n+5):before {
+  content: '...';
+  font-size: 20px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .header > div.function > a:nth-child(5) span {
@@ -793,7 +809,7 @@ header {
 }
 
 main {
-  padding-top: 85px;
+  padding-top: 135px;
 }
 
 main section {
@@ -806,7 +822,7 @@ main section {
 }
 
 main section.inside {
-  padding-top: 40px;
+  padding-top: 65px;
 }
 
 main section.inside > div {
@@ -2035,7 +2051,7 @@ input[type="file"] {
   position: fixed;
   right: -10px;
   top: 15%;
-  z-index: 1;
+  z-index: 2;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   width: 215px;

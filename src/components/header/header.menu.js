@@ -59,19 +59,23 @@ export default class Panel extends Component {
 
 		return (
 			<div className="menu">
-				<MainMenu showSubMenu={this.showSubMenu} />
-				{subItems ? (
-					<div className="subMenu-Wrapper active" ref={this.wrapper}>
-						<SubMenu
-							MenuKey={this.state.menuKey}
-							listClassName={
-								defSubListClassName[this.state.menuKey]
-							}
-							mainUrl={mainUrl}
-							subItems={subItems}
-						/>
-					</div>
-				) : null}
+				<div>
+					<MainMenu showSubMenu={this.showSubMenu} />
+					{subItems ? (
+						<div
+							className="subMenu-Wrapper active"
+							ref={this.wrapper}>
+							<SubMenu
+								MenuKey={this.state.menuKey}
+								listClassName={
+									defSubListClassName[this.state.menuKey]
+								}
+								mainUrl={mainUrl}
+								subItems={subItems}
+							/>
+						</div>
+					) : null}
+				</div>
 			</div>
 		);
 	}
