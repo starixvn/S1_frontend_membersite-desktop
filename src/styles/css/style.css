@@ -98,7 +98,7 @@ body, html {
 
 header {
   position: fixed;
-  background: rgba(0, 0, 0, 0.7);
+  background: #030c1b;
   width: 100%;
   height: 85px;
   display: -webkit-box;
@@ -128,22 +128,40 @@ header {
   display: -ms-flexbox;
   display: flex;
   width: 1600px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .header > div.menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   letter-spacing: 1px;
+  position: absolute;
+  margin-top: 85px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  left: 0;
+  text-transform: uppercase;
+  width: 100%;
 }
 
-.header > div.menu > a, .header > div.menu > button {
-  font-family: "Microsoft YaHei", sans-serif;
+.header > div.menu > div {
+  width: 1600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  height: 100%;
+}
+
+.header > div.menu > div > a, .header > div.menu > div > button {
+  margin-right: 20px;
+  font-family: Microsoft YaHei,sans-serif;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
@@ -153,23 +171,28 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 0 0 2%;
+  margin-right: 30px;
   border-bottom: 3px solid transparent;
   font-size: 14px;
-  color: white;
+  color: #fff;
+  height: calc(100% - 3px);
 }
 
-.header > div.menu > a:hover, .header > div.menu > button:hover {
+.header > div.menu > div > a:hover, .header > div.menu > div > button:hover {
   color: #f77900;
   border-color: #f77900;
   cursor: pointer;
+}
+
+.header > div.menu > div > a.icon-home, .header > div.menu > div > button.icon-home {
+  font-size: 24px;
 }
 
 .header > div.menu .subMenu-Wrapper {
   position: absolute;
   width: 100%;
   left: 0;
-  top: 85px;
+  top: 50px;
   background: rgba(0, 0, 0, 0.7);
 }
 
@@ -201,8 +224,8 @@ header {
 
 .header > div.menu .gameList a, .header > div.menu .gameList button, .header > div.menu .casinoList a, .header > div.menu .casinoList button, .header > div.menu .livecasinoList a, .header > div.menu .livecasinoList button {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+      -ms-flex: 1 1 160px;
+          flex: 1 1 160px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,6 +243,7 @@ header {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   color: white;
+  margin-bottom: 50px;
 }
 
 .header > div.menu .gameList a img, .header > div.menu .gameList button img, .header > div.menu .casinoList a img, .header > div.menu .casinoList button img, .header > div.menu .livecasinoList a img, .header > div.menu .livecasinoList button img {
@@ -412,9 +436,26 @@ header {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  align-items: center;
+}
+
+.header > div.function > a:nth-child(-n+5) {
+  color: #abafae;
+}
+
+.header > div.function > a:nth-child(-n+5):before {
+  content: '...';
+  font-size: 20px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.header > div.function > a:nth-child(5) span {
+  background: #1E85EC;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: white;
 }
 
 .header > div.function > div, .header > div.function > a, .header > div.function > button {
@@ -424,40 +465,74 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 35px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  white-space: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
 }
 
-.header > div.function > div[class=join], .header > div.function > a[class=join], .header > div.function > button[class=join] {
-  color: #f77900;
+.header > div.function > div.icon-icon32px_Funds-transfer:before, .header > div.function > a.icon-icon32px_Funds-transfer:before, .header > div.function > button.icon-icon32px_Funds-transfer:before {
+  margin-top: -14px;
+  font-size: 34px;
 }
 
-.header > div.function > div[class=join]:hover, .header > div.function > a[class=join]:hover, .header > div.function > button[class=join]:hover {
+.header > div.function > div[class=join], .header > div.function > div[class=login], .header > div.function > a[class=join], .header > div.function > a[class=login], .header > div.function > button[class=join], .header > div.function > button[class=login] {
   color: white;
+  background: -webkit-gradient(linear, left top, right top, from(#f77900), to(#f55c00));
+  background: linear-gradient(to right, #f77900, #f55c00);
+  border-radius: 20px;
+  padding: 10px;
+  white-space: nowrap;
+  min-width: 100px;
+  letter-spacing: 1px;
+  margin-right: 10px;
+  font-weight: bold;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.header > div.function > div[class=join]:hover, .header > div.function > div[class=login]:hover, .header > div.function > a[class=join]:hover, .header > div.function > a[class=login]:hover, .header > div.function > button[class=join]:hover, .header > div.function > button[class=login]:hover {
+  background: transparent;
+  border: 1px solid #f55c00;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #f55c00;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 
 .header > div.function > div[class=login], .header > div.function > a[class=login], .header > div.function > button[class=login] {
-  color: #1E85EC;
+  background: #cf0404;
 }
 
 .header > div.function > div[class=login]:hover, .header > div.function > a[class=login]:hover, .header > div.function > button[class=login]:hover {
-  color: white;
+  border: 1px solid #cf0404;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #cf0404;
 }
 
 .header > div.function > div:before, .header > div.function > a:before, .header > div.function > button:before {
-  margin-right: 5px;
+  font-size: 24px;
 }
 
 .header > div.function > div .countryList, .header > div.function > a .countryList, .header > div.function > button .countryList {
   display: none;
   position: absolute;
-  margin-top: 30px;
+  margin-top: 60px;
   background: rgba(0, 0, 0, 0.7);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   padding: 0 5px;
-  margin-left: -5px;
+  right: 0;
+  top: 0;
 }
 
 .header > div.function > div .countryList button, .header > div.function > div .countryList a, .header > div.function > a .countryList button, .header > div.function > a .countryList a, .header > div.function > button .countryList button, .header > div.function > button .countryList a {
@@ -481,7 +556,6 @@ header {
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  cursor: pointer;
   margin-right: 5px;
 }
 
@@ -557,9 +631,12 @@ header {
   top: -5px;
 }
 
+.header > div.function .icon-exit {
+  color: #1E85EC;
+}
+
 .header > div.function .cashier, .header > div.function .wallet, .header > div.function .memberfile {
   position: relative;
-  cursor: pointer;
 }
 
 .header > div.function .cashier button, .header > div.function .wallet button, .header > div.function .memberfile button {
@@ -585,6 +662,7 @@ header {
   text-align: right;
   line-height: 30px;
   white-space: nowrap;
+  top: 0;
 }
 
 .header > div.function .cashier .submenu a:hover, .header > div.function .wallet .submenu a:hover, .header > div.function .memberfile .submenu a:hover {
@@ -731,7 +809,7 @@ header {
 }
 
 main {
-  padding-top: 85px;
+  padding-top: 135px;
 }
 
 main section {
@@ -744,7 +822,7 @@ main section {
 }
 
 main section.inside {
-  padding-top: 40px;
+  padding-top: 65px;
 }
 
 main section.inside > div {
@@ -1502,7 +1580,7 @@ footer {
 }
 
 .txt-red {
-  color: #f73201;
+  color: #cf0404;
 }
 
 .txt-dark {
@@ -1559,7 +1637,7 @@ footer {
 }
 
 .inputBox.error, .error.inputBox-org, .error.inputBox-white, .error.inputBox-blue {
-  border-color: #f73201;
+  border-color: #cf0404;
 }
 
 .inputBox::-webkit-input-placeholder, .inputBox-org::-webkit-input-placeholder, .inputBox-white::-webkit-input-placeholder, .inputBox-blue::-webkit-input-placeholder {
@@ -1603,7 +1681,7 @@ footer {
 }
 
 .inputBox .iconModule .icon.icon-cross:before, .inputBox-org .iconModule .icon.icon-cross:before, .inputBox-white .iconModule .icon.icon-cross:before, .inputBox-blue .iconModule .icon.icon-cross:before {
-  color: #f73201;
+  color: #cf0404;
   font-size: 12px;
 }
 
@@ -1751,7 +1829,7 @@ input[type="file"] {
 }
 
 .btnGroup button.orange:hover, .btnGroup button.btn-check:hover, .btnGroup a.orange:hover, .btnGroup a.btn-check:hover {
-  background: #f73201;
+  background: #cf0404;
 }
 
 .btnGroup button.gray, .btnGroup button.btn-cancel, .btnGroup a.gray, .btnGroup a.btn-cancel {
@@ -1779,12 +1857,12 @@ input[type="file"] {
 }
 
 .btnGroup button.red, .btnGroup a.red {
-  background: #f73201;
+  background: #cf0404;
   color: white;
 }
 
 .btnGroup button.red:hover, .btnGroup a.red:hover {
-  background: #db2c01;
+  background: #a70303;
 }
 
 .btnGroup button.blueBorder, .btnGroup a.blueBorder {
@@ -1973,7 +2051,7 @@ input[type="file"] {
   position: fixed;
   right: -10px;
   top: 15%;
-  z-index: 1;
+  z-index: 2;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   width: 215px;
@@ -2414,7 +2492,7 @@ input[type="file"] {
 }
 
 .list .listBody > div div.reject {
-  color: #f73201;
+  color: #cf0404;
   font-weight: bold;
 }
 
@@ -3313,7 +3391,7 @@ input[type="file"] {
 }
 
 .upload_img.error {
-  border-color: #f73201;
+  border-color: #cf0404;
 }
 
 .upload_img .icon {
@@ -4603,7 +4681,7 @@ input[type="file"] {
 }
 
 .proList > div .claimed, .slotList > div .claimed, .newsList > div .claimed {
-  background: rgba(219, 44, 1, 0.8);
+  background: rgba(167, 3, 3, 0.8);
   width: 75px;
   height: 75px;
   -webkit-transform: rotate(-45deg);
@@ -5120,7 +5198,7 @@ iframe {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: rgba(219, 44, 1, 0.8);
+  background: rgba(167, 3, 3, 0.8);
   width: 75px;
   height: 75px;
   -webkit-transform: rotate(-45deg);
@@ -5359,24 +5437,6 @@ button.icon-spinner11:before {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.deposit-btn {
-  color: #1E85EC;
-  margin-right: 3%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  white-space: nowrap;
-}
-
-.deposit-btn:before {
-  font-size: 32px;
-  margin-top: -8px;
-  margin-right: 5px;
 }
 
 #Loading {

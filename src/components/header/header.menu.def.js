@@ -8,6 +8,10 @@ export const defMenuType = {
 };
 
 export const defMenuLinks = {
+	home: {
+		path: path.home.root,
+		className: "icon icon-home"
+	},
 	sports: {
 		productInfo: productList.sports,
 		path: path.sports.root,

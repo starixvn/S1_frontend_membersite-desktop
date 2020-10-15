@@ -25,7 +25,7 @@ export default props => {
 				{props.icon ? <i className={`icon ${props.icon}`}></i> : null}
 				{props.title ? <i className="txt-blue">{props.title}</i> : null}
 				{props.areaCode ? (
-					<span className="txt-orange">{props.areaCode}</span>
+					<div className="txt-lightgray">{props.areaCode}</div>
 				) : null}
 				<input
 					type={props.inputType ?? "text"}

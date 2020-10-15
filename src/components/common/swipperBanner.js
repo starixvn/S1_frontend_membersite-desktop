@@ -4,12 +4,13 @@ import config from "../../config";
 import { api_site_GetBanner } from "../../service/api/site";
 import {
 	userInfoContext,
-	navContext,
+	popBoxContext,
 	defNavPanel
 } from "../../components/common/context";
 import { SET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
 import { Link } from "@reach/router";
+import { defPopBoxType } from "../common/popBox";
 
 export const defBannerFolder = {
 	Sports: "Sports"
@@ -27,7 +28,7 @@ export const ClickLink = (
 	isOuterLink,
 	urlWithLang,
 	isLogin,
-	setNav,
+	setPopBox,
 	matchid,
 	openInBlank
 ) => {
@@ -57,7 +58,10 @@ export const ClickLink = (
 			matchid,
 			isLogin: isLogin === true,
 			loginCallback: () => {
-				setNav(defNavPanel.login);
+				setPopBox({
+					isOpen: true,
+					popBoxType: defPopBoxType.Login
+				});
 			},
 			openInBlank: openInBlank
 		});
@@ -73,7 +77,7 @@ const Panel = ({
 }) => {
 	const [banner, setBanner] = useState([]);
 	const { userInfo } = useContext(userInfoContext);
-	const { setNav } = useContext(navContext);
+	const { setPopBox } = useContext(popBoxContext);
 
 	useEffect(() => {
 		let mounted = true;
@@ -120,7 +124,16 @@ const Panel = ({
 			return (
 				<Link
 					key={key}
-					to={`${userInfo.langId}/${path.sports.root}?tpId=${b.tpId}&gameId=${b.gameId}&matchid=${b.matchid}`}>
+					to={`/${userInfo.langId}/${path.sports.root}?tpId=${b.tpId}&gameId=${b.gameId}&matchid=${b.matchid}`}>
+					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
+				</Link>
+			);
+		} else if (actionLink?.startsWith("Promotion/Bonus?")) {
+			let promoUrlParam = actionLink.split("?")?.[1];
+			return (
+				<Link
+					key={key}
+					to={`/${userInfo.langId}/${path.promotion.root}/${path.promotion.sub.promotionInfo.root}?${promoUrlParam}`}>
 					<img src={imgSRC} className="banner" alt={b.img ?? ""} />
 				</Link>
 			);
@@ -145,7 +158,7 @@ const Panel = ({
 						b.outerLink === true,
 						b.urlWithLang,
 						userInfo.isLogin,
-						setNav,
+						setPopBox,
 						b.matchid,
 						openInBlank
 					)}

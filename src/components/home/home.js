@@ -337,7 +337,11 @@ const IndexPage = () => {
 
 	return (
 		<main>
-			<SwipperBanner ImgFolder="Promotion" filterHideInHome={true} />
+			<SwipperBanner
+				ImgFolder="Promotion"
+				withBtn={false}
+				filterHideInHome={true}
+			/>
 			<Marquee />
 			<section>
 				<SportsSection t={t} showLogin={showLogin} {...userInfo} />
