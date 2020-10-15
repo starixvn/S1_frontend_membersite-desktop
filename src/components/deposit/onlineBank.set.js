@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { api_payment_GetOnlineBankInfoSysList } from "../../service/api/payment";
 import { getUrlParameter, isConvert } from "../common/common";
-import { Redirect, Link } from "@reach/router";
+import { Redirect, Link, useLocation } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import path from "../../path";
 import { userInfoContext } from "../common/context";
@@ -28,11 +28,19 @@ export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const isMountedRef = useRef(null);
 	const [state, dispatch] = useReducer(reducer, initState);
+	const location = useLocation();
 
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
+
+	useEffect(() => {
+		if (!location.state.selBank)
+			dispatch({
+				type: defActionType.JUNP_TO_ENTER_AMOUNT
+			});
+	}, []);
 
 	useEffect(() => {
 		let pId = getUrlParameter("pId");
@@ -132,7 +140,7 @@ export default () => {
 						{t("lbl_CreditTime")}:{t("lbl_Instant")}
 					</div>
 				</div>
-				{state.step === 2 ? (
+				{state.step === 2 || !location.state.selBank ? (
 					<Link
 						to={`/${userInfo.langId}/${path.deposit.root}`}
 						className="icon icon-arrow-left2"></Link>

@@ -14,10 +14,12 @@ export default ({ onlineBankingList }) => {
 
 	const _isConvert = isConvert(userInfo.currencyId);
 	let rows = onlineBankingList?.map(p => {
+		const { selBank } = p;
 		return (
 			<li key={`deposit-onlineBank-${p.payId}-${p.channelId}`}>
 				<Link
 					to={`${_path}?name=${p.payName}&pId=${p.payId}&cId=${p.channelId}&max=${p.maxAmount}&min=${p.minAmount}`}
+					state={{ selBank }}
 					className={`icon icon-${p.payName}`}></Link>
 				<LimitTip
 					minAmount={p.minAmount}
