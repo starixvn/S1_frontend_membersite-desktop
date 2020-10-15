@@ -109,23 +109,16 @@ export default () => {
 					channelId,
 					payName,
 					maxAmount,
-					minAmount
+					minAmount,
+					selBank
 				} = paymentInfo;
 
-				let cId = getUrlParameter("cId");
-				let name = getUrlParameter("name");
-				let max = getUrlParameter("max");
-				let min = getUrlParameter("min");
-
-				if (
-					payName !== name ||
-					String(channelId) !== cId ||
-					String(maxAmount) !== max ||
-					String(minAmount) !== min
-				)
-					return navigate(
-						`${_path}?name=${payName}&pId=${pId}&cId=${channelId}&max=${maxAmount}&min=${minAmount}`
-					);
+				navigate(
+					`${_path}?name=${payName}&pId=${pId}&cId=${channelId}&max=${maxAmount}&min=${minAmount}`,
+					{
+						state: { selBank }
+					}
+				);
 			} else if (!location.state.selBank)
 				return dispatch({
 					type: defActionType.JUNP_TO_ENTER_AMOUNT
