@@ -193,7 +193,7 @@ export default () => {
 						{t("lbl_CreditTime")}:{t("lbl_Instant")}
 					</div>
 				</div>
-				{state.step === 2 || !location.state.selBank ? (
+				{state.step === 2 || !location.state?.selBank ? (
 					<Link
 						to={`/${userInfo.langId}/${path.deposit.root}`}
 						className="icon icon-arrow-left2"></Link>
