@@ -57,11 +57,19 @@
   font-size: 24px !important;
 }
 
+.icon-MangoPay:before {
+  content: "\e99c";
+}
+
 .icon-icon32px_Double-arrow:before {
   content: "\e99a";
 }
 
 .icon-affiliate:before {
+  content: "\e99b";
+}
+
+.icon-icon_1_affiliate:before {
   content: "\e997";
 }
 
