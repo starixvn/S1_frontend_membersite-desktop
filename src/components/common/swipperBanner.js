@@ -4,8 +4,7 @@ import config from "../../config";
 import { api_site_GetBanner } from "../../service/api/site";
 import {
 	userInfoContext,
-	popBoxContext,
-	defNavPanel
+	popBoxContext
 } from "../../components/common/context";
 import { SET_ENTER_PAGE } from "../../service/enterPage";
 import path from "../../path";
