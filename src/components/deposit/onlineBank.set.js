@@ -57,13 +57,7 @@ export default () => {
 		}).then(res => {
 			if (res.data.errorCode === 0) {
 				let datas = res.data.data.map(b => {
-					let { bankLogo, sysId, bankName, ...rest } = b;
-					return {
-						...rest,
-						bankLogo,
-						sysId,
-						bankName
-					};
+					return b;
 				});
 
 				if (isMountedRef.current) {
