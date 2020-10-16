@@ -5,9 +5,13 @@ import React, {
 	useRef,
 	useReducer
 } from "react";
-import { api_payment_GetOnlineBankInfoSysList } from "../../service/api/payment";
+import {
+	api_payment_GetOnlineBankInfoSysList,
+	api_payment_GetOnlinePaymentList
+} from "../../service/api/payment";
+import { navigate } from "@reach/router";
 import { getUrlParameter, isConvert } from "../common/common";
-import { Redirect, Link } from "@reach/router";
+import { Redirect, Link, useLocation } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import path from "../../path";
 import { userInfoContext } from "../common/context";
@@ -22,12 +26,55 @@ import {
 	defActionType
 } from "./onlineBank.reducer";
 
+const _path = path.deposit.sub.onlineBank.root;
+
 export default () => {
 	const { t } = useTranslation();
+
 	const [redirectPath, setRedirectPath] = useState(null);
-	const { userInfo } = useContext(userInfoContext);
 	const isMountedRef = useRef(null);
 	const [state, dispatch] = useReducer(reducer, initState);
+	const location = useLocation();
+
+	const { userInfo } = useContext(userInfoContext);
+
+	const getOnlinePaymentInfo = async pId => {
+		return await api_payment_GetOnlinePaymentList().then(
+			({ data: { data, errorCode } }) => {
+				if (!isMountedRef.current) return;
+
+				const success = errorCode === 0;
+				if (success) {
+					return data.find(item => item.payId === pId);
+				}
+			}
+		);
+	};
+
+	const getOnlineBankInfoSysList = async pId => {
+		await api_payment_GetOnlineBankInfoSysList({
+			payId: Number(pId)
+		}).then(res => {
+			if (res.data.errorCode === 0) {
+				let datas = res.data.data.map(b => {
+					return b;
+				});
+
+				if (isMountedRef.current) {
+					if (datas.length > 0) {
+						dispatch({
+							type: defActionType.SET_BANKLIST,
+							bankList: datas
+						});
+					} else {
+						setRedirectPath(
+							`${userInfo.langId}/${path.deposit.root}`
+						);
+					}
+				}
+			}
+		});
+	};
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -44,37 +91,38 @@ export default () => {
 	}, [setRedirectPath]);
 
 	useEffect(() => {
-		let pId = getUrlParameter("pId");
-		if (pId) {
-			api_payment_GetOnlineBankInfoSysList({
-				payId: Number(pId)
-			}).then(res => {
-				if (res.data.errorCode === 0) {
-					let datas = res.data.data.map(b => {
-						let { bankLogo, sysId, bankName, ...rest } = b;
-						return {
-							...rest,
-							bankLogo,
-							sysId,
-							bankName
-						};
-					});
+		async function fetchData() {
+			let pId = getUrlParameter("pId");
 
-					if (isMountedRef.current) {
-						if (datas.length > 0) {
-							dispatch({
-								type: defActionType.SET_BANKLIST,
-								bankList: datas
-							});
-						} else {
-							setRedirectPath(
-								`${userInfo.langId}/${path.deposit.root}`
-							);
-						}
+			if (location.state?.selBank === undefined) {
+				let paymentInfo = await getOnlinePaymentInfo(Number(pId));
+				if (!paymentInfo?.selBank)
+					return navigate(`/${userInfo.langId}/${path.deposit.root}`);
+
+				const {
+					channelId,
+					payName,
+					maxAmount,
+					minAmount,
+					selBank
+				} = paymentInfo;
+
+				navigate(
+					`${_path}?name=${payName}&pId=${pId}&cId=${channelId}&max=${maxAmount}&min=${minAmount}`,
+					{
+						state: { selBank }
 					}
-				}
-			});
+				);
+			} else if (!location.state.selBank)
+				return dispatch({
+					type: defActionType.JUNP_TO_ENTER_AMOUNT
+				});
+
+			if (pId) {
+				await getOnlineBankInfoSysList(pId);
+			}
 		}
+		fetchData();
 	}, [userInfo.langId]);
 
 	let pName = getUrlParameter("name");
@@ -132,7 +180,8 @@ export default () => {
 						{t("lbl_CreditTime")}:{t("lbl_Instant")}
 					</div>
 				</div>
-				{state.step === 2 ? (
+				{state.step === 2 ||
+				(state.step === 3 && location.state?.selBank === false) ? (
 					<Link
 						to={`/${userInfo.langId}/${path.deposit.root}`}
 						className="icon icon-arrow-left2"></Link>

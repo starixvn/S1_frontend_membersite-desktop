@@ -7,7 +7,7 @@ import config from "../../config";
 import path from "../../path";
 import { defActionType } from "./onlineBank.reducer";
 
-export default ({ bankInfo, amount, _isConvert, dispatch }) => {
+export default ({ bankInfo = { sysId: 0 }, amount, _isConvert, dispatch }) => {
 	const { userInfo } = useContext(userInfoContext);
 	const { t } = useTranslation();
 	const ClickCancel = () => {
@@ -41,17 +41,23 @@ export default ({ bankInfo, amount, _isConvert, dispatch }) => {
 					<div className="txt-lightgray">
 						{t("lbl_ConfirmDeposit")}
 					</div>
-					<div className="bankName">
-						<img
-							src={`${config.imgUrl}/common/images/BankLogo/${bankInfo.bankLogo}`}
-							alt={bankInfo.bankName}
-						/>
-					</div>
+					{bankInfo?.bankLogo && bankInfo?.bankName ? (
+						<div className="bankName">
+							<img
+								src={`${config.imgUrl}/common/images/BankLogo/${bankInfo.bankLogo}`}
+								alt={bankInfo.bankName}
+							/>
+						</div>
+					) : null}
+
 					<div className="smallList">
-						<ul>
-							<li>{t("lbl_SelectedBank")}</li>
-							<li>{bankInfo.bankName}</li>
-						</ul>
+						{bankInfo?.bankName ? (
+							<ul>
+								<li>{t("lbl_SelectedBank")}</li>
+								<li>{bankInfo.bankName}</li>
+							</ul>
+						) : null}
+
 						<ul>
 							<li>{t("lbl_Amount")}</li>
 							<li>
