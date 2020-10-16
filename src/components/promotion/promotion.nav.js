@@ -4,8 +4,8 @@ export const defFilterType = {
 	all: 0,
 	expiry: 999,
 	firstDeposit: 1,
-	freeBet: 3
-	// Rebate_and_cashback: "6_7"
+	freeBet: 3,
+	Rebate_and_cashback: "6_7"
 };
 
 const defPromoNavs = [
@@ -27,12 +27,12 @@ const defPromoNavs = [
 		className: "blueBorder",
 		selectedClassName: "blue"
 	},
-	// {
-	// 	displayKey: "lbl_PromotionRebateAndCashback",
-	// 	value: defFilterType.Rebate_and_cashback,
-	// 	className: "blueBorder",
-	// 	selectedClassName: "blue"
-	// },
+	{
+		displayKey: "lbl_PromotionRebateAndCashback",
+		value: defFilterType.Rebate_and_cashback,
+		className: "blueBorder",
+		selectedClassName: "blue"
+	},
 	{
 		displayKey: "lbl_Expired_Promo",
 		value: defFilterType.expiry,
