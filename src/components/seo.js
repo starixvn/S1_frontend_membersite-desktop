@@ -8,8 +8,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql, withPrefix } from "gatsby";
-import { SiteInfo } from "../config";
+import { useStaticQuery, graphql } from "gatsby";
+import config, { SiteInfo } from "../config";
 
 function SEO({ description, lang, meta, title }) {
 	const { site } = useStaticQuery(
@@ -143,7 +143,7 @@ const Iovation = () => {
 				`}
 			</script>
 			<script
-				src={`https://nova88-banner.s3-ap-southeast-1.amazonaws.com/apidoc/loader_only.js`}
+				src={`${config.t_and_cURL}/SiteSkin/${config.siteName}/common/js/loader_only.js`}
 				type="text/javascript"></script>
 		</Helmet>
 	);
