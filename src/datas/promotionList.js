@@ -38,41 +38,41 @@ export default [
 				"เพียงแค่คุณทำการวางเดิมพันใน 4 ลีคใหญ่ รับโบนัสเพิ่ม 10% จากยอดชนะ"
 		}
 	},
-	{
-		bonusCode: "050LIVECASINOUNLIMITEDREBATE",
-		bannerLink: {
-			en:
-				"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/EN-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
-			cs:
-				"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CS-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
-			id:
-				"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/ID-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
-			th:
-				"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/TH-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html"
-		},
-		imgUrl: {
-			en:
-				"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/en/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
-			cs:
-				"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/cs/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
-			id:
-				"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/id/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
-			th:
-				"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/th/banner-050LIVECASINOUNLIMITEDREBATE.jpg"
-		},
-		title: {
-			en: "LIVE CASINO UNLIMITED REBATE 0.50%",
-			cs: "真人娱乐场 0.50% 无上限返水",
-			id: "REBATE LIVE KASINO 0.50% TANPA BATAS",
-			th: "0.5% โบนัสคืนเงิน คาสิโนสด ไม่จำกัด"
-		},
-		description: {
-			en: "Register & Enjoy Your Bonus Now!",
-			cs: "立即注册即可享有优惠奖金！",
-			id: "Daftar & Nikmati Bonus Anda Sekarang!",
-			th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
-		}
-	},
+	// {
+	// 	bonusCode: "050LIVECASINOUNLIMITEDREBATE",
+	// 	bannerLink: {
+	// 		en:
+	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/EN-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
+	// 		cs:
+	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CS-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
+	// 		id:
+	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/ID-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
+	// 		th:
+	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/TH-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html"
+	// 	},
+	// 	imgUrl: {
+	// 		en:
+	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/en/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
+	// 		cs:
+	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/cs/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
+	// 		id:
+	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/id/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
+	// 		th:
+	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/th/banner-050LIVECASINOUNLIMITEDREBATE.jpg"
+	// 	},
+	// 	title: {
+	// 		en: "LIVE CASINO UNLIMITED REBATE 0.50%",
+	// 		cs: "真人娱乐场 0.50% 无上限返水",
+	// 		id: "REBATE LIVE KASINO 0.50% TANPA BATAS",
+	// 		th: "0.5% โบนัสคืนเงิน คาสิโนสด ไม่จำกัด"
+	// 	},
+	// 	description: {
+	// 		en: "Register & Enjoy Your Bonus Now!",
+	// 		cs: "立即注册即可享有优惠奖金！",
+	// 		id: "Daftar & Nikmati Bonus Anda Sekarang!",
+	// 		th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
+	// 	}
+	// },
 	{
 		bonusCode: "SportsbookUnlimitedRebate0720",
 		bannerLink: {
