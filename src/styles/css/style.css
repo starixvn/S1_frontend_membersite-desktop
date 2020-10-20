@@ -650,7 +650,7 @@ header {
 .header > div.function .cashier .submenu, .header > div.function .wallet .submenu, .header > div.function .memberfile .submenu {
   display: none;
   position: absolute;
-  margin-top: 30px;
+  margin-top: 40px;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 15px;
   padding: 20px;
@@ -663,6 +663,7 @@ header {
   line-height: 30px;
   white-space: nowrap;
   top: 0;
+  z-index: 1;
 }
 
 .header > div.function .cashier .submenu a:hover, .header > div.function .wallet .submenu a:hover, .header > div.function .memberfile .submenu a:hover {
@@ -776,10 +777,6 @@ header {
   position: relative;
 }
 
-.header > div.function .wallet .submenu div.walletBalance > div {
-  max-width: 88%;
-}
-
 .header > div.function .wallet .submenu div.walletBalance button {
   position: absolute;
   right: 10px;
@@ -827,6 +824,10 @@ main section.inside {
 
 main section.inside > div {
   margin: unset;
+}
+
+main section.inside > iframe {
+  margin-top: -65px;
 }
 
 main section .btnGroup {
@@ -1068,6 +1069,39 @@ main .gamelistother {
   -webkit-box-flex: 5;
       -ms-flex: 5;
           flex: 5;
+  max-width: 448px;
+}
+
+main .gamelistother .timetable {
+  background: #212121;
+  overflow: hidden;
+}
+
+main .gamelistother .timetable .swiper-button-next, main .gamelistother .timetable .swiper-button-prev {
+  background: #1E85EC;
+  height: 25px;
+  padding: 0px 3px;
+  opacity: 1;
+  top: auto;
+  bottom: 0;
+}
+
+main .gamelistother .timetable .swiper-button-next:after, main .gamelistother .timetable .swiper-button-prev:after {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+main .gamelistother .timetable .swiper-button-next {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  right: 0;
+}
+
+main .gamelistother .timetable .swiper-button-prev {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  left: 0;
 }
 
 main .gamelistother > a {
@@ -2064,7 +2098,7 @@ input[type="file"] {
   -webkit-transition: 0.7s;
   transition: 0.7s;
   padding-right: 10px;
-  cursor: pointer;
+  pointer-events: none;
 }
 
 .quickLink > div:nth-child(1) {
@@ -2086,6 +2120,8 @@ input[type="file"] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
+  pointer-events: all;
 }
 
 .quickLink > div:nth-child(1) .icon-chat {
@@ -5103,7 +5139,7 @@ iframe {
   font-size: 12px;
 }
 
-.progressBarModule .progressBar {
+.progressBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5112,22 +5148,23 @@ iframe {
           align-items: center;
 }
 
-.progressBarModule .progressBar .bar {
-  height: 10px;
+.progressBar .bar {
+  height: 5px;
   border: 1px solid #1E85EC;
   border-radius: 10px;
   margin-right: 10px;
   -webkit-box-flex: 1;
       -ms-flex: auto;
           flex: auto;
+  overflow: hidden;
 }
 
-.progressBarModule .progressBar .bar .progress {
+.progressBar .bar .progress {
   background: #1E85EC;
   height: 100%;
 }
 
-.progressBarModule .progressBar .percentage {
+.progressBar .percentage {
   color: #1E85EC;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
@@ -6119,5 +6156,60 @@ button.icon-spinner11:before {
 .minAmount > div > div:last-child {
   color: #1E85EC;
   background: white;
+}
+
+.gameMenu {
+  height: 240px;
+  background: #191919;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.gameMenu .gameSwiper {
+  max-width: 1560px;
+}
+
+.gameMenu .gameSwiper .swiper-slide {
+  text-align: center;
+  height: 160px;
+  background: #134DAE;
+  padding: 10px 0;
+  border-radius: 20px;
+}
+
+.gameMenu .gameSwiper .swiper-slide img {
+  max-width: 140px !important;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.gameMenu .swiper-button-next, .gameMenu .swiper-button-prev {
+  background: #1E85EC;
+  height: 25px;
+  padding: 0px 10px;
+  opacity: 1;
+}
+
+.gameMenu .swiper-button-next:after, .gameMenu .swiper-button-prev:after {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.gameMenu .swiper-button-next {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  right: 0;
+}
+
+.gameMenu .swiper-button-prev {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  left: 0;
 }
 /*# sourceMappingURL=style.css.map */
