@@ -128,25 +128,7 @@ export default ({ children, afterLogin = false }) => {
 			});
 
 			if (userInfo.userName) {
-				api_account_GetWalletInfo().then(res => {
-					if (res.data.errorCode === 0 && isMountedRef.current) {
-						let tpWallets = res.data.data.tpWallets?.map(t => {
-							return {
-								tpId: t.tpId,
-								balance: t.balance,
-								tpName: t.tpName,
-								bonus: t.bonus
-							};
-						});
-						setWalletInfo(prevState => ({
-							...prevState,
-							isHideBalance: res.data.data.isHideBalance,
-							main: res.data.data?.balance,
-							tpWallets,
-							lastTransaction: res.data.data.lastTransaction
-						}));
-					}
-				});
+				getContentWalletInfo();
 			}
 		} else if (isMountedRef.current) {
 			if (userInfo.isLogin === false) {
@@ -257,6 +239,28 @@ export default ({ children, afterLogin = false }) => {
 		userInfo.isLogin ? 10000 : null
 	);
 
+	const getContentWalletInfo = () => {
+		api_account_GetWalletInfo().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				let tpWallets = res.data.data.tpWallets?.map(t => {
+					return {
+						tpId: t.tpId,
+						balance: t.balance,
+						tpName: t.tpName,
+						bonus: t.bonus
+					};
+				});
+				setWalletInfo(prevState => ({
+					...prevState,
+					isHideBalance: res.data.data.isHideBalance,
+					main: res.data.data?.balance,
+					tpWallets,
+					lastTransaction: res.data.data.lastTransaction
+				}));
+			}
+		});
+	};
+
 	if (redirectPath === null) {
 		if (
 			(correctPath &&
@@ -266,7 +270,11 @@ export default ({ children, afterLogin = false }) => {
 			return (
 				<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
 					<ct.walletInfoContext.Provider
-						value={{ walletInfo, setWalletInfo }}>
+						value={{
+							walletInfo,
+							setWalletInfo,
+							getContentWalletInfo
+						}}>
 						<ct.msgCountContext.Provider
 							value={{ msgCount, setMsgCount }}>
 							<ct.popBoxContext.Provider
