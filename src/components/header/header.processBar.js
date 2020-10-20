@@ -1,8 +1,8 @@
 import React from "react";
 
-export default ({ bonus, rollover }) => {
+export default ({ turnover, rollover }) => {
 	let percentage =
-		bonus > rollover ? 100 : ((bonus / rollover) * 100).toFixed(2);
+		turnover > rollover ? 100 : ((turnover / rollover) * 100).toFixed(2);
 	return (
 		<div className="progressBar">
 			<div className="bar">

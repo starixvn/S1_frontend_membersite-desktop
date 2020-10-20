@@ -129,7 +129,7 @@ class Dropdown extends Component {
 						<span>{number_format(item.bonus)}</span>
 					</div>
 					<HeaderProcessBar
-						bonus={item.bonus}
+						turnover={item.turnover}
 						rollover={item.rollover}
 					/>
 				</div>
