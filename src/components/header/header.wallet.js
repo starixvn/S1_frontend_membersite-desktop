@@ -11,42 +11,19 @@ import path from "../../path";
 import { walletInfoContext, userInfoContext } from "../common/context";
 import moment from "moment";
 import { isConvert, number_format } from "../common/common";
-import {
-	api_account_GetWalletInfo,
-	api_account_SetHideBalance
-} from "../../service/api/account";
+import { api_account_SetHideBalance } from "../../service/api/account";
 import ReloadSpin from "../common/reloadSpin";
 
 export default props => {
-	const { walletInfo, setWalletInfo } = useContext(walletInfoContext);
+	const { walletInfo, setWalletInfo, getContentWalletInfo } = useContext(
+		walletInfoContext
+	);
 	const { userInfo } = useContext(userInfoContext);
 	const isMountedRef = useRef(null);
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
 	});
-
-	const RefreshBalance = () => {
-		api_account_GetWalletInfo().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				let tpWallets = res.data.data.tpWallets?.map(t => {
-					return {
-						tpId: t.tpId,
-						balance: t.balance,
-						tpName: t.tpName,
-						bonus: t.bonus
-					};
-				});
-
-				setWalletInfo(prevState => ({
-					...prevState,
-					main: res.data.data.balance,
-					tpWallets,
-					lastTransaction: res.data.data.lastTransaction
-				}));
-			}
-		});
-	};
 
 	const HandleDisplayBalance = (value, e) => {
 		e.stopPropagation();
@@ -62,7 +39,7 @@ export default props => {
 			currencyId={userInfo.currencyId}
 			walletInfo={walletInfo}
 			_isConvert={isConvert(userInfo.currencyId)}
-			RefreshBalance={RefreshBalance}
+			getContentWalletInfo={getContentWalletInfo}
 			HandleDisplayBalance={HandleDisplayBalance}
 		/>
 	) : (
@@ -133,7 +110,7 @@ class Dropdown extends Component {
 						</div>
 						<ReloadSpin
 							btnActive={false}
-							func={this.props.RefreshBalance}
+							func={this.props.getContentWalletInfo}
 						/>
 					</div>
 				);
@@ -175,7 +152,7 @@ class Dropdown extends Component {
 							)}
 							<ReloadSpin
 								btnActive={false}
-								func={this.props.RefreshBalance}
+								func={this.props.getContentWalletInfo}
 							/>
 						</span>
 					</div>

@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 import {
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	walletInfoContext
 } from "..//common/context";
 import { api_account_GetWalletInfo } from "../../service/api/account";
 import { isConvert, checkAmount } from "../common/common.js";
@@ -39,16 +40,21 @@ export default () => {
 	};
 
 	const { t } = useTranslation();
+
+	const isMountedRef = useRef(null);
+
+	const [amount, setAmount] = useState("");
+	const [walletInfo, setWalletInfo] = useState([]);
+	const [status, setStatus] = useState(initStatus);
+	const [getHistory, setGetHistory] = useState(null);
+	const [direction, setDirection] = useState(initDirection);
+
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
-	const _isConvert = isConvert(userInfo.currencyId);
-	const [walletInfo, setWalletInfo] = useState([]);
-	const [amount, setAmount] = useState("");
-	const [direction, setDirection] = useState(initDirection);
-	const [getHistory, setGetHistory] = useState(null);
-	const [status, setStatus] = useState(initStatus);
-	const isMountedRef = useRef(null);
 	const { loading, setLoading } = useContext(loadingContext);
+	const { getContentWalletInfo } = useContext(walletInfoContext);
+
+	const _isConvert = isConvert(userInfo.currencyId);
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -141,6 +147,7 @@ export default () => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
 						getWalletData();
+						getContentWalletInfo();
 						getTransferRecent();
 						setAmount("");
 					} else if (res.data.errorCode === 9) {
