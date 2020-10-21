@@ -8,18 +8,26 @@ import React, {
 import PropTypes from "prop-types";
 import { Link } from "@reach/router";
 import path from "../../path";
-import { walletInfoContext, userInfoContext } from "../common/context";
+import {
+	walletInfoContext,
+	userInfoContext,
+	bonusWalletsContext
+} from "../common/context";
 import moment from "moment";
 import { isConvert, number_format } from "../common/common";
 import { api_account_SetHideBalance } from "../../service/api/account";
+
 import ReloadSpin from "../common/reloadSpin";
+import HeaderProcessBar from "./header.processBar";
 
 export default props => {
 	const { walletInfo, setWalletInfo, getContentWalletInfo } = useContext(
 		walletInfoContext
 	);
+	const { bonusWallets } = useContext(bonusWalletsContext);
 	const { userInfo } = useContext(userInfoContext);
 	const isMountedRef = useRef(null);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
@@ -38,6 +46,7 @@ export default props => {
 			lastLogin={userInfo.lastLogin}
 			currencyId={userInfo.currencyId}
 			walletInfo={walletInfo}
+			bonusWallets={bonusWallets}
 			_isConvert={isConvert(userInfo.currencyId)}
 			getContentWalletInfo={getContentWalletInfo}
 			HandleDisplayBalance={HandleDisplayBalance}
@@ -102,19 +111,31 @@ class Dropdown extends Component {
 								)}
 							</span>
 						</div>
-						<div className="txt-orange">
-							<span>Bonus</span>
-							<span>
-								{number_format(t.bonus, this.props._isConvert)}
-							</span>
-						</div>
-						<ReloadSpin
-							btnActive={false}
-							func={this.props.getContentWalletInfo}
-						/>
 					</div>
 				);
 			});
+
+		const bonusWallets = this.props.bonusWallets.map(item => {
+			return (
+				<div
+					className="walletBalance"
+					key={`header-bonuswallet-${item.tpId}`}>
+					<div>
+						<span>
+							{this.props.i18n(
+								`lbl_BonusWallet_${item.promoCategoryId}`
+							)}
+						</span>
+						<span>{number_format(item.bonus)}</span>
+					</div>
+					<HeaderProcessBar
+						turnover={item.turnover}
+						rollover={item.rollover}
+					/>
+				</div>
+			);
+		});
+
 		return (
 			<div
 				className={`wallet icon icon-balance${
@@ -156,7 +177,10 @@ class Dropdown extends Component {
 							/>
 						</span>
 					</div>
+
+					{bonusWallets}
 					{tpWallets}
+
 					<div className="btnGroup">
 						<Link
 							to={`${this.props.langId}/${path.deposit.root}`}
