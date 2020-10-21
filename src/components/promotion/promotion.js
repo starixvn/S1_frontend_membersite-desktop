@@ -1,15 +1,16 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
-import { Link } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import { api_promotion_GetPromotionListV2 } from "../../service/api/promotion";
 import { api_account_GetCustSpecificBonus } from "../../service/api/account";
 import PromotionNavBar, { defFilterType } from "./promotion.nav";
 import PromotionList from "./promotion.list";
-import { userInfoContext, popBoxContext } from "../common/context";
+import {
+	userInfoContext,
+	popBoxContext,
+	loadingContext
+} from "../common/context";
 import { defPopBoxType } from "../common/popBox";
 import { isExpiry, isArrayNotEmpty } from "./promotion.common";
-import { getUrlParameter } from "../common/common";
-import path from "../../path";
 import StaticPromotionList from "../../datas/promotionList";
 import { defPromotionType } from "./promotion.def";
 
@@ -24,6 +25,7 @@ export default () => {
 
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
+	const { loading, setLoading } = useContext(loadingContext);
 
 	const clickClose = () => {
 		setPopBox({ isOpen: false });
@@ -127,10 +129,8 @@ export default () => {
 		);
 	};
 
-	useEffect(() => {
-		if (userInfo.isLogin === null) return;
-
-		api_promotion_GetPromotionListV2({
+	const getPromotionListV2 = async () => {
+		await api_promotion_GetPromotionListV2({
 			langId: userInfo.langId
 		}).then(
 			({ data: { data, message, errorCode } }) => {
@@ -149,6 +149,17 @@ export default () => {
 				if (isMountedRef.current) openErrorMessagePopBox();
 			}
 		);
+	};
+
+	useEffect(() => {
+		if (userInfo.isLogin === null) return;
+
+		async function getData() {
+			setLoading(true);
+			await getPromotionListV2();
+			setLoading(false);
+		}
+		getData();
 	}, [userInfo.isLogin, userInfo.langId]);
 
 	useEffect(() => {
@@ -203,7 +214,9 @@ export default () => {
 		);
 	});
 
-	return (
+	return loading ? (
+		<></>
+	) : (
 		<div className="infoModule">
 			<div className="inside-title icon icon-gift">
 				<span>{t("lbl_Promotions")}</span>
