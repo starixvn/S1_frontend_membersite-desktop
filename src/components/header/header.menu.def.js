@@ -31,56 +31,55 @@ export const defMenuLinks = {
 				icon: "icon icon-GPI",
 				displayText: "GPI",
 				menuType: defMenuType.Link,
-				tpId: 6,
-				parameter: { tpId: 6 }
+				parameter: { ...productList.casino_GPI },
+				...productList.casino_GPI
 			},
 			{
 				className: "YGG",
 				icon: "icon icon-YGG",
 				displayText: "YGG",
 				menuType: defMenuType.Link,
-				tpId: 8,
-				parameter: { tpId: 8 }
+				parameter: { ...productList.casino_YGG },
+				...productList.casino_YGG
 			},
 			{
 				className: "JOKER",
 				icon: "icon icon-JOKER",
 				displayText: "JOKER",
 				menuType: defMenuType.Link,
-				tpId: 9,
-				parameter: { tpId: 9 }
+				parameter: { ...productList.casino_JOKER },
+				...productList.casino_JOKER
 			},
 			{
 				className: "SG",
 				icon: "icon icon-SG",
 				displayText: "SG",
 				menuType: defMenuType.Link,
-				tpId: 10,
-				parameter: { tpId: 10 }
+				parameter: { ...productList.casino_SG },
+				...productList.casino_SG
 			},
 			{
 				className: "PP",
 				icon: "icon icon-PP",
 				displayText: "PP",
 				menuType: defMenuType.Link,
-				tpId: 5,
-				parameter: { tpId: 5 }
+				parameter: { ...productList.casino_PP },
+				...productList.casino_PP
 			},
 			{
 				className: "PG",
 				icon: "icon icon-PG",
 				displayText: "PG",
 				menuType: defMenuType.Link,
-				tpId: 14,
-				parameter: { tpId: 14 }
+				parameter: { ...productList.casino_PG },
+				...productList.casino_PG
 			},
 			{
 				className: "OW",
 				icon: "icon icon-OW",
 				displayText: "OW",
 				menuType: defMenuType.entPage,
-				tpId: 1,
-				gameId: 208
+				...productList.casino_OW
 			}
 		]
 	},
@@ -88,56 +87,49 @@ export const defMenuLinks = {
 		displayKey: "lbl_LiveCasino",
 		subMenu: [
 			{
-				gameId: 4,
-				tpId: 4,
+				...productList.liveCasino_DG,
 				className: "liveDG",
 				icon: "icon icon-DG",
 				displayText: "DG",
 				menuType: defMenuType.entPage
 			},
 			{
-				gameId: 12,
-				tpId: 12,
+				...productList.liveCasino_Allbet,
 				className: "liveALL",
 				icon: "icon icon-AB",
 				displayText: "Allbet",
 				menuType: defMenuType.entPage
 			},
 			{
-				gameId: 3,
-				tpId: 3,
+				...productList.liveCasino_AG,
 				className: "liveAG",
 				icon: "icon icon-AG",
 				displayText: "AG",
 				menuType: defMenuType.entPage
 			},
 			{
-				gameId: 101,
-				tpId: 5,
+				...productList.liveCasino_PP,
 				className: "livePP",
 				icon: "icon icon-PP",
 				displayText: "PP",
 				menuType: defMenuType.entPage
 			},
 			{
-				gameId: 2,
-				tpId: 2,
+				...productList.liveCasino_SA,
 				className: "liveSA",
 				icon: "icon icon-SA",
 				displayText: "SA",
 				menuType: defMenuType.entPage
 			},
 			{
-				gameId: 15,
-				tpId: 15,
+				...productList.liveCasino_AE,
 				className: "liveAE",
 				icon: "icon icon-AE",
 				displayText: "AE",
 				menuType: defMenuType.entPage
 			},
 			{
-				gameId: 18,
-				tpId: 18,
+				...productList.liveCasino_eBET,
 				className: "liveEB",
 				icon: "icon icon-EB",
 				displayText: "eBET",
