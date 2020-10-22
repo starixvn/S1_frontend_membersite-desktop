@@ -47,6 +47,9 @@ export const api_payment_GetBankInfoOffList = () =>
 export const api_payment_GetMobilePayGroupList = () =>
 	paymentRequest.post("/GetMobilePayGroupList");
 
+export const api_payment_GetCryptoPayInfoList = () =>
+	paymentRequest.post("/GetCryptoPayInfoList");
+
 export const api_payment_DepositReqWireTransfer = ({ amount, sysId }) =>
 	paymentRequest.post("/DepositReqWireTransfer", { amount, sysId });
 

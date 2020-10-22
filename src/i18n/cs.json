@@ -116,6 +116,7 @@
 	"lbl_DepositType1": "网络银行",
 	"lbl_DepositType2": "手机支付",
 	"lbl_DepositType3": "银行卡",
+	"lbl_DepositType4": "加密货币",
 	"lbl_Amount": "金额",
 	"lbl_Status": "状态",
 	"lbl_DepositStatus0": "草稿",
@@ -384,5 +385,9 @@
 	"lbl_OpenOtherSite": " 另开视窗并重导向",
 	"lbl_PicFormatTip": "档案格式错误，请重试。",
 	"lbl_DepositTimeToolTip": " 請提交您的存充值入時間。",
-	"lbl_PromotionRebateAndCashback": "返水 / 现金返还"
+	"lbl_PromotionRebateAndCashback": "返水 / 现金返还",
+	"lbl_CryptoPay":"加密货币",
+	"lbl_ExchangeRateReference":"参考汇率",
+	"lbl_ExchangeRateReferenceOnly":"汇率仅供参考",
+	"lbl_ExchangeAmount":"换算金额"
 }

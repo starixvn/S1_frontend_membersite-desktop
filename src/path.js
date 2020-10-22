@@ -28,6 +28,9 @@ export default {
 			},
 			localBank: {
 				root: "localBank"
+			},
+			crypto: {
+				root: "cryptoPay"
 			}
 		}
 	},

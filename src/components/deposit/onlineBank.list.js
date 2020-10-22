@@ -13,6 +13,7 @@ export default ({ onlineBankingList }) => {
 	const { userInfo } = useContext(userInfoContext);
 
 	const _isConvert = isConvert(userInfo.currencyId);
+
 	let rows = onlineBankingList?.map(p => {
 		return (
 			<li key={`deposit-onlineBank-${p.payId}-${p.channelId}`}>
@@ -31,7 +32,7 @@ export default ({ onlineBankingList }) => {
 		);
 	});
 
-	return onlineBankingList !== null || onlineBankingList.length > 0 ? (
+	return onlineBankingList !== null && onlineBankingList.length > 0 ? (
 		<div className="subModule">
 			<div className="subModuleTitle">
 				<div>

@@ -1171,7 +1171,7 @@ main .gamelistother > a:hover > img {
 
 footer {
   width: 100%;
-  background: black;
+  background: #212121;
 }
 
 .webmap {
@@ -1273,30 +1273,192 @@ footer {
 
 .platform {
   padding: 0 calc((100% - 1600px) / 2);
-  background: #f77900;
+  background: #191919;
   padding-top: 15px;
   padding-bottom: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.platform a {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0 5px;
+.platform button:nth-child(1) {
+  background: url(http://www.n88dev.com/common/images/logo/saba.png) no-repeat center/100%;
+  width: 104px;
+  height: 55px;
+  margin-right: 28px;
   cursor: auto;
+}
+
+.platform button:nth-child(1):hover {
+  background: url(http://www.n88dev.com/common/images/logo/sabaa.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(2) {
+  background: url(http://www.n88dev.com/common/images/logo/ab.png) no-repeat center/100%;
+  width: 63px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(2):hover {
+  background: url(http://www.n88dev.com/common/images/logo/aba.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(3) {
+  background: url(http://www.n88dev.com/common/images/logo/yl.png) no-repeat center/100%;
+  width: 34px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(3):hover {
+  background: url(http://www.n88dev.com/common/images/logo/yla.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(4) {
+  background: url(http://www.n88dev.com/common/images/logo/ag.png) no-repeat center/100%;
+  width: 83px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(4):hover {
+  background: url(http://www.n88dev.com/common/images/logo/aga.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(5) {
+  background: url(http://www.n88dev.com/common/images/logo/jk.png) no-repeat center/100%;
+  width: 97px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(5):hover {
+  background: url(http://www.n88dev.com/common/images/logo/jka.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(6) {
+  background: url(http://www.n88dev.com/common/images/logo/gp.png) no-repeat center/100%;
+  width: 119px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(6):hover {
+  background: url(http://www.n88dev.com/common/images/logo/gpa.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(7) {
+  background: url(http://www.n88dev.com/common/images/logo/dg.png) no-repeat center/100%;
+  width: 53px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(7):hover {
+  background: url(http://www.n88dev.com/common/images/logo/dga.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(8) {
+  background: url(http://www.n88dev.com/common/images/logo/sa.png) no-repeat center/100%;
+  width: 87px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(8):hover {
+  background: url(http://www.n88dev.com/common/images/logo/saa.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(9) {
+  background: url(http://www.n88dev.com/common/images/logo/yg.png) no-repeat center/100%;
+  width: 114px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(9):hover {
+  background: url(http://www.n88dev.com/common/images/logo/yga.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(10) {
+  background: url(http://www.n88dev.com/common/images/logo/pp.png) no-repeat center/100%;
+  width: 100px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(10):hover {
+  background: url(http://www.n88dev.com/common/images/logo/ppa.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(11) {
+  background: url(http://www.n88dev.com/common/images/logo/sg.png) no-repeat center/100%;
+  width: 89px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(11):hover {
+  background: url(http://www.n88dev.com/common/images/logo/sga.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(12) {
+  background: url(http://www.n88dev.com/common/images/logo/pg.png) no-repeat center/100%;
+  width: 54px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(12):hover {
+  background: url(http://www.n88dev.com/common/images/logo/pga.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(13) {
+  background: url(http://www.n88dev.com/common/images/logo/AE.png) no-repeat center/100%;
+  width: 120px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(13):hover {
+  background: url(http://www.n88dev.com/common/images/logo/AEa.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(14) {
+  background: url(http://www.n88dev.com/common/images/logo/eb.png) no-repeat center/100%;
+  width: 90px;
+  height: 55px;
+  margin-right: 28px;
+  cursor: auto;
+}
+
+.platform button:nth-child(14):hover {
+  background: url(http://www.n88dev.com/common/images/logo/eba.png) no-repeat center/100%;
 }
 
 .copyright {
   padding: 0 calc((100% - 1600px) / 2);
   text-align: center;
   font-size: 12px;
-  background: #030c1b;
+  background: black;
   padding: 22px 0;
 }
 
@@ -1599,6 +1761,10 @@ footer {
 
 .txt-blue12 {
   color: #64789b;
+}
+
+.txt-white {
+  color: white;
 }
 
 .txt-gray {
@@ -2930,7 +3096,6 @@ input[type="file"] {
       -ms-flex-pack: center;
           justify-content: center;
   width: calc(100% - 10px);
-  overflow: hidden;
 }
 
 .subModuleList .subModule .subModuleBody ul li a.icon-VNPay:before {
@@ -2939,7 +3104,6 @@ input[type="file"] {
 
 .subModuleList .subModule .subModuleBody ul li a:before {
   font-size: 2.5vw;
-  margin-right: 0;
 }
 
 .subModuleList .subModule .subModuleBody ul li a:hover {
@@ -4181,7 +4345,7 @@ input[type="file"] {
 }
 
 .quickSelect + .nodata {
-  width: calc(100% - 50px);
+  width: calc(100% - 70px);
   margin: auto;
   margin-top: 10px;
   border-top: 1px solid #212121;
@@ -4229,6 +4393,22 @@ input[type="file"] {
   border-bottom-right-radius: 15px;
   border: 1px solid #212121;
   border-top: 0;
+  color: #1E85EC;
+}
+
+.nodata:before {
+  font-size: 48px;
+}
+
+.nodata div {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: auto;
+  margin-top: 10px;
 }
 
 .changePassWord, .forgetPassWord {
@@ -4900,10 +5080,20 @@ input[type="file"] {
   margin-top: 20px;
 }
 
+.icon-icon32px_deposit + .stepBar + .subModuleList {
+  padding: 0 50px 40px;
+}
+
 .icon-icon32px_deposit + .stepBar + .subModuleList .subModule {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 calc(100% / 3 - 27px);
-          flex: 0 0 calc(100% / 3 - 27px);
+      -ms-flex: 0 0 calc(100% / 4 - 10px);
+          flex: 0 0 calc(100% / 4 - 10px);
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.icon-icon32px_deposit + .stepBar + .subModuleList .subModule:last-child {
+  margin-right: 0;
 }
 
 form {

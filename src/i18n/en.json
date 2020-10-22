@@ -116,6 +116,7 @@
 	"lbl_DepositType1": "Online Banking",
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Local Bank",
+	"lbl_DepositType4": "Crypto Pay",
 	"lbl_Amount": "Amount",
 	"lbl_Status": "Status",
 	"lbl_DepositStatus0": "Draft",
@@ -384,5 +385,9 @@
 	"lbl_OpenOtherSite":"Open another window and redirect",
 	"lbl_PicFormatTip":"File format error, please try again.",
 	"lbl_DepositTimeToolTip":" Please submit your deposit time.",
-	"lbl_PromotionRebateAndCashback":"Rebate / Cashback"
+	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",
+	"lbl_CryptoPay":"Crypto Pay",
+	"lbl_ExchangeRateReference":"Exchange rate reference",
+	"lbl_ExchangeRateReferenceOnly":"Exchange rate is for reference only",
+	"lbl_ExchangeAmount":"Exchange Amount"
 }
