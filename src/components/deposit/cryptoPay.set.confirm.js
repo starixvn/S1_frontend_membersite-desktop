@@ -44,13 +44,13 @@ export default ({ channelInfo, amount, _isConvert, dispatch }) => {
 							</li>
 						</ul>
 						<ul>
-							<li>{t("lbl_ExchangeRateReference")}</li>
+							<li>{t("lbl_ExchangeRate")}</li>
 							<li>{channelInfo.sellRate}</li>
 						</ul>
 						<ul>
 							<li>{t("lbl_ExchangeAmount")}</li>
 							<li>
-								{(amount / channelInfo.sellRate).toFixed(4)}
+								{(amount / channelInfo.sellRate).toFixed(8)}
 							</li>
 						</ul>
 					</div>

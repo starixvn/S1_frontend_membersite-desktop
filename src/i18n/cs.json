@@ -387,7 +387,7 @@
 	"lbl_DepositTimeToolTip": " 請提交您的存充值入時間。",
 	"lbl_PromotionRebateAndCashback": "返水 / 现金返还",
 	"lbl_CryptoPay":"加密货币",
-	"lbl_ExchangeRateReference":"参考汇率",
+	"lbl_ExchangeRate":"兑换汇率",
 	"lbl_ExchangeRateReferenceOnly":"汇率仅供参考",
 	"lbl_ExchangeAmount":"换算金额"
 }

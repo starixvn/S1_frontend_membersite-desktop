@@ -387,7 +387,7 @@
 	"lbl_DepositTimeToolTip":" Please submit your deposit time.",
 	"lbl_PromotionRebateAndCashback":"Rebate / Cashback",
 	"lbl_CryptoPay":"Crypto Pay",
-	"lbl_ExchangeRateReference":"Exchange rate reference",
-	"lbl_ExchangeRateReferenceOnly":"Exchange rate is for reference only",
+	"lbl_ExchangeRate":"Exchange rate",
+	"lbl_ExchangeRateReferenceOnly":"This rate is only for refence",
 	"lbl_ExchangeAmount":"Exchange Amount"
 }
