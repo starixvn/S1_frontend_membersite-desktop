@@ -13,6 +13,7 @@ import { defPopBoxType } from "../common/popBox";
 import { isExpiry, isArrayNotEmpty } from "./promotion.common";
 import { defPromotionType } from "./promotion.def";
 import { SiteInfo } from "../../config";
+import staticList from "../../datas/promotionList";
 
 export default () => {
 	const { t } = useTranslation();
@@ -26,7 +27,7 @@ export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { loading, setLoading } = useContext(loadingContext);
-	const [staticList, setStaticList] = useState([]);
+	// const [staticList, setStaticList] = useState([]);
 
 	const clickClose = () => {
 		setPopBox({ isOpen: false });
@@ -162,13 +163,13 @@ export default () => {
 		}
 		getData();
 
-		fetch(SiteInfo.staticPromotions)
-			.then(async res => {
-				return res.json();
-			})
-			.then(data => {
-				setStaticList(data);
-			});
+		// fetch(SiteInfo.staticPromotions)
+		// 	.then(async res => {
+		// 		return res.json();
+		// 	})
+		// 	.then(data => {
+		// 		setStaticList(data);
+		// 	});
 	}, [userInfo.isLogin, userInfo.langId]);
 
 	useEffect(() => {
