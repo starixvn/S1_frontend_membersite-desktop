@@ -66,5 +66,55 @@ export default {
 		gameId: 223,
 		tpId: 1,
 		allowCurrency: [4, 15]
+	},
+	casino_GPI: {
+		tpId: 6
+	},
+	casino_YGG: {
+		tpId: 8
+	},
+	casino_JOKER: {
+		tpId: 9
+	},
+	casino_SG: {
+		tpId: 10
+	},
+	casino_PP: {
+		tpId: 5
+	},
+	casino_PG: {
+		tpId: 14
+	},
+	casino_OW: {
+		tpId: 1,
+		gameId: 208
+	},
+	liveCasino_DG: {
+		gameId: 4,
+		tpId: 4
+	},
+	liveCasino_Allbet: {
+		gameId: 12,
+		tpId: 12
+	},
+	liveCasino_AG: {
+		gameId: 3,
+		tpId: 3
+	},
+	liveCasino_PP: {
+		gameId: 101,
+		tpId: 5
+	},
+	liveCasino_SA: {
+		gameId: 2,
+		tpId: 2
+	},
+	liveCasino_AE: {
+		gameId: 15,
+		tpId: 15
+	},
+	liveCasino_eBET: {
+		gameId: 18,
+		tpId: 18
 	}
 };

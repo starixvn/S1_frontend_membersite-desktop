@@ -12,8 +12,7 @@ import {
 import LinkItems from "../common/linkItems";
 import { userInfoContext } from "../common/context";
 import config, { SiteInfo } from "../../config";
-import saba from "../../styles/img/saba.png";
-import eb from "../../styles/img/eb.png";
+import PlatformSection from "./footer.platform";
 
 const SportsBettingSection = ({ t, isLogin, langId }) => (
 	<div>
@@ -115,50 +114,6 @@ const AboutUsSection = ({ t, langId }) => (
 	</div>
 );
 
-const PlatformSection = () => (
-	<div className="platform">
-		<button>
-			<img src={saba} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/ab.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/yl.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/ag.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/jk.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/gp.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/dg.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/sa.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/yg.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/pp.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/sg.png`} />
-		</button>
-		<button>
-			<img src={`${config.imgUrl}/common/images/logo/pg.png`} />
-		</button>
-		<button>
-			<img src={eb} />
-		</button>
-	</div>
-);
-
 const SocialMediaSection = ({ t }) => (
 	<div>
 		<span className="title">{t("lbl_SocialMedia")}</span>
@@ -256,7 +211,11 @@ export default () => {
 				<PaymentSection t={t} />
 				<SocialMediaSection t={t} />
 			</div>
-			<PlatformSection />
+			<PlatformSection
+				t={t}
+				langId={userInfo.langId}
+				isLogin={userInfo.isLogin}
+			/>
 			<div className="copyright">
 				© Copyright 2020. Nova88. All Rights Reserved.
 			</div>
