@@ -164,7 +164,7 @@ export default () => {
 		getData();
 
 		// fetch(SiteInfo.staticPromotions)
-		// 	.then(async res => {
+		// 	.then(res => {
 		// 		return res.json();
 		// 	})
 		// 	.then(data => {
