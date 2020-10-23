@@ -11,8 +11,8 @@ import {
 } from "../common/context";
 import { defPopBoxType } from "../common/popBox";
 import { isExpiry, isArrayNotEmpty } from "./promotion.common";
-import StaticPromotionList from "../../datas/promotionList";
 import { defPromotionType } from "./promotion.def";
+import { SiteInfo } from "../../config";
 
 export default () => {
 	const { t } = useTranslation();
@@ -26,6 +26,7 @@ export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { loading, setLoading } = useContext(loadingContext);
+	const [staticList, setStaticList] = useState([]);
 
 	const clickClose = () => {
 		setPopBox({ isOpen: false });
@@ -160,6 +161,14 @@ export default () => {
 			setLoading(false);
 		}
 		getData();
+
+		fetch(SiteInfo.staticPromotions)
+			.then(async res => {
+				return res.json();
+			})
+			.then(data => {
+				setStaticList(data);
+			});
 	}, [userInfo.isLogin, userInfo.langId]);
 
 	useEffect(() => {
@@ -167,16 +176,7 @@ export default () => {
 		return () => (isMountedRef.current = false);
 	});
 
-	const OpenStaticPromotion = ({ url, bonusCode }) => {
-		let windowKey = `static-promotion-${bonusCode}`;
-		window.open(
-			url,
-			windowKey,
-			"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
-		);
-	};
-
-	let _staticRows = StaticPromotionList.map(p => {
+	let _staticRows = staticList.map(p => {
 		return (
 			<div
 				key={`static-promotion.list-${p.bonusCode}-${p.categoryId}-${p.tpId}`}
@@ -230,7 +230,7 @@ export default () => {
 			{userInfo.isLogin !== null ? (
 				isArrayNotEmpty(promoList) ||
 				(filter === defFilterType.all &&
-					isArrayNotEmpty(StaticPromotionList)) ? (
+					isArrayNotEmpty(_staticRows)) ? (
 					<PromotionList
 						promoList={promoList}
 						t={t}
@@ -246,5 +246,14 @@ export default () => {
 				)
 			) : null}
 		</div>
+	);
+};
+
+const OpenStaticPromotion = ({ url, bonusCode }) => {
+	let windowKey = `static-promotion-${bonusCode}`;
+	window.open(
+		url,
+		windowKey,
+		"toolbar=no, menubar=no,scrollbars=no,resizable=no,location=no,directories=no,status=no, top=0, left=0"
 	);
 };
