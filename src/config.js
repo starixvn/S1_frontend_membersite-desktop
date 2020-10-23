@@ -28,7 +28,9 @@ export const SiteInfo = {
 			link: "https://www.instagram.com/nova88.net_official",
 			displayKey: "lbl_Instagram"
 		}
-	}
+	},
+	staticPromotions:
+		"https://image.n88media.com/NovaPromotion/promotionList.json"
 };
 
 export default process.env.NODE_ENV === "production"
