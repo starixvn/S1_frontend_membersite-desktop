@@ -211,5 +211,40 @@ export default [
 			id: "Daftar & Nikmati Bonus Anda Sekarang!",
 			th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
 		}
+	},
+	{
+		bonusCode: "1111SPORTSBOOKATTENDANCE",
+		bannerLink: {
+			en:
+				"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/EN.html",
+			cs:
+				"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/CS.html",
+			id:
+				"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/ID.html",
+			th:
+				"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/TH.html"
+		},
+		imgUrl: {
+			en:
+				"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/en/114_11.11-SPORTSBOOK-ATTENDANCE.jpg",
+			cs:
+				"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/cs/114_11.11-SPORTSBOOK-ATTENDANCE.jpg",
+			id:
+				"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/id/114_11.11-SPORTSBOOK-ATTENDANCE.jpg",
+			th:
+				"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/th/114_11.11-SPORTSBOOK-ATTENDANCE.jpg"
+		},
+		title: {
+			en: "11.11 Sportsbook Perfect Attendance",
+			cs: "11.11 体育博彩双十一完美出席",
+			id: "Kehadiran Sempurna Sports 11.11",
+			th: "11.11 สปอร์ต 11 วัน มันส์ดีไม่มีเบื่อ"
+		},
+		description: {
+			en: "Register & Enjoy Your Bonus Now!",
+			cs: "立即注册即可享有优惠奖金！",
+			id: "Daftar & Nikmati Bonus Anda Sekarang!",
+			th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
+		}
 	}
 ];
