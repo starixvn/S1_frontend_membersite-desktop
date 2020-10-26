@@ -14,6 +14,7 @@ export default ({ cryptoList }) => {
 				<Link
 					to={`${_path}?name=${p.channelName}&gId=${p.groupId}`}
 					className={`icon icon-${p.channelName}`}></Link>
+				<span>{p.groupName}</span>
 			</li>
 		);
 	});
