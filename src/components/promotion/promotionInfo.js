@@ -1,19 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "@reach/router";
 import { useTranslation } from "react-i18next";
 import { userInfoContext, popBoxContext } from "../common/context";
 import { getUrlParameter, isConvert, number_format } from "../common/common";
-import {
-	api_promotion_GetPromotionDetail,
-	api_promotion_SetClaimPromotion
-} from "../../service/api/promotion";
+import { api_promotion_GetPromotionDetail } from "../../service/api/promotion";
 import { api_account_GetCustSpecificBonus } from "../../service/api/account";
 import { defPopBoxType } from "../common/popBox";
 import { isExpiry, isClaimed } from "./promotion.common";
 import ProcessBar from "./promotion.processBar";
 import moment from "moment";
 import { promoStatus } from "./promotion.def";
-import path from "../../path";
+import PromotionJoinButton from "./promotion.joinButton";
 
 export default () => {
 	const { t } = useTranslation();
@@ -50,8 +46,8 @@ export default () => {
 		});
 	};
 
-	const getPromotionDetail = (langId, bonusCode) => {
-		api_promotion_GetPromotionDetail({
+	const getPromotionDetail = async (langId, bonusCode) => {
+		await api_promotion_GetPromotionDetail({
 			langId,
 			BonusCode: bonusCode
 		}).then(
@@ -62,112 +58,6 @@ export default () => {
 
 				if (success) return setPromotionInfo(data);
 				openErrorMessagePopBox(message || "error", errorCode);
-			},
-			err => {
-				if (isMountedRef.current) {
-					openErrorMessagePopBox();
-				}
-			}
-		);
-	};
-
-	const onJoinPromotion = () => {
-		const {
-			canJoin,
-			isJoin,
-			result,
-			requiredAmount,
-			depositAmount,
-			bonusCode
-		} = promotionInfo;
-
-		const {
-			isLogin,
-			currencyId,
-			accountName,
-			phoneNo,
-			email,
-			langId
-		} = userInfo;
-
-		if (isLogin === false)
-			return setPopBox({
-				isOpen: true,
-				popBoxType: defPopBoxType.Login
-			});
-
-		if (currencyId && (!accountName || !phoneNo || !email))
-			return setPopBox({
-				isOpen: true,
-				popBoxType: defPopBoxType.UpdateProfile,
-				title: t("lbl_ImportantNote"),
-				content: t("lbl_UpdatePersonalInfoPromotion"),
-				btnBar: (
-					<div className="btnGroup">
-						<Link
-							className="btn-check"
-							to={`/${userInfo.langId}/${
-								path.profile.root
-							}?from=${
-								path.promotion.root
-							}?BonusCode=${getUrlParameter("BonusCode")}`}>
-							{t("lbl_UpdatePersonalDetail")}
-						</Link>
-					</div>
-				)
-			});
-
-		if (canJoin && !isJoin && result === 1 && requiredAmount > 0) {
-			let lessAmount = number_format(
-				requiredAmount - depositAmount,
-				isConvert(currencyId)
-			);
-
-			let hint = `${_currency} ${lessAmount}$`;
-			return setPopBox({
-				isOpen: true,
-				popBoxType: defPopBoxType.PromotionDepositConfirm,
-				hint,
-				btnBar: (
-					<div className="btnGroup">
-						<button className="btn-cancel" onClick={clickClose}>
-							{t("lbl_Later")}
-						</button>
-						<Link
-							to={`/${userInfo.langId}/${path.deposit.root}`}
-							type="button"
-							className="btn-check">
-							{t("lbl_DepositNow")}
-						</Link>
-					</div>
-				)
-			});
-		}
-
-		return api_promotion_SetClaimPromotion({
-			langId,
-			BonusCode: bonusCode
-		}).then(
-			({ data: { message, errorCode } }) => {
-				if (!isMountedRef.current) return;
-
-				const success = errorCode === 0;
-				if (success) {
-					getPromotionDetail(langId, bonusCode);
-					setPopBox({
-						isOpen: true,
-						popBoxType: defPopBoxType.Success,
-						btnBar: (
-							<div className="btnGroup">
-								<button
-									className="btn-cancel"
-									onClick={clickClose}>
-									OK
-								</button>
-							</div>
-						)
-					});
-				} else openErrorMessagePopBox(message || "error", errorCode);
 			},
 			err => {
 				if (isMountedRef.current) {
@@ -243,15 +133,20 @@ export default () => {
 							{promotionInfo.title}
 							<div>{promotionInfo.description}</div>
 						</div>
-						{!promotionInfo.isJoin && !_isExpiry ? (
-							<div className="btnGroup">
-								<button
-									className="btn-check"
-									onClick={onJoinPromotion}>
-									{t("lbl_PromoJoinNow")}
-								</button>
-							</div>
-						) : null}
+
+						<div className="btnGroup">
+							<PromotionJoinButton
+								promotionInfo={promotionInfo}
+								userInfo={userInfo}
+								_isExpiry={_isExpiry}
+								callBack={() =>
+									getPromotionDetail(
+										userInfo.langId,
+										promotionInfo.bonusCode
+									)
+								}
+							/>
+						</div>
 					</div>
 
 					<DepositMenu
