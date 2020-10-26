@@ -58,6 +58,9 @@ const defPlatfrom = [
 		parameter: { ...productList.casino_PG }
 	},
 	{
+		...productList.liveCasino_AE
+	},
+	{
 		...productList.liveCasino_eBET
 	}
 ];
