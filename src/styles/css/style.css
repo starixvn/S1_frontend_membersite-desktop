@@ -116,8 +116,7 @@ header {
   display: flex;
 }
 
-.logo img {
-  max-width: 130px;
+.logo a {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -437,6 +436,8 @@ header {
       -ms-flex-pack: end;
           justify-content: flex-end;
   align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .header > div.function > a:nth-child(-n+5) {
@@ -459,9 +460,6 @@ header {
 }
 
 .header > div.function > div, .header > div.function > a, .header > div.function > button {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
