@@ -236,7 +236,7 @@ const Rollover = ({ promotionInfo, t, currencyId }) => {
 					</div>
 				) : null}
 				<div>{displayExpiryTime}</div>
-				<div>{rollOver}X</div>
+				<div>{rollOver ? rollOver : 1}X</div>
 			</div>
 		</div>
 	);
