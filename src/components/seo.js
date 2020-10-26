@@ -74,6 +74,7 @@ function SEO({ description, lang, meta, title }) {
 			<GATag gaCode={"UA-163834722-1"} />
 			<LiveChat />
 			<Iovation />
+			<FPS />
 		</>
 	);
 }
@@ -145,6 +146,17 @@ const Iovation = () => {
 			<script
 				src={`${config.t_and_cURL}/common/js/loader_only.js`}
 				type="text/javascript"></script>
+		</Helmet>
+	);
+};
+
+const FPS = () => {
+	return (
+		<Helmet>
+			<script
+				async=""
+				defer=""
+				src="//sc.detecas.com/di/activator.ashx"></script>
 		</Helmet>
 	);
 };
