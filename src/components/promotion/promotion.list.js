@@ -8,20 +8,23 @@ import { defFilterType } from "./promotion.nav";
 import { promoStatus } from "./promotion.def";
 import { isNew, isClaimed, isExpiry } from "./promotion.common";
 import { isConvert, number_format } from "../common/common";
+import PromotionJoinButton from "./promotion.joinButton";
 
 export default ({
 	promoList,
 	t,
-	langId,
-	isLogin,
-	currencyId,
+	userInfo,
 	filter,
 	refreshProcessBar,
-	staticPromotions
+	staticPromotions,
+	getPromotionListV2
 }) => {
+	const { langId, isLogin, currencyId } = userInfo;
+
 	let rows = promoList?.map(p => {
 		let _isClaimed = isClaimed(p);
 		let _isNew = _isClaimed ? false : isNew(p);
+		let _isExpiry = isExpiry({ ...p, isLogin });
 
 		return (
 			<div
@@ -43,16 +46,29 @@ export default ({
 					t={t}
 					currencyId={currencyId}
 					refreshProcessBar={() => refreshProcessBar(p)}
-					hideReloadBtn={isExpiry({ ...p, isLogin })}
+					hideReloadBtn={_isExpiry}
 				/>
-				<Link
-					className="btnGroup"
-					to={`/${langId}/${path.promotion.root}/${path.promotion.sub.promotionInfo.root}?BonusCode=${p.bonusCode}`}>
-					<button className="blue">{t("lbl_Details")}</button>
-				</Link>
+
+				<div className="btnGroup">
+					<Link
+						type="button"
+						className="blue"
+						to={`/${langId}/${path.promotion.root}/${path.promotion.sub.promotionInfo.root}?BonusCode=${p.bonusCode}`}>
+						{t("lbl_Details")}
+					</Link>
+
+					<PromotionJoinButton
+						promotionInfo={p}
+						userInfo={userInfo}
+						_isExpiry={_isExpiry}
+						callBack={getPromotionListV2}
+					/>
+				</div>
 			</div>
 		);
 	});
+
+	if (isLogin === null) return null;
 
 	return (
 		<div
