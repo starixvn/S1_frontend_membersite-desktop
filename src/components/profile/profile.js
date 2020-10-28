@@ -13,7 +13,7 @@ import { defPopBoxType } from "../common/popBox";
 import EditModule from "./profile.edit";
 import { getUrlParameter } from "../common/common";
 import { Link } from "@reach/router";
-import path from "../../path";
+import { defPrevPage } from "./profile.dev";
 import Loading from "../common/loading";
 import { api_site_GetCountryList } from "../../service/api/site";
 
@@ -242,6 +242,7 @@ export default () => {
 				PhoneNo: userInfo.phoneNo ?? userValue.phoneNo
 			};
 
+			closePopBox();
 			setLoading(true);
 
 			api_accountStrict_SetProfile(profileDatas).then(
@@ -261,12 +262,36 @@ export default () => {
 							setUserValue(initValue);
 							setStatus(initStatus);
 
-							let prevPage = getUrlParameter("from");
-							if (prevPage === path.withdrawal.root) {
-								setPopBox({
+							let prevPage = getUrlParameter("prevPage");
+
+							if (!userInfo.phoneVerified)
+								return setPopBox({
 									isOpen: true,
 									popBoxType: defPopBoxType.ProfileCompelete,
-									contentMsg: t("lbl_GoWithdrawalPage"),
+									contentMsg: t("lbl_VertifyContactConfirm"),
+									btnBar: (
+										<div className="btnGroup">
+											<button
+												className="btn-cancel"
+												onClick={closePopBox}>
+												{t("lbl_Later")}
+											</button>
+											<button
+												className="blue"
+												onClick={sendOTPSMS}>
+												{t("lbl_VertifyNow")}
+											</button>
+										</div>
+									)
+								});
+
+							if (defPrevPage[prevPage])
+								return setPopBox({
+									isOpen: true,
+									popBoxType: defPopBoxType.ProfileCompelete,
+									contentMsg: t(
+										defPrevPage[prevPage].contentMsg
+									),
 									btnBar: (
 										<div className="btnGroup">
 											<button
@@ -276,60 +301,12 @@ export default () => {
 											</button>
 											<Link
 												className="btn-check"
-												to={`/${userInfo.langId}/${path.withdrawal.root}`}>
-												{t("lbl_WithdrawalNow")}
+												to={`/${userInfo.langId}/${defPrevPage[prevPage].path}`}>
+												{t(defPrevPage[prevPage].label)}
 											</Link>
 										</div>
 									)
 								});
-							} else if (prevPage === path.promotion.root) {
-								setPopBox({
-									isOpen: true,
-									popBoxType: defPopBoxType.ProfileCompelete,
-									contentMsg: t("lbl_GoPromotionPage"),
-									btnBar: (
-										<div className="btnGroup">
-											<button
-												className="btn-cancel"
-												onClick={closePopBox}>
-												{t("lbl_Later")}
-											</button>
-											<Link
-												className="btn-check"
-												to={`/${userInfo.langId}/${
-													path.promotion.root
-												}/${
-													path.promotion.sub
-														.promotionInfo.root
-												}?BonusCode=${getUrlParameter(
-													"BonusCode"
-												)}`}>
-												{t("lbl_GoNow")}
-											</Link>
-										</div>
-									)
-								});
-							} else {
-								setPopBox({
-									isOpen: true,
-									popBoxType: defPopBoxType.ProfileCompelete,
-									contentMsg: t("lbl_GoDepositPage"),
-									btnBar: (
-										<div className="btnGroup">
-											<button
-												className="btn-cancel"
-												onClick={closePopBox}>
-												{t("lbl_Later")}
-											</button>
-											<Link
-												className="btn-check"
-												to={`/${userInfo.langId}/${path.deposit.root}`}>
-												{t("lbl_DepositNow")}
-											</Link>
-										</div>
-									)
-								});
-							}
 						} else {
 							setPopBox({
 								isOpen: true,
