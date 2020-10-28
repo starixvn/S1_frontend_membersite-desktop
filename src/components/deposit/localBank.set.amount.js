@@ -78,21 +78,19 @@ export default ({ bankInfo, _isConvert, amount, dispatch, checked, tip }) => {
 							_isConvert={_isConvert}
 						/>
 					</div>
-					<div className="inputModuleRow">
-						<Inputbox
-							className="inputBox-white"
-							title={t("lbl_Amount")}
-							value={amount}
-							onChange={EditAmount}
-							onBlur={ValidAmount.bind(this, amount)}
-							clickInfo={clickInfo}
-							checked={checked}
-							tip={tip}
-							_isConvert={_isConvert}
-							isAmount={true}
-							placeholder={t("lbl_DepositAmountReq")}
-						/>
-					</div>
+					<Inputbox
+						className="inputBox-white"
+						title={t("lbl_Amount")}
+						value={amount}
+						onChange={EditAmount}
+						onBlur={ValidAmount.bind(this, amount)}
+						clickInfo={clickInfo}
+						checked={checked}
+						tip={tip}
+						_isConvert={_isConvert}
+						isAmount={true}
+						placeholder={t("lbl_DepositAmountReq")}
+					/>
 					<div className="btnGroup">
 						<button
 							className={`${checked ? "btn-check" : "darkGray"}`}
