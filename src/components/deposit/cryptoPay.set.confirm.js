@@ -25,6 +25,8 @@ export default ({ channelInfo, amount, _isConvert, dispatch }) => {
 		}
 	};
 
+	let real_amount = _isConvert ? amount * 1000 : amount;
+
 	return (
 		<div className="subModuleList">
 			<div className="subModule">
@@ -36,12 +38,7 @@ export default ({ channelInfo, amount, _isConvert, dispatch }) => {
 					<div className="smallList">
 						<ul>
 							<li>{t("lbl_Amount")}</li>
-							<li>
-								{number_format(
-									_isConvert ? amount * 1000 : amount,
-									_isConvert
-								)}
-							</li>
+							<li>{number_format(real_amount, _isConvert)}</li>
 						</ul>
 						<ul>
 							<li>{t("lbl_ExchangeRate")}</li>
@@ -51,7 +48,8 @@ export default ({ channelInfo, amount, _isConvert, dispatch }) => {
 							<li>{t("lbl_ExchangeAmount")}</li>
 							<li>
 								{Math.round(
-									(amount / channelInfo.sellRate) * 100000000
+									(real_amount / channelInfo.sellRate) *
+										100000000
 								) / 100000000}
 							</li>
 						</ul>
