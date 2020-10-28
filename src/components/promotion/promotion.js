@@ -228,24 +228,20 @@ export default () => {
 				onClick={onSetPromotionType}
 			/>
 
-			{userInfo.isLogin !== null ? (
-				isArrayNotEmpty(promoList) ||
-				(filter === defFilterType.all &&
-					isArrayNotEmpty(_staticRows)) ? (
-					<PromotionList
-						promoList={promoList}
-						t={t}
-						langId={userInfo.langId}
-						isLogin={userInfo.isLogin}
-						currencyId={userInfo.currencyId}
-						filter={filter}
-						refreshProcessBar={refreshProcessBar}
-						staticPromotions={_staticRows}
-					/>
-				) : (
-					<div className="nodata">{t("msg_NoData")}</div>
-				)
-			) : null}
+			{isArrayNotEmpty(promoList) ||
+			(filter === defFilterType.all && isArrayNotEmpty(_staticRows)) ? (
+				<PromotionList
+					t={t}
+					filter={filter}
+					userInfo={userInfo}
+					promoList={promoList}
+					staticPromotions={_staticRows}
+					refreshProcessBar={refreshProcessBar}
+					getPromotionListV2={getPromotionListV2}
+				/>
+			) : (
+				<div className="nodata">{t("msg_NoData")}</div>
+			)}
 		</div>
 	);
 };

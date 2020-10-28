@@ -9,7 +9,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-import config, { SiteInfo } from "../config";
+import config from "../config";
 
 function SEO({ description, lang, meta, title }) {
 	const { site } = useStaticQuery(
@@ -74,6 +74,7 @@ function SEO({ description, lang, meta, title }) {
 			<GATag gaCode={"UA-163834722-1"} />
 			<LiveChat />
 			<Iovation />
+			<FPS />
 		</>
 	);
 }
@@ -130,21 +131,29 @@ const Iovation = () => {
 		<Helmet>
 			<script>
 				{`
-				window.io_global_object_name = "IGLOO"
-				window.IGLOO = window.IGLOO || {
-				  "enable_flash" : false,
-				  "bbout_element_id" : "",  // this can be changed to store in a different hidden field (or removed to use a different collection method)
-				  "loader" : {
-					"uri_hook" : "/iojs",
-					"subkey"  : "${SiteInfo.siteName}",
-					"version" : "general5"
-				  }
-				};
+				   	window.IGLOO = window.IGLOO || {
+						"enable_flash" : false,
+						"loader" : {
+						"fp_dyn" : false,
+						"version" : "5.2.2"
+						}
+				  	};
 				`}
 			</script>
 			<script
-				src={`${config.t_and_cURL}/common/js/loader_only.js`}
+				src={`${config.t_and_cURL}/common/js/loader_only.js?v=201027`}
 				type="text/javascript"></script>
+		</Helmet>
+	);
+};
+
+const FPS = () => {
+	return (
+		<Helmet>
+			<script
+				async=""
+				defer=""
+				src="//sc.detecas.com/di/activator.ashx"></script>
 		</Helmet>
 	);
 };
