@@ -12,10 +12,28 @@ export const LOGIN = async ({ userName, password }) => {
 
 	let result = {};
 	try {
+		let url,
+			platform,
+			userAgent,
+			screen,
+			di = "";
+		if (typeof window !== undefined) {
+			url = window.location.origin;
+			platform = navigator.platform;
+			userAgent = navigator.userAgent;
+			screen = `${window.screen.width}:${window.screen.height}:${window.screen.colorDepth}`;
+			di = document.getElementById("__di").value;
+		}
+
 		const res = await api_account_UserLogin({
 			UserName: userName,
 			Userpwd: password,
-			isPersistent: true
+			isPersistent: true,
+			url,
+			platform,
+			userAgent,
+			screen,
+			di
 		});
 
 		let errMsg = res.data.message;

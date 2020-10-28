@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, navigate } from "@reach/router";
 import { userInfoContext, popBoxContext } from "../common/context";
-import Logo from "../../styles/img/logo.svg";
 import Menu from "./header.menu";
-import config from "../../config";
+import config, { SiteInfo } from "../../config";
 import Functions from "./header.functions";
 import LanguageDropDown from "./header.langDropdown";
 import { api_site_GetTpIds } from "../../service/api/site";
@@ -82,7 +81,7 @@ export default () => {
 			<div className="header">
 				<div className="logo">
 					<Link className="logo" to={`/${userInfo.langId}`}>
-						<img src={Logo} alt={config.siteName} />
+						<img src={SiteInfo.logo} alt={config.siteName} />
 					</Link>
 				</div>
 				<Menu casinoTpIds={casinoTpIds} />
