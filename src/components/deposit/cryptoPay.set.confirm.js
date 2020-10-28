@@ -50,7 +50,9 @@ export default ({ channelInfo, amount, _isConvert, dispatch }) => {
 						<ul>
 							<li>{t("lbl_ExchangeAmount")}</li>
 							<li>
-								{(amount / channelInfo.sellRate).toFixed(8)}
+								{Math.round(
+									(amount / channelInfo.sellRate) * 100000000
+								) / 100000000}
 							</li>
 						</ul>
 					</div>

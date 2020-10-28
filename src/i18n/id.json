@@ -26,7 +26,7 @@
 	"msg_changePswSuccessHint": "Harap gunakan kata sandi baru saat Anda masuk kembali.",
 	"msg_OTP_Invalid": "Invalid OTP Code",
 	"msg_OTPHint": "Harap lengkapi profil Anda dan verifikasi ponsel Anda untuk menikmati promosi kami.",
-	"msg_OTPSendCode": "Kami telah mengirimkan kode verifikasi ke ponsel Anda yang terdaftar. Silakan periksa telepon Anda dan masukkan kode verifikasi Anda di bawah ini.",
+	"msg_OTPSendCode": "Kami telah mengirimkan kode verifikasi ke nomor ponsel Anda yang terdaftar. Silakan periksa dan masukkan kode verifikasi di bawah ini.",
 	"msg_EnterOTPCode": "Harap masukkan kode OTP.",
 	"msg_OTP_NotReceiveVerificationCode": "Tidak menerima kode verifikasi?",
 
@@ -348,6 +348,9 @@
 	"lbl_UpdatePersonalInfoDeposit": "Mohon perbarui data Anda sebelum melakukan deposit",
 	"lbl_UpdatePersonalInfoWithdrawal": "Mohon perbarui data Anda sebelum sebelum penarikan.",
 	"lbl_UpdatePersonalInfoPromotion": "Mohon perbarui data Anda sebelum sebelum bergabung dengan promosi.",
+	"lbl_VertifyContactConfirm": "Verifikasi nomor kontak Anda untuk menikmati promosi kami?",
+	"lbl_VertifyNow": "Verifikasi Sekarang",
+
 	"lbl_UpdatePersonalDetail": "Perbarui data Anda",
 	"lbl_WithdrawalNow": "Penarikan Sekarang",
 	"lbl_GoWithdrawalPage": "Pergi ke halaman penarikan?",

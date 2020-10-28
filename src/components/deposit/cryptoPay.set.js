@@ -34,9 +34,8 @@ export default () => {
 	});
 
 	useEffect(() => {
-		let gId = getUrlParameter("gId");
 		let name = getUrlParameter("name");
-		if (!gId || !name) {
+		if (!name) {
 			setRedirectPath(`/${userInfo.langId}/${path.deposit.root}`);
 		}
 	}, [setRedirectPath, userInfo.langId]);

@@ -128,31 +128,31 @@ export default () => {
 		return () => (isMountedRef.current = false);
 	});
 
-	// useEffect(() => {
-	// 	if (userInfo.isLogin === true) {
-	// 		if (
-	// 			(!userInfo.accountName && userInfo.accountName !== undefined) ||
-	// 			(!userInfo.phoneNo && userInfo.phoneNo !== undefined) ||
-	// 			(!userInfo.email && userInfo.email !== undefined)
-	// 		) {
-	// 			setPopBox({
-	// 				isOpen: true,
-	// 				popBoxType: defPopBoxType.UpdateProfile,
-	// 				title: t("lbl_ImportantNote"),
-	// 				content: t("lbl_UpdatePersonalInfoDeposit"),
-	// 				btnBar: (
-	// 					<div className="btnGroup">
-	// 						<Link
-	// 							className="btn-check"
-	// 							to={`/${userInfo.langId}/${path.profile.root}?from=${path.deposit.root}`}>
-	// 							{t("lbl_UpdatePersonalDetail")}
-	// 						</Link>
-	// 					</div>
-	// 				)
-	// 			});
-	// 		}
-	// 	}
-	// }, [userInfo]);
+	useEffect(() => {
+		if (userInfo.isLogin === true) {
+			if (
+				(!userInfo.accountName && userInfo.accountName !== undefined) ||
+				(!userInfo.phoneNo && userInfo.phoneNo !== undefined) ||
+				(!userInfo.email && userInfo.email !== undefined)
+			) {
+				setPopBox({
+					isOpen: true,
+					popBoxType: defPopBoxType.UpdateProfile,
+					title: t("lbl_ImportantNote"),
+					content: t("lbl_UpdatePersonalInfoDeposit"),
+					btnBar: (
+						<div className="btnGroup">
+							<Link
+								className="btn-check"
+								to={`/${userInfo.langId}/${path.profile.root}?prevPage=${path.deposit.root}`}>
+								{t("lbl_UpdatePersonalDetail")}
+							</Link>
+						</div>
+					)
+				});
+			}
+		}
+	}, [userInfo]);
 
 	return loading ? (
 		<></>

@@ -50,7 +50,7 @@ export default () => {
 						<div className="btnGroup">
 							<Link
 								className="btn-check"
-								to={`/${userInfo.langId}/${path.profile.root}?from=${path.withdrawal.root}`}>
+								to={`/${userInfo.langId}/${path.profile.root}?prevPage=${path.withdrawal.root}`}>
 								{t("lbl_UpdatePersonalDetail")}
 							</Link>
 						</div>
