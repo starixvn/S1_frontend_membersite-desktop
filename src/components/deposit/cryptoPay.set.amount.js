@@ -105,8 +105,8 @@ export default ({
 					{tip === "" ? (
 						<div className="txt-orange tip active">
 							{t("lbl_ExchangeRate")} :&nbsp;
-							{channelInfo.sellRate?.toFixed(8)} &nbsp; (
-							{t("lbl_ExchangeRateReferenceOnly")})
+							{channelInfo.sellRate}
+							&nbsp; ({t("lbl_ExchangeRateReferenceOnly")})
 						</div>
 					) : null}
 
