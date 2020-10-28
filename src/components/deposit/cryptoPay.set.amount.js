@@ -87,20 +87,18 @@ export default ({
 						/>
 					</div>
 
-					<div className="inputModuleRow">
-						<Inputbox
-							className="inputBox-white"
-							title={t("lbl_Amount")}
-							value={amount}
-							onChange={EditAmount}
-							onBlur={ValidAmount.bind(this, amount)}
-							clickInfo={clickInfo}
-							checked={checked}
-							tip={tip}
-							_isConvert={_isConvert}
-							isAmount={true}
-						/>
-					</div>
+					<Inputbox
+						className="inputBox-white"
+						title={t("lbl_Amount")}
+						value={amount}
+						onChange={EditAmount}
+						onBlur={ValidAmount.bind(this, amount)}
+						clickInfo={clickInfo}
+						checked={checked}
+						tip={tip}
+						_isConvert={_isConvert}
+						isAmount={true}
+					/>
 
 					{tip === "" ? (
 						<div className="txt-orange tip active">
