@@ -26,7 +26,7 @@
 	"msg_changePswSuccessHint": "下次登录时请使用新密码。",
 	"msg_OTP_Invalid": "Invalid OTP Code",
 	"msg_OTPHint": "请完成您的个人资料并验证您的手机以享受我们的促销。",
-	"msg_OTPSendCode": "我们已经将验证码发送到您的注册手机。 请检查您的手机并在下面输入您的验证码。",
+	"msg_OTPSendCode": "验证码已发到您注册的手机号，请查看手机并在以下输入验证码",
 	"msg_EnterOTPCode": "请输入OTP代码。”",
 	"msg_OTP_NotReceiveVerificationCode": "没有收到验证码？",
 
@@ -347,6 +347,8 @@
 	"lbl_UpdatePersonalInfoDeposit": "存款前，请更新您的个人信息。",
 	"lbl_UpdatePersonalInfoWithdrawal": "提款前，请更新您的个人信息。",
 	"lbl_UpdatePersonalInfoPromotion": "参与优惠前，请更新您的个人信息",
+	"lbl_VertifyContactConfirm": "验证您的号码以享有优惠？",
+	"lbl_VertifyNow": "立即验证",
 	"lbl_UpdatePersonalDetail": "更新个人资料",
 	"lbl_WithdrawalNow": "立即提款",
 	"lbl_GoWithdrawalPage": "前往提款页面？",
