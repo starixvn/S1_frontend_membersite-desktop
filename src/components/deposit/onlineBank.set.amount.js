@@ -84,20 +84,18 @@ export default ({
 							_isConvert={_isConvert}
 						/>
 					</div>
-					<div className="inputModuleRow">
-						<Inputbox
-							className="inputBox-white"
-							title={t("lbl_Amount")}
-							value={amount}
-							onChange={EditAmount}
-							onBlur={ValidAmount.bind(this, amount)}
-							clickInfo={clickInfo}
-							checked={checked}
-							tip={tip}
-							_isConvert={_isConvert}
-							isAmount={true}
-						/>
-					</div>
+					<Inputbox
+						className="inputBox-white"
+						title={t("lbl_Amount")}
+						value={amount}
+						onChange={EditAmount}
+						onBlur={ValidAmount.bind(this, amount)}
+						clickInfo={clickInfo}
+						checked={checked}
+						tip={tip}
+						_isConvert={_isConvert}
+						isAmount={true}
+					/>
 					<div className="btnGroup">
 						<button
 							className={`${checked ? "btn-check" : "darkGray"}`}
