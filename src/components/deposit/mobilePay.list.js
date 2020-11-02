@@ -5,10 +5,10 @@ import { useTranslation } from "react-i18next";
 
 const _path = path.deposit.sub.mobilePay.root;
 
-export default ({ paymentList }) => {
+export default ({ mobileBankList }) => {
 	const { t } = useTranslation();
 
-	let rows = paymentList?.map(p => {
+	let rows = mobileBankList?.map(p => {
 		return (
 			<li key={`deposit-mobilePay-${p.groupName}}`}>
 				<Link
@@ -18,7 +18,7 @@ export default ({ paymentList }) => {
 		);
 	});
 
-	return paymentList !== null && paymentList.length > 0 ? (
+	return mobileBankList !== null && mobileBankList.length > 0 ? (
 		<div className="subModule">
 			<div className="subModuleTitle">
 				<div>

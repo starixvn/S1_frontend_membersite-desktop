@@ -1,10 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "@reach/router";
 
 export default ({ step }) => {
 	const { t } = useTranslation();
+	const location = useLocation();
 
-	const defStep = [
+	const fourStepList = [
 		{
 			title: "01",
 			description: t("lbl_SelectPaymentModes")
@@ -23,7 +25,27 @@ export default ({ step }) => {
 		}
 	];
 
-	let rows = defStep.map((s, sIdx) => {
+	const threeStepList = [
+		{
+			title: "01",
+			description: t("lbl_SelectPaymentModes")
+		},
+		{
+			title: "02",
+			description: t("lbl_EnterAmount")
+		},
+		{
+			title: "OK",
+			description: t("lbl_Confirm")
+		}
+	];
+
+	let defStepList =
+		location.pathname.indexOf("cryptoPay") === -1
+			? fourStepList
+			: threeStepList;
+
+	let rows = defStepList.map((s, sIdx) => {
 		return (
 			<div
 				className={sIdx <= step - 1 ? "active" : ""}
@@ -34,7 +56,7 @@ export default ({ step }) => {
 		);
 	});
 
-	let percent = (step / defStep.length) * 100;
+	let percent = (step / defStepList.length) * 100;
 
 	return (
 		<div className="stepBar">

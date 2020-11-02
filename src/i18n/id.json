@@ -116,6 +116,7 @@
 	"lbl_DepositType1": "Online Banking",
 	"lbl_DepositType2": "Pembayaran Via Mobile",
 	"lbl_DepositType3": "Bank Lokal",
+	"lbl_DepositType4": "Pembayaran Crypto",
 	"lbl_Amount": "Jumlah",
 	"lbl_Status": "Status",
 	"lbl_DepositStatus0": "Draft",
@@ -387,5 +388,9 @@
 	"lbl_AffiliateSlog": "Partner Anda menuju Sukses",
 	"lbl_PicFormatTip": "Kesalahan format file, harap coba lagi.",
 	"lbl_DepositTimeToolTip": "Kirimkan waktu Setoran anda",
-	"lbl_PromotionRebateAndCashback": "Rebate / Cashback"
+	"lbl_PromotionRebateAndCashback": "Rebate / Cashback",
+	"lbl_CryptoPay":"Pembayaran Crypto",
+	"lbl_ExchangeRate":"Kurs tukar",
+	"lbl_ExchangeRateReferenceOnly":"Tarif ini hanya untuk referensi",
+	"lbl_ExchangeAmount":"Nilai tukar"
 }
