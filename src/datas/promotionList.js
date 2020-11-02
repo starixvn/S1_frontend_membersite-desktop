@@ -21,6 +21,7 @@ export default [
 			th:
 				"https://image.n88media.com/NovaPromotion/WIN+EXTRA+10%25+ON+FOUR+MAJOR+LEAGUE+NEW+SEASON/CMS/Nova88/Promotion/th/banner-WINEXTRA10ON4MAJORLEAGUE.jpg"
 		},
+
 		title: {
 			en: "WIN EXTRA 10% ON FOUR MAJOR LEAGUE NEW SEASON",
 			cs: "欧洲四大联赛新赛季 赢上加赢 10% ！",
@@ -239,6 +240,41 @@ export default [
 			cs: "11.11 体育博彩双十一完美出席",
 			id: "Kehadiran Sempurna Sports 11.11",
 			th: "11.11 สปอร์ต 11 วัน มันส์ดีไม่มีเบื่อ"
+		},
+		description: {
+			en: "Register & Enjoy Your Bonus Now!",
+			cs: "立即注册即可享有优惠奖金！",
+			id: "Daftar & Nikmati Bonus Anda Sekarang!",
+			th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
+		}
+	},
+	{
+		bonusCode: "1111LivecasinoPerfectAttendance",
+		bannerLink: {
+			en:
+				"https://image.n88media.com/NovaPromotion/1111LivecasinoPerfectAttendance/EN.html",
+			cs:
+				"https://image.n88media.com/NovaPromotion/1111LivecasinoPerfectAttendance/CS.html",
+			id:
+				"https://image.n88media.com/NovaPromotion/1111LivecasinoPerfectAttendance/ID.html",
+			th:
+				"https://image.n88media.com/NovaPromotion/1111LivecasinoPerfectAttendance/TH.html"
+		},
+		imgUrl: {
+			en:
+				"https://image.n88media.com/NovaPromotion/1111LivecasinoPerfectAttendance/en/116_11.11-Live-Casino-Perfect-Attendance.jpg",
+			cs:
+				"https://image.n88media.com/NovaPromotion/1111LivecasinoPerfectAttendance/cs/116_11.11-Live-Casino-Perfect-Attendance.jpg",
+			id:
+				"https://image.n88media.com/NovaPromotion/1111LivecasinoPerfectAttendance/id/116_11.11-Live-Casino-Perfect-Attendance.jpg",
+			th:
+				"https://image.n88media.com/NovaPromotion/1111LivecasinoPerfectAttendance/th/116_11.11-Live-Casino-Perfect-Attendance.jpg"
+		},
+		title: {
+			en: "11.11 Live Casino Perfect Attendance",
+			cs: "11.11 真人娱乐双十一完美出席",
+			id: "Kehadiran Sempurna Live Kasino 11.11",
+			th: "11.11 เซียนคาสิโน เฮงทุกวัน 11 วันติด"
 		},
 		description: {
 			en: "Register & Enjoy Your Bonus Now!",
