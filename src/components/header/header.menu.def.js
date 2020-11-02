@@ -174,8 +174,30 @@ export const defMenuLinks = {
 	},
 	fishing: {
 		productInfo: productList.fishing,
-		path: path.sports.root,
-		displayKey: "lbl_Fishing"
+		displayKey: "lbl_Fishing",
+		subMenu: [
+			{
+				...productList.fishing,
+				className: "fgg",
+				displayKey: "lbl_Fishing",
+				menuType: defMenuType.entPage,
+				parameter: { ...productList.fishing }
+			},
+			{
+				...productList.fishing_SG,
+				className: "fsg",
+				displayKey: "lbl_Fishing",
+				menuType: defMenuType.entPage,
+				parameter: { ...productList.fishing_SG }
+			},
+			{
+				...productList.fishing_SGW,
+				className: "fsgw",
+				displayKey: "lbl_Fishing",
+				menuType: defMenuType.entPage,
+				parameter: { ...productList.fishing_SGW }
+			}
+		]
 	},
 	promotion: {
 		path: path.promotion.root,
@@ -186,5 +208,6 @@ export const defMenuLinks = {
 export const defSubListClassName = {
 	casino: "casinoList",
 	liveCasino: "livecasinoList",
-	lottery: "gameList"
+	lottery: "gameList",
+	fishing: "fishList"
 };
