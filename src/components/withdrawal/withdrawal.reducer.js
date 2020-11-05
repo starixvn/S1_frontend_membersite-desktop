@@ -23,6 +23,11 @@ export const initState = {
 	panel: "amount"
 };
 
+export const defPanel = {
+	amount: "amount",
+	confirm: "confirm"
+};
+
 export function reducer(state, action) {
 	let _step = 0;
 

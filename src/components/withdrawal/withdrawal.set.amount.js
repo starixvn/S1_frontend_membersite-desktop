@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { number_format, checkAmount, getAmountTip } from "../common/common";
-import { defActionType } from "./withdrawal.reducer";
+import { defActionType, defPanel } from "./withdrawal.reducer";
 import { popBoxContext, userInfoContext } from "../common/context";
 import Inputbox from "../common/inputbox";
-import { api_payment_WithdrawalReq } from "../../service/api/payment";
 import { defPopBoxType } from "../common/popBox";
 import CashBar from "./withdrawal.set.cashBar";
 
@@ -66,7 +65,10 @@ export default ({ dispatch, state, t, _isConvert }) => {
 		let amountChecked = ValidAmount(state.amount);
 
 		if (state.selectedAccount.accountNo && amountChecked) {
-			dispatch({ type: defActionType.TO_OTHER_PANEL, panel: "confirm" });
+			dispatch({
+				type: defActionType.TO_OTHER_PANEL,
+				panel: defPanel.confirm
+			});
 		} else if (!state.selectedAccount.accountNo) {
 			setPopBox({
 				isOpen: true,

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext } from "react";
 import { popBoxContext } from "../common/context";
 import { number_format } from "../common/common";
 import { defPopBoxType } from "../common/popBox";
-import { defActionType } from "./withdrawal.reducer";
+import { defActionType, defPanel } from "./withdrawal.reducer";
 import { api_payment_WithdrawalReq } from "../../service/api/payment";
 import { Iov_GetBlackBox } from "../common/iovation";
 
@@ -27,7 +27,10 @@ export default ({
 	});
 
 	const toAmountPanel = () => {
-		dispatch({ type: defActionType.TO_OTHER_PANEL, panel: "amount" });
+		dispatch({
+			type: defActionType.TO_OTHER_PANEL,
+			panel: defPanel.amount
+		});
 	};
 
 	const clickSubmit = async () => {

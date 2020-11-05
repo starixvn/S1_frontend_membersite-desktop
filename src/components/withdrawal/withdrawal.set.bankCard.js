@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useContext } from "react";
 import config from "../../config";
-import { defActionType } from "./withdrawal.reducer";
+import { defActionType, defPanel } from "./withdrawal.reducer";
 import { api_accountStrict_DelCustBankInfo } from "../../service/api/accountStrict";
 import { api_payment_GetBankInfoSysList } from "../../service/api/payment";
 import { popBoxContext } from "../common/context";
@@ -193,6 +193,7 @@ export default ({
 				selectAccount={selectAccount.bind(this, item)}
 				checked={_checked}
 				delAccount={delAccount.bind(this, item.accountNo, item.sysId)}
+				hideDelBtn={state.panel === defPanel.confirm}
 			/>
 		);
 	});
@@ -201,16 +202,19 @@ export default ({
 		<div className="addBank">
 			{custBankInfo.length > 0 ? arr : null}
 
-			{custBankInfo.length < 3 ? (
-				<div className="addBankName noBank" onClick={addBankAccount}>
-					<div className="icon icon-plus"></div>
-					<div>{t("lbl_AddBankAccount")}</div>
-				</div>
-			) : null
-			// <div className="addBankName noBank">
-			// 	<div className="icon icon-warning"></div>
-			// 	<div>{t("lbl_BankCardsFull")}</div>
-			// </div>
+			{
+				custBankInfo.length < 3 ? (
+					<div
+						className="addBankName noBank"
+						onClick={addBankAccount}>
+						<div className="icon icon-plus"></div>
+						<div>{t("lbl_AddBankAccount")}</div>
+					</div>
+				) : null
+				// <div className="addBankName noBank">
+				// 	<div className="icon icon-warning"></div>
+				// 	<div>{t("lbl_BankCardsFull")}</div>
+				// </div>
 			}
 
 			<div className="remainder">
@@ -249,9 +253,11 @@ const BankCard = props => {
 					<span>{props.accountNo?.slice(8, 12)}</span>
 					<span>{props.accountNo?.slice(12, 16)}</span>
 				</div>
-				<button
-					className="icon icon-bin"
-					onClick={props.delAccount}></button>
+				{props.hideDelBtn ? null : (
+					<button
+						className="icon icon-bin"
+						onClick={props.delAccount}></button>
+				)}
 			</div>
 		</div>
 	);
