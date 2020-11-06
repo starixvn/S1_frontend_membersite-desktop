@@ -87,17 +87,24 @@ export const defMenuLinks = {
 		displayKey: "lbl_LiveCasino",
 		subMenu: [
 			{
-				...productList.liveCasino_DG,
-				className: "liveDG",
-				icon: "icon icon-DG",
-				displayText: "DG",
-				menuType: defMenuType.entPage
-			},
-			{
 				...productList.liveCasino_Allbet,
 				className: "liveALL",
 				icon: "icon icon-AB",
 				displayText: "Allbet",
+				menuType: defMenuType.entPage
+			},
+			{
+				...productList.liveCasino_eBET,
+				className: "liveEB",
+				icon: "icon icon-EB",
+				displayText: "eBET",
+				menuType: defMenuType.entPage
+			},
+			{
+				...productList.liveCasino_SA,
+				className: "liveSA",
+				icon: "icon icon-SA",
+				displayText: "SA",
 				menuType: defMenuType.entPage
 			},
 			{
@@ -115,10 +122,10 @@ export const defMenuLinks = {
 				menuType: defMenuType.entPage
 			},
 			{
-				...productList.liveCasino_SA,
-				className: "liveSA",
-				icon: "icon icon-SA",
-				displayText: "SA",
+				...productList.liveCasino_DG,
+				className: "liveDG",
+				icon: "icon icon-DG",
+				displayText: "DG",
 				menuType: defMenuType.entPage
 			},
 			{
@@ -126,13 +133,6 @@ export const defMenuLinks = {
 				className: "liveAE",
 				icon: "icon icon-AE",
 				displayText: "AE",
-				menuType: defMenuType.entPage
-			},
-			{
-				...productList.liveCasino_eBET,
-				className: "liveEB",
-				icon: "icon icon-EB",
-				displayText: "eBET",
 				menuType: defMenuType.entPage
 			}
 		]
