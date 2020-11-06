@@ -223,8 +223,8 @@ header {
 
 .header > div.menu .gameList a, .header > div.menu .gameList button, .header > div.menu .casinoList a, .header > div.menu .casinoList button, .header > div.menu .livecasinoList a, .header > div.menu .livecasinoList button, .header > div.menu .fishList a, .header > div.menu .fishList button {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 160px;
-          flex: 1 1 160px;
+      -ms-flex: 1;
+          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -243,6 +243,7 @@ header {
   transition: 0.7s;
   color: white;
   margin-bottom: 50px;
+  max-width: 160px;
 }
 
 .header > div.menu .gameList a img, .header > div.menu .gameList button img, .header > div.menu .casinoList a img, .header > div.menu .casinoList button img, .header > div.menu .livecasinoList a img, .header > div.menu .livecasinoList button img, .header > div.menu .fishList a img, .header > div.menu .fishList button img {
