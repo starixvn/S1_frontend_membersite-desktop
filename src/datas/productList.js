@@ -116,5 +116,13 @@ export default {
 	liveCasino_eBET: {
 		gameId: 18,
 		tpId: 18
+	},
+	fishing_SG: {
+		gameId: "F-SF01",
+		tpId: 10
+	},
+	fishing_SGW: {
+		gameId: "F-SF02",
+		tpId: 10
 	}
 };
