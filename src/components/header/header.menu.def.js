@@ -179,21 +179,21 @@ export const defMenuLinks = {
 			{
 				...productList.fishing,
 				className: "fgg",
-				displayKey: "lbl_Fishing",
+				displayKey: "lbl_FishingGG",
 				menuType: defMenuType.entPage,
 				parameter: { ...productList.fishing }
 			},
 			{
 				...productList.fishing_SG,
 				className: "fsg",
-				displayKey: "lbl_Fishing",
+				displayKey: "lbl_FishingSG1",
 				menuType: defMenuType.entPage,
 				parameter: { ...productList.fishing_SG }
 			},
 			{
 				...productList.fishing_SGW,
 				className: "fsgw",
-				displayKey: "lbl_Fishing",
+				displayKey: "lbl_FishingSG2",
 				menuType: defMenuType.entPage,
 				parameter: { ...productList.fishing_SGW }
 			}
