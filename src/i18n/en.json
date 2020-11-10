@@ -135,7 +135,9 @@
 	"msg_OTP_NotReceiveVerificationCode": "Did not receive verification code?",
 	"lbl_Retransmit": "Retransmit", 
 	"lbl_Affiliate_ID":"Affiliate ID/Referral",
-	  "lbl_Please_enter_Affiliate_ID":"Please enter Affiliate ID (Optional), it can not change once enter!",
+	"lbl_Please_enter_Affiliate_ID":"Please enter Affiliate ID (Optional), it can not change once enter!",
+	"lbl_VertifyNow":"Vertify Now",
+	"lbl_VertifyContactConfirm":"Verify your contact number to enjoy our promotions?",
   
 	"deposit ■■■■■■■■■■■■■■■■■■■■": "",
 	"BankSlipHint1": "Maximum file size 4 MB each",

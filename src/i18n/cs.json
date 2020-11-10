@@ -136,6 +136,8 @@
 	"lbl_Retransmit": "重新发送",
 	"lbl_Affiliate_ID":"代理商 ID/参照号",
 	"lbl_Please_enter_Affiliate_ID":"请填入代理商 ID（可不填），填入后无法更换！",
+	"lbl_VertifyNow":"立即验证",
+	"lbl_VertifyContactConfirm":"验证您的号码以享有优惠？",
   
 	"deposit ■■■■■■■■■■■■■■■■■■■■": "",
 	"BankSlipHint1": "每个档案的最大档案大小为4 MB",
