@@ -263,7 +263,7 @@
 	"lbl_BankAccountNameHint": "账号名称请填写真实姓名，完成后将无法修改！",
 	"lbl_EnterAccountNumber": "输入帐号",
 	"lbl_BankCardsFull": "银行卡数量已达限制",
-	"lbl_RollOver": "您的优惠回馈流水未达最低金额",
+	"lbl_RollOver": "最低投注倍数",
 	"lbl_TurnoverAccumulated": "累计流水",
 	"lbl_AddBankAccount": "新增银行帐户",
 	"lbl_TurnoverAccmulateHint": "由于未达要求流水金额故余额无法转出",

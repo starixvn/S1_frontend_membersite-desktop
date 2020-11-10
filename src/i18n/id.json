@@ -263,7 +263,7 @@
 	"lbl_BankAccountNameHint": "Silahkan isi nama asli untuk nama akun anda, Bagian ini tidak bisa dirubah jika sudah menekan enter",
 	"lbl_EnterAccountNumber": "Masukan nomor akun",
 	"lbl_BankCardsFull": "Kartu bank telah mencapai batas.",
-	"lbl_RollOver": "Perputaran turnover anda belum mencukupi",
+	"lbl_RollOver": "MINIMAL PERPUTARAN",
 	"lbl_TurnoverAccumulated": "Akumulasi turnover",
 	"lbl_AddBankAccount": "Tambahkan Rekening Bank",
 	"lbl_TurnoverAccmulateHint": "YDana Anda terkunci untuk ditransfer karena persyaratan Rollover belum terpenuhi.",
