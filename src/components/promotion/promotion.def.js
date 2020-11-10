@@ -7,6 +7,7 @@ export const promoStatus = {
 
 export const defPromotionType = {
 	firstDeposit: 1,
+	redeposit: 2,
 	freeBet: 3,
 	walletBonus: 5,
 	rebate: 6,

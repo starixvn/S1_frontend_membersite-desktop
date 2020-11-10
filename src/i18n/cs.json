@@ -28,7 +28,7 @@
 	"lbl_Instagram": "Instagram",
 	"lbl_Facebook": "Facebook_cs",
 	"lbl_Twitter": "Twitter",
-  
+
 	"product ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_badminton": "羽毛球",
 	"lbl_Baseball": "棒球",
@@ -59,7 +59,7 @@
 	"lbl_AllGames": "所有游戏",
 	"lbl_Favourite": "我的最爱",
 	"lbl_Feature": "特色游戏",
-  
+
 	"account ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_UsernameReq": "请输入用户名。",
 	"msg_PasswordReq": "请输入密码。",
@@ -185,7 +185,7 @@
 	"lbl_OpenOtherSite": " 另开视窗并重导向",
 	"lbl_PicFormatTip": "档案格式错误，请重试。",
 	"lbl_CreditTime": "所需时间",
-  
+
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "草稿",
 	"lbl_WithdrawalStatus1": "搁置",
@@ -224,17 +224,17 @@
 	"lbl_RolloverOver": "您的优惠回馈流水未达最低金额",
 	"lbl_UpdatePersonalInfoWithdrawal": "提款前，请更新您的个人信息。",
 	"lbl_GoWithdrawalPage": "前往提款页面？",
-  
+
 	"transfer ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_TransferFunds": "资金转移",
 	"msg_InsufficientFund": "余额不足！",
 	"lbl_TpWallet_1": "体育钱包",
-	"lbl_MainWallet":"中心钱包",
-	"lbl_Wallet_Saba":"体育钱包",
-	"lbl_Transfer":"转帐",
-	"lbl_RestoreAll":"一键转入",
+	"lbl_MainWallet": "中心钱包",
+	"lbl_Wallet_Saba": "体育钱包",
+	"lbl_Transfer": "转帐",
+	"lbl_RestoreAll": "一键转入",
 	"lbl_TransferHistory": "转账历史记录",
-  
+
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Statement": "账变记录",
 	"lbl_TypeName": "账变类型",
@@ -242,7 +242,7 @@
 	"lbl_AfterAmount": "后期余额",
 	"lbl_RefTransId": "注单编号",
 	"lbl_ChangeAmount": "余额转换",
-  
+
 	"transaction ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NeedAccountNo": "需要账户号码",
 	"msg_AccountWrongFormat": "帐号格式错误",
@@ -271,12 +271,16 @@
 	"lbl_Direction": "方向",
 	"lbl_Action": "动作",
 	"lbl_QuickPick": "时间快选",
-  
+
 	"promotion ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Promotion": "优惠活动",
 	"lbl_Promotions": "优惠活动",
 	"lbl_PromotionsDesc": "优惠说明",
 	"lbl_PromoJoinNow": "立即加入",
+	"lbl_Redeposit_Promo": "再存",
+	"lbl_ClaimAmountRange":"领取金额范围",
+    "lbl_ClaimAmount":"领取金额",
+    "lbl_PleaseEnterClaimAmount":"请填入您欲用于领取优惠的金额",
 	"lbl_Expired_Promo": "已过期",
 	"lbl_UpdatePersonalInfoPromotion": "参与优惠前，请更新您的个人信息",
 	"lbl_PromotionCategory1": "首次存款",
@@ -288,7 +292,7 @@
 	"lbl_RemainingTime": "剩余时间",
 	"lbl_RequireMinAmountHint_Front": "最低存款金额为",
 	"lbl_RequireMinAmountHint_Back": "立即存款？",
-  
+
 	"general ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NoData": "无资料",
 	"msg_ApiServerError": "API 数据库错误",
@@ -331,14 +335,14 @@
 	"lbl_Cashier": "收银",
 	"lbl_UpdatePersonalDetail": "更新个人资料",
 	"lbl_Details": "详情",
-  
+
 	"currency ■■■■■■■■■■■■■■■■■■■■": "",
 	"Currency_2": "MYR",
 	"Currency_4": "THB",
 	"Currency_13": "RMB",
 	"Currency_15": "IDR",
 	"Currency_51": "VND",
-  
+
 	"time ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Today": "今日",
 	"lbl_YesterDay": "昨日",
@@ -350,4 +354,4 @@
 	"lbl_Days": "天",
 	"lbl_Hours": "小时",
 	"lbl_5mins": "5分鐘"
-  }
+}

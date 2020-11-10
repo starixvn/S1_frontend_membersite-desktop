@@ -196,18 +196,30 @@ const Rollover = ({ promotionInfo, t, currencyId }) => {
 		rollOver
 	} = promotionInfo;
 
-	let expiryTime = moment.duration(
-		moment
-			.unix(
-				isJoin && status === promoStatus.running && custExpiryTime
-					? moment(custExpiryTime).unix()
-					: periodTo
-			)
-			.diff(new Date())
+	let _expiryTime = moment.unix(
+		isJoin && status === promoStatus.running && custExpiryTime
+			? moment(custExpiryTime).unix()
+			: periodTo
 	);
 
+	let diffDays = Math.ceil(
+		moment.duration(_expiryTime.diff(moment())).asDays() - 1
+	);
+
+	let expiryTime = moment.duration(_expiryTime.diff(new Date()));
+
+	// let expiryTime = moment.duration(
+	// 	moment
+	// 		.unix(
+	// 			isJoin && status === promoStatus.running && custExpiryTime
+	// 				? moment(custExpiryTime).unix()
+	// 				: periodTo
+	// 		)
+	// 		.diff(new Date())
+	// );
+
 	let displayExpiryTime =
-		expiryTime.days() +
+		diffDays +
 		" " +
 		t("lbl_Days") +
 		" " +

@@ -4,6 +4,7 @@ export const defFilterType = {
 	all: 0,
 	expiry: 999,
 	firstDeposit: 1,
+	redeposit: 2,
 	freeBet: 3,
 	Rebate_and_cashback: "6_7"
 };
@@ -30,6 +31,12 @@ const defPromoNavs = [
 	{
 		displayKey: "lbl_PromotionRebateAndCashback",
 		value: defFilterType.Rebate_and_cashback,
+		className: "blueBorder",
+		selectedClassName: "blue"
+	},
+	{
+		displayKey: "lbl_Redeposit_Promo",
+		value: defFilterType.redeposit,
 		className: "blueBorder",
 		selectedClassName: "blue"
 	},
