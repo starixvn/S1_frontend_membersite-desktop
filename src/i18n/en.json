@@ -28,7 +28,7 @@
 	"lbl_Instagram": "Instagram",
 	"lbl_Facebook": "Facebook_en",
 	"lbl_Twitter": "Twitter",
-  
+
 	"product ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_badminton": "Badminton",
 	"lbl_Baseball": "Baseball",
@@ -53,13 +53,13 @@
 	"lbl_SportsBetting": "Sports Betting",
 	"lbl_Tennis": "Tennis",
 	"lbl_TennisBetting": "Tennis Betting",
-  
+
 	"casino ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Casino": "Casino",
 	"lbl_AllGames": "All",
 	"lbl_Favourite": "Favourite",
 	"lbl_Feature": "Feature",
-  
+
 	"account ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_UsernameReq": "Username is required.",
 	"msg_PasswordReq": "Password is required.",
@@ -185,7 +185,7 @@
 	"lbl_OpenOtherSite": "Open another window and redirect",
 	"lbl_PicFormatTip": "File format error, please try again.",
 	"lbl_CreditTime": "Credit Time",
-  
+
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "Draft",
 	"lbl_WithdrawalStatus1": "Processing",
@@ -224,7 +224,7 @@
 	"lbl_RolloverOver": "Insufficient rollover turnover",
 	"lbl_UpdatePersonalInfoWithdrawal": "Please update your personal information before making withdrawal.",
 	"lbl_GoWithdrawalPage": "Go to withdrawal page?",
-  
+
 	"transfer ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_TransferFunds": "Transfer Funds",
 	"msg_InsufficientFund": "Insufficient Fund!",
@@ -234,7 +234,7 @@
 	"lbl_Transfer": "Transfer",
 	"lbl_RestoreAll": "Restore All",
 	"lbl_TransferHistory": "Transfer History",
-  
+
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Statement": "Statement",
 	"lbl_TypeName": "Type Name",
@@ -242,7 +242,7 @@
 	"lbl_AfterAmount": "After Amount",
 	"lbl_RefTransId": "Ref TransId",
 	"lbl_ChangeAmount": "Change Amount",
-  
+
 	"transaction ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NeedAccountNo": "Need Account Number",
 	"msg_AccountWrongFormat": "Account Number format is wrong.",
@@ -271,12 +271,16 @@
 	"lbl_Direction": "Direction",
 	"lbl_Action": "Action",
 	"lbl_QuickPick": "Quick Pick",
-  
+
 	"promotion ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Promotion": "Promotion",
 	"lbl_Promotions": "Promotions",
 	"lbl_PromotionsDesc": "Promotions Description",
 	"lbl_PromoJoinNow": "Join Now",
+	"lbl_Redeposit_Promo": "Redeposit",
+	"lbl_ClaimAmountRange": "Claim Amount Range",
+	"lbl_ClaimAmount": "Claim Amount",
+	"lbl_PleaseEnterClaimAmount": "Please enter your prefer amount to claim promotion",
 	"lbl_Expired_Promo": "Expired",
 	"lbl_UpdatePersonalInfoPromotion": "Please update your personal information before join promotion.",
 	"lbl_PromotionCategory1": "First Deposit",
@@ -288,7 +292,7 @@
 	"lbl_RemainingTime": "REMAINING TIME",
 	"lbl_RequireMinAmountHint_Front": "The minimum amount of deposit are required to be at least",
 	"lbl_RequireMinAmountHint_Back": "Deposit now?",
-  
+
 	"general ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NoData": "No Data",
 	"msg_ApiServerError": "API Server Error.",
@@ -331,14 +335,14 @@
 	"lbl_Cashier": "Cashier",
 	"lbl_UpdatePersonalDetail": "Update Personal Details",
 	"lbl_Details": "Details",
-  
+
 	"currency ■■■■■■■■■■■■■■■■■■■■": "",
 	"Currency_2": "MYR",
 	"Currency_4": "THB",
 	"Currency_13": "RMB",
 	"Currency_15": "IDR",
 	"Currency_51": "VND",
-  
+
 	"time ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Today": "Today",
 	"lbl_YesterDay": "Yesterday",
@@ -350,4 +354,4 @@
 	"lbl_Days": "Days",
 	"lbl_Hours": "Hours",
 	"lbl_5mins": "5 mins"
-  }
+}

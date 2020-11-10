@@ -28,7 +28,7 @@
 	"lbl_Instagram": "Instagram",
 	"lbl_Facebook": "Facebook",
 	"lbl_Twitter": "Twitter",
-  
+
 	"product ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_badminton": "Badminton",
 	"lbl_Baseball": "Bola Kasti",
@@ -53,13 +53,13 @@
 	"lbl_SportsBetting": "Taruhan olahraga",
 	"lbl_Tennis": "Tennis",
 	"lbl_TennisBetting": "Taruhan Tenis",
-  
+
 	"casino ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Casino": "Slots",
 	"lbl_AllGames": "Semua Permainan",
 	"lbl_Favourite": "Kesukaan",
 	"lbl_Feature": "Fitur",
-  
+
 	"account ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_UsernameReq": "Nama pengguna Wajib diisi.",
 	"msg_PasswordReq": "Kata Sandi wajib diisi",
@@ -185,7 +185,7 @@
 	"lbl_OpenOtherSite": " Buka jendela lain dan ganti halaman",
 	"lbl_PicFormatTip": "Kesalahan format file, harap coba lagi.",
 	"lbl_CreditTime": "Masa kredit",
-	
+
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "Draft",
 	"lbl_WithdrawalStatus1": "Sedang diproses",
@@ -224,7 +224,7 @@
 	"lbl_RolloverOver": "Perputaran turnover anda belum mencukupi",
 	"lbl_UpdatePersonalInfoWithdrawal": "Mohon perbarui data Anda sebelum sebelum penarikan.",
 	"lbl_GoWithdrawalPage": "Pergi ke halaman penarikan?",
-  
+
 	"transfer ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_TransferFunds": "Transfer Dana",
 	"msg_InsufficientFund": "Dana tidak mencukupi!",
@@ -234,7 +234,7 @@
 	"lbl_Transfer": "Dana Masuk",
 	"lbl_RestoreAll": "Transfer Semua",
 	"lbl_TransferHistory": "Riwayat Transfer",
-  
+
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_TypeName": "Ketik nama",
 	"lbl_BeforeAmount": "Jumlah terdahulu",
@@ -242,7 +242,7 @@
 	"lbl_RefTransId": "Referensi nomor transaksi",
 	"lbl_ChangeAmount": "Ganti jumlah",
 	"lbl_Statement": "Pernyataan",
-  
+
 	"transaction ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NeedAccountNo": "Butuh Nomor Rekening",
 	"msg_AccountWrongFormat": "Kesalahan pada nomor akun",
@@ -271,12 +271,16 @@
 	"lbl_Direction": "arah",
 	"lbl_Action": "Tindakan",
 	"lbl_QuickPick": "Pilihan Cepat",
-  
+
 	"promotion ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Promotion": "Promosi",
 	"lbl_Promotions": "Promosi",
 	"lbl_PromotionsDesc": "Deskripsi penawaran",
 	"lbl_PromoJoinNow": "Bergabung sekarang",
+	"lbl_Redeposit_Promo": "Deposit ulang",
+	"lbl_ClaimAmountRange": "Jarak Jumlah Klaim",
+	"lbl_ClaimAmount": "Jumlah Klaim",
+	"lbl_PleaseEnterClaimAmount": "Harap masukkan jumlah yang Anda inginkan untuk mengklaim promosi",
 	"lbl_Expired_Promo": "Expired Promo",
 	"lbl_UpdatePersonalInfoPromotion": "Mohon perbarui data Anda sebelum sebelum bergabung dengan promosi.",
 	"lbl_PromotionCategory1": "Member baru",
@@ -288,7 +292,7 @@
 	"lbl_RemainingTime": "SISA WAKTU",
 	"lbl_RequireMinAmountHint_Front": "Jumlah minimal setoran yang diwajibkan adalah minimal Rp",
 	"lbl_RequireMinAmountHint_Back": "Deposit sekarang?",
-  
+
 	"general ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NoData": "Tidak ada data",
 	"msg_ApiServerError": "API Server Error.",
@@ -331,14 +335,14 @@
 	"lbl_Cashier": "Kasir",
 	"lbl_UpdatePersonalDetail": "Perbarui data Anda",
 	"lbl_Details": "Rincian",
-  
+
 	"currency ■■■■■■■■■■■■■■■■■■■■": "",
 	"Currency_2": "MYR",
 	"Currency_4": "THB",
 	"Currency_13": "RMB",
 	"Currency_15": "IDR",
 	"Currency_51": "VND",
-	  
+
 	"time ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Today": "Hari Ini",
 	"lbl_YesterDay": "Kemarin",
@@ -350,4 +354,4 @@
 	"lbl_Days": "Hari",
 	"lbl_Hours": "Jam",
 	"lbl_5mins": "5 menit"
-  }
+}
