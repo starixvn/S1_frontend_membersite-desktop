@@ -149,7 +149,7 @@ export default () => {
 						</div>
 					</div>
 
-					<DepositSlip promotionInfo={promotionInfo} />
+					<DepositSlip promotionInfo={promotionInfo} t={t} />
 
 					<DepositMenu
 						cash={number_format(
@@ -186,7 +186,7 @@ export default () => {
 	);
 };
 
-const DepositSlip = ({ promotionInfo }) => {
+const DepositSlip = ({ promotionInfo, t }) => {
 	const { promotionType, refList, depositAmount } = promotionInfo;
 
 	if (!refList || promotionType !== defPromotionType.redeposit) return null;
@@ -195,10 +195,12 @@ const DepositSlip = ({ promotionInfo }) => {
 		<>
 			<div className="colorInfo">
 				<div>
-					<span></span>Deposit ID
+					<span></span>
+					{t("lbl_ID")}
 				</div>
 				<div>
-					<span></span>Amount
+					<span></span>
+					{t("lbl_Amount")}
 				</div>
 			</div>
 			<div className="depositSlip">
@@ -211,7 +213,7 @@ const DepositSlip = ({ promotionInfo }) => {
 					))}
 				</div>
 				<div className="txt-orange">
-					TOTAL: {number_format(depositAmount)}
+					{t("lbl_total")}: {number_format(depositAmount)}
 				</div>
 			</div>
 		</>

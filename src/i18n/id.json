@@ -134,11 +134,11 @@
 	"msg_EnterOTPCode": "Harap masukkan kode OTP.",
 	"msg_OTP_NotReceiveVerificationCode": "Tidak menerima kode verifikasi?",
 	"lbl_Retransmit": "Kirim ulang",
-	"lbl_Affiliate_ID":"ID Afiliasi / Referral",
-	"lbl_Please_enter_Affiliate_ID":"Harap masukkan ID Afiliasi (Pilihan), Ini tidak bisa diubah setelah dimasukkan!",
-	"lbl_VertifyNow":"Verifikasi Sekarang",
-	"lbl_VertifyContactConfirm":"Verifikasi nomor kontak Anda untuk menikmati promosi kami?",
-  
+	"lbl_Affiliate_ID": "ID Afiliasi / Referral",
+	"lbl_Please_enter_Affiliate_ID": "Harap masukkan ID Afiliasi (Pilihan), Ini tidak bisa diubah setelah dimasukkan!",
+	"lbl_VertifyNow": "Verifikasi Sekarang",
+	"lbl_VertifyContactConfirm": "Verifikasi nomor kontak Anda untuk menikmati promosi kami?",
+
 	"deposit ■■■■■■■■■■■■■■■■■■■■": "",
 	"BankSlipHint1": "Ukuran maksimal setiap file adalah 4 MB",
 	"BankSlipHint2": "Jumlah file maksimal : 1",
@@ -335,6 +335,7 @@
 	"lbl_Cashier": "Kasir",
 	"lbl_UpdatePersonalDetail": "Perbarui data Anda",
 	"lbl_Details": "Rincian",
+	"lbl_total": "Total",
 
 	"currency ■■■■■■■■■■■■■■■■■■■■": "",
 	"Currency_2": "MYR",

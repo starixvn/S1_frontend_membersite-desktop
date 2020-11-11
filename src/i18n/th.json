@@ -134,10 +134,10 @@
 	"msg_EnterOTPCode": "กรุณาใส่รหัส OTP",
 	"msg_OTP_NotReceiveVerificationCode": "คุณยังไม่ได้รับรหัสยืนยัน?",
 	"lbl_Retransmit": "ส่งใหม่อีกครั้ง",
-	"lbl_Affiliate_ID":"ไอดีพันธมิตร/รหัสอ้างอิง",
-	"lbl_Please_enter_Affiliate_ID":"กรุณากรอก ไอดีผู้ใช้ของพันธมิตร(ไม่บังคับ) ไม่สามารถเปลี่ยนภายหลังได้!",
-	"lbl_VertifyNow":"ยืนยันหมายเลขโทรศัพท์เพื่อเข้าร่วมรับโปรโมชั่น",
-	"lbl_VertifyContactConfirm":"ยืนยันตอนนี้",
+	"lbl_Affiliate_ID": "ไอดีพันธมิตร/รหัสอ้างอิง",
+	"lbl_Please_enter_Affiliate_ID": "กรุณากรอก ไอดีผู้ใช้ของพันธมิตร(ไม่บังคับ) ไม่สามารถเปลี่ยนภายหลังได้!",
+	"lbl_VertifyNow": "ยืนยันหมายเลขโทรศัพท์เพื่อเข้าร่วมรับโปรโมชั่น",
+	"lbl_VertifyContactConfirm": "ยืนยันตอนนี้",
 
 	"deposit ■■■■■■■■■■■■■■■■■■■■": "",
 	"BankSlipHint1": "ขนาดไฟล์ไม่เกิน 4MB",
@@ -335,6 +335,7 @@
 	"lbl_Cashier": "แคชเชียร์",
 	"lbl_UpdatePersonalDetail": "อัปเดตข้อมูลส่วนบุคคล",
 	"lbl_Details": "รายละเอียด",
+	"lbl_total": "Total",
 
 	"currency ■■■■■■■■■■■■■■■■■■■■": "",
 	"Currency_2": "MYR",
