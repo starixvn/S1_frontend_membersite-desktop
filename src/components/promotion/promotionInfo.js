@@ -5,6 +5,7 @@ import { getUrlParameter, isConvert, number_format } from "../common/common";
 import { api_promotion_GetPromotionDetail } from "../../service/api/promotion";
 import { api_account_GetCustSpecificBonus } from "../../service/api/account";
 import { defPopBoxType } from "../common/popBox";
+import { defPromotionType } from "./promotion.def";
 import { isExpiry, isClaimed } from "./promotion.common";
 import ProcessBar from "./promotion.processBar";
 import PromotionJoinButton from "./promotion.joinButton";
@@ -116,9 +117,9 @@ export default () => {
 		? " expiredClaimedInfo"
 		: "";
 
-	return promotionInfo === null ? (
-		<></>
-	) : (
+	if (promotionInfo === null) return null;
+
+	return (
 		<div className="infoModule">
 			<div className={`promotionsInfo${wrapperClass}`}>
 				{_isClaimed ? <div className="claimed"></div> : null}
@@ -147,6 +148,8 @@ export default () => {
 							/>
 						</div>
 					</div>
+
+					<DepositSlip promotionInfo={promotionInfo} />
 
 					<DepositMenu
 						cash={number_format(
@@ -180,6 +183,38 @@ export default () => {
 				</div>
 			</div>
 		</div>
+	);
+};
+
+const DepositSlip = ({ promotionInfo }) => {
+	const { promotionType, refList, depositAmount } = promotionInfo;
+
+	if (!refList || promotionType !== defPromotionType.redeposit) return null;
+
+	return (
+		<>
+			<div className="colorInfo">
+				<div>
+					<span></span>Deposit ID
+				</div>
+				<div>
+					<span></span>Amount
+				</div>
+			</div>
+			<div className="depositSlip">
+				<div className="depositSlipList">
+					{refList?.map(item => (
+						<div key={item.DepositId}>
+							<div>{item.DepositId}</div>
+							<div>{number_format(item.Amount)}</div>
+						</div>
+					))}
+				</div>
+				<div className="txt-orange">
+					TOTAL: {number_format(depositAmount)}
+				</div>
+			</div>
+		</>
 	);
 };
 
