@@ -191,7 +191,7 @@ header {
   position: absolute;
   width: 100%;
   left: 0;
-  top: 50px;
+  top: 49px;
   background: rgba(0, 0, 0, 0.7);
 }
 
@@ -364,6 +364,14 @@ header {
 
 .header > div.menu .casinoList .OW:hover {
   background: url(../img/casinoOW_a.png) no-repeat center 0px/auto 100%;
+}
+
+.header > div.menu .livecasinoList .liveMW {
+  background: url(../img/liveMW.png) no-repeat center 10px/auto 100%;
+}
+
+.header > div.menu .livecasinoList .liveMW:hover {
+  background: url(../img/liveMW_a.png) no-repeat center 0px/auto 100%;
 }
 
 .header > div.menu .livecasinoList .liveDG {
@@ -3417,7 +3425,7 @@ input[type="file"] {
   top: -20px;
 }
 
-.Submit, .Cancel, .uploadSuccess, .updateSuccess, .Success, .tokyc, .addBankpop, .changePassWordpop, .editSuccess, .joinSuccess {
+.Submit, .Cancel, .uploadSuccess, .updateSuccess, .Success, .tokyc, .addBankpop, .changePassWordpop, .editSuccess, .joinSuccess, .loackAmount {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -3430,18 +3438,18 @@ input[type="file"] {
   margin: auto;
 }
 
-.Submit.active, .Cancel.active, .uploadSuccess.active, .updateSuccess.active, .Success.active, .tokyc.active, .addBankpop.active, .changePassWordpop.active, .editSuccess.active, .joinSuccess.active {
+.Submit.active, .Cancel.active, .uploadSuccess.active, .updateSuccess.active, .Success.active, .tokyc.active, .addBankpop.active, .changePassWordpop.active, .editSuccess.active, .joinSuccess.active, .loackAmount.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.Submit .icon, .Cancel .icon, .uploadSuccess .icon, .updateSuccess .icon, .Success .icon, .tokyc .icon, .addBankpop .icon, .changePassWordpop .icon, .editSuccess .icon, .joinSuccess .icon {
+.Submit .icon, .Cancel .icon, .uploadSuccess .icon, .updateSuccess .icon, .Success .icon, .tokyc .icon, .addBankpop .icon, .changePassWordpop .icon, .editSuccess .icon, .joinSuccess .icon, .loackAmount .icon {
   font-size: 36px;
   color: #f77900;
 }
 
-.Submit .icon.icon-bell, .Cancel .icon.icon-bell, .uploadSuccess .icon.icon-bell, .updateSuccess .icon.icon-bell, .Success .icon.icon-bell, .tokyc .icon.icon-bell, .addBankpop .icon.icon-bell, .changePassWordpop .icon.icon-bell, .editSuccess .icon.icon-bell, .joinSuccess .icon.icon-bell {
+.Submit .icon.icon-bell, .Cancel .icon.icon-bell, .uploadSuccess .icon.icon-bell, .updateSuccess .icon.icon-bell, .Success .icon.icon-bell, .tokyc .icon.icon-bell, .addBankpop .icon.icon-bell, .changePassWordpop .icon.icon-bell, .editSuccess .icon.icon-bell, .joinSuccess .icon.icon-bell, .loackAmount .icon.icon-bell {
   color: #f77900;
   -webkit-transform-origin: bottom;
           transform-origin: bottom;
@@ -3449,20 +3457,20 @@ input[type="file"] {
           transform: rotate(20deg);
 }
 
-.Submit .title, .Cancel .title, .uploadSuccess .title, .updateSuccess .title, .Success .title, .tokyc .title, .addBankpop .title, .changePassWordpop .title, .editSuccess .title, .joinSuccess .title {
+.Submit .title, .Cancel .title, .uploadSuccess .title, .updateSuccess .title, .Success .title, .tokyc .title, .addBankpop .title, .changePassWordpop .title, .editSuccess .title, .joinSuccess .title, .loackAmount .title {
   margin: 10px 0 20px;
 }
 
-.Submit .txt-lightgray, .Cancel .txt-lightgray, .uploadSuccess .txt-lightgray, .updateSuccess .txt-lightgray, .Success .txt-lightgray, .tokyc .txt-lightgray, .addBankpop .txt-lightgray, .changePassWordpop .txt-lightgray, .editSuccess .txt-lightgray, .joinSuccess .txt-lightgray {
+.Submit .txt-lightgray, .Cancel .txt-lightgray, .uploadSuccess .txt-lightgray, .updateSuccess .txt-lightgray, .Success .txt-lightgray, .tokyc .txt-lightgray, .addBankpop .txt-lightgray, .changePassWordpop .txt-lightgray, .editSuccess .txt-lightgray, .joinSuccess .txt-lightgray, .loackAmount .txt-lightgray {
   text-align: center;
 }
 
-.Submit .popList, .Cancel .popList, .uploadSuccess .popList, .updateSuccess .popList, .Success .popList, .tokyc .popList, .addBankpop .popList, .changePassWordpop .popList, .editSuccess .popList, .joinSuccess .popList {
+.Submit .popList, .Cancel .popList, .uploadSuccess .popList, .updateSuccess .popList, .Success .popList, .tokyc .popList, .addBankpop .popList, .changePassWordpop .popList, .editSuccess .popList, .joinSuccess .popList, .loackAmount .popList {
   width: 100%;
   margin-top: 30px;
 }
 
-.Submit .popList ul, .Cancel .popList ul, .uploadSuccess .popList ul, .updateSuccess .popList ul, .Success .popList ul, .tokyc .popList ul, .addBankpop .popList ul, .changePassWordpop .popList ul, .editSuccess .popList ul, .joinSuccess .popList ul {
+.Submit .popList ul, .Cancel .popList ul, .uploadSuccess .popList ul, .updateSuccess .popList ul, .Success .popList ul, .tokyc .popList ul, .addBankpop .popList ul, .changePassWordpop .popList ul, .editSuccess .popList ul, .joinSuccess .popList ul, .loackAmount .popList ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3475,13 +3483,13 @@ input[type="file"] {
           justify-content: space-between;
 }
 
-.Submit .popList ul li, .Cancel .popList ul li, .uploadSuccess .popList ul li, .updateSuccess .popList ul li, .Success .popList ul li, .tokyc .popList ul li, .addBankpop .popList ul li, .changePassWordpop .popList ul li, .editSuccess .popList ul li, .joinSuccess .popList ul li {
+.Submit .popList ul li, .Cancel .popList ul li, .uploadSuccess .popList ul li, .updateSuccess .popList ul li, .Success .popList ul li, .tokyc .popList ul li, .addBankpop .popList ul li, .changePassWordpop .popList ul li, .editSuccess .popList ul li, .joinSuccess .popList ul li, .loackAmount .popList ul li {
   line-height: 30px;
   letter-spacing: 1px;
   font-size: 12px;
 }
 
-.Submit .popList ul li:first-child, .Cancel .popList ul li:first-child, .uploadSuccess .popList ul li:first-child, .updateSuccess .popList ul li:first-child, .Success .popList ul li:first-child, .tokyc .popList ul li:first-child, .addBankpop .popList ul li:first-child, .changePassWordpop .popList ul li:first-child, .editSuccess .popList ul li:first-child, .joinSuccess .popList ul li:first-child {
+.Submit .popList ul li:first-child, .Cancel .popList ul li:first-child, .uploadSuccess .popList ul li:first-child, .updateSuccess .popList ul li:first-child, .Success .popList ul li:first-child, .tokyc .popList ul li:first-child, .addBankpop .popList ul li:first-child, .changePassWordpop .popList ul li:first-child, .editSuccess .popList ul li:first-child, .joinSuccess .popList ul li:first-child, .loackAmount .popList ul li:first-child {
   color: #1E85EC;
   font-weight: bold;
 }
@@ -6352,20 +6360,6 @@ button.icon-spinner11:before {
   margin: 2px 0;
 }
 
-.depositSlip .depositSlipList > div:first-child {
-  background: #134DAE;
-}
-
-.depositSlip .depositSlipList > div:first-child div {
-  color: white;
-}
-
-.depositSlip .depositSlipList > div:first-child div:nth-child(2) {
-  background: #f77900;
-  border-color: #f77900;
-  color: white;
-}
-
 .depositSlip .depositSlipList > div > div {
   border: 1px solid #134DAE;
   padding: 5px;
@@ -6444,5 +6438,47 @@ button.icon-spinner11:before {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   left: 0;
+}
+
+.loackAmount {
+  width: 260px;
+}
+
+.colorInfo {
+  margin-bottom: 5px;
+}
+
+.colorInfo > div {
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.colorInfo > div:first-child {
+  color: #1E85EC;
+}
+
+.colorInfo > div:first-child span {
+  background: #1E85EC;
+}
+
+.colorInfo > div:last-child {
+  color: #f77900;
+}
+
+.colorInfo > div:last-child span {
+  background: #f77900;
+}
+
+.colorInfo > div span {
+  display: block;
+  width: 50px;
+  height: 8px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 /*# sourceMappingURL=style.css.map */
