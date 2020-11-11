@@ -122,8 +122,8 @@ export default {
 		tpId: 18
 	},
 	liveCasino_MW: {
-		gameId: 20,
-		tpId: 20
+		tpId: 5,
+		gameId: 801
 	},
 	fishing_SG: {
 		gameId: "F-SF01",
