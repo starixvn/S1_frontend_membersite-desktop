@@ -206,10 +206,10 @@ export const defMenuLinks = {
 			}
 		]
 	},
-	cockFighting: {
-		productInfo: productList.cockFighting,
-		displayKey: "lbl_CockFighting"
-	},
+	// cockFighting: {
+	// 	productInfo: productList.cockFighting,
+	// 	displayKey: "lbl_CockFighting"
+	// },
 	promotion: {
 		path: path.promotion.root,
 		displayKey: "lbl_Promotions"
