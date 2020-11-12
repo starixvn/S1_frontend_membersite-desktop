@@ -3121,6 +3121,13 @@ input[type="file"] {
       -ms-flex-pack: center;
           justify-content: center;
   width: calc(100% - 10px);
+  background: white;
+  overflow: hidden;
+}
+
+.subModuleList .subModule .subModuleBody ul li a.icon-library {
+  color: #1E85EC;
+  font-size: 44px;
 }
 
 .subModuleList .subModule .subModuleBody ul li a.icon-VNPay:before {
@@ -3129,10 +3136,6 @@ input[type="file"] {
 
 .subModuleList .subModule .subModuleBody ul li a:before {
   font-size: 34px;
-}
-
-.subModuleList .subModule .subModuleBody ul li a:hover {
-  background: #1E85EC;
 }
 
 .subModuleList .subModule .subModuleBody ul li span {
@@ -3155,7 +3158,7 @@ input[type="file"] {
 
 .platformName {
   width: calc(100% / 3 - 70px);
-  background: #134DAE;
+  background: white;
   float: left;
   margin-left: 70px;
   border-radius: 15px;
@@ -3172,6 +3175,7 @@ input[type="file"] {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   position: relative;
+  border: 1px solid #1E85EC;
 }
 
 .platformName button.icon, .platformName a.icon {
@@ -3201,6 +3205,10 @@ input[type="file"] {
 
 .platformName .icon {
   font-size: 40px;
+}
+
+.platformName .icon img {
+  max-width: 90px;
 }
 
 .platformName + div.subModuleList .subModuleBody > div {
@@ -6480,5 +6488,10 @@ button.icon-spinner11:before {
   height: 8px;
   border-radius: 5px;
   margin-right: 10px;
+}
+
+.icon-icon32px_bank-account ~ .platformName {
+  background: #1E85EC;
+  border: 0;
 }
 /*# sourceMappingURL=style.css.map */
