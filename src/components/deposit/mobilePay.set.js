@@ -21,6 +21,7 @@ import {
 	defModule,
 	defActionType
 } from "./mobilePay.reducer";
+import config from "../../config";
 
 export default () => {
 	const { t } = useTranslation();
@@ -110,7 +111,9 @@ export default () => {
 	return redirectPath === null ? (
 		<DepositWrapper step={state.step}>
 			<div className="platformName">
-				<div className={`icon icon-${gName}`}></div>
+				<img
+					src={`${config.cloudImgUrl}/SiteSkin/img/Payment/${gName}.png`}
+				/>
 				<div>
 					<div>{t("lbl_MobileDeposit")}</div>
 					<div className="txt-orange">
