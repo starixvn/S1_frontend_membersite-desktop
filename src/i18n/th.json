@@ -190,6 +190,7 @@
 	"lbl_ExchangeRate":"อัตราแลกเปลี่ยน",
 	"lbl_ExchangeRateReferenceOnly":"อัตรานี้ใช้สำหรับการอ้างอิงเท่านั้น",
 	"lbl_ExchangeAmount":"จำนวนเงินแลกเปลี่ยน",
+	"lbl_CryptoPay":"ชำระเงินแบบ Crypto",
 
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "ร่าง",

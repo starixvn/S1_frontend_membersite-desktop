@@ -190,7 +190,7 @@
 	"lbl_ExchangeRate":"Kurs tukar",
 	"lbl_ExchangeRateReferenceOnly":"Tarif ini hanya untuk referensi",
 	"lbl_ExchangeAmount":"Nilai tukar",
-	
+	"lbl_CryptoPay":"Pembayaran Crypto",
 
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "Draft",

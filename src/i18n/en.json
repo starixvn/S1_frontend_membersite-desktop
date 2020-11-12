@@ -190,6 +190,7 @@
 	"lbl_ExchangeRate":"Exchange rate",
 	"lbl_ExchangeRateReferenceOnly":"This rate is only for refence",
 	"lbl_ExchangeAmount":"Exchange Amount",
+	"lbl_CryptoPay":"Crypto Pay",
 
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "Draft",
