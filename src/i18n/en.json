@@ -148,6 +148,7 @@
 	"lbl_DepositType1": "Online Banking",
 	"lbl_DepositType2": "Mobile Payment",
 	"lbl_DepositType3": "Local Bank",
+	"lbl_DepositType4": "Crypto Pay",
 	"lbl_DepositStatus0": "Draft",
 	"lbl_DepositStatus1": "Pending",
 	"lbl_DepositStatus2": "Paid",
@@ -186,6 +187,9 @@
 	"lbl_OpenOtherSite": "Open another window and redirect",
 	"lbl_PicFormatTip": "File format error, please try again.",
 	"lbl_CreditTime": "Credit Time",
+	"lbl_ExchangeRate":"Exchange rate",
+	"lbl_ExchangeRateReferenceOnly":"This rate is only for refence",
+	"lbl_ExchangeAmount":"Exchange Amount",
 
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "Draft",

@@ -148,6 +148,7 @@
 	"lbl_DepositType1": "Online Banking",
 	"lbl_DepositType2": "Pembayaran Via Mobile",
 	"lbl_DepositType3": "Bank Lokal",
+	"lbl_DepositType4": "Pembayaran Crypto",
 	"lbl_DepositStatus0": "Draft",
 	"lbl_DepositStatus1": "Ditunda",
 	"lbl_DepositStatus2": "Paid",
@@ -186,6 +187,10 @@
 	"lbl_OpenOtherSite": " Buka jendela lain dan ganti halaman",
 	"lbl_PicFormatTip": "Kesalahan format file, harap coba lagi.",
 	"lbl_CreditTime": "Masa kredit",
+	"lbl_ExchangeRate":"Kurs tukar",
+	"lbl_ExchangeRateReferenceOnly":"Tarif ini hanya untuk referensi",
+	"lbl_ExchangeAmount":"Nilai tukar",
+	
 
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "Draft",

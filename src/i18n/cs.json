@@ -148,6 +148,7 @@
 	"lbl_DepositType1": "网络银行",
 	"lbl_DepositType2": "手机支付",
 	"lbl_DepositType3": "银行卡",
+	"lbl_DepositType4": "加密货币",
 	"lbl_DepositStatus0": "草稿",
 	"lbl_DepositStatus1": "待定",
 	"lbl_DepositStatus2": "已付款",
@@ -186,6 +187,9 @@
 	"lbl_OpenOtherSite": " 另开视窗并重导向",
 	"lbl_PicFormatTip": "档案格式错误，请重试。",
 	"lbl_CreditTime": "所需时间",
+	"lbl_ExchangeRate":"兑换汇率",
+	"lbl_ExchangeRateReferenceOnly":"汇率仅供参考",
+	"lbl_ExchangeAmount":"换算金额",
 
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "草稿",

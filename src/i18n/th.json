@@ -148,6 +148,7 @@
 	"lbl_DepositType1": "ธนาคารออนไลน์",
 	"lbl_DepositType2": "จ่ายผ่านมือถือ",
 	"lbl_DepositType3": "ธนาคารในประเทศ",
+	"lbl_DepositType4": "ชำระเงินแบบ Crypto",
 	"lbl_DepositStatus0": "ร่าง",
 	"lbl_DepositStatus1": "รอดำเนินการ",
 	"lbl_DepositStatus2": "Paid",
@@ -186,6 +187,9 @@
 	"lbl_OpenOtherSite": "เปิดหน้าต่างอื่นแล้วเปลี่ยนเส้นทาง",
 	"lbl_PicFormatTip": "รูปแบบไฟล์ผิดพลาดโปรดลองอีกครั้ง",
 	"lbl_CreditTime": "เวลาที่ต้องใช้",
+	"lbl_ExchangeRate":"อัตราแลกเปลี่ยน",
+	"lbl_ExchangeRateReferenceOnly":"อัตรานี้ใช้สำหรับการอ้างอิงเท่านั้น",
+	"lbl_ExchangeAmount":"จำนวนเงินแลกเปลี่ยน",
 
 	"withdrawal ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_WithdrawalStatus0": "ร่าง",
