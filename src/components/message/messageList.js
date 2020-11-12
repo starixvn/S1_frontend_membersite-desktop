@@ -34,26 +34,12 @@ export default props => {
 	};
 
 	const dateTimeFormat = () => {
-		if (compareDay < 1) {
-			if (!showContent) {
-				return props.createTime.slice(11, 19);
-			} else {
-				return (
-					props.createTime.split("T", 1) +
-					" " +
-					props.createTime.slice(11, 19)
-				);
-			}
+		if (showContent) {
+			return moment(props.createTime).format("YYYY-MM-DD HH:MM:ss");
 		} else {
-			if (!showContent) {
-				return props.createTime.split("T", 1);
-			} else {
-				return (
-					props.createTime.split("T", 1) +
-					" " +
-					props.createTime.slice(11, 19)
-				);
-			}
+			return compareDay < 1
+				? moment(props.createTime).format("HH:MM:ss")
+				: moment(props.createTime).format("YYYY-MM-DD");
 		}
 	};
 
