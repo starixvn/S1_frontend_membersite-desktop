@@ -52,7 +52,7 @@ export default ({ promotionInfo, t }) => {
 					<div>{number_format(requiredAmount)}</div>
 				) : null}
 				<div>{displayExpiryTime}</div>
-				<div>{rollOver ? rollOver : 1}X</div>
+				<div>{rollOver}X</div>
 			</div>
 		</div>
 	);
