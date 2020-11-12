@@ -5,11 +5,11 @@ import { getUrlParameter, isConvert, number_format } from "../common/common";
 import { api_promotion_GetPromotionDetail } from "../../service/api/promotion";
 import { api_account_GetCustSpecificBonus } from "../../service/api/account";
 import { defPopBoxType } from "../common/popBox";
+import { defPromotionType } from "./promotion.def";
 import { isExpiry, isClaimed } from "./promotion.common";
 import ProcessBar from "./promotion.processBar";
-import moment from "moment";
-import { promoStatus } from "./promotion.def";
 import PromotionJoinButton from "./promotion.joinButton";
+import PromoRule from "./promotion.promoRule";
 
 export default () => {
 	const { t } = useTranslation();
@@ -117,9 +117,9 @@ export default () => {
 		? " expiredClaimedInfo"
 		: "";
 
-	return promotionInfo === null ? (
-		<></>
-	) : (
+	if (promotionInfo === null) return null;
+
+	return (
 		<div className="infoModule">
 			<div className={`promotionsInfo${wrapperClass}`}>
 				{_isClaimed ? <div className="claimed"></div> : null}
@@ -149,6 +149,8 @@ export default () => {
 						</div>
 					</div>
 
+					<DepositSlip promotionInfo={promotionInfo} t={t} />
+
 					<DepositMenu
 						cash={number_format(
 							promotionInfo.depositAmount,
@@ -170,11 +172,9 @@ export default () => {
 						})}
 						currencyId={userInfo.currencyId}
 					/>
-					<Rollover
-						promotionInfo={promotionInfo}
-						t={t}
-						currencyId={userInfo.currencyId}
-					/>
+
+					<PromoRule promotionInfo={promotionInfo} t={t} />
+
 					<div
 						className="proDataBody"
 						dangerouslySetInnerHTML={{
@@ -186,71 +186,38 @@ export default () => {
 	);
 };
 
-const Rollover = ({ promotionInfo, t, currencyId }) => {
-	const {
-		isJoin,
-		status,
-		custExpiryTime,
-		periodTo,
-		requiredAmount,
-		rollOver
-	} = promotionInfo;
+const DepositSlip = ({ promotionInfo, t }) => {
+	const { promotionType, refList, depositAmount, bonusCode } = promotionInfo;
 
-	let _expiryTime = moment.unix(
-		isJoin && status === promoStatus.running && custExpiryTime
-			? moment(custExpiryTime).unix()
-			: periodTo
-	);
-
-	let diffDays = Math.ceil(
-		moment.duration(_expiryTime.diff(moment())).asDays() - 1
-	);
-
-	let expiryTime = moment.duration(_expiryTime.diff(new Date()));
-
-	// let expiryTime = moment.duration(
-	// 	moment
-	// 		.unix(
-	// 			isJoin && status === promoStatus.running && custExpiryTime
-	// 				? moment(custExpiryTime).unix()
-	// 				: periodTo
-	// 		)
-	// 		.diff(new Date())
-	// );
-
-	let displayExpiryTime =
-		diffDays +
-		" " +
-		t("lbl_Days") +
-		" " +
-		expiryTime.hours() +
-		" " +
-		t("lbl_Hours");
+	if (!refList || promotionType !== defPromotionType.redeposit) return null;
 
 	return (
-		<div className="rollover">
-			<div>
-				{requiredAmount > 0 ? (
-					<div className="icon icon-icon32px_money">
-						{t("lbl_MinAmount")}
-					</div>
-				) : null}
-				<div className="icon icon-icon32px_time">
-					{t("lbl_RemainingTime")}
+		<>
+			<div className="colorInfo">
+				<div>
+					<span></span>
+					{t("lbl_ID")}
 				</div>
-				<div className="icon icon-icon32px_">{t("lbl_RollOver")}</div>
+				<div>
+					<span></span>
+					{t("lbl_Amount")}
+				</div>
 			</div>
-
-			<div className="txt-orange">
-				{requiredAmount > 0 ? (
-					<div>
-						{number_format(requiredAmount, isConvert(currencyId))}
-					</div>
-				) : null}
-				<div>{displayExpiryTime}</div>
-				<div>{rollOver ? rollOver : 1}X</div>
+			<div className="depositSlip">
+				<div className="depositSlipList">
+					{refList?.map(item => (
+						<div
+							key={`promotion-deposit-record-${bonusCode}-${item.depositId}`}>
+							<div>{item.depositId}</div>
+							<div>{number_format(item.amount)}</div>
+						</div>
+					))}
+				</div>
+				<div className="txt-orange">
+					{t("lbl_total")}: {number_format(depositAmount)}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
