@@ -109,7 +109,7 @@ export default () => {
 			<div className="platformName">
 				<div className="icon icon-library"></div>
 				<div>
-					<div>{t("lbl_WireTransfers")}</div>
+					<div className="txt-blue">{t("lbl_WireTransfers")}</div>
 					<div className="txt-orange">
 						{t("lbl_CreditTime")}: {t("lbl_5mins")}
 					</div>

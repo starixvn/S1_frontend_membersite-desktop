@@ -2,6 +2,7 @@ import React from "react";
 import path from "../../path";
 import { Link } from "gatsby";
 import { useTranslation } from "react-i18next";
+import config from "../../config";
 
 const _path = path.deposit.sub.mobilePay.root;
 
@@ -11,9 +12,12 @@ export default ({ mobileBankList }) => {
 	let rows = mobileBankList?.map(p => {
 		return (
 			<li key={`deposit-mobilePay-${p.groupName}}`}>
-				<Link
-					to={`${_path}?name=${p.groupName}&gId=${p.groupId}`}
-					className={`icon icon-${p.groupName}`}></Link>
+				<Link to={`${_path}?name=${p.groupName}&gId=${p.groupId}`}>
+					<img
+						src={`${config.cloudImgUrl}/SiteSkin/img/Payment/${p.groupName}.png`}
+						alt={p.groupName}
+					/>
+				</Link>
 			</li>
 		);
 	});

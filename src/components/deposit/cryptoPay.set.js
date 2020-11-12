@@ -102,7 +102,7 @@ export default () => {
 					src={`${config.cloudImgUrl}/SiteSkin/img/Payment/${gName}.png`}
 				/>
 				<div>
-					<div>{t("lbl_CryptoPay")}</div>
+					<div className="txt-blue">{t("lbl_CryptoPay")}</div>
 					<div className="txt-orange">
 						{t("lbl_CreditTime")}:{t("lbl_Instant")}
 					</div>

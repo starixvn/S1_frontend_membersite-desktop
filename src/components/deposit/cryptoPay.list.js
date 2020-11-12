@@ -15,6 +15,7 @@ export default ({ cryptoList }) => {
 				<Link to={`${_path}?name=${p.channelName}&gId=${p.groupId}`}>
 					<img
 						src={`${config.cloudImgUrl}/SiteSkin/img/Payment/${p.channelName}.png`}
+						alt={p.channelName}
 					/>
 				</Link>
 

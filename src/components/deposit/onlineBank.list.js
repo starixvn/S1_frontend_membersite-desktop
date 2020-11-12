@@ -5,6 +5,7 @@ import { isConvert } from "../common/common";
 import { userInfoContext } from "../common/context";
 import path from "../../path";
 import { useTranslation } from "react-i18next";
+import config from "../../config";
 
 const _path = path.deposit.sub.onlineBank.root;
 
@@ -19,8 +20,12 @@ export default ({ onlineBankingList }) => {
 			<li key={`deposit-onlineBank-${p.payId}-${p.channelId}`}>
 				<Link
 					to={`${_path}?name=${p.payName}&pId=${p.payId}&cId=${p.channelId}&max=${p.maxAmount}&min=${p.minAmount}`}
-					state={{ selBank: p.selBank }}
-					className={`icon icon-${p.payName}`}></Link>
+					state={{ selBank: p.selBank }}>
+					<img
+						src={`${config.cloudImgUrl}/SiteSkin/img/Payment/${p.payName}.png`}
+						alt={p.payName}
+					/>
+				</Link>
 				<LimitTip
 					minAmount={p.minAmount}
 					maxAmount={p.maxAmount}
