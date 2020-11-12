@@ -187,7 +187,7 @@ export default () => {
 };
 
 const DepositSlip = ({ promotionInfo, t }) => {
-	const { promotionType, refList, depositAmount } = promotionInfo;
+	const { promotionType, refList, depositAmount, bonusCode } = promotionInfo;
 
 	if (!refList || promotionType !== defPromotionType.redeposit) return null;
 
@@ -206,9 +206,10 @@ const DepositSlip = ({ promotionInfo, t }) => {
 			<div className="depositSlip">
 				<div className="depositSlipList">
 					{refList?.map(item => (
-						<div key={item.DepositId}>
-							<div>{item.DepositId}</div>
-							<div>{number_format(item.Amount)}</div>
+						<div
+							key={`promotion-deposit-record-${bonusCode}-${item.depositId}`}>
+							<div>{item.depositId}</div>
+							<div>{number_format(item.amount)}</div>
 						</div>
 					))}
 				</div>
