@@ -57,6 +57,10 @@
   font-size: 24px !important;
 }
 
+.icon-WM:before {
+  content: "\e9b1";
+}
+
 .icon-MW:before {
   content: "\e9b0";
 }

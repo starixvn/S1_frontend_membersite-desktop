@@ -366,6 +366,14 @@ header {
   background: url(../img/casinoOW_a.png) no-repeat center 0px/auto 100%;
 }
 
+.header > div.menu .livecasinoList .liveWM {
+  background: url(../img/liveWM.png) no-repeat center 10px/auto 100%;
+}
+
+.header > div.menu .livecasinoList .liveWM:hover {
+  background: url(../img/liveWM_a.png) no-repeat center 0px/auto 100%;
+}
+
 .header > div.menu .livecasinoList .liveMW {
   background: url(../img/liveMW.png) no-repeat center 10px/auto 100%;
 }
@@ -3176,6 +3184,10 @@ input[type="file"] {
       flex-wrap: wrap;
   position: relative;
   border: 1px solid #1E85EC;
+}
+
+.platformName .icon-library {
+  color: #1E85EC;
 }
 
 .platformName button.icon, .platformName a.icon {
