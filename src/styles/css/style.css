@@ -177,6 +177,16 @@ header {
   height: calc(100% - 3px);
 }
 
+.header > div.menu > div > a.COCK:before, .header > div.menu > div > button.COCK:before {
+  content: 'NEW';
+  position: absolute;
+  top: 0;
+  background: #cf0404;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
 .header > div.menu > div > a:hover, .header > div.menu > div > button:hover {
   color: #f77900;
   border-color: #f77900;
