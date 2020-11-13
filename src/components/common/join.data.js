@@ -24,7 +24,8 @@ export const currencyToAreacode = {
 	4: "TH",
 	13: "CS",
 	15: "ID",
-	51: "VN"
+	51: "VN",
+	96: "MY"
 };
 
 export const passwordCheck = val => {
