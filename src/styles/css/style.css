@@ -107,7 +107,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  z-index: 2;
+  z-index: 3;
 }
 
 .logo {
@@ -2709,6 +2709,8 @@ input[type="file"] {
       -ms-flex-align: center;
           align-items: center;
   padding: 5px;
+  max-width: 162px;
+  word-break: break-all;
 }
 
 .list .listBody > div div:nth-child(2) {
