@@ -263,6 +263,7 @@ header {
   font-size: 24px;
   top: 10px;
   left: 0;
+  right: unset;
 }
 
 .header > div.menu .gameList a:hover, .header > div.menu .gameList button:hover, .header > div.menu .casinoList a:hover, .header > div.menu .casinoList button:hover, .header > div.menu .livecasinoList a:hover, .header > div.menu .livecasinoList button:hover, .header > div.menu .fishList a:hover, .header > div.menu .fishList button:hover {
