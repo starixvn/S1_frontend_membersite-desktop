@@ -89,8 +89,8 @@ export const defMenuLinks = {
 			{
 				...productList.liveCasino_MW,
 				className: "liveMW icon icon-new",
-				icon: "icon icon-MW",
-				displayText: "MW",
+				icon: "icon icon-PP",
+				displayText: "PP",
 				menuType: defMenuType.entPage
 			},
 			{
