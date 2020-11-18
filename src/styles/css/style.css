@@ -246,6 +246,7 @@ header {
   margin-bottom: 50px;
   max-width: 160px;
   position: relative;
+  text-transform: initial;
 }
 
 .header > div.menu .gameList a img, .header > div.menu .gameList button img, .header > div.menu .casinoList a img, .header > div.menu .casinoList button img, .header > div.menu .livecasinoList a img, .header > div.menu .livecasinoList button img, .header > div.menu .fishList a img, .header > div.menu .fishList button img {
@@ -257,6 +258,8 @@ header {
 .header > div.menu .gameList a span, .header > div.menu .gameList button span, .header > div.menu .casinoList a span, .header > div.menu .casinoList button span, .header > div.menu .livecasinoList a span, .header > div.menu .livecasinoList button span, .header > div.menu .fishList a span, .header > div.menu .fishList button span {
   top: 35px;
   position: relative;
+  font-family: Microsoft YaHei,sans-serif;
+  font-size: 13px;
 }
 
 .header > div.menu .gameList a.icon-new:before, .header > div.menu .gameList button.icon-new:before, .header > div.menu .casinoList a.icon-new:before, .header > div.menu .casinoList button.icon-new:before, .header > div.menu .livecasinoList a.icon-new:before, .header > div.menu .livecasinoList button.icon-new:before, .header > div.menu .fishList a.icon-new:before, .header > div.menu .fishList button.icon-new:before {
@@ -2740,8 +2743,9 @@ input[type="file"] {
       -ms-flex-align: center;
           align-items: center;
   padding: 5px;
-  max-width: 162px;
-  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .list .listBody > div div:nth-child(2) {
