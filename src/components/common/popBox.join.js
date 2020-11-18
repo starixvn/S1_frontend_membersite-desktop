@@ -118,7 +118,7 @@ export default () => {
 			msg = t("lbl_CantChangePreferredCurrency");
 		} else if (col === "phone") {
 			msg = t("lbl_PhoneTooltip");
-		} else if (col === "affiliateId") {
+		} else if (col === "aff") {
 			msg = t("lbl_Please_enter_Affiliate_ID");
 		}
 		if (tip[col].msg === msg) {
@@ -135,9 +135,6 @@ export default () => {
 			};
 		});
 	};
-
-	const isUrlAffiliateId =
-		getUrlParameter("affiliateid") || readCookie("affiliateid");
 
 	const EditField = (col, e) => {
 		let val = e.target.value;
@@ -385,6 +382,9 @@ export default () => {
 		);
 	};
 
+	const isUrlAff =
+	getUrlParameter("aff") || readCookie("aff");
+
 	const clickSubmit = async e => {
 		e.preventDefault();
 		let checked = await checkAll();
@@ -402,8 +402,7 @@ export default () => {
 
 			regData["RefId"] = getUrlParameter("RefId") || readCookie("RefId");
 			regData["AffId"] = getUrlParameter("AffId") || readCookie("AffId");
-			regData["Aff"] = getUrlParameter("Aff") || readCookie("Aff");
-			regData["AffiliateId"] = isUrlAffiliateId ?? userValue.affiliateId;
+			regData["Aff"] = isUrlAff ?? userValue.aff;
 			regData["blackbox"] = await Iov_GetBlackBox();
 
 			api_site_Signup(regData, defaultLangId).then(
@@ -680,12 +679,12 @@ export default () => {
 							className={`inputBox-org`}
 							icon="icon-affiliate txt-orange"
 							placeholder={t("lbl_Affiliate_ID")}
-							value={isUrlAffiliateId ?? userValue.affiliateId}
-							onChange={EditField.bind(null, "affiliateId")}
-							readOnly={isUrlAffiliateId}
-							checked={tip.affiliateId.checked}
-							tip={tip.affiliateId.msg}
-							clickInfo={clickInfo.bind(this, "affiliateId")}
+							value={isUrlAff ?? userValue.aff}
+							onChange={EditField.bind(null, "aff")}
+							readOnly={isUrlAff}
+							checked={tip.aff.checked}
+							tip={tip.aff.msg}
+							clickInfo={clickInfo.bind(this, "aff")}
 						/>
 					</div>
 

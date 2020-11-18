@@ -6,7 +6,7 @@ export const initValue = {
 	currencyIdx: null,
 	termsCheck: false,
 	ageCheck: false,
-	affiliateId: null
+	aff: null
 };
 
 export const initTip = {
@@ -16,7 +16,7 @@ export const initTip = {
 	email: { checked: null, msg: "" },
 	currency: { checked: null, msg: "" },
 	checkbox: { checked: null, msg: "" },
-	affiliateId: { checked: null, msg: "" }
+	aff: { checked: null, msg: "" }
 };
 
 export const currencyToAreacode = {
