@@ -37,7 +37,7 @@ export default ({ listClassName, subItems, menuKey, mainUrl }) => {
 		)
 		.map(s => {
 			let displayText = s.displayText ? s.displayText : t(s.displayKey);
-			let key = `${menuKey}-${userInfo.isLogin}-${displayText}`;
+			let key = `${menuKey}-${userInfo.isLogin}-${s.tpId}-${s.gameId}`;
 
 			let params = null;
 			if (s.parameter) {
