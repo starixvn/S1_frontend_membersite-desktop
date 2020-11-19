@@ -263,7 +263,7 @@ header {
 }
 
 .header > div.menu .gameList a.icon-new:before, .header > div.menu .gameList button.icon-new:before, .header > div.menu .casinoList a.icon-new:before, .header > div.menu .casinoList button.icon-new:before, .header > div.menu .livecasinoList a.icon-new:before, .header > div.menu .livecasinoList button.icon-new:before, .header > div.menu .fishList a.icon-new:before, .header > div.menu .fishList button.icon-new:before {
-  font-size: 24px;
+  font-size: 18px;
   top: 10px;
   left: 0;
   right: unset;
@@ -452,6 +452,10 @@ header {
 
 .header > div.menu .livecasinoList .liveEB .icon:before {
   font-size: 16px;
+}
+
+.header > div.menu .fishList {
+  width: 65vw;
 }
 
 .header > div.menu .fishList .fgg {
