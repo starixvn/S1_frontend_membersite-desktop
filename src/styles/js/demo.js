@@ -38,6 +38,11 @@ $(function(){
         $('.subMenu-Wrapper > div').removeClass('active')
         $('.gameList').addClass('active')
     })
+    $('.fishbtn').mouseover(function() {
+        $('.subMenu-Wrapper').addClass('active')
+        $('.subMenu-Wrapper > div').removeClass('active')
+        $('.fishList').addClass('active')
+    })
     $('.subMenu-Wrapper').mouseleave(function() {
         $('.subMenu-Wrapper').removeClass('active')
         $('.subMenu-Wrapper > div').removeClass('active')
@@ -46,13 +51,13 @@ $(function(){
         $('.listTag > button').removeClass('active')
         $(this).addClass('active')
     })
-    $('.quickLink').click(function() {
-        $(this).toggleClass('active')
+    $('.quickLink > div').click(function() {
+        $('.quickLink').toggleClass('active')
         $('#chat-widget-container').toggleClass('active')
-        if ($(".icon").hasClass("icon-arrow-left2")) {
-            $(".icon").removeClass("icon-arrow-left2").addClass("icon-cancel-circle")
+        if ($(".icon").hasClass("icon-arrow-up2")) {
+            $(".icon-arrow-up2").removeClass("icon-arrow-up2").addClass("icon-cancel-circle")
         }else {
-            $(".icon").removeClass("icon-cancel-circle").addClass("icon-arrow-left2")
+            $(".icon-cancel-circle").removeClass("icon-cancel-circle").addClass("icon-arrow-up2")
         }
     })
     $('#popup').click(function(n) {
@@ -94,7 +99,11 @@ $(function(){
     })
     $('.login').click(function() {
         $('#popup').addClass('active')
-        $('.pop > .joinlogin').addClass('active');
+        $('.pop > .loginpop').addClass('active');
+    })
+    $('.join').click(function() {
+        $('#popup').addClass('active')
+        $('.pop > .joinpop').addClass('active');
     })
     $('button.icon-spinner11').click(function() {
         $(this).removeClass('active').addClass('active')
@@ -102,5 +111,15 @@ $(function(){
     $('.listHeader > div:nth-child(2),.listHeader > div:nth-child(3)').click(function() {
         $(this).parent('.listHeader').siblings('.listBody').toggleClass('active')
         $(this).parent('.listHeader').addClass('haveRead')
+    })
+    $('.icon-information-solid').click(function() {
+        $(this).toggleClass('active')
+    })
+    $('.loginAnimation').hover(function() {
+        $('.loginAnimation>img').addClass('active').removeClass('active')
+    })
+    $('.icon-icon32px_Double-arrow').click(function() {
+        $('.transferModule > .from').toggleClass('active')
+        $('.transferModule > .to').toggleClass('active')
     })
 });

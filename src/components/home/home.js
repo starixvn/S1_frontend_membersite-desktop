@@ -35,6 +35,7 @@ import productList from "../../datas/productList";
 import { Link } from "@reach/router";
 import path from "../../path";
 import SideBarQuickLink from "./sideBarQuickLink";
+import PromoGameList from "./promoGameList";
 
 import {
 	GET_OPEN_RULE,
@@ -180,13 +181,13 @@ const SportsSection = ({ t, langId, isLogin, showLogin }) => {
 };
 
 const defSideBarProducts = langId => [
-	{
-		path: path.promotion.root,
-		icon: "icon icon-gift",
-		displayKey: "lbl_Promotions",
-		descriptionKey: "lbl_PromotionSlog",
-		mainImg: indexBannerPromotions
-	},
+	// {
+	// 	path: path.promotion.root,
+	// 	icon: "icon icon-gift",
+	// 	displayKey: "lbl_Promotions",
+	// 	descriptionKey: "lbl_PromotionSlog",
+	// 	mainImg: indexBannerPromotions
+	// },
 	{
 		path: path.casino.root,
 		icon: "icon icon-casino",
@@ -276,7 +277,17 @@ const SideBarProductSection = ({ t, langId, isLogin, showLogin }) => {
 		}
 	});
 
-	return <div className="gamelistother">{rows}</div>;
+	return (
+		<div className="gamelistother">
+			<SwipperBanner
+				// ImgFolder="Casino"
+				ImgFolder="Sports"
+				withBtn={false}
+				filterHideInHome={true}
+			/>
+			{rows}
+		</div>
+	);
 };
 
 const IndexPage = () => {
@@ -343,6 +354,7 @@ const IndexPage = () => {
 				filterHideInHome={true}
 			/>
 			<Marquee />
+			<PromoGameList t={t} userInfo={userInfo} />
 			<section>
 				<SportsSection t={t} showLogin={showLogin} {...userInfo} />
 				<SideBarProductSection

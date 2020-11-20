@@ -263,7 +263,7 @@ header {
 }
 
 .header > div.menu .gameList a.icon-new:before, .header > div.menu .gameList button.icon-new:before, .header > div.menu .casinoList a.icon-new:before, .header > div.menu .casinoList button.icon-new:before, .header > div.menu .livecasinoList a.icon-new:before, .header > div.menu .livecasinoList button.icon-new:before, .header > div.menu .fishList a.icon-new:before, .header > div.menu .fishList button.icon-new:before {
-  font-size: 24px;
+  font-size: 18px;
   top: 10px;
   left: 0;
   right: unset;
@@ -452,6 +452,10 @@ header {
 
 .header > div.menu .livecasinoList .liveEB .icon:before {
   font-size: 16px;
+}
+
+.header > div.menu .fishList {
+  width: 65vw;
 }
 
 .header > div.menu .fishList .fgg {
@@ -6452,6 +6456,23 @@ button.icon-spinner11:before {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+}
+
+.gameMenu .icon-new:before {
+  background: #f77900;
+  padding: 5px;
+  left: 10px;
+  color: white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  top: 10px;
+  line-height: 14px;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  -webkit-animation: none;
+          animation: none;
 }
 
 .gameMenu .gameSwiper {
