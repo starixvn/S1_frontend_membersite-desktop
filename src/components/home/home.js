@@ -35,6 +35,7 @@ import productList from "../../datas/productList";
 import { Link } from "@reach/router";
 import path from "../../path";
 import SideBarQuickLink from "./sideBarQuickLink";
+import PromoGameList from "./promoGameList";
 
 import {
 	GET_OPEN_RULE,
@@ -343,6 +344,7 @@ const IndexPage = () => {
 				filterHideInHome={true}
 			/>
 			<Marquee />
+			<PromoGameList t={t} userInfo={userInfo} />
 			<section>
 				<SportsSection t={t} showLogin={showLogin} {...userInfo} />
 				<SideBarProductSection

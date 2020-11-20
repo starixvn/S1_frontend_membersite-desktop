@@ -107,7 +107,7 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  z-index: 2;
+  z-index: 3;
 }
 
 .logo {
@@ -175,6 +175,7 @@ header {
   font-size: 14px;
   color: #fff;
   height: calc(100% - 3px);
+  position: relative;
 }
 
 .header > div.menu > div > a:hover, .header > div.menu > div > button:hover {
@@ -244,6 +245,8 @@ header {
   color: white;
   margin-bottom: 50px;
   max-width: 160px;
+  position: relative;
+  text-transform: initial;
 }
 
 .header > div.menu .gameList a img, .header > div.menu .gameList button img, .header > div.menu .casinoList a img, .header > div.menu .casinoList button img, .header > div.menu .livecasinoList a img, .header > div.menu .livecasinoList button img, .header > div.menu .fishList a img, .header > div.menu .fishList button img {
@@ -255,6 +258,15 @@ header {
 .header > div.menu .gameList a span, .header > div.menu .gameList button span, .header > div.menu .casinoList a span, .header > div.menu .casinoList button span, .header > div.menu .livecasinoList a span, .header > div.menu .livecasinoList button span, .header > div.menu .fishList a span, .header > div.menu .fishList button span {
   top: 35px;
   position: relative;
+  font-family: Microsoft YaHei,sans-serif;
+  font-size: 13px;
+}
+
+.header > div.menu .gameList a.icon-new:before, .header > div.menu .gameList button.icon-new:before, .header > div.menu .casinoList a.icon-new:before, .header > div.menu .casinoList button.icon-new:before, .header > div.menu .livecasinoList a.icon-new:before, .header > div.menu .livecasinoList button.icon-new:before, .header > div.menu .fishList a.icon-new:before, .header > div.menu .fishList button.icon-new:before {
+  font-size: 18px;
+  top: 10px;
+  left: 0;
+  right: unset;
 }
 
 .header > div.menu .gameList a:hover, .header > div.menu .gameList button:hover, .header > div.menu .casinoList a:hover, .header > div.menu .casinoList button:hover, .header > div.menu .livecasinoList a:hover, .header > div.menu .livecasinoList button:hover, .header > div.menu .fishList a:hover, .header > div.menu .fishList button:hover {
@@ -440,6 +452,10 @@ header {
 
 .header > div.menu .livecasinoList .liveEB .icon:before {
   font-size: 16px;
+}
+
+.header > div.menu .fishList {
+  width: 65vw;
 }
 
 .header > div.menu .fishList .fgg {
@@ -1326,157 +1342,179 @@ footer {
 }
 
 .platform button:nth-child(1) {
-  background: url(/common/images/logo/saba.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/saba.png) no-repeat center/100%;
   width: 104px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(1):hover {
-  background: url(/common/images/logo/sabaa.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/sabaa.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(2) {
-  background: url(/common/images/logo/ab.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/ab.png) no-repeat center/100%;
   width: 63px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(2):hover {
-  background: url(/common/images/logo/aba.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/aba.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(3) {
-  background: url(/common/images/logo/yl.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/yl.png) no-repeat center/100%;
   width: 34px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(3):hover {
-  background: url(/common/images/logo/yla.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/yla.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(4) {
-  background: url(/common/images/logo/ag.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/ag.png) no-repeat center/100%;
   width: 83px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(4):hover {
-  background: url(/common/images/logo/aga.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/aga.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(5) {
-  background: url(/common/images/logo/jk.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/jk.png) no-repeat center/100%;
   width: 97px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(5):hover {
-  background: url(/common/images/logo/jka.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/jka.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(6) {
-  background: url(/common/images/logo/gp.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/gp.png) no-repeat center/100%;
   width: 119px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(6):hover {
-  background: url(/common/images/logo/gpa.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/gpa.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(7) {
-  background: url(/common/images/logo/dg.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/dg.png) no-repeat center/100%;
   width: 53px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(7):hover {
-  background: url(/common/images/logo/dga.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/dga.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(8) {
-  background: url(/common/images/logo/sa.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/sa.png) no-repeat center/100%;
   width: 87px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(8):hover {
-  background: url(/common/images/logo/saa.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/saa.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(9) {
-  background: url(/common/images/logo/yg.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/yg.png) no-repeat center/100%;
   width: 114px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(9):hover {
-  background: url(/common/images/logo/yga.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/yga.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(10) {
-  background: url(/common/images/logo/pp.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/pp.png) no-repeat center/100%;
   width: 100px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(10):hover {
-  background: url(/common/images/logo/ppa.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/ppa.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(11) {
-  background: url(/common/images/logo/sg.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/sg.png) no-repeat center/100%;
   width: 89px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(11):hover {
-  background: url(/common/images/logo/sga.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/sga.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(12) {
-  background: url(/common/images/logo/pg.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/pg.png) no-repeat center/100%;
   width: 54px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(12):hover {
-  background: url(/common/images/logo/pga.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/pga.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(13) {
-  background: url(/common/images/logo/AE.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/ae.png) no-repeat center/100%;
   width: 120px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(13):hover {
-  background: url(/common/images/logo/AEa.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/aea.png) no-repeat center/100%;
 }
 
 .platform button:nth-child(14) {
-  background: url(/common/images/logo/eb.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/eb.png) no-repeat center/100%;
   width: 90px;
   height: 55px;
-  margin-right: 28px;
+  margin-right: 17px;
 }
 
 .platform button:nth-child(14):hover {
-  background: url(/common/images/logo/eba.png) no-repeat center/100%;
+  background: url(https://image.n88media.com/SiteSkin/img/logo/eba.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(15) {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/mw.png) no-repeat center/100%;
+  width: 55px;
+  height: 55px;
+  margin-right: 17px;
+}
+
+.platform button:nth-child(15):hover {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/mwa.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(16) {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/wm.png) no-repeat center/100%;
+  width: 55px;
+  height: 55px;
+  margin-right: 17px;
+}
+
+.platform button:nth-child(16):hover {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/wma.png) no-repeat center/100%;
 }
 
 .copyright {
@@ -2284,7 +2322,7 @@ input[type="file"] {
   position: fixed;
   right: -10px;
   top: 15%;
-  z-index: 2;
+  z-index: 3;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   width: 215px;
@@ -2709,6 +2747,9 @@ input[type="file"] {
       -ms-flex-align: center;
           align-items: center;
   padding: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .list .listBody > div div:nth-child(2) {
@@ -6417,6 +6458,23 @@ button.icon-spinner11:before {
   position: relative;
 }
 
+.gameMenu .icon-new:before {
+  background: #f77900;
+  padding: 5px;
+  left: 10px;
+  color: white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  top: 10px;
+  line-height: 14px;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  -webkit-animation: none;
+          animation: none;
+}
+
 .gameMenu .gameSwiper {
   max-width: 1560px;
 }
@@ -6433,6 +6491,7 @@ button.icon-spinner11:before {
   max-width: 140px !important;
   margin: auto;
   margin-bottom: 15px;
+  border-radius: 10px;
 }
 
 .gameMenu .swiper-button-next, .gameMenu .swiper-button-prev {
@@ -6440,6 +6499,7 @@ button.icon-spinner11:before {
   height: 25px;
   padding: 0px 10px;
   opacity: 1;
+  z-index: 1;
 }
 
 .gameMenu .swiper-button-next:after, .gameMenu .swiper-button-prev:after {
@@ -6505,5 +6565,40 @@ button.icon-spinner11:before {
 .icon-icon32px_bank-account ~ .platformName {
   background: #1E85EC;
   border: 0;
+}
+
+.icon-new::before {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  color: #f77900;
+  -webkit-animation: new 3s infinite;
+          animation: new 3s infinite;
+  font-size: 16px;
+  margin: 0;
+}
+
+@-webkit-keyframes new {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes new {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 /*# sourceMappingURL=style.css.map */
