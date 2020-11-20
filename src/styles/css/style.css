@@ -3361,6 +3361,10 @@ input[type="file"] {
   text-align: center;
 }
 
+.align-items-center .txt-lightgray + .upload_img:hover {
+  background: #1E85EC;
+}
+
 .bankName {
   padding: 5px 30px;
   height: 40px;
@@ -3966,11 +3970,35 @@ input[type="file"] {
   font-size: 16px;
 }
 
+.walletModule .walletBalanceModule .icon-balance {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.walletModule .walletBalanceModule .icon-balance:before {
+  color: white;
+}
+
+.walletModule .walletBalanceModule .icon-balance + span {
+  width: 100%;
+  text-align: right;
+}
+
 .walletModule .icon {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
   color: #1E85EC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .walletModule .icon.icon-plus {
@@ -6500,6 +6528,21 @@ button.icon-spinner11:before {
   padding: 0px 10px;
   opacity: 1;
   z-index: 1;
+}
+
+.gameMenu .swiper-button-next .icon, .gameMenu .swiper-button-prev .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gameMenu .swiper-button-next .icon:before, .gameMenu .swiper-button-prev .icon:before {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .gameMenu .swiper-button-next:after, .gameMenu .swiper-button-prev:after {

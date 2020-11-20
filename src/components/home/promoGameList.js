@@ -25,7 +25,8 @@ const defGameList = [
 		img: game1,
 		displayKey: "lbl_wm",
 		tpId: 20,
-		gameId: 20
+		gameId: 20,
+		linkType: defLinkType.casino
 	},
 	{
 		img: game2,
