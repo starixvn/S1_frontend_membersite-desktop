@@ -6530,7 +6530,7 @@ button.icon-spinner11:before {
   z-index: 1;
 }
 
-.gameMenu .swiper-button-next .icon, .gameMenu .swiper-button-prev .icon {
+.gameMenu .swiper-button-next.icon, .gameMenu .swiper-button-prev.icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6539,7 +6539,7 @@ button.icon-spinner11:before {
           align-items: center;
 }
 
-.gameMenu .swiper-button-next .icon:before, .gameMenu .swiper-button-prev .icon:before {
+.gameMenu .swiper-button-next.icon:before, .gameMenu .swiper-button-prev.icon:before {
   color: black;
   font-size: 12px;
   font-weight: bold;
