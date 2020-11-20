@@ -174,9 +174,11 @@ export default () => {
 	return redirectPath === null ? (
 		<DepositWrapper step={state.step}>
 			<div className="platformName">
-				<img
-					src={`${config.cloudImgUrl}/SiteSkin/img/Payment/${pName}.png`}
-				/>
+				<div className="icon">
+					<img
+						src={`${config.cloudImgUrl}/SiteSkin/img/Payment/${pName}.png`}
+					/>
+				</div>
 				<div>
 					<div className="txt-blue">{t("lbl_OnlineBanking")}</div>
 					<div className="txt-orange">
