@@ -31,43 +31,50 @@ const defGameList = [
 		img: game2,
 		displayKey: "lbl_baccarat",
 		tpId: 1,
-		gameId: 208
+		gameId: 208,
+		linkType: defLinkType.casino
 	},
 	{
 		img: game3,
 		displayKey: "lbl_dragon_tiger",
 		tpId: 1,
-		gameId: 208
+		gameId: 208,
+		linkType: defLinkType.casino
 	},
 	{
 		img: game4,
 		displayKey: "lbl_belangkai",
 		tpId: 9,
-		gameId: "3uim5ppkiqwk1"
+		gameId: "3uim5ppkiqwk1",
+		linkType: defLinkType.casino
 	},
 	{
 		img: game5,
 		displayKey: "lbl_hulu",
 		tpId: 9,
-		gameId: "yr1zy9u9xt6zr"
+		gameId: "yr1zy9u9xt6zr",
+		linkType: defLinkType.casino
 	},
 	{
 		img: game6,
 		displayKey: "lbl_multihand_blackjack",
 		tpId: 5,
-		gameId: "bjma"
+		gameId: "bjma",
+		linkType: defLinkType.casino
 	},
 	{
 		img: game7,
 		displayKey: "lbl_888_dragon",
 		tpId: 5,
-		gameId: "vs1dragon8"
+		gameId: "vs1dragon8",
+		linkType: defLinkType.casino
 	},
 	{
 		img: game8,
 		displayKey: "lbl_three_star_fortune",
 		tpId: 5,
-		gameId: "vs10threestar"
+		gameId: "vs10threestar",
+		linkType: defLinkType.casino
 	},
 	{
 		img: game9,
@@ -80,13 +87,15 @@ const defGameList = [
 		img: game10,
 		displayKey: "lbl_god_of_fortune",
 		tpId: 6,
-		gameId: "godoffortune"
+		gameId: "godoffortune",
+		linkType: defLinkType.casino
 	},
 	{
 		img: game11,
 		displayKey: "lbl_lucky_neko",
 		tpId: 5,
-		gameId: 7382
+		gameId: 7382,
+		linkType: defLinkType.casino
 	}
 ];
 
