@@ -25,7 +25,8 @@ const defGameList = [
 		img: game1,
 		displayKey: "lbl_wm",
 		tpId: 20,
-		gameId: 20
+		gameId: 20,
+		isNew: true
 	},
 	{
 		img: game2,
@@ -149,7 +150,9 @@ export default ({ t, userInfo }) => {
 				key={`promoGameList-${g.displayKey}`}
 				onClick={ClickGame.bind(this, g.tpId, g.gameId, g.linkType)}>
 				<img src={g.img} alt={displayText} />
-				<span>{displayText}</span>
+				<span className={g.isNew ? "icon icon-new" : ""}>
+					{displayText}
+				</span>
 			</div>
 		);
 	});
