@@ -205,18 +205,27 @@ export default ({ children, afterLogin = false }) => {
 		let AffId = getUrlParameter("AffId");
 		let RefId = getUrlParameter("RefId");
 		let Aff = getUrlParameter("Aff");
+		let AffCode = getUrlParameter("AffCode");
 
 		if (AffId) {
 			setCookie("AffId", AffId, 7);
 			deleteCookie("RefId");
 			deleteCookie("Aff");
+			deleteCookie("AffCode");
 		} else if (RefId) {
 			setCookie("RefId", RefId, 7);
 			deleteCookie("AffId");
 			deleteCookie("Aff");
+			deleteCookie("AffCode");
 		} else if (Aff) {
 			setCookie("Aff", Aff, 7);
 			deleteCookie("AffId");
+			deleteCookie("RefId");
+			deleteCookie("AffCode");
+		} else if (AffCode) {
+			setCookie("AffCode", AffCode, 7);
+			deleteCookie("AffId");
+			deleteCookie("Aff");
 			deleteCookie("RefId");
 		}
 	}, []);
