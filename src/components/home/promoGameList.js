@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useState } from "react";
 import { SET_ENTER_PAGE, SET_CASINO_ENTER_PAGE } from "../../service/enterPage";
 import { defPopBoxType } from "../common/popBox";
 import { popBoxContext } from "../common/context";
@@ -137,43 +137,11 @@ export default ({ t, userInfo }) => {
 		autoplay: {
 			delay: 2500,
 			disableOnInteraction: false
-		},
-		// pagination: {
-		// 	el: ".swiper-pagination",
-		// 	clickable: true
-		// },
-		rebuildOnUpdate: true
+		}
 	};
 
 	const params = {
-		...defSwipperConfig,
-		// navigation: {
-		// 	nextEl: ".swiper-button-next",
-		// 	prevEl: ".swiper-button-prev"
-		// },
-		getSwiper: obj => {
-			ref.current = obj;
-		},
-		renderPrevButton: () => (
-			<div className="swiper-button-prev" onClick={goPrev}></div>
-		),
-		renderNextButton: () => (
-			<div className="swiper-button-next" onClick={goNext}></div>
-		)
-	};
-
-	const ref = useRef(null);
-
-	const goNext = () => {
-		if (ref.current !== null) {
-			ref.current.slideNext();
-		}
-	};
-
-	const goPrev = () => {
-		if (ref.current !== null) {
-			ref.current.slidePrev();
-		}
+		...defSwipperConfig
 	};
 
 	let Rows = defGameList.map(g => {
@@ -195,11 +163,28 @@ export default ({ t, userInfo }) => {
 		);
 	});
 
+	const [swiper, setSwiper] = useState(null);
+
+	const goNext = () => {
+		if (swiper !== null) {
+			swiper.slideNext();
+		}
+	};
+
+	const goPrev = () => {
+		if (swiper !== null) {
+			swiper.slidePrev();
+		}
+	};
+
 	return Rows && Rows.length > 0 ? (
 		<div className="gameMenu">
 			<div className="swiper-container gameSwiper">
 				<div className="swiper-wrapper">
-					<Swiper {...params}>{Rows}</Swiper>
+					<Swiper {...params} getSwiper={setSwiper}>
+						{Rows}
+					</Swiper>
+					{/* <MainpulatngSwiper params={params} Rows={Rows} /> */}
 				</div>
 			</div>
 			<div className="swiper-button-next" onClick={goNext}></div>
