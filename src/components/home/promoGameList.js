@@ -122,7 +122,6 @@ export default ({ t, userInfo }) => {
 				tpId: tpId,
 				gameId: gameId,
 				isLogin: userInfo.isLogin,
-				// betType: betType,
 				loginCallback: LoginPopBox
 			});
 		}
@@ -150,13 +149,7 @@ export default ({ t, userInfo }) => {
 			<div
 				className="swiper-slide"
 				key={`promoGameList-${g.displayKey}`}
-				onClick={ClickGame.bind(
-					this,
-					g.tpId,
-					g.gameId,
-					// g.betType,
-					g.linkType
-				)}>
+				onClick={ClickGame.bind(this, g.tpId, g.gameId, g.linkType)}>
 				<img src={g.img} alt={displayText} />
 				<span>{displayText}</span>
 			</div>
@@ -184,11 +177,14 @@ export default ({ t, userInfo }) => {
 					<Swiper {...params} getSwiper={setSwiper}>
 						{Rows}
 					</Swiper>
-					{/* <MainpulatngSwiper params={params} Rows={Rows} /> */}
 				</div>
 			</div>
-			<div className="swiper-button-next" onClick={goNext}></div>
-			<div className="swiper-button-prev" onClick={goPrev}></div>
+			<div
+				className="swiper-button-next icon icon-keyboard_arrow_right1"
+				onClick={goNext}></div>
+			<div
+				className="swiper-button-prev icon icon-keyboard_arrow_left"
+				onClick={goPrev}></div>
 		</div>
 	) : (
 		<></>
