@@ -17,7 +17,7 @@ export const TransactionHistory = props => {
 	let btnGroup = null;
 	if (props.depositType === 3 && (props.status === 1 || props.status === 7)) {
 		btnGroup = (
-			<div className="btnGroup">
+			<>
 				<button
 					className="orange icon icon-pencil"
 					onClick={props.SubmitProof}>
@@ -26,7 +26,7 @@ export const TransactionHistory = props => {
 				<button className="gray" onClick={props.ClickCancel}>
 					{t("lbl_Cancel")}
 				</button>
-			</div>
+			</>
 		);
 	}
 
