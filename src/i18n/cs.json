@@ -312,6 +312,7 @@
 
 	"general ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NoData": "无资料",
+	"lbl_NoData": "无信息",
 	"msg_ApiServerError": "API 数据库错误",
 	"lbl_Cancel": "取消",
 	"lbl_Submit": "提交",

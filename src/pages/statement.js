@@ -186,7 +186,9 @@ const Content = () => {
 					{getHistory?.length > 0 ? (
 						<div className="listBody">{arr}</div>
 					) : (
-						<div className="nodata">{t("msg_NoData")}</div>
+						<div className="nodata icon icon-nodata2">
+							<div>{t("lbl_NoData")}</div>
+						</div>
 					)}
 				</div>
 			) : null}

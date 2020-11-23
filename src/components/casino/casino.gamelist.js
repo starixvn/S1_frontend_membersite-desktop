@@ -88,6 +88,8 @@ export default ({
 	return rows && rows.length > 0 ? (
 		<div className="slotList">{rows}</div>
 	) : (
-		<div className="nodata">{t("msg_NoData")}</div>
+		<div className="nodata icon icon-nodata2">
+			<div>{t("lbl_NoData")}</div>
+		</div>
 	);
 };

@@ -230,7 +230,9 @@ export default () => {
 					getPromotionListV2={getPromotionListV2}
 				/>
 			) : (
-				<div className="nodata">{t("msg_NoData")}</div>
+				<div className="nodata icon icon-nodata2">
+					<div>{t("lbl_NoData")}</div>
+				</div>
 			)}
 		</div>
 	);

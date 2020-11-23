@@ -57,6 +57,10 @@
   font-size: 24px !important;
 }
 
+.icon-nodata2:before {
+  content: "\e9b4";
+}
+
 .icon-new:before {
   content: "\e9b2";
 }
@@ -119,6 +123,10 @@
 
 .icon-icon_1_cop:before {
   content: "\e996";
+}
+
+.icon-tiktok:before {
+  content: "\e9b3";
 }
 
 .icon-ETH:before {
@@ -245,7 +253,7 @@
   content: "\e972";
 }
 
-.icon-icon32px_openmail:before {
+.icon-mail-envelope-open:before {
   content: "\e974";
 }
 
@@ -933,7 +941,7 @@
   content: "\e935";
 }
 
-.icon-mail-envelope-open:before {
+.icon-icon32px_openmail:before {
   content: "\e999";
 }
 

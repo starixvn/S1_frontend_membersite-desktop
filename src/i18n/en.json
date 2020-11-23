@@ -312,6 +312,7 @@
 
 	"general ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NoData": "No Data",
+	"lbl_NoData": "No information is available now.",
 	"msg_ApiServerError": "API Server Error.",
 	"lbl_Cancel": "Cancel",
 	"lbl_Submit": "Submit",
