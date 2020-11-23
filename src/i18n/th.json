@@ -312,6 +312,7 @@
 
 	"general ■■■■■■■■■■■■■■■■■■■■": "",
 	"msg_NoData": "ไม่มีข้อมูล",
+	"lbl_NoData": "ไม่มีข้อมูล",
 	"msg_ApiServerError": "API เซริฟเวอร์ขัดข้อง",
 	"lbl_Cancel": "ยกเลิก",
 	"lbl_Submit": "ตกลง",
