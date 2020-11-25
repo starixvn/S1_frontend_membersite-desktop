@@ -382,8 +382,7 @@ export default () => {
 		);
 	};
 
-	const isUrlAffCode =
-	getUrlParameter("affCode") || readCookie("affCode");
+	const isUrlAffCode = getUrlParameter("AffCode") || readCookie("AffCode");
 
 	const clickSubmit = async e => {
 		e.preventDefault();
