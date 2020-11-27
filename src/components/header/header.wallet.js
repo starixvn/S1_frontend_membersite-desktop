@@ -15,8 +15,11 @@ import {
 } from "../common/context";
 import moment from "moment";
 import { isConvert, number_format } from "../common/common";
-import { api_account_SetHideBalance } from "../../service/api/account";
-
+import {
+	api_account_SetHideBalance,
+	api_account_GetTpWalletList,
+	api_account_GetTpWalletBalance
+} from "../../service/api/account";
 import ReloadSpin from "../common/reloadSpin";
 import HeaderProcessBar from "./header.processBar";
 
@@ -62,9 +65,10 @@ class Dropdown extends Component {
 		if (typeof document !== `undefined`) {
 			document.addEventListener("mousedown", this.handleClickOutside);
 		}
+
 		this.state = {
 			isOpen: false,
-			tpWalletsData: [{ id: 0, balance: 0, displayKey: "" }]
+			tpWalletsData: []
 		};
 		this.wrapper = createRef(null);
 	}
@@ -90,46 +94,51 @@ class Dropdown extends Component {
 		}
 	}
 
-	getTpWalletsData = () => {
+	getTpWalletsData = async () => {
 		try {
-			this.setState({
-				tpWalletsData: this.props.walletInfo.slice(
-					1,
-					this.props.walletInfo.length
-				)
-			});
-		} catch (error) {
-			console.log(error);
-		}
+			const res = await api_account_GetTpWalletList(1);
+			if (res.data.errorCode === 0 && res.data.data) {
+				res.data.data.forEach(tp => {
+					this.getTpWalletBalances(tp);
+				});
+			}
+		} catch (error) {}
+	};
+
+	getTpWalletBalances = async ({ tpId }) => {
+		if (!tpId) return;
+		try {
+			const res = await api_account_GetTpWalletBalance(tpId);
+			if (res.data.errorCode === 0) {
+				let data = res.data.data;
+				let prevState = this.state.tpWalletsData;
+				let idx = prevState.findIndex(x => x.tpId === data.tpId);
+				let newData = null;
+				if (idx !== -1) {
+					prevState[idx].balance = data.balance;
+					newData = prevState;
+				} else {
+					newData = [...prevState, data];
+				}
+				this.setState({ tpWalletsData: newData });
+			}
+		} catch (error) {}
 	};
 
 	render() {
 		let { tpWalletsData } = this.state;
 		let isHideBalance = this.props.walletInfo?.isHideBalance;
 
-		// console.log("tpWalletsData::", tpWalletsData);
-
-		let getTpWalletSum = () => {
-			let tpWalletsBonusSum = 0;
-			try {
-				if (tpWalletsData && tpWalletsData.length > 1) {
-					tpWalletsBonusSum = tpWalletsData.reduce(
-						(prev, curr) => prev + curr.balance,
-						0
-					);
-				}
-			} catch (error) {
-				console.log(error);
-			}
-			return tpWalletsBonusSum;
-		};
+		let allTpWalletBalance = tpWalletsData.reduce((prev, curr) => {
+			return prev + curr.balance;
+		}, 0);
 
 		let balance = isHideBalance
 			? "*****"
 			: this.props.walletInfo[0].balance === null
 			? 0
 			: number_format(
-					this.props.walletInfo[0].balance + getTpWalletSum(),
+					this.props.walletInfo[0].balance + allTpWalletBalance,
 					this.props._isConvert
 			  );
 
@@ -141,11 +150,11 @@ class Dropdown extends Component {
 						return (
 							<div
 								className="walletBalance"
-								key={`header-tpwallet-${t.id}`}>
+								key={`header-tpwallet-${t.tpId}`}>
 								<div>
 									<span>
 										{this.props.i18n(
-											`lbl_TpWallet_${t.id}`
+											`lbl_TpWallet_${t.tpId}`
 										)}
 									</span>
 									<span>
@@ -159,9 +168,7 @@ class Dropdown extends Component {
 						);
 					});
 				}
-			} catch (error) {
-				// console.log(error);
-			}
+			} catch (error) {}
 			return tpWallets;
 		};
 
