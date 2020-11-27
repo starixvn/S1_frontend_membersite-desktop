@@ -4,15 +4,13 @@ import PropTypes from "prop-types";
 import ReloadSpin from "../common/reloadSpin";
 
 const ShowWallet = props => {
-	let { fomOptions, toOptions, selectedFromIdx, selectedToIdx } = props;
-	let showWallets = [fomOptions[selectedFromIdx], toOptions[selectedToIdx]];
+	let { walletInfo } = props;
 
 	const getArr = () => {
 		let arr = [];
-		// console.log("showWallets:", showWallets);
 		try {
-			if (fomOptions && toOptions) {
-				arr = showWallets?.map((item, idx) => {
+			if (walletInfo) {
+				arr = walletInfo?.map((item, idx) => {
 					return (
 						<div
 							className="walletBalanceModule"
@@ -26,7 +24,11 @@ const ShowWallet = props => {
 							<div className="btnGroup">
 								<button
 									className="orange"
-									onClick={props.restoreAll.bind(this, idx,item.id)}>
+									onClick={props.restoreAll.bind(
+										this,
+										idx,
+										item.id
+									)}>
 									{props.i18n("lbl_RestoreAll")}
 								</button>
 							</div>

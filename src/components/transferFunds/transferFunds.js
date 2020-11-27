@@ -23,11 +23,6 @@ import ShowWallets from "./showWallets";
 import SetAmount from "./setAmount";
 import RecentHistory from "./recentHistory";
 
-// const walletIcon = [
-// 	"icon-icon32px_Main-Wallet",
-// 	"icon-icon32px_Sportsbook-Wallet"
-// ];
-
 export default () => {
 	const defDirection = {
 		MainToTp: 1,
@@ -52,8 +47,8 @@ export default () => {
 	const [tpWalletList, setTpWalletLsit] = useState([]); //tp
 	const [walletInfo, setWalletInfo] = useState([]); //all
 
-	const [selectedFromIdx, setSelectedFromIdx] = useState(0);
-	const [selectedToIdx, setSelectedToIdx] = useState(0);
+	const [selectedFromIdx, setSelectedFromIdx] = useState(null);
+	const [selectedToIdx, setSelectedToIdx] = useState(null);
 	const [fomOptions, setFromOptions] = useState([]);
 	const [toOptions, setToOptions] = useState([]);
 	///
@@ -193,7 +188,7 @@ export default () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						getAllWalletData();
+						// getAllWalletData();
 						getContentWalletInfo();
 						getTransferRecent();
 						setAmount("");
@@ -324,7 +319,6 @@ export default () => {
 		const _transferFrom = walletInfo.find(item => {
 			return item.displayKey === direction.transferFrom;
 		});
-		console.log(_transferFrom);
 		const maxAmount = _transferFrom.balance;
 
 		let result = checkAmount(_amount, minAmount, maxAmount, _isConvert, t);
@@ -362,19 +356,25 @@ export default () => {
 			direction.transferFrom === "lbl_MainWallet"
 				? defDirection.MainToTp
 				: defDirection.TpToMain;
-		// console.log(_direction)
+		console.log(_direction);
 
 		if (result) {
 			let real_amount = _isConvert
 				? Number(amount) * 1000
 				: Number(amount);
 
-			let _wallet = walletInfo.find(item => {
-				return item.displayKey === direction.transferFrom;
-			});
-			console.log(direction);
-			console.log(direction.transferFrom);
-			console.log(_wallet);
+			// let _wallet = walletInfo.find(item => {
+			// 	return item.displayKey === direction.transferFrom;
+			// });
+
+			let _wallet = [
+				fomOptions[selectedFromIdx],
+				toOptions[selectedToIdx]
+			].filter(item => item.id !== 0)[0];
+
+			// console.log(direction);
+			// console.log(direction.transferFrom);
+			// console.log(_wallet);
 
 			// if (_wallet.balance < real_amount) {
 			// 	setPopBox({
@@ -435,19 +435,39 @@ export default () => {
 
 	const onSelectFromItem = i => {
 		setSelectedFromIdx(i);
-		let isSelectMainWallet = fomOptions[i].displayKey === "lbl_MainWallet";
-		setToOptions(
-			walletInfo.filter(o =>
-				isSelectMainWallet
-					? o.displayKey !== "lbl_MainWallet"
-					: o.displayKey === "lbl_MainWallet"
-			)
-		);
+		let isSelectFromMainWallet =
+			fomOptions[i]?.displayKey === "lbl_MainWallet";
+		let isSelecTotMainWallet =
+			toOptions[selectedToIdx]?.displayKey === "lbl_MainWallet";
+		if (!isSelectFromMainWallet) {
+			setToOptions(
+				walletInfo.filter(o => o.displayKey === "lbl_MainWallet")
+			);
+		} else {
+			setToOptions(walletInfo);
+			if (isSelecTotMainWallet) {
+				setSelectedToIdx(null);
+			}
+		}
 	};
 
 	const onSelectToItem = i => {
 		setSelectedToIdx(i);
-		// setFromOptions(walletInfo.filter((o, idx) => idx !== i));
+
+		let isSelectFromMainWallet =
+			fomOptions[selectedFromIdx]?.displayKey === "lbl_MainWallet";
+		let isSelecTotMainWallet =
+			toOptions[i]?.displayKey === "lbl_MainWallet";
+		if (!isSelecTotMainWallet) {
+			setFromOptions(
+				walletInfo.filter(o => o.displayKey === "lbl_MainWallet")
+			);
+		} else {
+			setFromOptions(walletInfo);
+			if (isSelectFromMainWallet) {
+				setSelectedFromIdx(null);
+			}
+		}
 	};
 
 	return loading ? (
@@ -460,14 +480,10 @@ export default () => {
 				</div>
 				<ShowWallets
 					i18n={t}
-					// walletInfo={walletInfo}
+					walletInfo={walletInfo}
 					restoreAll={restoreAll}
 					getAllWalletData={getAllWalletData}
 					_isConvert={_isConvert}
-					fomOptions={fomOptions}
-					toOptions={toOptions}
-					selectedFromIdx={selectedFromIdx}
-					selectedToIdx={selectedToIdx}
 				/>
 				<SetAmount
 					i18n={t}

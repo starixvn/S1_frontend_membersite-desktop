@@ -21,7 +21,7 @@ import ReloadSpin from "../common/reloadSpin";
 import HeaderProcessBar from "./header.processBar";
 
 export default props => {
-	const { walletInfo, setWalletInfo, getAllWalletData } = useContext(
+	const { walletInfo, setWalletInfo, getContentWalletInfo } = useContext(
 		walletInfoContext
 	);
 	const { bonusWallets } = useContext(bonusWalletsContext);
@@ -48,7 +48,7 @@ export default props => {
 			walletInfo={walletInfo}
 			bonusWallets={bonusWallets}
 			_isConvert={isConvert(userInfo.currencyId)}
-			getContentWalletInfo={getAllWalletData}
+			getContentWalletInfo={getContentWalletInfo}
 			HandleDisplayBalance={HandleDisplayBalance}
 		/>
 	) : (
@@ -160,7 +160,7 @@ class Dropdown extends Component {
 					});
 				}
 			} catch (error) {
-				console.log(error);
+				// console.log(error);
 			}
 			return tpWallets;
 		};
