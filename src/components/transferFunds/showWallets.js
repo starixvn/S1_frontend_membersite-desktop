@@ -4,27 +4,46 @@ import PropTypes from "prop-types";
 import ReloadSpin from "../common/reloadSpin";
 
 const ShowWallet = props => {
-	let arr = props.walletInfo?.map((item, idx) => {
-		return (
-			<div className="walletBalanceModule" key={`wallets-${item.id}`}>
-				<span className={`icon ${item.walletIcon}`}>
-					{props.i18n(item.displayKey)}
-				</span>
-				<span>{number_format(item.balance, props._isConvert)}</span>
-				<div className="btnGroup">
-					<button
-						className="orange"
-						onClick={props.restoreAll.bind(this, idx)}>
-						{props.i18n("lbl_RestoreAll")}
-					</button>
-				</div>
-			</div>
-		);
-	});
+	let { fomOptions, toOptions, selectedFromIdx, selectedToIdx } = props;
+	let showWallets = [fomOptions[selectedFromIdx], toOptions[selectedToIdx]];
+
+	const getArr = () => {
+		let arr = [];
+		// console.log("showWallets:", showWallets);
+		try {
+			if (fomOptions && toOptions) {
+				arr = showWallets?.map((item, idx) => {
+					return (
+						<div
+							className="walletBalanceModule"
+							key={`wallets-${idx}`}>
+							<span className={`icon ${item.walletIcon}`}>
+								{props.i18n(item.displayKey)}
+							</span>
+							<span>
+								{number_format(item.balance, props._isConvert)}
+							</span>
+							<div className="btnGroup">
+								<button
+									className="orange"
+									onClick={props.restoreAll.bind(this, idx,item.id)}>
+									{props.i18n("lbl_RestoreAll")}
+								</button>
+							</div>
+						</div>
+					);
+				});
+				return arr;
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<div className="walletModule">
-			{arr}
-			<ReloadSpin btnActive={false} func={props.getWalletData} />
+			{getArr()}
+			<ReloadSpin btnActive={false} func={props.getAllWalletData} />
 		</div>
 	);
 };
@@ -32,9 +51,9 @@ const ShowWallet = props => {
 export default ShowWallet;
 
 ShowWallet.propTypes = {
-	walletInfo: PropTypes.array.isRequired,
+	// walletInfo: PropTypes.array.isRequired,
 	i18n: PropTypes.func.isRequired,
 	_isConvert: PropTypes.bool.isRequired,
 	restoreAll: PropTypes.func.isRequired,
-	getWalletData: PropTypes.func.isRequired
+	getAllWalletData: PropTypes.func.isRequired
 };

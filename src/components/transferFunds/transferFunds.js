@@ -7,7 +7,12 @@ import {
 	loadingContext,
 	walletInfoContext
 } from "..//common/context";
-import { api_account_GetWalletInfo } from "../../service/api/account";
+import {
+	api_account_GetWalletInfo,
+	api_account_GetTpWalletList,
+	api_account_GetTpWalletBalance,
+	api_account_GetBalance
+} from "../../service/api/account";
 import { isConvert, checkAmount } from "../common/common.js";
 import {
 	api_tp_Transfer,
@@ -18,10 +23,10 @@ import ShowWallets from "./showWallets";
 import SetAmount from "./setAmount";
 import RecentHistory from "./recentHistory";
 
-const walletIcon = [
-	"icon-icon32px_Main-Wallet",
-	"icon-icon32px_Sportsbook-Wallet"
-];
+// const walletIcon = [
+// 	"icon-icon32px_Main-Wallet",
+// 	"icon-icon32px_Sportsbook-Wallet"
+// ];
 
 export default () => {
 	const defDirection = {
@@ -40,11 +45,18 @@ export default () => {
 	};
 
 	const { t } = useTranslation();
-
 	const isMountedRef = useRef(null);
-
 	const [amount, setAmount] = useState("");
-	const [walletInfo, setWalletInfo] = useState([]);
+	///
+	const [mainWallet, setMainWallet] = useState(null); // main
+	const [tpWalletList, setTpWalletLsit] = useState([]); //tp
+	const [walletInfo, setWalletInfo] = useState([]); //all
+
+	const [selectedFromIdx, setSelectedFromIdx] = useState(0);
+	const [selectedToIdx, setSelectedToIdx] = useState(0);
+	const [fomOptions, setFromOptions] = useState([]);
+	const [toOptions, setToOptions] = useState([]);
+	///
 	const [status, setStatus] = useState(initStatus);
 	const [getHistory, setGetHistory] = useState(null);
 	const [direction, setDirection] = useState(initDirection);
@@ -64,7 +76,14 @@ export default () => {
 	useEffect(() => {
 		async function getData() {
 			setLoading(true);
-			await Promise.all([getWalletData(), getTransferRecent()]);
+			await Promise.all([
+				// getWalletList(),
+				getMainWallet(),
+				getTpWalletList(),
+				getAllWalletData(),
+				// getAllWalletData(),
+				getTransferRecent()
+			]);
 			setLoading(false);
 		}
 		getData();
@@ -74,66 +93,94 @@ export default () => {
 		setPopBox({ isOpen: false });
 	};
 
-	const getWalletData = async () => {
-		await api_account_GetWalletInfo().then(
-			res => {
-				if (isMountedRef.current) {
-					if (res.data.errorCode === 0) {
-						let mainWallet = {
-							id: 0,
-							displayKey: "lbl_MainWallet",
-							balance: res.data.data.balance,
-							walletIcon: walletIcon[0]
-						};
+	// ==========================================================
 
-						let tpWalletArr = res.data.data.tpWallets.map(
-							(item, i) => {
-								return {
-									id: item.tpId,
-									displayKey: `lbl_TpWallet_${item.tpId}`,
-									balance: item.balance,
-									walletIcon: walletIcon[i + 1]
-								};
-							}
-						);
-						setWalletInfo([mainWallet, ...tpWalletArr]);
-					} else {
-						setPopBox({
-							isOpen: true,
-							popBoxType: defPopBoxType.ErrorMsg,
-							message: res.data.message,
-							btnBar: (
-								<div className="btnGroup">
-									<button
-										className="btn-cancel"
-										onClick={ClickClose}>
-										{t("lbl_Close")}
-									</button>
-								</div>
-							)
-						});
-					}
+	useEffect(() => {
+		getMainWallet();
+		getTpWalletList();
+	}, []);
+
+	useEffect(() => {
+		getAllWalletData();
+		setFromOptions(tpWalletList);
+		setToOptions(tpWalletList);
+	}, [mainWallet, tpWalletList]);
+
+	const getAllWalletData = () => {
+		tpWalletList.unshift(mainWallet);
+		setWalletInfo(tpWalletList);
+	};
+
+	const walletIcon = [
+		"icon-icon32px_Main-Wallet",
+		"icon-icon32px_Sportsbook-Wallet"
+	];
+
+	const getMainWallet = async () => {
+		await api_account_GetBalance().then(res => {
+			if (isMountedRef.current && res.data.errorCode === 0) {
+				setMainWallet({
+					id: 0,
+					displayKey: "lbl_MainWallet",
+					balance: res.data.data,
+					walletIcon: walletIcon[0]
+				});
+			}
+		});
+	};
+
+	const getTpWalletList = async () => {
+		const getTpWalletInfo = async tpid => {
+			let result = {};
+			await api_account_GetTpWalletBalance(tpid).then(res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					let tpItem = res.data.data;
+					let tpWalletItem = {
+						tpId: tpItem.tpId,
+						balance: tpItem.balance
+					};
+					result = tpWalletItem;
 				}
-			},
-			err => {
-				if (isMountedRef.current) {
-					setPopBox({
-						isOpen: true,
-						popBoxType: defPopBoxType.ErrorMsg,
-						message: t("msg_ApiServerError"),
-						btnBar: (
-							<div className="btnGroup">
-								<button
-									className="btn-cancel"
-									onClick={ClickClose}>
-									{t("lbl_Close")}
-								</button>
-							</div>
-						)
+			});
+			return result;
+		};
+
+		let allWallet = 0;
+		await api_account_GetTpWalletList(allWallet).then(async res => {
+			if (isMountedRef.current) {
+				if (res.data.errorCode === 0) {
+					let tpWalletIdArr = res.data.data.map((item, i) => {
+						return {
+							id: item.tpId,
+							displayKey: `lbl_TpWallet_${item.tpId}`,
+							walletIcon: walletIcon[1]
+						};
 					});
+
+					let tpwalletBalanceArr = [];
+					let walletIdArrPromiseMap = tpWalletIdArr.map(async i => {
+						return await getTpWalletInfo(i.id).then(res => {
+							return res;
+						});
+					});
+
+					await Promise.all(walletIdArrPromiseMap).then(results => {
+						tpwalletBalanceArr = results;
+					});
+
+					let tpWalletInfoArr = tpWalletIdArr.map((item, idx) => {
+						if (item => item.id === tpwalletBalanceArr[idx].tpId) {
+							return Object.assign(
+								{},
+								item,
+								tpwalletBalanceArr[idx]
+							);
+						}
+					});
+					setTpWalletLsit(tpWalletInfoArr);
 				}
 			}
-		);
+		});
 	};
 
 	const Transfer = async (_tpId, _amount, _direction) => {
@@ -146,7 +193,7 @@ export default () => {
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						getWalletData();
+						getAllWalletData();
 						getContentWalletInfo();
 						getTransferRecent();
 						setAmount("");
@@ -253,17 +300,17 @@ export default () => {
 		);
 	};
 
-	const changeDirection = () => {
-		direction.transferFrom === "lbl_MainWallet"
-			? setDirection({
-					transferFrom: "lbl_TpWallet_1",
-					transferTo: "lbl_MainWallet"
-			  })
-			: setDirection({
-					transferFrom: "lbl_MainWallet",
-					transferTo: "lbl_TpWallet_1"
-			  });
-	};
+	// const changeDirection = () => {
+	// 	direction.transferFrom === "lbl_MainWallet"
+	// 		? setDirection({
+	// 				transferFrom: "lbl_TpWallet_1",
+	// 				transferTo: "lbl_MainWallet"
+	// 		  })
+	// 		: setDirection({
+	// 				transferFrom: "lbl_MainWallet",
+	// 				transferTo: "lbl_TpWallet_1"
+	// 		  });
+	// };
 
 	const EditAmount = e => {
 		let value = e.target.value;
@@ -277,6 +324,7 @@ export default () => {
 		const _transferFrom = walletInfo.find(item => {
 			return item.displayKey === direction.transferFrom;
 		});
+		console.log(_transferFrom);
 		const maxAmount = _transferFrom.balance;
 
 		let result = checkAmount(_amount, minAmount, maxAmount, _isConvert, t);
@@ -306,12 +354,15 @@ export default () => {
 	};
 
 	const clickSubmit = e => {
+		// MainToTp: 1,
+		// TpToMain: 2
 		e.preventDefault();
 		let result = ValidAmount(amount);
 		let _direction =
 			direction.transferFrom === "lbl_MainWallet"
 				? defDirection.MainToTp
 				: defDirection.TpToMain;
+		// console.log(_direction)
 
 		if (result) {
 			let real_amount = _isConvert
@@ -321,42 +372,52 @@ export default () => {
 			let _wallet = walletInfo.find(item => {
 				return item.displayKey === direction.transferFrom;
 			});
+			console.log(direction);
+			console.log(direction.transferFrom);
+			console.log(_wallet);
 
-			if (_wallet.balance < real_amount) {
-				setPopBox({
-					isOpen: true,
-					popBoxType: defPopBoxType.ErrorMsg,
-					message: t("msg_InsufficientFund"),
-					btnBar: (
-						<div className="btnGroup">
-							<button className="btn-cancel" onClick={ClickClose}>
-								{t("lbl_Close")}
-							</button>
-						</div>
-					)
-				});
-			} else {
-				Transfer(_wallet.id, real_amount, _direction);
-			}
+			// if (_wallet.balance < real_amount) {
+			// 	setPopBox({
+			// 		isOpen: true,
+			// 		popBoxType: defPopBoxType.ErrorMsg,
+			// 		message: t("msg_InsufficientFund"),
+			// 		btnBar: (
+			// 			<div className="btnGroup">
+			// 				<button className="btn-cancel" onClick={ClickClose}>
+			// 					{t("lbl_Close")}
+			// 				</button>
+			// 			</div>
+			// 		)
+			// 	});
+			// } else {
+			Transfer(_wallet.id, real_amount, _direction);
+			// }
 			setStatus(initStatus);
 			setAmount("");
 		}
 	};
 
-	const restoreAll = idx => {
+	const restoreAll = (idx, id) => {
+		// let _direction =
+		// 	walletInfo[idx].id === 0
+		// 		? defDirection.TpToMain
+		// : defDirection.MainToTp;
+
 		let _direction =
-			walletInfo[idx].id === 0
-				? defDirection.TpToMain
-				: defDirection.MainToTp;
+			id === 0 ? defDirection.TpToMain : defDirection.MainToTp;
 
-		let startId = idx === 0 ? 1 : 0;
-		let startWallet = walletInfo[startId];
+		// let startId = idx === 0 ? 1 : 0; //拿另一邊的
+		// let statrList = idx === 0 ?  toOptions:fomOptions;
 
+		let startWallet =
+			idx === 0 ? toOptions[selectedToIdx] : fomOptions[selectedFromIdx];
+		console.log("startWallet::", startWallet);
+		console.log("balance::", startWallet.balance);
 		if (startWallet.balance === 0) {
 			setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.ErrorMsg,
-				message: t("msg_InsufficientFund"),
+				message: t("msg_InsufficientFund") + "8888",
 				btnBar: (
 					<div className="btnGroup">
 						<button className="btn-cancel" onClick={ClickClose}>
@@ -367,7 +428,26 @@ export default () => {
 			});
 		} else {
 			Transfer(startWallet.id, startWallet.balance, _direction);
+			getMainWallet();
+			getTpWalletList();
 		}
+	};
+
+	const onSelectFromItem = i => {
+		setSelectedFromIdx(i);
+		let isSelectMainWallet = fomOptions[i].displayKey === "lbl_MainWallet";
+		setToOptions(
+			walletInfo.filter(o =>
+				isSelectMainWallet
+					? o.displayKey !== "lbl_MainWallet"
+					: o.displayKey === "lbl_MainWallet"
+			)
+		);
+	};
+
+	const onSelectToItem = i => {
+		setSelectedToIdx(i);
+		// setFromOptions(walletInfo.filter((o, idx) => idx !== i));
 	};
 
 	return loading ? (
@@ -380,10 +460,14 @@ export default () => {
 				</div>
 				<ShowWallets
 					i18n={t}
-					walletInfo={walletInfo}
+					// walletInfo={walletInfo}
 					restoreAll={restoreAll}
-					getWalletData={getWalletData}
+					getAllWalletData={getAllWalletData}
 					_isConvert={_isConvert}
+					fomOptions={fomOptions}
+					toOptions={toOptions}
+					selectedFromIdx={selectedFromIdx}
+					selectedToIdx={selectedToIdx}
 				/>
 				<SetAmount
 					i18n={t}
@@ -392,12 +476,19 @@ export default () => {
 					transferFrom={direction.transferFrom}
 					transferTo={direction.transferTo}
 					clickSubmit={clickSubmit}
-					changeDirection={changeDirection}
+					// changeDirection={changeDirection}
 					onBlur={ValidAmount.bind(this, amount)}
 					clickInfo={clickInfo}
 					checked={status.checked}
 					tip={status.tip}
 					_isConvert={_isConvert}
+					// options={walletInfo}
+					fomOptions={fomOptions}
+					toOptions={toOptions}
+					selectedFromIdx={selectedFromIdx}
+					selectedToIdx={selectedToIdx}
+					onSelectFromItem={onSelectFromItem}
+					onSelectToItem={onSelectToItem}
 				/>
 			</div>
 			<RecentHistory

@@ -3933,9 +3933,9 @@ input[type="file"] {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 30px 70px 0;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .walletModule .walletBalanceModule {
@@ -6410,74 +6410,54 @@ button.icon-spinner11:before {
 .transferModule {
   position: relative;
   width: 100%;
-  height: 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 40px;
-  margin-top: 0;
+  margin-bottom: 30px;
+  margin-top: 10px;
   padding: 0;
 }
 
-.transferModule button {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  color: #1E85EC;
-  font-size: 24px;
-  width: 25%;
-}
-
-.transferModule .walletBalanceModule {
-  position: absolute;
-  width: calc((100% - 25%) / 2 - 100px);
-  height: 70px;
-  padding: 0 50px;
-}
-
-.transferModule .walletBalanceModule.from, .transferModule .walletBalanceModule.to {
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.transferModule .walletBalanceModule.from span:nth-child(1), .transferModule .walletBalanceModule.to span:nth-child(1) {
+.transferModule .inputBox-org, .transferModule .inputBox-blue {
+  width: calc(100% / 2 - 60px);
+  padding: 10px 20px;
+  margin: 0;
+  z-index: 2;
   display: block;
-  color: black;
-  margin-right: 5px;
 }
 
-.transferModule .walletBalanceModule.from {
-  background: #f77900;
-  left: 0;
-  position: absolute;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
+.transferModule .inputBox-org:focus-within, .transferModule .inputBox-blue:focus-within {
+  border: 1px solid #f77900;
 }
 
-.transferModule .walletBalanceModule.from.active {
-  left: 100%;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+.transferModule .inputBox-org span, .transferModule .inputBox-blue span {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #f77900;
 }
 
-.transferModule .walletBalanceModule.to {
-  background: #1E85EC;
-  left: 100%;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
-  position: absolute;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
+.transferModule .inputBox-org button.btn, .transferModule .inputBox-blue button.btn {
+  width: auto;
+  color: white;
+  -webkit-box-flex: 7;
+      -ms-flex: 7;
+          flex: 7;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-right: 15px;
 }
 
-.transferModule .walletBalanceModule.to.active {
-  left: 0;
-  -webkit-transform: translateX(0);
-          transform: translateX(0);
+.transferModule .inputBox-org .dropdown-item, .transferModule .inputBox-blue .dropdown-item {
+  color: white;
+  text-align: right;
+  margin-right: 15px;
+}
+
+.transferModule .inputBox-blue span {
+  color: #1E85EC;
+}
+
+.transferModule .inputBox-blue:focus-within {
+  border: 1px solid #1E85EC;
 }
 
 .swiper-casino {

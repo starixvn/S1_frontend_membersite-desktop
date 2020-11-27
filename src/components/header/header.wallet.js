@@ -21,7 +21,7 @@ import ReloadSpin from "../common/reloadSpin";
 import HeaderProcessBar from "./header.processBar";
 
 export default props => {
-	const { walletInfo, setWalletInfo, getContentWalletInfo } = useContext(
+	const { walletInfo, setWalletInfo, getAllWalletData } = useContext(
 		walletInfoContext
 	);
 	const { bonusWallets } = useContext(bonusWalletsContext);
@@ -48,7 +48,7 @@ export default props => {
 			walletInfo={walletInfo}
 			bonusWallets={bonusWallets}
 			_isConvert={isConvert(userInfo.currencyId)}
-			getContentWalletInfo={getContentWalletInfo}
+			getContentWalletInfo={getAllWalletData}
 			HandleDisplayBalance={HandleDisplayBalance}
 		/>
 	) : (
@@ -62,7 +62,10 @@ class Dropdown extends Component {
 		if (typeof document !== `undefined`) {
 			document.addEventListener("mousedown", this.handleClickOutside);
 		}
-		this.state = { isOpen: false };
+		this.state = {
+			isOpen: false,
+			tpWalletsData: [{ id: 0, balance: 0, displayKey: "" }]
+		};
 		this.wrapper = createRef(null);
 	}
 
@@ -77,43 +80,90 @@ class Dropdown extends Component {
 		this.setState({ isOpen: !this.state.isOpen });
 	};
 
+	componentDidMount() {
+		this.getTpWalletsData();
+	}
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.walletInfo !== this.props.walletInfo) {
+			this.getTpWalletsData();
+		}
+	}
+
+	getTpWalletsData = () => {
+		try {
+			this.setState({
+				tpWalletsData: this.props.walletInfo.slice(
+					1,
+					this.props.walletInfo.length
+				)
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	render() {
+		let { tpWalletsData } = this.state;
 		let isHideBalance = this.props.walletInfo?.isHideBalance;
-		let tpWalletsBonusSum = this.props.walletInfo?.tpWallets?.reduce(
-			(prev, curr) => prev + curr.balance,
-			0
-		);
+
+		// console.log("tpWalletsData::", tpWalletsData);
+
+		let getTpWalletSum = () => {
+			let tpWalletsBonusSum = 0;
+			try {
+				if (tpWalletsData && tpWalletsData.length > 1) {
+					tpWalletsBonusSum = tpWalletsData.reduce(
+						(prev, curr) => prev + curr.balance,
+						0
+					);
+				}
+			} catch (error) {
+				console.log(error);
+			}
+			return tpWalletsBonusSum;
+		};
 
 		let balance = isHideBalance
 			? "*****"
-			: this.props.walletInfo.main === null
+			: this.props.walletInfo[0].balance === null
 			? 0
 			: number_format(
-					this.props.walletInfo.main + tpWalletsBonusSum,
+					this.props.walletInfo[0].balance + getTpWalletSum(),
 					this.props._isConvert
 			  );
 
-		const tpWallets =
-			this.props.walletInfo.tpWallets &&
-			this.props.walletInfo.tpWallets.map(t => {
-				return (
-					<div
-						className="walletBalance"
-						key={`header-tpwallet-${t.tpId}`}>
-						<div>
-							<span>
-								{this.props.i18n(`lbl_TpWallet_${t.tpId}`)}
-							</span>
-							<span>
-								{number_format(
-									t.balance,
-									this.props._isConvert
-								)}
-							</span>
-						</div>
-					</div>
-				);
-			});
+		let showTpWallets = () => {
+			let tpWallets;
+			try {
+				if (tpWalletsData && tpWalletsData.length > 0) {
+					tpWallets = tpWalletsData.map(t => {
+						return (
+							<div
+								className="walletBalance"
+								key={`header-tpwallet-${t.id}`}>
+								<div>
+									<span>
+										{this.props.i18n(
+											`lbl_TpWallet_${t.id}`
+										)}
+									</span>
+									<span>
+										{number_format(
+											t.balance,
+											this.props._isConvert
+										)}
+									</span>
+								</div>
+							</div>
+						);
+					});
+				}
+			} catch (error) {
+				console.log(error);
+			}
+			return tpWallets;
+		};
 
 		const bonusWallets = this.props.bonusWallets.map(item => {
 			return (
@@ -168,7 +218,7 @@ class Dropdown extends Component {
 						)}`}</span>
 						<span>
 							{number_format(
-								this.props.walletInfo.main,
+								this.props.walletInfo[0].balance,
 								this.props._isConvert
 							)}
 							<ReloadSpin
@@ -179,7 +229,7 @@ class Dropdown extends Component {
 					</div>
 
 					{bonusWallets}
-					{tpWallets}
+					{showTpWallets()}
 
 					<div className="btnGroup">
 						<Link

@@ -27,8 +27,17 @@ export const api_account_GetMsgContent = MsgId =>
 export const api_account_DelMsg = MsgIds =>
 	accountRequest.post("/DelMsg", { MsgIds: MsgIds });
 
+///// old api ↓↓
 export const api_account_GetWalletInfo = () =>
 	accountRequest.post("/GetWalletInfo");
+
+export const api_account_GetTpWalletList = ListType =>
+	accountRequest.post("/GetTpWalletList", { ListType: ListType });
+
+export const api_account_GetTpWalletBalance = TpId =>
+	accountRequest.post("/GetTpWalletBalance", { TpId: TpId });
+
+export const api_account_GetBalance = () => accountRequest.post("/GetBalance");
 
 export const api_account_GetWithdrawalAvailableBalance = () =>
 	accountRequest.post("/GetWithdrawalAvailableBalance");
@@ -64,3 +73,9 @@ export const api_account_ExistsPhone = ({ AreaCode, Phone }) =>
 
 export const api_account_SetHideBalance = ({ value }) =>
 	accountRequest.get(`/SetHideBalance?value=${value}`);
+
+export const api_account_GetCustBonusWallet = () =>
+	accountRequest.post("/GetCustBonusWallet");
+
+export const api_account_GetWalletBalance = () =>
+	accountRequest.post("/GetWalletBalance");

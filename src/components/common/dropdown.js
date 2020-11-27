@@ -82,6 +82,7 @@ export class Dropdown extends Component {
 				className="dropdown"
 				ref={this.wrapper}
 				onClick={this.clickDropdown}>
+				{this.props.title ? <span>{this.props.title}</span> : null}
 				{this.props.icon ? (
 					<i className={`icon ${this.props.icon}`}></i>
 				) : null}

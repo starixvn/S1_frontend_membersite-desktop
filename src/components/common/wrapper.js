@@ -15,7 +15,12 @@ import { api_accountStrict_GetCustProfile } from "../../service/api/accountStric
 import {
 	api_account_GetMsgCount,
 	api_account_GetWalletInfo,
-	api_account_onlineCheck
+	api_account_onlineCheck,
+	api_account_GetTpWalletList,
+	// api_account_GetBalance,
+	api_account_GetTpWalletBalance,
+	api_account_GetCustBonusWallet,
+	api_account_GetWalletBalance
 } from "../../service/api/account";
 import { defPopBoxType } from "../common/popBox";
 import useInterval from "../hook/useInterval";
@@ -30,9 +35,7 @@ export default ({ children, afterLogin = false }) => {
 		popBoxType: null
 	});
 	const [loading, setLoading] = useState(false);
-	const [walletInfo, setWalletInfo] = useState({
-		main: null
-	});
+
 	const [bonusWallets, setBonusWallets] = useState([]);
 	const [msgCount, setMsgCount] = useState(0);
 	const [userInfo, setUserInfo] = useState({
@@ -47,7 +50,11 @@ export default ({ children, afterLogin = false }) => {
 	const [correctPath, setCorrectPath] = useState(false);
 	const [redirectPath, setRedirectPath] = useState(null);
 
+	const [mainWallet, setMainWallet] = useState(null); // main
+	const [tpWalletList, setTpWalletLsit] = useState([]); //tp
+	const [walletInfo, setWalletInfo] = useState([]); //all
 	const isMountedRef = useRef(null);
+
 	useEffect(() => {
 		isMountedRef.current = true;
 		return () => (isMountedRef.current = false);
@@ -249,26 +256,92 @@ export default ({ children, afterLogin = false }) => {
 		userInfo.isLogin ? 10000 : null
 	);
 
-	const getContentWalletInfo = () => {
-		api_account_GetWalletInfo().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				let tpWallets = res.data.data.tpWallets?.map(t => {
-					return {
-						tpId: t.tpId,
-						balance: t.balance,
-						tpName: t.tpName,
-						bonus: t.bonus
-					};
-				});
-				setWalletInfo(prevState => ({
-					...prevState,
-					isHideBalance: res.data.data.isHideBalance,
-					main: res.data.data?.balance,
-					tpWallets,
-					lastTransaction: res.data.data.lastTransaction
-				}));
+	useEffect(() => {
+		getMainWallet();
+		getTpWalletList();
+		getBonus();
+	}, []);
 
-				setBonusWallets(res.data.data.bonusWallets);
+	useEffect(() => {
+		getContentWalletInfo();
+	}, [mainWallet, tpWalletList]);
+
+	const getMainWallet = async () => {
+		await api_account_GetWalletBalance().then(res => {
+			// console.log(res.data);
+			if (isMountedRef.current && res.data.errorCode === 0) {
+				setMainWallet({
+					id: 0,
+					displayKey: "lbl_MainWallet",
+					balance: res.data.data.balance,
+					isHideBalance: res.data.data.isHideBalance
+				});
+			}
+		});
+	};
+
+	const getTpWalletList = async () => {
+		const getTpWalletInfo = async tpid => {
+			let result = {};
+			await api_account_GetTpWalletBalance(tpid).then(res => {
+				if (res.data.errorCode === 0 && isMountedRef.current) {
+					let tpItem = res.data.data;
+					let tpWalletItem = {
+						tpId: tpItem.tpId,
+						balance: tpItem.balance
+					};
+					result = tpWalletItem;
+				}
+			});
+			return result;
+		};
+
+		let allWallet = 0;
+		await api_account_GetTpWalletList(allWallet).then(async res => {
+			if (isMountedRef.current) {
+				if (res.data.errorCode === 0) {
+					let tpWalletIdArr = res.data.data.map((item, i) => {
+						return {
+							id: item.tpId,
+							displayKey: `lbl_TpWallet_${item.tpId}`
+						};
+					});
+
+					let tpwalletBalanceArr = [];
+					let walletIdArrPromiseMap = tpWalletIdArr.map(async i => {
+						return await getTpWalletInfo(i.id).then(res => {
+							return res;
+						});
+					});
+
+					await Promise.all(walletIdArrPromiseMap).then(results => {
+						tpwalletBalanceArr = results;
+					});
+
+					let tpWalletInfoArr = tpWalletIdArr.map((item, idx) => {
+						if (item => item.id === tpwalletBalanceArr[idx].tpId) {
+							return Object.assign(
+								{},
+								item,
+								tpwalletBalanceArr[idx]
+							);
+						}
+					});
+					setTpWalletLsit(tpWalletInfoArr);
+				}
+			}
+		});
+	};
+
+	const getContentWalletInfo = () => {
+		tpWalletList.unshift(mainWallet);
+		setWalletInfo(tpWalletList);
+	};
+
+	const getBonus = async () => {
+		await api_account_GetCustBonusWallet().then(res => {
+			if (res.data.errorCode === 0 && isMountedRef.current) {
+				setBonusWallets(res.data.data);
 			}
 		});
 	};
