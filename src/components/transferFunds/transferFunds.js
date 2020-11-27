@@ -82,8 +82,8 @@ export default () => {
 	};
 
 	const getAllWalletData = () => {
-		tpWalletList.unshift(mainWallet);
-		setWalletInfo(tpWalletList);
+		let newArr = [mainWallet, ...tpWalletList];
+		setWalletInfo(newArr);
 	};
 
 	const reloadData = () => {
@@ -97,8 +97,9 @@ export default () => {
 
 	useEffect(() => {
 		getAllWalletData();
-		setFromOptions(tpWalletList);
-		setToOptions(tpWalletList);
+		let newArr = [mainWallet, ...tpWalletList];
+		setFromOptions(newArr);
+		setToOptions(newArr);
 	}, [mainWallet, tpWalletList]);
 
 	const walletIcon = [
