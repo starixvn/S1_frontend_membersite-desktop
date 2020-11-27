@@ -252,6 +252,9 @@
 	"lbl_Transfer": "โอน",
 	"lbl_RestoreAll": "โอนคลิกเดียว",
 	"lbl_TransferHistory": "ประวัติการโอนเงิน",
+	"lbl_BonusWallet_1": "Casino Wallet",
+	"lbl_BonusWallet_2": "Live Casino Wallet",
+	"lbl_BonusWallet_3": "Fishing Wallet",
 
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Statement": "รายการฝากถอน",

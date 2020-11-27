@@ -252,6 +252,9 @@
 	"lbl_Transfer": "转帐",
 	"lbl_RestoreAll": "一键转入",
 	"lbl_TransferHistory": "转账历史记录",
+	"lbl_BonusWallet_1": "Casino Wallet",
+	"lbl_BonusWallet_2": "Live Casino Wallet",
+	"lbl_BonusWallet_3": "Fishing Wallet",
 
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Statement": "账变记录",

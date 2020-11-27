@@ -14,19 +14,14 @@ import { IS_LOGGED_IN } from "../../service/auth";
 import { api_accountStrict_GetCustProfile } from "../../service/api/accountStrict";
 import {
 	api_account_GetMsgCount,
-	api_account_GetWalletInfo,
-	api_account_onlineCheck,
-	api_account_GetTpWalletList,
-	// api_account_GetBalance,
-	api_account_GetTpWalletBalance,
-	api_account_GetCustBonusWallet,
-	api_account_GetWalletBalance
+	api_account_onlineCheck
 } from "../../service/api/account";
 import { defPopBoxType } from "../common/popBox";
 import useInterval from "../hook/useInterval";
 import { GET_LANG_ID } from "../../service/language";
 import { SiteInfo } from "../../config";
 import path from "../../path";
+import useGetWalletInfo from "./wrapper.walletInfo";
 
 export default ({ children, afterLogin = false }) => {
 	const { t, i18n } = useTranslation();
@@ -35,8 +30,6 @@ export default ({ children, afterLogin = false }) => {
 		popBoxType: null
 	});
 	const [loading, setLoading] = useState(false);
-
-	const [bonusWallets, setBonusWallets] = useState([]);
 	const [msgCount, setMsgCount] = useState(0);
 	const [userInfo, setUserInfo] = useState({
 		isLogin: null,
@@ -49,10 +42,8 @@ export default ({ children, afterLogin = false }) => {
 	);
 	const [correctPath, setCorrectPath] = useState(false);
 	const [redirectPath, setRedirectPath] = useState(null);
+	const walletInfo = useGetWalletInfo({ isLogin: userInfo.isLogin });
 
-	const [mainWallet, setMainWallet] = useState(null); // main
-	const [tpWalletList, setTpWalletLsit] = useState([]); //tp
-	const [walletInfo, setWalletInfo] = useState([]); //all
 	const isMountedRef = useRef(null);
 
 	useEffect(() => {
@@ -134,10 +125,6 @@ export default ({ children, afterLogin = false }) => {
 					setMsgCount(res.data.data);
 				}
 			});
-
-			if (userInfo.userName) {
-				getContentWalletInfo();
-			}
 		} else if (isMountedRef.current) {
 			if (userInfo.isLogin === false) {
 				setUserInfo(prevState => ({
@@ -256,96 +243,6 @@ export default ({ children, afterLogin = false }) => {
 		userInfo.isLogin ? 10000 : null
 	);
 
-	useEffect(() => {
-		getMainWallet();
-		getTpWalletList();
-		getBonus();
-	}, []);
-
-	useEffect(() => {
-		getContentWalletInfo();
-	}, [mainWallet, tpWalletList]);
-
-	const getMainWallet = async () => {
-		await api_account_GetWalletBalance().then(res => {
-			// console.log(res.data);
-			if (isMountedRef.current && res.data.errorCode === 0) {
-				setMainWallet({
-					id: 0,
-					displayKey: "lbl_MainWallet",
-					balance: res.data.data.balance,
-					isHideBalance: res.data.data.isHideBalance
-				});
-			}
-		});
-	};
-
-	const getTpWalletList = async () => {
-		const getTpWalletInfo = async tpid => {
-			let result = {};
-			await api_account_GetTpWalletBalance(tpid).then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					let tpItem = res.data.data;
-					let tpWalletItem = {
-						tpId: tpItem.tpId,
-						balance: tpItem.balance
-					};
-					result = tpWalletItem;
-				}
-			});
-			return result;
-		};
-
-		let allWallet = 0;
-		await api_account_GetTpWalletList(allWallet).then(async res => {
-			if (isMountedRef.current) {
-				if (res.data.errorCode === 0) {
-					let tpWalletIdArr = res.data.data.map((item, i) => {
-						return {
-							id: item.tpId,
-							displayKey: `lbl_TpWallet_${item.tpId}`
-						};
-					});
-
-					let tpwalletBalanceArr = [];
-					let walletIdArrPromiseMap = tpWalletIdArr.map(async i => {
-						return await getTpWalletInfo(i.id).then(res => {
-							return res;
-						});
-					});
-
-					await Promise.all(walletIdArrPromiseMap).then(results => {
-						tpwalletBalanceArr = results;
-					});
-
-					let tpWalletInfoArr = tpWalletIdArr.map((item, idx) => {
-						if (item => item.id === tpwalletBalanceArr[idx].tpId) {
-							return Object.assign(
-								{},
-								item,
-								tpwalletBalanceArr[idx]
-							);
-						}
-					});
-					setTpWalletLsit(tpWalletInfoArr);
-				}
-			}
-		});
-	};
-
-	const getContentWalletInfo = () => {
-		tpWalletList.unshift(mainWallet);
-		setWalletInfo(tpWalletList);
-	};
-
-	const getBonus = async () => {
-		await api_account_GetCustBonusWallet().then(res => {
-			if (res.data.errorCode === 0 && isMountedRef.current) {
-				setBonusWallets(res.data.data);
-			}
-		});
-	};
-
 	if (redirectPath === null) {
 		if (
 			(correctPath &&
@@ -356,26 +253,19 @@ export default ({ children, afterLogin = false }) => {
 				<ct.userInfoContext.Provider value={{ userInfo, setUserInfo }}>
 					<ct.walletInfoContext.Provider
 						value={{
-							walletInfo,
-							setWalletInfo,
-							getContentWalletInfo
+							...walletInfo.state,
+							dispatch: walletInfo.dispatch
 						}}>
-						<ct.bonusWalletsContext.Provider
-							value={{
-								bonusWallets,
-								setBonusWallets
-							}}>
-							<ct.msgCountContext.Provider
-								value={{ msgCount, setMsgCount }}>
-								<ct.popBoxContext.Provider
-									value={{ popBox, setPopBox }}>
-									<ct.loadingContext.Provider
-										value={{ loading, setLoading }}>
-										{children}
-									</ct.loadingContext.Provider>
-								</ct.popBoxContext.Provider>
-							</ct.msgCountContext.Provider>
-						</ct.bonusWalletsContext.Provider>
+						<ct.msgCountContext.Provider
+							value={{ msgCount, setMsgCount }}>
+							<ct.popBoxContext.Provider
+								value={{ popBox, setPopBox }}>
+								<ct.loadingContext.Provider
+									value={{ loading, setLoading }}>
+									{children}
+								</ct.loadingContext.Provider>
+							</ct.popBoxContext.Provider>
+						</ct.msgCountContext.Provider>
 					</ct.walletInfoContext.Provider>
 				</ct.userInfoContext.Provider>
 			);

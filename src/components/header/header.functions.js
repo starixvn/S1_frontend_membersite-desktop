@@ -103,7 +103,7 @@ const AfterLogin = () => {
 	return (
 		<>
 			{navMenu}
-			<Wallet langId={userInfo.langId} i18n={t} />
+			<Wallet i18n={t} />
 			<DropdownHeader
 				mainKey={`header-settingLink`}
 				langId={userInfo.langId}
