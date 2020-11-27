@@ -8,16 +8,15 @@ import path from "../../path";
 import ReloadSpin from "../common/reloadSpin";
 import { isConvert } from "../common/common";
 
-const transferDirection = (direction, displayMainWallet, displaySabaWallet) => {
+const transferDirection = (direction, tpName, t) => {
 	let startWallet = "";
 	let endWallet = "";
-
 	if (direction === 1) {
-		startWallet = displayMainWallet;
-		endWallet = displaySabaWallet;
+		startWallet = t("lbl_MainWallet");
+		endWallet = tpName;
 	} else {
-		startWallet = displaySabaWallet;
-		endWallet = displayMainWallet;
+		startWallet = tpName;
+		endWallet = t("lbl_MainWallet");
 	}
 	return { startWallet, endWallet };
 };
@@ -30,8 +29,8 @@ export default props => {
 	let arr = props.getHistory?.map((item, i) => {
 		const _transferDirection = transferDirection(
 			item.direction,
-			t("lbl_MainWallet"),
-			t("lbl_Wallet_Saba")
+			item.tpName,
+			t
 		);
 		const _status = item.status === 0 ? t("lbl_Success") : t("lbl_Fail");
 		const _statusColor = item.status === 0 ? "approved" : "cancel";

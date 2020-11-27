@@ -5,6 +5,7 @@ import ReloadSpin from "../common/reloadSpin";
 
 const ShowWallet = props => {
 	let { walletInfo } = props;
+	console.log(walletInfo);
 
 	const getArr = () => {
 		let arr = [];
@@ -26,7 +27,7 @@ const ShowWallet = props => {
 									className="orange"
 									onClick={props.restoreAll.bind(
 										this,
-										idx,
+
 										item.id
 									)}>
 									{props.i18n("lbl_RestoreAll")}
@@ -45,7 +46,7 @@ const ShowWallet = props => {
 	return (
 		<div className="walletModule">
 			{getArr()}
-			<ReloadSpin btnActive={false} func={props.getAllWalletData} />
+			<ReloadSpin btnActive={false} func={props.reloadData} />
 		</div>
 	);
 };
