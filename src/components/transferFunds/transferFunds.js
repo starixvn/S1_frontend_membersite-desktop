@@ -54,7 +54,7 @@ export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { loading, setLoading } = useContext(loadingContext);
-	const { getContentWalletInfo } = useContext(walletInfoContext);
+	// const { getContentWalletInfo } = useContext(walletInfoContext);
 
 	const _isConvert = isConvert(userInfo.currencyId);
 
@@ -69,7 +69,6 @@ export default () => {
 			await Promise.all([
 				getMainWallet(),
 				getTpWalletList(),
-				// getAllWalletData(),
 				getTransferRecent()
 			]);
 			setLoading(false);

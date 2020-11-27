@@ -5,7 +5,6 @@ import ReloadSpin from "../common/reloadSpin";
 
 const ShowWallet = props => {
 	let { walletInfo } = props;
-	console.log(walletInfo);
 
 	const getArr = () => {
 		let arr = [];
