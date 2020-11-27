@@ -893,6 +893,14 @@
   content: "\ea96";
 }
 
+.icon-appleinc:before {
+  content: "\eabe";
+}
+
+.icon-android:before {
+  content: "\eac0";
+}
+
 .icon-IcoMoon:before {
   content: "\eaea";
 }
