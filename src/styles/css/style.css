@@ -130,6 +130,7 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  background: url(https://image.n88media.com/SiteSkin/img/heaber_bg.png) no-repeat center/cover;
 }
 
 .header > div.menu {
@@ -2270,6 +2271,7 @@ input[type="file"] {
       -ms-flex-align: center;
           align-items: center;
   margin: 0;
+  font-size: 28px;
 }
 
 #Marquee .marquee-box .marquee-run {
@@ -3450,6 +3452,37 @@ input[type="file"] {
   border-radius: 15px;
   max-height: calc(100% - 160px);
   overflow-y: auto;
+}
+
+#popup .pop .download {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+}
+
+#popup .pop .download > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  line-height: 30px;
+}
+
+#popup .pop .download > div .icon {
+  color: #f77900;
+}
+
+#popup .pop .download > div .btnGroup {
+  margin: 20px 0;
+}
+
+#popup .pop .download .icon-close {
+  color: white;
+  position: absolute;
+  right: -10px;
+  top: -10px;
 }
 
 #popup .pop .title {
@@ -5074,8 +5107,8 @@ input[type="file"] {
   background: rgba(167, 3, 3, 0.8);
   width: 75px;
   height: 75px;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  -webkit-transform: rotate(-25deg);
+          transform: rotate(-25deg);
 }
 
 .proList > div .claimed:before, .slotList > div .claimed:before, .newsList > div .claimed:before {
@@ -5184,6 +5217,7 @@ input[type="file"] {
 
 .promotionsInfo {
   padding: 40px;
+  position: relative;
 }
 
 .promotionsInfo img {
@@ -5602,7 +5636,7 @@ iframe {
   width: 75px;
   height: 75px;
   -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  transform: rotate(-25deg);
   z-index: 2;
 }
 
@@ -6528,16 +6562,14 @@ button.icon-spinner11:before {
 .gameMenu .icon-new:before {
   background: #f77900;
   padding: 5px;
-  left: 10px;
+  left: 0;
+  top: 0;
   color: white;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  top: 10px;
   line-height: 14px;
-  border-radius: 10px;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
+  border-radius: 23px 15px 15px 0;
   -webkit-animation: none;
           animation: none;
 }
@@ -6548,21 +6580,25 @@ button.icon-spinner11:before {
 
 .gameMenu .gameSwiper .swiper-slide {
   text-align: center;
-  height: 160px;
-  background: #134DAE;
+  height: 150px;
+  background: #b12333;
+  border: 2px solid #2e6b1d;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   padding: 10px 0;
   border-radius: 20px;
 }
 
 .gameMenu .gameSwiper .swiper-slide img {
   max-width: 140px !important;
+  height: 125px;
   margin: auto;
   margin-bottom: 15px;
   border-radius: 10px;
 }
 
 .gameMenu .swiper-button-next, .gameMenu .swiper-button-prev {
-  background: #1E85EC;
+  background: #b12333;
   height: 25px;
   padding: 0px 10px;
   opacity: 1;
@@ -6578,14 +6614,18 @@ button.icon-spinner11:before {
           align-items: center;
 }
 
+.gameMenu .swiper-button-next.icon.icon-keyboard_arrow:before, .gameMenu .swiper-button-prev.icon.icon-keyboard_arrow:before {
+  font-size: 24px;
+}
+
 .gameMenu .swiper-button-next.icon:before, .gameMenu .swiper-button-prev.icon:before {
-  color: black;
+  color: #2e6b1d;
   font-size: 12px;
   font-weight: bold;
 }
 
 .gameMenu .swiper-button-next:after, .gameMenu .swiper-button-prev:after {
-  color: black;
+  color: #2e6b1d;
   font-size: 12px;
   font-weight: bold;
 }
@@ -6682,5 +6722,92 @@ button.icon-spinner11:before {
   100% {
     opacity: 0.5;
   }
+}
+
+.userpassword {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  width: 25%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  line-height: 30px;
+}
+
+.userpassword .kisstitle {
+  text-shadow: 0px 0px 10px #2e55db, 0px 0px 10px #2e55db, 0px 0px 10px #2e55db, 0px 0px 10px #2e55db, 0px 0px 10px #2e55db, 0px 0px 10px #2e55db, 0px 0px 10px #2e55db;
+  text-transform: uppercase;
+}
+
+.userpassword .readonly {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 260px;
+  margin-bottom: 10px;
+}
+
+.userpassword .readonly .icon {
+  color: white;
+  background: #880cba;
+  border: 1px solid #880cba;
+  padding: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userpassword input {
+  border: 0;
+  padding: 6px 4px;
+  outline: none;
+  -webkit-box-shadow: 2px 2px 6px #d034ce, -2px -2px 6px #d034ce;
+          box-shadow: 2px 2px 6px #d034ce, -2px -2px 6px #d034ce;
+  width: 100%;
+}
+
+.userpassword img {
+  width: auto;
+}
+
+.installGuide {
+  padding: 40px 20px;
+  background: #693392;
+  border-radius: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.installGuide > div {
+  background: white;
+  border-radius: 15px;
+  width: calc(100% - 1.2%);
+  padding-right: 1.2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+  color: #880cba;
+}
+
+.installGuide img {
+  max-width: calc(100% / 6);
+  margin: 20px 0;
 }
 /*# sourceMappingURL=style.css.map */

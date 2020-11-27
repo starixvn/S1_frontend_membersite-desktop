@@ -27,6 +27,14 @@ export const defMenuLinks = {
 		displayKey: "lbl_Casino",
 		subMenu: [
 			{
+				className: "JOKER",
+				icon: "icon icon-JOKER",
+				displayText: "JOKER",
+				menuType: defMenuType.Link,
+				parameter: { ...productList.casino_JOKER },
+				...productList.casino_JOKER
+			},
+			{
 				className: "GPI",
 				icon: "icon icon-GPI",
 				displayText: "GPI",
@@ -41,14 +49,6 @@ export const defMenuLinks = {
 				menuType: defMenuType.Link,
 				parameter: { ...productList.casino_YGG },
 				...productList.casino_YGG
-			},
-			{
-				className: "JOKER",
-				icon: "icon icon-JOKER",
-				displayText: "JOKER",
-				menuType: defMenuType.Link,
-				parameter: { ...productList.casino_JOKER },
-				...productList.casino_JOKER
 			},
 			{
 				className: "SG",
