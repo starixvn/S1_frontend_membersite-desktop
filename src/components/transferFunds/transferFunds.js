@@ -268,14 +268,16 @@ export default () => {
 		);
 	};
 
-	const EditAmount = e => {
-		let value = e.target.value;
-		value = value.replace(/^(0+)|[^\d]+/g, "");
+	const checkSelectWallet = () => {
+		let checkPass = false;
 		if (selectedFromIdx === null || selectedToIdx === null) {
 			setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.ErrorMsg,
-				message: t("lbl_please_selet_wallet"),
+				message:
+					selectedFromIdx === null
+						? t("lbl_please_select_from_wallet")
+						: t("lbl_please_select_to_wallet"),
 				btnBar: (
 					<div className="btnGroup">
 						<button className="btn-cancel" onClick={ClickClose}>
@@ -286,13 +288,22 @@ export default () => {
 			});
 			setAmount("");
 		} else {
+			checkPass = true;
+		}
+		return checkPass;
+	};
+
+	const EditAmount = e => {
+		let value = e.target.value;
+		value = value.replace(/^(0+)|[^\d]+/g, "");
+		if (checkSelectWallet()) {
 			ValidAmount(value);
 			setAmount(value);
 		}
 	};
 
 	const ValidAmount = _amount => {
-		if (selectedFromIdx !== null && selectedToIdx !== null) {
+		if (checkSelectWallet()) {
 			const minAmount = 1;
 			const maxAmount = fomOptions[selectedFromIdx].balance;
 
