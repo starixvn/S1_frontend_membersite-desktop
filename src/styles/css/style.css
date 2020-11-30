@@ -130,6 +130,7 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  background: url(https://image.n88media.com/SiteSkin/img/heaber_bg.png) no-repeat center/cover;
 }
 
 .header > div.menu {
@@ -320,6 +321,14 @@ header {
 
 .header > div.menu .gameList .numberGame:hover {
   background: url(../img/numberGame_a.png) no-repeat center 0px/auto 100%;
+}
+
+.header > div.menu .casinoList .Kiss {
+  background: url(../img/casinoKiss.png) no-repeat center 10px/auto 100%;
+}
+
+.header > div.menu .casinoList .Kiss:hover {
+  background: url(../img/casinoKiss_a.png) no-repeat center 0px/auto 100%;
 }
 
 .header > div.menu .casinoList .GPI {
@@ -1517,6 +1526,28 @@ footer {
   background: url(https://image.n88media.com/SiteSkin/img/logo/wma.png) no-repeat center/100%;
 }
 
+.platform button:nth-child(17) {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/awc.png) no-repeat center/100%;
+  width: 119px;
+  height: 55px;
+  margin-right: 17px;
+}
+
+.platform button:nth-child(17):hover {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/awca.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(18) {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/kiss.png) no-repeat center/100%;
+  width: 119px;
+  height: 55px;
+  margin-right: 17px;
+}
+
+.platform button:nth-child(18):hover {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/kissa.png) no-repeat center/100%;
+}
+
 .copyright {
   padding: 0 calc((100% - 1600px) / 2);
   text-align: center;
@@ -2270,6 +2301,7 @@ input[type="file"] {
       -ms-flex-align: center;
           align-items: center;
   margin: 0;
+  font-size: 28px;
 }
 
 #Marquee .marquee-box .marquee-run {
@@ -5105,8 +5137,8 @@ input[type="file"] {
   background: rgba(167, 3, 3, 0.8);
   width: 75px;
   height: 75px;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  -webkit-transform: rotate(-25deg);
+          transform: rotate(-25deg);
 }
 
 .proList > div .claimed:before, .slotList > div .claimed:before, .newsList > div .claimed:before {
@@ -5634,7 +5666,7 @@ iframe {
   width: 75px;
   height: 75px;
   -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  transform: rotate(-25deg);
   z-index: 2;
 }
 
@@ -6560,16 +6592,14 @@ button.icon-spinner11:before {
 .gameMenu .icon-new:before {
   background: #f77900;
   padding: 5px;
-  left: 10px;
+  left: 0;
+  top: 0;
   color: white;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  top: 10px;
   line-height: 14px;
-  border-radius: 10px;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
+  border-radius: 23px 15px 15px 0;
   -webkit-animation: none;
           animation: none;
 }
@@ -6580,21 +6610,25 @@ button.icon-spinner11:before {
 
 .gameMenu .gameSwiper .swiper-slide {
   text-align: center;
-  height: 160px;
-  background: #134DAE;
+  height: 150px;
+  background: #b12333;
+  border: 2px solid #2e6b1d;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   padding: 10px 0;
   border-radius: 20px;
 }
 
 .gameMenu .gameSwiper .swiper-slide img {
   max-width: 140px !important;
+  height: 125px;
   margin: auto;
   margin-bottom: 15px;
   border-radius: 10px;
 }
 
 .gameMenu .swiper-button-next, .gameMenu .swiper-button-prev {
-  background: #1E85EC;
+  background: #b12333;
   height: 25px;
   padding: 0px 10px;
   opacity: 1;
@@ -6610,14 +6644,18 @@ button.icon-spinner11:before {
           align-items: center;
 }
 
+.gameMenu .swiper-button-next.icon.icon-keyboard_arrow:before, .gameMenu .swiper-button-prev.icon.icon-keyboard_arrow:before {
+  font-size: 24px;
+}
+
 .gameMenu .swiper-button-next.icon:before, .gameMenu .swiper-button-prev.icon:before {
-  color: black;
+  color: #2e6b1d;
   font-size: 12px;
   font-weight: bold;
 }
 
 .gameMenu .swiper-button-next:after, .gameMenu .swiper-button-prev:after {
-  color: black;
+  color: #2e6b1d;
   font-size: 12px;
   font-weight: bold;
 }

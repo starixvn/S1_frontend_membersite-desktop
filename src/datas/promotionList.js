@@ -38,146 +38,6 @@ export default [
 				"เพียงแค่คุณทำการวางเดิมพันใน 4 ลีคใหญ่ รับโบนัสเพิ่ม 10% จากยอดชนะ"
 		}
 	},
-	// {
-	// 	bonusCode: "050LIVECASINOUNLIMITEDREBATE",
-	// 	bannerLink: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/EN-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CS-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/ID-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/TH-LIVE+CASINO+UNLIMITED+REBATE+0.50%25.html"
-	// 	},
-	// 	imgUrl: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/en/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/cs/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/id/banner-050LIVECASINOUNLIMITEDREBATE.jpg",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/LIVE+CASINO+UNLIMITED+REBATE+0.50%25/CMS/Nova88/Promotion/th/banner-050LIVECASINOUNLIMITEDREBATE.jpg"
-	// 	},
-	// 	title: {
-	// 		en: "LIVE CASINO UNLIMITED REBATE 0.50%",
-	// 		cs: "真人娱乐场 0.50% 无上限返水",
-	// 		id: "REBATE LIVE KASINO 0.50% TANPA BATAS",
-	// 		th: "0.5% โบนัสคืนเงิน คาสิโนสด ไม่จำกัด"
-	// 	},
-	// 	description: {
-	// 		en: "Register & Enjoy Your Bonus Now!",
-	// 		cs: "立即注册即可享有优惠奖金！",
-	// 		id: "Daftar & Nikmati Bonus Anda Sekarang!",
-	// 		th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
-	// 	}
-	// },
-	// {
-	// 	bonusCode: "SportsbookUnlimitedRebate0720",
-	// 	bannerLink: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/Sportsbook+Unlimited+Rebate+0.50%25/EN-Sportsbook+Unlimited+Rebate+0.50%25.html",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/Sportsbook+Unlimited+Rebate+0.50%25/CS-Sportsbook+Unlimited+Rebate+0.50%25.html",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/Sportsbook+Unlimited+Rebate+0.50%25/ID-Sportsbook+Unlimited+Rebate+0.50%25.html",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/Sportsbook+Unlimited+Rebate+0.50%25/TH-Sportsbook+Unlimited+Rebate+0.50%25.html"
-	// 	},
-	// 	imgUrl: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/Sportsbook+Unlimited+Rebate+0.50%25/CMS/Nova88/Promotion/en/banner-SportsbookUnlimitedRebate0720.jpg",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/Sportsbook+Unlimited+Rebate+0.50%25/CMS/Nova88/Promotion/cs/banner-SportsbookUnlimitedRebate0720.jpg",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/Sportsbook+Unlimited+Rebate+0.50%25/CMS/Nova88/Promotion/id/banner-SportsbookUnlimitedRebate0720.jpg",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/Sportsbook+Unlimited+Rebate+0.50%25/CMS/Nova88/Promotion/th/banner-SportsbookUnlimitedRebate0720.jpg"
-	// 	},
-	// 	title: {
-	// 		en: "Sportsbook Unlimited Rebate 0.50%",
-	// 		cs: "体育博彩 0.50% 无上限返水",
-	// 		id: "REBATE OLAHRAGA 0.50% TANPA BATAS",
-	// 		th: "โบนัสคืนเงิน 0.50% หน้ากีฬา ไม่อั้น!"
-	// 	},
-	// 	description: {
-	// 		en: "Register & Enjoy Your Bonus Now!",
-	// 		cs: "立即注册即可享有优惠奖金！",
-	// 		id: "Daftar & Nikmati Bonus Anda Sekarang!",
-	// 		th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
-	// 	}
-	// },
-	// {
-	// 	bonusCode: "CasinoUnlimitedRebate1P2",
-	// 	bannerLink: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/Casino+Unlimited+Rebate+1.2%25/EN-Casino+Unlimited+Rebate+1.2%25.html",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/Casino+Unlimited+Rebate+1.2%25/CS-Casino+Unlimited+Rebate+1.2%25.html",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/Casino+Unlimited+Rebate+1.2%25/ID-Casino+Unlimited+Rebate+1.2%25.html",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/Casino+Unlimited+Rebate+1.2%25/TH-Casino+Unlimited+Rebate+1.2%25.html"
-	// 	},
-	// 	imgUrl: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/Casino+Unlimited+Rebate+1.2%25/CMS/Nova88/Promotion/en/banner-CasinoUnlimitedRebate1P2.jpg",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/Casino+Unlimited+Rebate+1.2%25/CMS/Nova88/Promotion/cs/banner-CasinoUnlimitedRebate1P2.jpg",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/Casino+Unlimited+Rebate+1.2%25/CMS/Nova88/Promotion/id/banner-CasinoUnlimitedRebate1P2.jpg",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/Casino+Unlimited+Rebate+1.2%25/CMS/Nova88/Promotion/th/banner-CasinoUnlimitedRebate1P2.jpg"
-	// 	},
-	// 	title: {
-	// 		en: "Casino Unlimited Rebate 1.2%",
-	// 		cs: "娱乐城 1.2% 无上限返水",
-	// 		id: "RABAT KASINO 1.2% TAK TERBATAS",
-	// 		th: "คาสิโน อันลิมิเต็ด ส่วนลด 1.2%"
-	// 	},
-	// 	description: {
-	// 		en: "Register & Enjoy Your Bonus Now!",
-	// 		cs: "立即注册即可享有优惠奖金！",
-	// 		id: "Daftar & Nikmati Bonus Anda Sekarang!",
-	// 		th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
-	// 	}
-	// },
-	// {
-	// 	bonusCode: "FishingUnlimitedR08",
-	// 	bannerLink: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/Fishing+Unlimited+Rebate+0.8%25/EN-Fishing+Unlimited+Rebate+0.8%25.html",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/Fishing+Unlimited+Rebate+0.8%25/CS-Fishing+Unlimited+Rebate+0.8%25.html",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/Fishing+Unlimited+Rebate+0.8%25/ID-Fishing+Unlimited+Rebate+0.8%25.html",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/Fishing+Unlimited+Rebate+0.8%25/TH-Fishing+Unlimited+Rebate+0.8%25.html"
-	// 	},
-	// 	imgUrl: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/Fishing+Unlimited+Rebate+0.8%25/CMS/Nova88/Promotion/en/banner-FishingUnlimitedR08.jpg",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/Fishing+Unlimited+Rebate+0.8%25/CMS/Nova88/Promotion/cs/banner-FishingUnlimitedR08.jpg",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/Fishing+Unlimited+Rebate+0.8%25/CMS/Nova88/Promotion/id/banner-FishingUnlimitedR08.jpg",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/Fishing+Unlimited+Rebate+0.8%25/CMS/Nova88/Promotion/th/banner-FishingUnlimitedR08.jpg"
-	// 	},
-	// 	title: {
-	// 		en: "Fishing Unlimited Rebate 0.8%",
-	// 		cs: "捕鱼游戏 0.8% 无上限返水",
-	// 		id: "RABAT TEMBAK IKAN 0.8% TAK TERBATAS",
-	// 		th: "ฟิชชิ่ง อันลิมิเต็ด ส่วนลด 0.8%"
-	// 	},
-	// 	description: {
-	// 		en: "Register & Enjoy Your Bonus Now!",
-	// 		cs: "立即注册即可享有优惠奖金！",
-	// 		id: "Daftar & Nikmati Bonus Anda Sekarang!",
-	// 		th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
-	// 	}
-	// },
 	{
 		bonusCode: "VKNGamesUnlimitedRebate15",
 		bannerLink: {
@@ -212,40 +72,40 @@ export default [
 			id: "Daftar & Nikmati Bonus Anda Sekarang!",
 			th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
 		}
+	},
+	{
+		bonusCode: "1212SpecialPromo",
+		bannerLink: {
+			en:
+				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/EN.html",
+			cs:
+				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/CS.html",
+			id:
+				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/ID.html",
+			th:
+				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/TH.html"
+		},
+		imgUrl: {
+			en:
+				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/en/12PlayWin1212.jpg",
+			cs:
+				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/cs/12PlayWin1212.jpg",
+			id:
+				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/id/12PlayWin1212.jpg",
+			th:
+				"https://image.n88media.com/NovaPromotion/1212SpecialPromo/th/12PlayWin1212.jpg"
+		},
+		title: {
+			en: "One2 PLAY, One2 WIN 12.12",
+			cs: "再次狂欢，狂欢到底 !! 12.12",
+			id: "1212 MAIN & MENANG",
+			th: "12.12 ยิ่งเล่น ยิ่งรวย"
+		},
+		description: {
+			en: "JOIN NOW & WIN 1212",
+			cs: "立即加入并赢取12.12",
+			id: "DAFTAR SEKARANG & MENANGKAN 1212",
+			th: "โปร 12.12 ร่วมสนุกตอนนี้"
+		}
 	}
-	// {
-	// 	bonusCode: "1111SPORTSBOOKATTENDANCE",
-	// 	bannerLink: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/EN.html",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/CS.html",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/ID.html",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/TH.html"
-	// 	},
-	// 	imgUrl: {
-	// 		en:
-	// 			"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/en/114_11.11-SPORTSBOOK-ATTENDANCE.jpg",
-	// 		cs:
-	// 			"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/cs/114_11.11-SPORTSBOOK-ATTENDANCE.jpg",
-	// 		id:
-	// 			"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/id/114_11.11-SPORTSBOOK-ATTENDANCE.jpg",
-	// 		th:
-	// 			"https://image.n88media.com/NovaPromotion/1111SPORTSBOOKATTENDANCE/th/114_11.11-SPORTSBOOK-ATTENDANCE.jpg"
-	// 	},
-	// 	title: {
-	// 		en: "11.11 Sportsbook Perfect Attendance",
-	// 		cs: "11.11 体育博彩双十一完美出席",
-	// 		id: "Kehadiran Sempurna Sports 11.11",
-	// 		th: "11.11 สปอร์ต 11 วัน มันส์ดีไม่มีเบื่อ"
-	// 	},
-	// 	description: {
-	// 		en: "Register & Enjoy Your Bonus Now!",
-	// 		cs: "立即注册即可享有优惠奖金！",
-	// 		id: "Daftar & Nikmati Bonus Anda Sekarang!",
-	// 		th: "สมัครและร่วมสนุกไปกับโบนัสของเราตอนนี้!!"
-	// 	}
-	// }
 ];
