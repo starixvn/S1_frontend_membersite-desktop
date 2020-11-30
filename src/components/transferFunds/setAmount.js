@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Inputbox from "../common/inputbox";
 import Dropdown from "../common/dropdown";
 import { useTranslation } from "react-i18next";
 
 export default props => {
 	const { t } = useTranslation();
-	const originOptions = props.options;
 
 	return (
 		<div className="subModuleList">
-			{/* {console.log(props)} */}
 			<div className="walletTransfer">
 				<div className="walletModule transferModule">
 					<div className="inputBox-org">

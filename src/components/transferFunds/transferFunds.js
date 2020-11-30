@@ -4,8 +4,7 @@ import { useTranslation } from "react-i18next";
 import {
 	userInfoContext,
 	popBoxContext,
-	loadingContext,
-	walletInfoContext
+	loadingContext
 } from "..//common/context";
 import {
 	api_account_GetTpWalletList,
@@ -33,11 +32,6 @@ export default () => {
 		tip: ""
 	};
 
-	const initDirection = {
-		transferFrom: "lbl_MainWallet",
-		transferTo: "lbl_TpWallet_1"
-	};
-
 	const { t } = useTranslation();
 	const isMountedRef = useRef(null);
 	const [amount, setAmount] = useState("");
@@ -50,13 +44,16 @@ export default () => {
 	const [toOptions, setToOptions] = useState([]);
 	const [status, setStatus] = useState(initStatus);
 	const [getHistory, setGetHistory] = useState(null);
-	const [direction, setDirection] = useState(initDirection);
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { loading, setLoading } = useContext(loadingContext);
-	// const { getContentWalletInfo } = useContext(walletInfoContext);
 
 	const _isConvert = isConvert(userInfo.currencyId);
+
+	const walletIcon = [
+		"icon-icon32px_Main-Wallet",
+		"icon-icon32px_Sportsbook-Wallet"
+	];
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -64,47 +61,25 @@ export default () => {
 	});
 
 	useEffect(() => {
-		async function getData() {
+		async function getInitialData() {
 			setLoading(true);
-			await Promise.all([
-				getMainWallet(),
-				getTpWalletList(),
-				getTransferRecent()
-			]);
+			await Promise.all([getAllWalletData(), getTransferRecent()]);
 			setLoading(false);
 		}
-		getData();
+		getInitialData();
 	}, []);
 
-	const ClickClose = () => {
-		setPopBox({ isOpen: false });
-	};
-
 	const getAllWalletData = () => {
-		let newArr = [mainWallet, ...tpWalletList];
-		setWalletInfo(newArr);
-	};
-
-	const reloadData = () => {
 		getMainWallet();
 		getTpWalletList();
 	};
 
 	useEffect(() => {
-		reloadData();
-	}, []);
-
-	useEffect(() => {
-		getAllWalletData();
 		let newArr = [mainWallet, ...tpWalletList];
+		setWalletInfo(newArr);
 		setFromOptions(newArr);
 		setToOptions(newArr);
 	}, [mainWallet, tpWalletList]);
-
-	const walletIcon = [
-		"icon-icon32px_Main-Wallet",
-		"icon-icon32px_Sportsbook-Wallet"
-	];
 
 	const getMainWallet = async () => {
 		await api_account_GetBalance().then(res => {
@@ -173,18 +148,21 @@ export default () => {
 		});
 	};
 
+	const ClickClose = () => {
+		setPopBox({ isOpen: false });
+	};
+
 	const Transfer = async (_tpId, _amount, _direction) => {
 		setLoading(true);
 		await api_tp_Transfer({
-			TpId: _tpId === 0 ? 1 : _tpId,
+			TpId: _tpId,
 			amount: _amount,
 			direction: _direction
 		}).then(
 			res => {
 				if (isMountedRef.current) {
 					if (res.data.errorCode === 0) {
-						// getContentWalletInfo();
-						reloadData();
+						getAllWalletData();
 						getTransferRecent();
 						setAmount("");
 					} else if (res.data.errorCode === 9) {
@@ -293,30 +271,51 @@ export default () => {
 	const EditAmount = e => {
 		let value = e.target.value;
 		value = value.replace(/^(0+)|[^\d]+/g, "");
-		ValidAmount(value);
-		setAmount(value);
+		if (selectedFromIdx === null || selectedToIdx === null) {
+			setPopBox({
+				isOpen: true,
+				popBoxType: defPopBoxType.ErrorMsg,
+				message: t("lbl_please_selet_wallet"),
+				btnBar: (
+					<div className="btnGroup">
+						<button className="btn-cancel" onClick={ClickClose}>
+							{t("lbl_Close")}
+						</button>
+					</div>
+				)
+			});
+			setAmount("");
+		} else {
+			ValidAmount(value);
+			setAmount(value);
+		}
 	};
 
 	const ValidAmount = _amount => {
-		const minAmount = 1;
-		const _transferFrom = walletInfo.find(item => {
-			return item.displayKey === direction.transferFrom;
-		});
-		const maxAmount = _transferFrom.balance;
+		if (selectedFromIdx !== null && selectedToIdx !== null) {
+			const minAmount = 1;
+			const maxAmount = fomOptions[selectedFromIdx].balance;
 
-		let result = checkAmount(_amount, minAmount, maxAmount, _isConvert, t);
-		if (result.status !== 0) {
-			setStatus({
-				checked: false,
-				tip: result.msg
-			});
-		} else {
-			setStatus({
-				checked: true,
-				tip: ""
-			});
+			let result = checkAmount(
+				_amount,
+				minAmount,
+				maxAmount,
+				_isConvert,
+				t
+			);
+			if (result.status !== 0) {
+				setStatus({
+					checked: false,
+					tip: result.msg
+				});
+			} else {
+				setStatus({
+					checked: true,
+					tip: ""
+				});
+			}
+			return result.status === 0;
 		}
-		return result.status === 0;
 	};
 
 	const clickInfo = () => {
@@ -333,12 +332,11 @@ export default () => {
 	const clickSubmit = e => {
 		e.preventDefault();
 		let result = ValidAmount(amount);
-		let _direction =
-			fomOptions[selectedFromIdx].id === 0
-				? defDirection.MainToTp
-				: defDirection.TpToMain;
-
 		if (result) {
+			let _direction =
+				fomOptions[selectedFromIdx].id === 0
+					? defDirection.MainToTp
+					: defDirection.TpToMain;
 			let real_amount = _isConvert
 				? Number(amount) * 1000
 				: Number(amount);
@@ -348,24 +346,9 @@ export default () => {
 				toOptions[selectedToIdx]
 			].filter(item => item.id !== 0)[0];
 
-			// if (_wallet.balance < real_amount) {
-			// 	setPopBox({
-			// 		isOpen: true,
-			// 		popBoxType: defPopBoxType.ErrorMsg,
-			// 		message: t("msg_InsufficientFund"),
-			// 		btnBar: (
-			// 			<div className="btnGroup">
-			// 				<button className="btn-cancel" onClick={ClickClose}>
-			// 					{t("lbl_Close")}
-			// 				</button>
-			// 			</div>
-			// 		)
-			// 	});
-			// } else {
 			Transfer(_wallet.id, real_amount, _direction);
 			setStatus(initStatus);
 			setAmount("");
-			// }
 		}
 	};
 
@@ -411,7 +394,6 @@ export default () => {
 
 	const onSelectToItem = i => {
 		setSelectedToIdx(i);
-
 		let isSelectFromMainWallet =
 			fomOptions[selectedFromIdx]?.displayKey === "lbl_MainWallet";
 		let isSelecTotMainWallet =
@@ -440,15 +422,13 @@ export default () => {
 					i18n={t}
 					walletInfo={walletInfo}
 					restoreAll={restoreAll}
-					reloadData={reloadData}
+					getAllWalletData={getAllWalletData}
 					_isConvert={_isConvert}
 				/>
 				<SetAmount
 					i18n={t}
 					amount={amount}
 					onChange={EditAmount}
-					transferFrom={direction.transferFrom}
-					transferTo={direction.transferTo}
 					clickSubmit={clickSubmit}
 					onBlur={ValidAmount.bind(this, amount)}
 					clickInfo={clickInfo}

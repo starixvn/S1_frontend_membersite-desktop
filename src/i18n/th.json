@@ -246,7 +246,7 @@
 	"lbl_TransferFunds": "โอนเงินทุน",
 	"msg_InsufficientFund": "จำนวนเงินไม่เพียงพอ!",
 	"lbl_TpWallet_1": "กระเป๋าเงินสปอร์ตบุค",
-	"lbl_TpWallet_21": "918Kiss Wallet",
+	"lbl_TpWallet_21": "918Kiss วอลเล็ท",
 	"lbl_MainWallet": "วอลเล็ทหลัก",
 	"lbl_Wallet_Saba": "สปอร์ตบุค วอลเล็ท",
 	"lbl_Transfer": "โอน",
@@ -255,6 +255,7 @@
 	"lbl_BonusWallet_1": "Casino Wallet",
 	"lbl_BonusWallet_2": "Live Casino Wallet",
 	"lbl_BonusWallet_3": "Fishing Wallet",
+	"lbl_please_selet_wallet":"Please select a wallet",
 
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Statement": "รายการฝากถอน",

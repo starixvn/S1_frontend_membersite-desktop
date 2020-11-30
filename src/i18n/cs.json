@@ -246,7 +246,7 @@
 	"lbl_TransferFunds": "资金转移",
 	"msg_InsufficientFund": "余额不足！",
 	"lbl_TpWallet_1": "体育钱包",
-	"lbl_TpWallet_21": "918Kiss Wallet",
+	"lbl_TpWallet_21": "918Kiss钱包",
 	"lbl_MainWallet": "中心钱包",
 	"lbl_Wallet_Saba": "体育钱包",
 	"lbl_Transfer": "转帐",
@@ -255,6 +255,7 @@
 	"lbl_BonusWallet_1": "Casino Wallet",
 	"lbl_BonusWallet_2": "Live Casino Wallet",
 	"lbl_BonusWallet_3": "Fishing Wallet",
+	"lbl_please_selet_wallet":"請選擇錢包",
 
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Statement": "账变记录",

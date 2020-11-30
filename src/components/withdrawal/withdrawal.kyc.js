@@ -123,7 +123,7 @@ export default ({ t, dispatch, kycData, KycCheck, kycStatus }) => {
 						) : (
 							<>
 								<i className="icon icon-plus"></i>
-								<i class="icon icon-folder-upload">
+								<i className="icon icon-folder-upload">
 									{t("lbl_ImageUploadWarning")}
 								</i>
 							</>

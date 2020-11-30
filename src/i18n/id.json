@@ -246,7 +246,7 @@
 	"lbl_TransferFunds": "Transfer Dana",
 	"msg_InsufficientFund": "Dana tidak mencukupi!",
 	"lbl_TpWallet_1": "Dompet Olahraga",
-	"lbl_TpWallet_21": "918Kiss Wallet",
+	"lbl_TpWallet_21": "Dompet 918Kiss",
 	"lbl_MainWallet": "Dompet Utama",
 	"lbl_Wallet_Saba": "Dompet Olahraga",
 	"lbl_Transfer": "Dana Masuk",
@@ -255,7 +255,7 @@
 	"lbl_BonusWallet_1": "Casino Wallet",
 	"lbl_BonusWallet_2": "Live Casino Wallet",
 	"lbl_BonusWallet_3": "Fishing Wallet",
-
+	"lbl_please_selet_wallet":"Please select a wallet",
 
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_TypeName": "Ketik nama",
