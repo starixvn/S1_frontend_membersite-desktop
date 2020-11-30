@@ -80,7 +80,6 @@ export const defMenuLinks = {
 				displayText: "918Kiss",
 				menuType: defMenuType.LinkOrBtn,
 				path: path["918kiss"].root,
-				needLogin: true,
 				...productList.kiss918
 			},
 			{

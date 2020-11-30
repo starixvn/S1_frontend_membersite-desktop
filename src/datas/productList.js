@@ -139,6 +139,7 @@ export default {
 	},
 	kiss918: {
 		tpId: 21,
-		alwaysShow: true
+		alwaysShow: true,
+		needLogin: true
 	}
 };
