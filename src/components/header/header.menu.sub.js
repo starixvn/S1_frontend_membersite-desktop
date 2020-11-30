@@ -42,7 +42,6 @@ export default ({ listClassName, subItems, menuKey, mainUrl }) => {
 				s.allowCurrency.includes(userInfo.currencyId)
 		)
 		.map(s => {
-			console.log(s);
 			let displayText = s.displayText ? s.displayText : t(s.displayKey);
 			let key = `${menuKey}-${userInfo.isLogin}-${s.tpId}-${s.gameId}`;
 
