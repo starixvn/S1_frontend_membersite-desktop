@@ -379,5 +379,9 @@
 	"lbl_Date": "日期",
 	"lbl_Days": "天",
 	"lbl_Hours": "小时",
-	"lbl_5mins": "5分鐘"
+	"lbl_5mins": "5分鐘",
+
+	"lbl_Download":"Download",
+	"lbl_918KissMobileApp":"918KISS MOBILE APP",
+	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide"
 }
