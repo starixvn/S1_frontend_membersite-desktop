@@ -101,7 +101,7 @@ const Kiss918 = () => {
 	const { data } = useGotoGame({
 		isLogin: userInfo.isLogin,
 		langId: userInfo.langId,
-		tpId: productList.kiss918
+		tpId: productList.kiss918.tpId
 	});
 	const { ClickDownload } = useHandleDownloadPopBox();
 	const { InstallGuide, DownloadImg } = GetImageContent(userInfo);
