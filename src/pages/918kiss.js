@@ -6,7 +6,7 @@ import Kiss918 from "../components/918kiss/918kiss";
 
 export default () => {
 	return (
-		<Wrapper>
+		<Wrapper afterLogin={true}>
 			<Layout showFooter={true}>
 				<main>
 					<Kiss918 />
