@@ -57,6 +57,10 @@
   font-size: 24px !important;
 }
 
+.icon-marquee:before {
+  content: "\e9b7";
+}
+
 .icon-nodata2:before {
   content: "\e9b4";
 }
@@ -83,6 +87,10 @@
 
 .icon-USDT:before {
   content: "\e9a4";
+}
+
+.icon-home:before {
+  content: "\e9b5";
 }
 
 .icon-deposit1:before {
@@ -517,7 +525,7 @@
   content: "\e908";
 }
 
-.icon-marquee:before {
+.icon-marquee123:before {
   content: "\e909";
 }
 
@@ -653,7 +661,7 @@
   content: "\e950";
 }
 
-.icon-home:before {
+.icon-home123:before {
   content: "\e900";
 }
 
@@ -893,8 +901,20 @@
   content: "\ea96";
 }
 
+.icon-appleinc:before {
+  content: "\eabe";
+}
+
+.icon-android:before {
+  content: "\eac0";
+}
+
 .icon-IcoMoon:before {
   content: "\eaea";
+}
+
+.icon-tree:before {
+  content: "\e9b6";
 }
 
 .icon-home1:before {
