@@ -207,8 +207,8 @@ class Dropdown extends Component {
 					<div className="transactionLog">
 						<span>{this.props.i18n("lbl_LastTransaction")}</span>
 						<span>
-							{this.props.lastTransaction
-								? moment(this.props.lastTransaction).format(
+							{mainWallet.lastTransaction
+								? moment(mainWallet.lastTransaction).format(
 										"l LTS"
 								  )
 								: null}

@@ -41,12 +41,13 @@ function reducer(state, action) {
 			return { ...state, tpWallets: allDatas };
 
 		case defAction.GET_MAIN_WALLETS:
-			const { tpId, balance, isHideBalance } = action;
+			const { tpId, balance, isHideBalance, lastTransaction } = action;
 			return {
 				...state,
 				mainWallet: {
 					tpId,
-					balance
+					balance,
+					lastTransaction
 				},
 				isHideBalance
 			};
@@ -93,7 +94,8 @@ const GetMainWalet = ({ isLogin, dispatch }) => {
 			dispatch({
 				type: defAction.GET_MAIN_WALLETS,
 				balance: res.data.data.balance,
-				isHideBalance: res.data.data.isHideBalance
+				isHideBalance: res.data.data.isHideBalance,
+				lastTransaction: res.data.data.lastTransaction
 			});
 		}
 	});
