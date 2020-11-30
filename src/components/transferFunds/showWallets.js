@@ -6,27 +6,37 @@ import ReloadSpin from "../common/reloadSpin";
 const ShowWallet = props => {
 	let { walletInfo } = props;
 
-	const walletCardList = walletInfo.map((item, idx) => {
-		return (
-			<div className="walletBalanceModule" key={`wallets-${idx}`}>
-				<span className={`icon ${item.walletIcon}`}>
-					{props.i18n(item.displayKey)}
-				</span>
-				<span>{number_format(item.balance, props._isConvert)}</span>
-				<div className="btnGroup">
-					<button
-						className="orange"
-						onClick={props.restoreAll.bind(this, item.id)}>
-						{props.i18n("lbl_RestoreAll")}
-					</button>
-				</div>
-			</div>
-		);
-	});
+	const getWalletCardList = () => {
+		try {
+			return walletInfo.map(item => {
+				return (
+					<div
+						className="walletBalanceModule"
+						key={`wallets-${item.id}`}>
+						<span className={`icon ${item.walletIcon}`}>
+							{props.i18n(item.displayKey)}
+						</span>
+						<span>
+							{number_format(item.balance, props._isConvert)}
+						</span>
+						<div className="btnGroup">
+							<button
+								className="orange"
+								onClick={props.restoreAll.bind(this, item.id)}>
+								{props.i18n("lbl_RestoreAll")}
+							</button>
+						</div>
+					</div>
+				);
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div className="walletModule">
-			{walletCardList}
+			{getWalletCardList()}
 			<ReloadSpin btnActive={false} func={props.getAllWalletData} />
 		</div>
 	);

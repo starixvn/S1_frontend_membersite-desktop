@@ -47,7 +47,6 @@ export default () => {
 	const { userInfo } = useContext(userInfoContext);
 	const { setPopBox } = useContext(popBoxContext);
 	const { loading, setLoading } = useContext(loadingContext);
-
 	const _isConvert = isConvert(userInfo.currencyId);
 
 	const walletIcon = [
@@ -63,7 +62,10 @@ export default () => {
 	useEffect(() => {
 		async function getInitialData() {
 			setLoading(true);
-			await Promise.all([getAllWalletData(), getTransferRecent()]);
+			// await Promise.all([getAllWalletData(), getTransferRecent()]);
+			await getTransferRecent();
+			await getMainWallet();
+			getTpWalletList();
 			setLoading(false);
 		}
 		getInitialData();
@@ -122,23 +124,24 @@ export default () => {
 						};
 					});
 
-					let tpwalletBalanceArr = [];
-					let walletIdArrPromiseMap = tpWalletIdArr.map(async i => {
-						return await getTpWalletInfo(i.id).then(res => {
-							return res;
-						});
+					let getTpWalletBalance = tpWalletIdArr.map(async i => {
+						return await getTpWalletInfo(i.id);
 					});
 
-					await Promise.all(walletIdArrPromiseMap).then(results => {
-						tpwalletBalanceArr = results;
+					let tpWalletBalanceArr = await Promise.all(
+						getTpWalletBalance
+					).then(results => {
+						return results;
 					});
+
+					console.log(tpWalletBalanceArr);
 
 					let tpWalletInfoArr = tpWalletIdArr.map((item, idx) => {
-						if (item => item.id === tpwalletBalanceArr[idx].tpId) {
+						if (item.id === tpWalletBalanceArr[idx].tpId) {
 							return Object.assign(
 								{},
 								item,
-								tpwalletBalanceArr[idx]
+								tpWalletBalanceArr[idx]
 							);
 						}
 					});
@@ -286,7 +289,6 @@ export default () => {
 					</div>
 				)
 			});
-			setAmount("");
 		} else {
 			checkPass = true;
 		}
@@ -296,37 +298,7 @@ export default () => {
 	const EditAmount = e => {
 		let value = e.target.value;
 		value = value.replace(/^(0+)|[^\d]+/g, "");
-		if (checkSelectWallet()) {
-			ValidAmount(value);
-			setAmount(value);
-		}
-	};
-
-	const ValidAmount = _amount => {
-		if (checkSelectWallet()) {
-			const minAmount = 1;
-			const maxAmount = fomOptions[selectedFromIdx].balance;
-
-			let result = checkAmount(
-				_amount,
-				minAmount,
-				maxAmount,
-				_isConvert,
-				t
-			);
-			if (result.status !== 0) {
-				setStatus({
-					checked: false,
-					tip: result.msg
-				});
-			} else {
-				setStatus({
-					checked: true,
-					tip: ""
-				});
-			}
-			return result.status === 0;
-		}
+		setAmount(value);
 	};
 
 	const clickInfo = () => {
@@ -342,12 +314,14 @@ export default () => {
 
 	const clickSubmit = e => {
 		e.preventDefault();
-		let result = ValidAmount(amount);
+		checkSelectWallet();
+		let result = amount > 0 && checkSelectWallet();
 		if (result) {
 			let _direction =
 				fomOptions[selectedFromIdx].id === 0
 					? defDirection.MainToTp
 					: defDirection.TpToMain;
+
 			let real_amount = _isConvert
 				? Number(amount) * 1000
 				: Number(amount);
@@ -367,16 +341,18 @@ export default () => {
 		let isClickMainWallet = id === 0;
 
 		if (isClickMainWallet) {
-			walletInfo.slice(1, walletInfo.length).forEach(item => {
-				if (item.balance > 0) {
-					Transfer(item.id, item.balance, defDirection.TpToMain);
-				}
-			});
+			walletInfo
+				.filter(o => o.id !== 0)
+				.forEach(item => {
+					if (item.balance > 0) {
+						Transfer(item.id, item.balance, defDirection.TpToMain);
+					}
+				});
 			getMainWallet();
 			getTpWalletList();
 		} else {
 			Transfer(
-				walletInfo.filter(i => i.id === id)[0].id,
+				walletInfo.id,
 				walletInfo[0].balance,
 				defDirection.MainToTp
 			);
@@ -388,14 +364,10 @@ export default () => {
 	const onSelectWallet = (col, i) => {
 		if (col === "from") {
 			setSelectedFromIdx(i);
-			let isSelectFromMainWallet =
-				fomOptions[i]?.displayKey === "lbl_MainWallet";
-			let isSelecToMainWallet =
-				toOptions[selectedToIdx]?.displayKey === "lbl_MainWallet";
+			let isSelectFromMainWallet = fomOptions[i]?.id === 0;
+			let isSelecToMainWallet = toOptions[selectedToIdx]?.id === 0;
 			if (!isSelectFromMainWallet) {
-				setToOptions(
-					walletInfo.filter(o => o.displayKey === "lbl_MainWallet")
-				);
+				setToOptions(walletInfo.filter(o => o.id === 0));
 			} else {
 				setToOptions(walletInfo);
 				if (isSelecToMainWallet) {
@@ -404,14 +376,10 @@ export default () => {
 			}
 		} else {
 			setSelectedToIdx(i);
-			let isSelectFromMainWallet =
-				fomOptions[selectedFromIdx]?.displayKey === "lbl_MainWallet";
-			let isSelecToMainWallet =
-				toOptions[i]?.displayKey === "lbl_MainWallet";
+			let isSelectFromMainWallet = fomOptions[selectedFromIdx]?.id === 0;
+			let isSelecToMainWallet = toOptions[i]?.id === 0;
 			if (!isSelecToMainWallet) {
-				setFromOptions(
-					walletInfo.filter(o => o.displayKey === "lbl_MainWallet")
-				);
+				setFromOptions(walletInfo.filter(o => o.id === 0));
 			} else {
 				setFromOptions(walletInfo);
 				if (isSelectFromMainWallet) {
@@ -441,7 +409,6 @@ export default () => {
 					amount={amount}
 					onChange={EditAmount}
 					clickSubmit={clickSubmit}
-					onBlur={ValidAmount.bind(this, amount)}
 					clickInfo={clickInfo}
 					checked={status.checked}
 					tip={status.tip}
