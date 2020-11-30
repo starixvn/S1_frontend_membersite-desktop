@@ -51,8 +51,8 @@ export default class Panel extends Component {
 				subItems &&
 				this.props.casinoTpIds?.length > 0
 			) {
-				subItems = subItems.filter(s =>
-					this.props.casinoTpIds.includes(s.tpId)
+				subItems = subItems.filter(
+					s => s.alwaysShow || this.props.casinoTpIds.includes(s.tpId)
 				);
 			}
 		}

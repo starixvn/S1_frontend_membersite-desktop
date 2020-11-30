@@ -75,6 +75,15 @@ export const defMenuLinks = {
 				...productList.casino_PG
 			},
 			{
+				className: "Kiss icon icon-new",
+				icon: "icon icon-kiss",
+				displayText: "918Kiss",
+				menuType: defMenuType.LinkOrBtn,
+				path: path["918kiss"].root,
+				needLogin: true,
+				...productList.kiss918
+			},
+			{
 				className: "OW",
 				icon: "icon icon-OW",
 				displayText: "OW",

@@ -138,6 +138,7 @@ export default {
 		tpId: 10
 	},
 	kiss918: {
-		tpId: 21
+		tpId: 21,
+		alwaysShow: true
 	}
 };
