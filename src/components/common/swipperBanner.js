@@ -31,6 +31,12 @@ export const ClickLink = (
 	matchid,
 	openInBlank
 ) => {
+	const HandleLogin = () => {
+		setPopBox({
+			isOpen: true,
+			popBoxType: defPopBoxType.Login
+		});
+	};
 	if (href === "Casino/Lobby") {
 		window.location.href = `/${lang}/${path.casino.root}${
 			tpId ? `/${tpId}` : ""
@@ -40,7 +46,11 @@ export const ClickLink = (
 			window.location.href = `/${lang}/${path.promotion.root}`;
 		} else if (href === "Home/Register") {
 		} else if (href === "918kiss") {
-			window.location.href = `/${lang}/${path["918kiss"].root}`;
+			if (isLogin) {
+				window.location.href = `/${lang}/${path["918kiss"].root}`;
+			} else {
+				HandleLogin();
+			}
 		} else {
 			window.open(
 				isOuterLink
@@ -58,12 +68,7 @@ export const ClickLink = (
 			gameId,
 			matchid,
 			isLogin: isLogin === true,
-			loginCallback: () => {
-				setPopBox({
-					isOpen: true,
-					popBoxType: defPopBoxType.Login
-				});
-			},
+			loginCallback: HandleLogin,
 			openInBlank: openInBlank
 		});
 	}
