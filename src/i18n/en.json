@@ -255,8 +255,8 @@
 	"lbl_BonusWallet_1": "Casino Wallet",
 	"lbl_BonusWallet_2": "Live Casino Wallet",
 	"lbl_BonusWallet_3": "Fishing Wallet",
-	"lbl_please_select_from_wallet":"Please select the wallet to transfer from",
-	"lbl_please_select_to_wallet":"Please select the wallet to transfer",
+	"lbl_please_select_from_wallet":"Kindly select preferable fund out wallet",
+	"lbl_please_select_to_wallet":"Kindly select preferable fund in wallet",
 
 	"statement ■■■■■■■■■■■■■■■■■■■■": "",
 	"lbl_Statement": "Statement",

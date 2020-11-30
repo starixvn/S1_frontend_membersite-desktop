@@ -16,7 +16,10 @@ export default props => {
 							mainKey={`from_wallet_${props.selectedFromIdx}`}
 							options={props.fomOptions}
 							selectedIdx={props.selectedFromIdx}
-							onSelectItem={props.onSelectFromItem.bind(this)}
+							onSelectItem={props.onSelectWallet.bind(
+								this,
+								"from"
+							)}
 							title={t("lbl_From")}
 						/>
 					</div>
@@ -26,7 +29,7 @@ export default props => {
 							mainKey={`to_wallet_${props.selectedFromIdx}`}
 							options={props.toOptions}
 							selectedIdx={props.selectedToIdx}
-							onSelectItem={props.onSelectToItem.bind(this)}
+							onSelectItem={props.onSelectWallet.bind(this, "to")}
 							title={t("lbl_To")}
 						/>
 					</div>

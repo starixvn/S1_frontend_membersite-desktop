@@ -385,38 +385,38 @@ export default () => {
 		}
 	};
 
-	const onSelectFromItem = i => {
-		setSelectedFromIdx(i);
-		let isSelectFromMainWallet =
-			fomOptions[i]?.displayKey === "lbl_MainWallet";
-		let isSelecTotMainWallet =
-			toOptions[selectedToIdx]?.displayKey === "lbl_MainWallet";
-		if (!isSelectFromMainWallet) {
-			setToOptions(
-				walletInfo.filter(o => o.displayKey === "lbl_MainWallet")
-			);
-		} else {
-			setToOptions(walletInfo);
-			if (isSelecTotMainWallet) {
-				setSelectedToIdx(null);
+	const onSelectWallet = (col, i) => {
+		if (col === "from") {
+			setSelectedFromIdx(i);
+			let isSelectFromMainWallet =
+				fomOptions[i]?.displayKey === "lbl_MainWallet";
+			let isSelecToMainWallet =
+				toOptions[selectedToIdx]?.displayKey === "lbl_MainWallet";
+			if (!isSelectFromMainWallet) {
+				setToOptions(
+					walletInfo.filter(o => o.displayKey === "lbl_MainWallet")
+				);
+			} else {
+				setToOptions(walletInfo);
+				if (isSelecToMainWallet) {
+					setSelectedToIdx(null);
+				}
 			}
-		}
-	};
-
-	const onSelectToItem = i => {
-		setSelectedToIdx(i);
-		let isSelectFromMainWallet =
-			fomOptions[selectedFromIdx]?.displayKey === "lbl_MainWallet";
-		let isSelecTotMainWallet =
-			toOptions[i]?.displayKey === "lbl_MainWallet";
-		if (!isSelecTotMainWallet) {
-			setFromOptions(
-				walletInfo.filter(o => o.displayKey === "lbl_MainWallet")
-			);
 		} else {
-			setFromOptions(walletInfo);
-			if (isSelectFromMainWallet) {
-				setSelectedFromIdx(null);
+			setSelectedToIdx(i);
+			let isSelectFromMainWallet =
+				fomOptions[selectedFromIdx]?.displayKey === "lbl_MainWallet";
+			let isSelecToMainWallet =
+				toOptions[i]?.displayKey === "lbl_MainWallet";
+			if (!isSelecToMainWallet) {
+				setFromOptions(
+					walletInfo.filter(o => o.displayKey === "lbl_MainWallet")
+				);
+			} else {
+				setFromOptions(walletInfo);
+				if (isSelectFromMainWallet) {
+					setSelectedFromIdx(null);
+				}
 			}
 		}
 	};
@@ -450,8 +450,7 @@ export default () => {
 					toOptions={toOptions}
 					selectedFromIdx={selectedFromIdx}
 					selectedToIdx={selectedToIdx}
-					onSelectFromItem={onSelectFromItem}
-					onSelectToItem={onSelectToItem}
+					onSelectWallet={onSelectWallet}
 				/>
 			</div>
 			<RecentHistory
