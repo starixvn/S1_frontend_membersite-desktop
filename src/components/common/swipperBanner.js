@@ -39,6 +39,8 @@ export const ClickLink = (
 		if (href === "Promotion/Index") {
 			window.location.href = `/${lang}/${path.promotion.root}`;
 		} else if (href === "Home/Register") {
+		} else if (href === "918kiss") {
+			window.location.href = `/${lang}/${path["918kiss"].root}`;
 		} else {
 			window.open(
 				isOuterLink

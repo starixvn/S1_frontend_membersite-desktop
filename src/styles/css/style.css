@@ -323,6 +323,14 @@ header {
   background: url(../img/numberGame_a.png) no-repeat center 0px/auto 100%;
 }
 
+.header > div.menu .casinoList .Kiss {
+  background: url(../img/casinoKiss.png) no-repeat center 10px/auto 100%;
+}
+
+.header > div.menu .casinoList .Kiss:hover {
+  background: url(../img/casinoKiss_a.png) no-repeat center 0px/auto 100%;
+}
+
 .header > div.menu .casinoList .GPI {
   background: url(../img/casinoGPI.png) no-repeat center 10px/auto 100%;
 }

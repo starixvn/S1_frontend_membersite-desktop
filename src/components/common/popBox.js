@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, Suspense, lazy } from "react";
 import { popBoxContext } from "./context";
 import Cancel from "./popBox.cancel";
 import UploadBankSlip from "./popBox.uploadBankSlip";
@@ -46,7 +46,8 @@ export const defPopBoxType = {
 	TurnoverAccumulated: "TurnoverAccumulated",
 	RegisterSuccess: "RegisterSuccess",
 	PromotionDepositConfirm: "PromotionDepositConfirm",
-	PromotionAmountConfirm: "PromotionAmountConfirm"
+	PromotionAmountConfirm: "PromotionAmountConfirm",
+	kiss918: "918kiss"
 };
 
 export default () => {
@@ -205,6 +206,14 @@ export default () => {
 				/>
 			);
 			break;
+
+		case defPopBoxType.kiss918:
+			const Kiss918 = lazy(() => import("./popBox.918kiss"));
+			content = (
+				<Suspense fallback={<>Loading...</>}>
+					<Kiss918 ClickClose={popBox.ClickClose} />
+				</Suspense>
+			);
 
 		case defPopBoxType.default:
 			break;
