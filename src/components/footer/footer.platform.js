@@ -68,6 +68,9 @@ const defPlatfrom = [
 	},
 	{
 		...productList.liveCasino_WM
+	},
+	{
+		...productList.cockFighting
 	}
 ];
 

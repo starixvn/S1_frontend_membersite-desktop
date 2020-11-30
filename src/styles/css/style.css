@@ -1518,6 +1518,28 @@ footer {
   background: url(https://image.n88media.com/SiteSkin/img/logo/wma.png) no-repeat center/100%;
 }
 
+.platform button:nth-child(17) {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/awc.png) no-repeat center/100%;
+  width: 119px;
+  height: 55px;
+  margin-right: 17px;
+}
+
+.platform button:nth-child(17):hover {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/awca.png) no-repeat center/100%;
+}
+
+.platform button:nth-child(18) {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/kiss.png) no-repeat center/100%;
+  width: 119px;
+  height: 55px;
+  margin-right: 17px;
+}
+
+.platform button:nth-child(18):hover {
+  background: url(https://image.n88media.com/SiteSkin/img/logo/kissa.png) no-repeat center/100%;
+}
+
 .copyright {
   padding: 0 calc((100% - 1600px) / 2);
   text-align: center;
