@@ -105,20 +105,27 @@ class Dropdown extends Component {
 			  )
 			: 0;
 
-		let tpWalletRows = tpWallets.map(t => {
-			return (
-				<div
-					className="walletBalance"
-					key={`header-tpwallet-${t.tpId}`}>
-					<div>
-						<span>{this.props.i18n(`lbl_TpWallet_${t.tpId}`)}</span>
-						<span>
-							{number_format(t.balance, this.props._isConvert)}
-						</span>
+		let tpWalletRows = tpWallets
+			.sort((a, b) => (a.tpId > b.tpId ? 1 : -1))
+			.map(t => {
+				return (
+					<div
+						className="walletBalance"
+						key={`header-tpwallet-${t.tpId}`}>
+						<div>
+							<span>
+								{this.props.i18n(`lbl_TpWallet_${t.tpId}`)}
+							</span>
+							<span>
+								{number_format(
+									t.balance,
+									this.props._isConvert
+								)}
+							</span>
+						</div>
 					</div>
-				</div>
-			);
-		});
+				);
+			});
 
 		const bonusWalletRows = bonusWallets.map(item => {
 			return (
