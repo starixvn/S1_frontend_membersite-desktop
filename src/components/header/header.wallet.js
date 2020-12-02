@@ -98,7 +98,7 @@ class Dropdown extends Component {
 
 		let balance = isHideBalance
 			? "*****"
-			: mainWallet.balance
+			: !isNaN(mainWallet.balance)
 			? number_format(
 					mainWallet.balance + allTpWalletBalance,
 					this.props._isConvert
