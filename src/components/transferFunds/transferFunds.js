@@ -21,7 +21,6 @@ import { defPopBoxType } from "../common/popBox";
 import ShowWallets from "./showWallets";
 import SetAmount from "./setAmount";
 import RecentHistory from "./recentHistory";
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import { GetAllWallets } from "../common/wrapper.walletInfo";
 
 export default () => {
@@ -100,9 +99,9 @@ export default () => {
 		});
 	};
 
-	const getTpWalletList = async () => {
+	const getTpWalletList = () => {
 		let allWallet = 0;
-		await api_account_GetTpWalletList(allWallet).then(async res => {
+		api_account_GetTpWalletList(allWallet).then(res => {
 			if (isMountedRef.current) {
 				if (res.data.errorCode === 0) {
 					let tpWalletInitArr = res.data.data.map((item, i) => {
@@ -119,10 +118,10 @@ export default () => {
 		});
 	};
 
-	const GetTpWalletBalance = async tpWalletInitArr => {
+	const GetTpWalletBalance = tpWalletInitArr => {
 		if (tpWalletInitArr?.length > 0) {
-			tpWalletInitArr.forEach(async item => {
-				await api_account_GetTpWalletBalance(item.id).then(res => {
+			tpWalletInitArr.forEach(item => {
+				api_account_GetTpWalletBalance(item.id).then(res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						let tpItem = res.data.data;
 						let tpWalletItem = {
@@ -320,7 +319,6 @@ export default () => {
 
 	const clickSubmit = e => {
 		e.preventDefault();
-		checkSelectWallet();
 		let result = amount > 0 && checkSelectWallet();
 		if (result) {
 			let _direction =

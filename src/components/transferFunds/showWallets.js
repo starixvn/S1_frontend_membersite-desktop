@@ -4,11 +4,9 @@ import PropTypes from "prop-types";
 import ReloadSpin from "../common/reloadSpin";
 
 const ShowWallet = props => {
-	let { walletInfo } = props;
-
 	const getWalletCardList = () => {
 		try {
-			return walletInfo.map(item => {
+			return props.walletInfo.map(item => {
 				return (
 					<div
 						className="walletBalanceModule"
