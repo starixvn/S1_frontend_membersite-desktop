@@ -130,10 +130,10 @@ export const defMenuLinks = {
 				menuType: defMenuType.entPage
 			},
 			{
-				...productList.liveCasino_AG,
-				className: "liveAG",
-				icon: "icon icon-AG",
-				displayText: "AG",
+				...productList.liveCasino_AE,
+				className: "liveAE",
+				icon: "icon icon-AE",
+				displayText: "AE",
 				menuType: defMenuType.entPage
 			},
 			{
@@ -151,10 +151,10 @@ export const defMenuLinks = {
 				menuType: defMenuType.entPage
 			},
 			{
-				...productList.liveCasino_AE,
-				className: "liveAE",
-				icon: "icon icon-AE",
-				displayText: "AE",
+				...productList.liveCasino_AG,
+				className: "liveAG",
+				icon: "icon icon-AG",
+				displayText: "AG",
 				menuType: defMenuType.entPage
 			}
 		]
