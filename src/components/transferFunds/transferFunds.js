@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 import {
 	userInfoContext,
 	popBoxContext,
-	loadingContext
+	loadingContext,
+	walletInfoContext
 } from "..//common/context";
 import {
 	api_account_GetTpWalletList,
@@ -21,6 +22,7 @@ import ShowWallets from "./showWallets";
 import SetAmount from "./setAmount";
 import RecentHistory from "./recentHistory";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
+import { GetAllWallets } from "../common/wrapper.walletInfo";
 
 export default () => {
 	const defDirection = {
@@ -50,6 +52,7 @@ export default () => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { loading, setLoading } = useContext(loadingContext);
 	const _isConvert = isConvert(userInfo.currencyId);
+	const { dispatch } = useContext(walletInfoContext);
 
 	const walletIcon = [
 		"icon-icon32px_Main-Wallet",
@@ -170,6 +173,7 @@ export default () => {
 						getAllWalletData();
 						getTransferRecent();
 						setAmount("");
+						GetAllWallets({ isLogin: userInfo.isLogin, dispatch });
 					} else if (res.data.errorCode === 9) {
 						setPopBox({
 							isOpen: true,
