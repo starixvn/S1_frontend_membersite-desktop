@@ -20,6 +20,7 @@ import { defPopBoxType } from "../common/popBox";
 import ShowWallets from "./showWallets";
 import SetAmount from "./setAmount";
 import RecentHistory from "./recentHistory";
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 export default () => {
 	const defDirection = {
@@ -36,7 +37,8 @@ export default () => {
 	const isMountedRef = useRef(null);
 	const [amount, setAmount] = useState("");
 	const [mainWallet, setMainWallet] = useState(null);
-	const [tpWalletList, setTpWalletLsit] = useState([]);
+	const [tpWalletList, setTpWalletList] = useState([]);
+	const [tpWalletBalanceList, setTpWalletBalanceList] = useState([]);
 	const [walletInfo, setWalletInfo] = useState([]);
 	const [selectedFromIdx, setSelectedFromIdx] = useState(null);
 	const [selectedToIdx, setSelectedToIdx] = useState(null);
@@ -62,7 +64,6 @@ export default () => {
 	useEffect(() => {
 		async function getInitialData() {
 			setLoading(true);
-			// await Promise.all([getAllWalletData(), getTransferRecent()]);
 			await getTransferRecent();
 			await getMainWallet();
 			getTpWalletList();
@@ -97,58 +98,59 @@ export default () => {
 	};
 
 	const getTpWalletList = async () => {
-		const getTpWalletInfo = async tpid => {
-			let result = {};
-			await api_account_GetTpWalletBalance(tpid).then(res => {
-				if (res.data.errorCode === 0 && isMountedRef.current) {
-					let tpItem = res.data.data;
-					let tpWalletItem = {
-						tpId: tpItem.tpId,
-						balance: tpItem.balance
-					};
-					result = tpWalletItem;
-				}
-			});
-			return result;
-		};
-
 		let allWallet = 0;
 		await api_account_GetTpWalletList(allWallet).then(async res => {
 			if (isMountedRef.current) {
 				if (res.data.errorCode === 0) {
-					let tpWalletIdArr = res.data.data.map((item, i) => {
+					let tpWalletInitArr = res.data.data.map((item, i) => {
 						return {
 							id: item.tpId,
 							displayKey: `lbl_TpWallet_${item.tpId}`,
 							walletIcon: walletIcon[1]
 						};
 					});
-
-					let getTpWalletBalance = tpWalletIdArr.map(async i => {
-						return await getTpWalletInfo(i.id);
-					});
-
-					let tpWalletBalanceArr = await Promise.all(
-						getTpWalletBalance
-					).then(results => {
-						return results;
-					});
-
-					console.log(tpWalletBalanceArr);
-
-					let tpWalletInfoArr = tpWalletIdArr.map((item, idx) => {
-						if (item.id === tpWalletBalanceArr[idx].tpId) {
-							return Object.assign(
-								{},
-								item,
-								tpWalletBalanceArr[idx]
-							);
-						}
-					});
-					setTpWalletLsit(tpWalletInfoArr);
+					setTpWalletList(tpWalletInitArr);
+					GetTpWalletBalance(tpWalletInitArr);
 				}
 			}
 		});
+	};
+
+	const GetTpWalletBalance = async tpWalletInitArr => {
+		if (tpWalletInitArr?.length > 0) {
+			tpWalletInitArr.forEach(async item => {
+				await api_account_GetTpWalletBalance(item.id).then(res => {
+					if (res.data.errorCode === 0 && isMountedRef.current) {
+						let tpItem = res.data.data;
+						let tpWalletItem = {
+							id: tpItem.tpId,
+							balance: tpItem.balance
+						};
+						let idx = tpWalletBalanceList.findIndex(
+							tp => tp.id === tpWalletItem.id
+						);
+						if (idx === -1) {
+							tpWalletBalanceList.push(tpWalletItem);
+							setTpWalletBalanceList(tpWalletBalanceList);
+						} else {
+							tpWalletBalanceList[idx] = tpWalletItem;
+							setTpWalletBalanceList(tpWalletBalanceList);
+						}
+
+						let mergeArr = [];
+						for (let i = 0; i < tpWalletInitArr.length; i++) {
+							mergeArr.push({
+								...tpWalletInitArr[i],
+								...tpWalletBalanceList.find(
+									o => o.id === tpWalletInitArr[i].id
+								)
+							});
+						}
+						setTpWalletList(mergeArr);
+					}
+				});
+			});
+		}
 	};
 
 	const ClickClose = () => {
