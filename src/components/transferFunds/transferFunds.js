@@ -353,11 +353,7 @@ export default () => {
 			getMainWallet();
 			getTpWalletList();
 		} else {
-			Transfer(
-				walletInfo.id,
-				walletInfo[0].balance,
-				defDirection.MainToTp
-			);
+			Transfer(id, walletInfo[0].balance, defDirection.MainToTp);
 			getMainWallet();
 			getTpWalletList();
 		}
