@@ -57,6 +57,10 @@
   font-size: 24px !important;
 }
 
+.icon-kiss:before {
+  content: "\e9b8";
+}
+
 .icon-marquee:before {
   content: "\e9b7";
 }

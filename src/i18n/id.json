@@ -378,5 +378,9 @@
 	"lbl_Date": "Tanggal",
 	"lbl_Days": "Hari",
 	"lbl_Hours": "Jam",
-	"lbl_5mins": "5 menit"
+	"lbl_5mins": "5 menit",
+
+	"lbl_Download":"Download",
+	"lbl_918KissMobileApp":"918KISS MOBILE APP",
+	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide"
 }

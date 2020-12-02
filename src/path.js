@@ -88,5 +88,8 @@ export default {
 	},
 	resetPassword: {
 		root: "resetPassword"
+	},
+	["918kiss"]: {
+		root: "918kiss"
 	}
 };

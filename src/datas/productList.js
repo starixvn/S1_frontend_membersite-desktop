@@ -136,5 +136,10 @@ export default {
 	fishing_SGW: {
 		gameId: "F-SF02",
 		tpId: 10
+	},
+	kiss918: {
+		tpId: 21,
+		alwaysShow: true,
+		needLogin: true
 	}
 };

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import { defMenuType } from "./header.menu.def";
 import { popBoxContext, userInfoContext } from "../common/context";
 import { defPopBoxType } from "../common/popBox";
@@ -11,21 +11,27 @@ export default ({ listClassName, subItems, menuKey, mainUrl }) => {
 	const { setPopBox } = useContext(popBoxContext);
 	const { userInfo } = useContext(userInfoContext);
 
-	const ClickItem = (tpId, gameId) => {
-		const loginCallback = () => {
+	const ClickItem = ({ tpId, gameId, needLogin, path }) => {
+		const handleCallBack = () => {
 			setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.Login
 			});
 		};
 
-		SET_ENTER_PAGE({
-			isLogin: userInfo.isLogin,
-			langId: userInfo.langId,
-			tpId: tpId,
-			gameId: gameId,
-			loginCallback: loginCallback
-		});
+		if (path) {
+			return needLogin && !userInfo.isLogin
+				? handleCallBack()
+				: navigate(`/${userInfo.langId}/${path}`);
+		} else {
+			return SET_ENTER_PAGE({
+				isLogin: userInfo.isLogin,
+				langId: userInfo.langId,
+				tpId: tpId,
+				gameId: gameId,
+				loginCallback: handleCallBack
+			});
+		}
 	};
 
 	let rows = subItems
@@ -62,12 +68,12 @@ export default ({ listClassName, subItems, menuKey, mainUrl }) => {
 					<button
 						key={key}
 						className={s.className}
-						onClick={ClickItem.bind(
-							this,
-							s.tpId,
-							s.gameId,
-							userInfo
-						)}>
+						onClick={ClickItem.bind(this, {
+							tpId: s.tpId,
+							gameId: s.gameId,
+							needLogin: s.needLogin,
+							path: s.path
+						})}>
 						<span className={s.icon}>{displayText}</span>
 					</button>
 				);

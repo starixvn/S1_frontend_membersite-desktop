@@ -378,5 +378,9 @@
 	"lbl_Date": "วันที่",
 	"lbl_Days": "วันที่",
 	"lbl_Hours": "เวลา",
-	"lbl_5mins": "5 นาที"
+	"lbl_5mins": "5 นาที",
+
+	"lbl_Download":"Download",
+	"lbl_918KissMobileApp":"918KISS MOBILE APP",
+	"lbl_IOSInstallGuide":"iOS 9+ Installation Guide"
 }
