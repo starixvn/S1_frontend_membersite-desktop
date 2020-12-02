@@ -76,7 +76,7 @@ export default () => {
 
 	const getAllWalletData = () => {
 		getMainWallet();
-		getTpWalletList();
+		GetTpWalletBalance();
 	};
 
 	useEffect(() => {
@@ -104,23 +104,24 @@ export default () => {
 		api_account_GetTpWalletList(allWallet).then(res => {
 			if (isMountedRef.current) {
 				if (res.data.errorCode === 0) {
-					let tpWalletInitArr = res.data.data.map((item, i) => {
+					let initialTpArr = res.data.data.map(item => {
 						return {
 							id: item.tpId,
 							displayKey: `lbl_TpWallet_${item.tpId}`,
 							walletIcon: walletIcon[1]
 						};
 					});
-					setTpWalletList(tpWalletInitArr);
-					GetTpWalletBalance(tpWalletInitArr);
+					setTpWalletList(initialTpArr);
+					GetTpWalletBalance(initialTpArr);
 				}
 			}
 		});
 	};
 
-	const GetTpWalletBalance = tpWalletInitArr => {
-		if (tpWalletInitArr?.length > 0) {
-			tpWalletInitArr.forEach(item => {
+	const GetTpWalletBalance = initialTpArr => {
+		let tpArr = initialTpArr ? initialTpArr : tpWalletList;
+		if (tpArr?.length > 0) {
+			tpArr.forEach(item => {
 				api_account_GetTpWalletBalance(item.id).then(res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
 						let tpItem = res.data.data;
@@ -140,11 +141,11 @@ export default () => {
 						}
 
 						let mergeArr = [];
-						for (let i = 0; i < tpWalletInitArr.length; i++) {
+						for (let i = 0; i < tpArr.length; i++) {
 							mergeArr.push({
-								...tpWalletInitArr[i],
+								...tpArr[i],
 								...tpWalletBalanceList.find(
-									o => o.id === tpWalletInitArr[i].id
+									o => o.id === tpArr[i].id
 								)
 							});
 						}
