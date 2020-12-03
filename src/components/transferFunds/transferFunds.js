@@ -39,7 +39,6 @@ export default () => {
 	const [amount, setAmount] = useState("");
 	const [mainWallet, setMainWallet] = useState(null);
 	const [tpWalletList, setTpWalletList] = useState([]);
-	const [tpWalletBalanceList, setTpWalletBalanceList] = useState([]);
 	const [walletInfo, setWalletInfo] = useState([]);
 	const [selectedFromIdx, setSelectedFromIdx] = useState(null);
 	const [selectedToIdx, setSelectedToIdx] = useState(null);
@@ -86,6 +85,11 @@ export default () => {
 		setToOptions(newArr);
 	}, [mainWallet, tpWalletList]);
 
+	useEffect(() => {
+		let newArr = [mainWallet, ...tpWalletList];
+		setWalletInfo(newArr);
+	}, [tpWalletList]);
+
 	const getMainWallet = async () => {
 		await api_account_GetBalance().then(res => {
 			if (isMountedRef.current && res.data.errorCode === 0) {
@@ -124,32 +128,15 @@ export default () => {
 			tpArr.forEach(item => {
 				api_account_GetTpWalletBalance(item.id).then(res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
-						let tpItem = res.data.data;
-						let tpWalletItem = {
-							id: tpItem.tpId,
-							balance: tpItem.balance
+						let newItem = {
+							id: res.data.data.tpId,
+							balance: res.data.data.balance
 						};
-						let idx = tpWalletBalanceList.findIndex(
-							tp => tp.id === tpWalletItem.id
-						);
-						if (idx === -1) {
-							tpWalletBalanceList.push(tpWalletItem);
-							setTpWalletBalanceList(tpWalletBalanceList);
-						} else {
-							tpWalletBalanceList[idx] = tpWalletItem;
-							setTpWalletBalanceList(tpWalletBalanceList);
+						let idx = tpArr.findIndex(tp => tp.id === newItem.id);
+						if (idx !== -1) {
+							tpArr[idx] = Object.assign(tpArr[idx], newItem);
+							setTpWalletList(tpArr);
 						}
-
-						let mergeArr = [];
-						for (let i = 0; i < tpArr.length; i++) {
-							mergeArr.push({
-								...tpArr[i],
-								...tpWalletBalanceList.find(
-									o => o.id === tpArr[i].id
-								)
-							});
-						}
-						setTpWalletList(mergeArr);
 					}
 				});
 			});
@@ -301,12 +288,6 @@ export default () => {
 		return checkPass;
 	};
 
-	const EditAmount = e => {
-		let value = e.target.value;
-		value = value.replace(/^(0+)|[^\d]+/g, "");
-		setAmount(value);
-	};
-
 	const clickInfo = () => {
 		let _msg =
 			status.tip === ""
@@ -318,9 +299,33 @@ export default () => {
 		});
 	};
 
+	const EditAmount = e => {
+		let value = e.target.value;
+		value = value.replace(/^(0+)|[^\d]+/g, "");
+		setAmount(value);
+	};
+
+	const checkAmount = () => {
+		let _checked = true;
+		if (!amount > 0) {
+			setStatus({
+				checked: false,
+				tip: t("lbl_AmountTooltip")
+			});
+			_checked = false;
+		}
+		else{
+			setStatus({
+				checked: true,
+				tip: ""
+			});
+		}
+		return _checked;
+	};
+
 	const clickSubmit = e => {
 		e.preventDefault();
-		let result = amount > 0 && checkSelectWallet();
+		let result = checkAmount() && checkSelectWallet();
 		if (result) {
 			let _direction =
 				fomOptions[selectedFromIdx].id === 0
@@ -411,6 +416,7 @@ export default () => {
 					onChange={EditAmount}
 					clickSubmit={clickSubmit}
 					clickInfo={clickInfo}
+					onBlur={checkAmount}
 					checked={status.checked}
 					tip={status.tip}
 					_isConvert={_isConvert}
