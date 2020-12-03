@@ -43,7 +43,7 @@ const AfterUpdWalletList = ({ prev, tpId, balance, displayKey }) => {
 			balance: balance
 		});
 	}
-	return [...prev];
+	return [...prev].sort((a, b) => a.id - b.id);
 };
 
 const OptFilter = ({ allWallets, oppositeTpId }) => {
