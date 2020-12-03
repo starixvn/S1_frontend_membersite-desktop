@@ -13,7 +13,7 @@ export default props => {
 					<div className="inputBox-org">
 						<Dropdown
 							i18n={t}
-							mainKey={`from_wallet_${props.selectedFromIdx}`}
+							mainKey={`from_wallet`}
 							options={props.fomOptions}
 							selectedIdx={props.selectedFromIdx}
 							onSelectItem={props.onSelectWallet.bind(
@@ -26,7 +26,7 @@ export default props => {
 					<div className="inputBox-blue">
 						<Dropdown
 							i18n={t}
-							mainKey={`to_wallet_${props.selectedFromIdx}`}
+							mainKey={`to_wallet`}
 							options={props.toOptions}
 							selectedIdx={props.selectedToIdx}
 							onSelectItem={props.onSelectWallet.bind(this, "to")}

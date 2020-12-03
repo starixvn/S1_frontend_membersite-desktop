@@ -36,7 +36,7 @@ export class Dropdown extends Component {
 
 	selectItem = i => {
 		this.setState({ isOpen: false });
-		this.props.onSelectItem(i);
+		this.props.onSelectItem(i, this.props.options[i]);
 	};
 
 	render() {

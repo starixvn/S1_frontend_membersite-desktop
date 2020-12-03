@@ -3,6 +3,11 @@ import { number_format } from "../common/common";
 import PropTypes from "prop-types";
 import ReloadSpin from "../common/reloadSpin";
 
+const walletIcon = [
+	"icon-icon32px_Main-Wallet",
+	"icon-icon32px_Sportsbook-Wallet"
+];
+
 const ShowWallet = props => {
 	const getWalletCardList = () => {
 		try {
@@ -11,7 +16,10 @@ const ShowWallet = props => {
 					<div
 						className="walletBalanceModule"
 						key={`wallets-${item.id}`}>
-						<span className={`icon ${item.walletIcon}`}>
+						<span
+							className={`icon ${
+								item.id === 0 ? walletIcon[0] : walletIcon[1]
+							}`}>
 							{props.i18n(item.displayKey)}
 						</span>
 						<span>

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-
 import { useTranslation } from "react-i18next";
 import {
 	userInfoContext,
@@ -12,7 +11,7 @@ import {
 	api_account_GetTpWalletBalance,
 	api_account_GetBalance
 } from "../../service/api/account";
-import { isConvert, checkAmount } from "../common/common.js";
+import { isConvert } from "../common/common.js";
 import {
 	api_tp_Transfer,
 	api_tp_GetTransferRecent
@@ -23,28 +22,45 @@ import SetAmount from "./setAmount";
 import RecentHistory from "./recentHistory";
 import { GetAllWallets } from "../common/wrapper.walletInfo";
 
+const defDirection = {
+	MainToTp: 1,
+	TpToMain: 2
+};
+
+const initStatus = {
+	checked: null,
+	tip: ""
+};
+
+const AfterUpdWalletList = ({ prev, tpId, balance, displayKey }) => {
+	let idx = prev.findIndex(p => p.id === tpId);
+	if (idx !== -1) {
+		prev[idx].balance = balance;
+	} else {
+		prev.push({
+			id: tpId,
+			displayKey: displayKey,
+			balance: balance
+		});
+	}
+	return [...prev];
+};
+
+const OptFilter = ({ allWallets, oppositeTpId }) => {
+	return allWallets.filter(w =>
+		oppositeTpId === null || oppositeTpId === 0 ? true : w.id === 0
+	);
+};
+
 export default () => {
-	const defDirection = {
-		MainToTp: 1,
-		TpToMain: 2
-	};
-
-	const initStatus = {
-		checked: null,
-		tip: ""
-	};
-
 	const { t } = useTranslation();
 	const isMountedRef = useRef(null);
 	const [amount, setAmount] = useState("");
-	const [mainWallet, setMainWallet] = useState(null);
-	const [tpWalletList, setTpWalletList] = useState([]);
-	const [tpWalletBalanceList, setTpWalletBalanceList] = useState([]);
 	const [walletInfo, setWalletInfo] = useState([]);
-	const [selectedFromIdx, setSelectedFromIdx] = useState(null);
-	const [selectedToIdx, setSelectedToIdx] = useState(null);
-	const [fomOptions, setFromOptions] = useState([]);
-	const [toOptions, setToOptions] = useState([]);
+	const [selectedTpId, setSelectedTpId] = useState({
+		from: null,
+		to: null
+	});
 	const [status, setStatus] = useState(initStatus);
 	const [getHistory, setGetHistory] = useState(null);
 	const { userInfo } = useContext(userInfoContext);
@@ -52,11 +68,6 @@ export default () => {
 	const { loading, setLoading } = useContext(loadingContext);
 	const _isConvert = isConvert(userInfo.currencyId);
 	const { dispatch } = useContext(walletInfoContext);
-
-	const walletIcon = [
-		"icon-icon32px_Main-Wallet",
-		"icon-icon32px_Sportsbook-Wallet"
-	];
 
 	useEffect(() => {
 		isMountedRef.current = true;
@@ -76,25 +87,20 @@ export default () => {
 
 	const getAllWalletData = () => {
 		getMainWallet();
-		GetTpWalletBalance();
+		getTpWalletList();
 	};
-
-	useEffect(() => {
-		let newArr = [mainWallet, ...tpWalletList];
-		setWalletInfo(newArr);
-		setFromOptions(newArr);
-		setToOptions(newArr);
-	}, [mainWallet, tpWalletList]);
 
 	const getMainWallet = async () => {
 		await api_account_GetBalance().then(res => {
 			if (isMountedRef.current && res.data.errorCode === 0) {
-				setMainWallet({
-					id: 0,
-					displayKey: "lbl_MainWallet",
-					balance: res.data.data,
-					walletIcon: walletIcon[0]
-				});
+				setWalletInfo(prev =>
+					AfterUpdWalletList({
+						prev,
+						tpId: 0,
+						balance: res.data.data,
+						displayKey: "lbl_MainWallet"
+					})
+				);
 			}
 		});
 	};
@@ -102,54 +108,26 @@ export default () => {
 	const getTpWalletList = () => {
 		let allWallet = 0;
 		api_account_GetTpWalletList(allWallet).then(res => {
-			if (isMountedRef.current) {
-				if (res.data.errorCode === 0) {
-					let initialTpArr = res.data.data.map(item => {
-						return {
-							id: item.tpId,
-							displayKey: `lbl_TpWallet_${item.tpId}`,
-							walletIcon: walletIcon[1]
-						};
-					});
-					setTpWalletList(initialTpArr);
-					GetTpWalletBalance(initialTpArr);
-				}
+			if (isMountedRef.current && res.data.errorCode === 0) {
+				getTpWalletBalance(res.data.data);
 			}
 		});
 	};
 
-	const GetTpWalletBalance = initialTpArr => {
-		let tpArr = initialTpArr ? initialTpArr : tpWalletList;
+	const getTpWalletBalance = tpArr => {
 		if (tpArr?.length > 0) {
 			tpArr.forEach(item => {
-				api_account_GetTpWalletBalance(item.id).then(res => {
+				api_account_GetTpWalletBalance(item.tpId).then(res => {
 					if (res.data.errorCode === 0 && isMountedRef.current) {
-						let tpItem = res.data.data;
-						let tpWalletItem = {
-							id: tpItem.tpId,
-							balance: tpItem.balance
-						};
-						let idx = tpWalletBalanceList.findIndex(
-							tp => tp.id === tpWalletItem.id
+						let { tpId, balance } = res.data.data;
+						setWalletInfo(prev =>
+							AfterUpdWalletList({
+								prev,
+								tpId,
+								balance,
+								displayKey: `lbl_TpWallet_${tpId}`
+							})
 						);
-						if (idx === -1) {
-							tpWalletBalanceList.push(tpWalletItem);
-							setTpWalletBalanceList(tpWalletBalanceList);
-						} else {
-							tpWalletBalanceList[idx] = tpWalletItem;
-							setTpWalletBalanceList(tpWalletBalanceList);
-						}
-
-						let mergeArr = [];
-						for (let i = 0; i < tpArr.length; i++) {
-							mergeArr.push({
-								...tpArr[i],
-								...tpWalletBalanceList.find(
-									o => o.id === tpArr[i].id
-								)
-							});
-						}
-						setTpWalletList(mergeArr);
 					}
 				});
 			});
@@ -278,13 +256,13 @@ export default () => {
 	};
 
 	const checkSelectWallet = () => {
-		let checkPass = false;
-		if (selectedFromIdx === null || selectedToIdx === null) {
+		let checkPass = true;
+		if (selectedTpId.from === null || selectedTpId.to === null) {
 			setPopBox({
 				isOpen: true,
 				popBoxType: defPopBoxType.ErrorMsg,
 				message:
-					selectedFromIdx === null
+					selectedTpId.from === null
 						? t("lbl_please_select_from_wallet")
 						: t("lbl_please_select_to_wallet"),
 				btnBar: (
@@ -295,8 +273,7 @@ export default () => {
 					</div>
 				)
 			});
-		} else {
-			checkPass = true;
+			checkPass = false;
 		}
 		return checkPass;
 	};
@@ -323,7 +300,7 @@ export default () => {
 		let result = amount > 0 && checkSelectWallet();
 		if (result) {
 			let _direction =
-				fomOptions[selectedFromIdx].id === 0
+				selectedTpId.from === 0
 					? defDirection.MainToTp
 					: defDirection.TpToMain;
 
@@ -331,21 +308,19 @@ export default () => {
 				? Number(amount) * 1000
 				: Number(amount);
 
-			let _wallet = [
-				fomOptions[selectedFromIdx],
-				toOptions[selectedToIdx]
-			].filter(item => item.id !== 0)[0];
+			let _wallet =
+				_direction === defDirection.MainToTp
+					? selectedTpId.to
+					: selectedTpId.from;
 
-			Transfer(_wallet.id, real_amount, _direction);
+			Transfer(_wallet, real_amount, _direction);
 			setStatus(initStatus);
 			setAmount("");
 		}
 	};
 
 	const restoreAll = id => {
-		let isClickMainWallet = id === 0;
-
-		if (isClickMainWallet) {
+		if (id === 0) {
 			walletInfo
 				.filter(o => o.id !== 0)
 				.forEach(item => {
@@ -353,46 +328,35 @@ export default () => {
 						Transfer(item.id, item.balance, defDirection.TpToMain);
 					}
 				});
-			getMainWallet();
-			getTpWalletList();
 		} else {
 			Transfer(id, walletInfo[0].balance, defDirection.MainToTp);
-			getMainWallet();
-			getTpWalletList();
 		}
+		getMainWallet();
+		getTpWalletList();
 	};
 
-	const onSelectWallet = (col, i) => {
-		if (col === "from") {
-			setSelectedFromIdx(i);
-			let isSelectFromMainWallet = fomOptions[i]?.id === 0;
-			let isSelecToMainWallet = toOptions[selectedToIdx]?.id === 0;
-			if (!isSelectFromMainWallet) {
-				setToOptions(walletInfo.filter(o => o.id === 0));
-			} else {
-				setToOptions(walletInfo);
-				if (isSelecToMainWallet) {
-					setSelectedToIdx(null);
-				}
-			}
-		} else {
-			setSelectedToIdx(i);
-			let isSelectFromMainWallet = fomOptions[selectedFromIdx]?.id === 0;
-			let isSelecToMainWallet = toOptions[i]?.id === 0;
-			if (!isSelecToMainWallet) {
-				setFromOptions(walletInfo.filter(o => o.id === 0));
-			} else {
-				setFromOptions(walletInfo);
-				if (isSelectFromMainWallet) {
-					setSelectedFromIdx(null);
-				}
-			}
-		}
+	const onSelectWallet = (col, i, value) => {
+		setSelectedTpId(prev => {
+			let oppsCol = col === "from" ? "to" : "from";
+			return {
+				[col]: value.id,
+				[oppsCol]:
+					value.id === 0 && prev[oppsCol] === 0 ? null : prev[oppsCol]
+			};
+		});
 	};
 
-	return loading ? (
-		<></>
-	) : (
+	let fromOptions = OptFilter({
+		allWallets: walletInfo,
+		oppositeTpId: selectedTpId.to
+	});
+
+	let toOptions = OptFilter({
+		allWallets: walletInfo,
+		oppositeTpId: selectedTpId.from
+	});
+
+	return loading ? null : (
 		<div className="rightModule">
 			<div className="infoModule">
 				<div className="inside-title icon icon-icon32px_Funds-transfer">
@@ -414,10 +378,14 @@ export default () => {
 					checked={status.checked}
 					tip={status.tip}
 					_isConvert={_isConvert}
-					fomOptions={fomOptions}
+					fomOptions={fromOptions}
 					toOptions={toOptions}
-					selectedFromIdx={selectedFromIdx}
-					selectedToIdx={selectedToIdx}
+					selectedFromIdx={fromOptions.findIndex(
+						f => f.id === selectedTpId.from
+					)}
+					selectedToIdx={toOptions.findIndex(
+						t => t.id === selectedTpId.to
+					)}
 					onSelectWallet={onSelectWallet}
 				/>
 			</div>
