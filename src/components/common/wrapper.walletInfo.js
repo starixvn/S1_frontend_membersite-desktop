@@ -121,7 +121,7 @@ const GetBonusWallets = ({ isLogin, dispatch }) => {
 export const GetAllWallets = ({
 	isLogin,
 	dispatch,
-	ListType = defListType.all
+	ListType = defListType.transferred
 }) => {
 	if (!isLogin) return;
 	GetMainWalet({ isLogin, dispatch });
