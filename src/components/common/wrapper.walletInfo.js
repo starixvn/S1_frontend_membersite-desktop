@@ -63,7 +63,11 @@ function reducer(state, action) {
 	}
 }
 
-const GetTpWallets = ({ isLogin, ListType = defListType.all, dispatch }) => {
+const GetTpWallets = ({
+	isLogin,
+	ListType = defListType.transferred,
+	dispatch
+}) => {
 	if (!isLogin) return;
 	api_account_GetTpWalletList(ListType).then(res => {
 		if (res.data.errorCode === 0 && res.data.data) {
