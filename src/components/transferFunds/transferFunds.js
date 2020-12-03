@@ -278,12 +278,6 @@ export default () => {
 		return checkPass;
 	};
 
-	const EditAmount = e => {
-		let value = e.target.value;
-		value = value.replace(/^(0+)|[^\d]+/g, "");
-		setAmount(value);
-	};
-
 	const clickInfo = () => {
 		let _msg =
 			status.tip === ""
@@ -295,9 +289,32 @@ export default () => {
 		});
 	};
 
+	const EditAmount = e => {
+		let value = e.target.value;
+		value = value.replace(/^(0+)|[^\d]+/g, "");
+		setAmount(value);
+	};
+
+	const checkAmount = () => {
+		let _checked = true;
+		if (!amount > 0) {
+			setStatus({
+				checked: false,
+				tip: t("lbl_AmountTooltip")?.replace("{0}", 0)
+			});
+			_checked = false;
+		} else {
+			setStatus({
+				checked: true,
+				tip: ""
+			});
+		}
+		return _checked;
+	};
+
 	const clickSubmit = e => {
 		e.preventDefault();
-		let result = amount > 0 && checkSelectWallet();
+		let result = checkAmount() && checkSelectWallet();
 		if (result) {
 			let _direction =
 				selectedTpId.from === 0
@@ -375,6 +392,7 @@ export default () => {
 					onChange={EditAmount}
 					clickSubmit={clickSubmit}
 					clickInfo={clickInfo}
+					onBlur={checkAmount}
 					checked={status.checked}
 					tip={status.tip}
 					_isConvert={_isConvert}
