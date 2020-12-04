@@ -121,9 +121,16 @@ const Content = () => {
 			<div className="inside-title icon icon-icon32px_openmail">
 				<span>{t("lbl_Announcement")}</span>
 			</div>
-			<div className="announcement">
-				<div className="list">{arr}</div>
-			</div>
+
+			{announcementDatas?.length > 0 ? (
+				<div className="announcement">
+					<div className="list">{arr}</div>
+				</div>
+			) : (
+				<div className="nodata icon icon-nodata2">
+					<div>{t("lbl_NoData")}</div>
+				</div>
+			)}
 		</div>
 	);
 };
