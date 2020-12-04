@@ -162,47 +162,53 @@ export default () => {
 			<div className="inside-title icon icon-icon32px_openmail">
 				<span>{t("lbl_PersonalMsg")}</span>
 			</div>
-
-			<div className="personal">
-				<div className="list">
-					<div className="functionMenu">
-						<div className="checkbox">
-							<input
-								type="checkbox"
-								id={`message-selectAll`}
-								onChange={onClickCheckAll}
-								checked={isCheckAll}
+			{msgListData?.length > 0 ? (
+				<div className="personal">
+					<div className="list">
+						<div className="functionMenu">
+							<div className="checkbox">
+								<input
+									type="checkbox"
+									id={`message-selectAll`}
+									onChange={onClickCheckAll}
+									checked={isCheckAll}
+								/>
+								<label
+									htmlFor={`message-selectAll`}
+									className="icon icon-checkbox-checked"></label>
+							</div>
+							<div>
+								<button
+									className="icon icon-bin"
+									onClick={popDelete}></button>
+							</div>
+							<div>
+								<ReloadSpin
+									btnActive={loading}
+									func={() =>
+										getMsgList(pagination.currentPage)
+									}
+								/>
+							</div>
+						</div>
+						{msgListData.map(item => (
+							<MessageList
+								{...item}
+								key={`msgList-${item.id}`}
+								selectItems={selectItems}
+								onChangeCheck={() => onChildChanged(item.id)}
+								getMsgList={() =>
+									getMsgList(pagination.currentPage)
+								}
 							/>
-							<label
-								htmlFor={`message-selectAll`}
-								className="icon icon-checkbox-checked"></label>
-						</div>
-						<div>
-							<button
-								className="icon icon-bin"
-								onClick={popDelete}></button>
-						</div>
-						<div>
-							<ReloadSpin
-								btnActive={loading}
-								func={() => getMsgList(pagination.currentPage)}
-							/>
-						</div>
+						))}
 					</div>
-
-					{msgListData.map(item => (
-						<MessageList
-							{...item}
-							key={`msgList-${item.id}`}
-							selectItems={selectItems}
-							onChangeCheck={() => onChildChanged(item.id)}
-							getMsgList={() =>
-								getMsgList(pagination.currentPage)
-							}
-						/>
-					))}
 				</div>
-			</div>
+			) : (
+				<div className="nodata icon icon-nodata2">
+					<div>{t("lbl_NoData")}</div>
+				</div>
+			)}
 			{/* <!--pagination--> */}
 			{pagination.totalPages !== 0 ? (
 				<Pagination
